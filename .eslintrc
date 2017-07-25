@@ -1,0 +1,18 @@
+{
+  "extends": "airbnb",
+  "plugins": [
+    "import",
+    "react"
+  ],
+  "env": {
+    "browser": true,
+    "jest": true
+  },
+  "rules": {
+    "comma-dangle": ["error", "never"],
+    "no-return-assign": ["error", "except-parens"],
+    "no-underscore-dangle": ["error", { "allowAfterThis": true }],
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "import/no-extraneous-dependencies": ["error", {"devDependencies": true, "peerDependencies": true}]
+  }
+}
