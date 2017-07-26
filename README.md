@@ -26,6 +26,8 @@ const accessToken = <...> // Mapbox access token
 />
 ```
 
+See [API](https://github.com/urbica/react-map-gl/blob/master/API.md) for more info.
+
 ## Development
 
 Install project dependencies and check that the tests run

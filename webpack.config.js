@@ -16,8 +16,8 @@ module.exports = {
   externals: {
     react: 'react',
     immutable: 'immutable',
-    'prop-types': 'prop-types',
-    'react-dom': 'react-dom'
+    'react-dom': 'react-dom',
+    'mapbox-gl': 'mapbox-gl'
   },
   module: {
     rules: [
@@ -34,7 +34,8 @@ module.exports = {
                   browsers: ['last 2 versions']
                 }
               }],
-              'react'
+              'react',
+              'flow'
             ]
           }
         }

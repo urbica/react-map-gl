@@ -1,6 +1,8 @@
 {
+  "parser": "babel-eslint",
   "extends": "airbnb",
   "plugins": [
+    "flowtype",
     "import",
     "react"
   ],
@@ -10,8 +12,17 @@
   },
   "rules": {
     "comma-dangle": ["error", "never"],
-    "no-return-assign": ["error", "except-parens"],
+    "no-return-assign": 0,
     "no-underscore-dangle": ["error", { "allowAfterThis": true }],
+    "react/sort-comp": [1, {
+      "order": [
+        "type-annotations",
+        "static-methods",
+        "lifecycle",
+        "everything-else",
+        "render"
+      ]
+    }],
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "import/no-extraneous-dependencies": ["error", {"devDependencies": true, "peerDependencies": true}]
   }

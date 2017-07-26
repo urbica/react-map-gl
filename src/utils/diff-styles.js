@@ -1,3 +1,5 @@
+/* @flow */
+
 // Copyright (c) 2015 Uber Technologies, Inc.
 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -18,8 +20,9 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-/* eslint-disable max-statements */
-export function diffSources(prevStyle, nextStyle) {
+import type { MapStyle, SourcesDiff, LayersDiff } from '../types';
+
+export function diffSources(prevStyle: MapStyle, nextStyle: MapStyle): SourcesDiff {
   const prevSources = prevStyle.get('sources');
   const nextSources = nextStyle.get('sources');
   const enter = [];
@@ -45,9 +48,8 @@ export function diffSources(prevStyle, nextStyle) {
   });
   return { enter, update, exit };
 }
-/* eslint-enable max-statements */
 
-export function diffLayers(prevStyle, nextStyle) {
+export function diffLayers(prevStyle: MapStyle, nextStyle: MapStyle): LayersDiff {
   const prevLayers = prevStyle.get('layers');
   const nextLayers = nextStyle.get('layers');
   const updates = [];
@@ -95,7 +97,7 @@ export function diffLayers(prevStyle, nextStyle) {
   return { updates, exiting };
 }
 
-export default function diffStyle(prevStyle, nextStyle) {
+export default function diffStyle(prevStyle: MapStyle, nextStyle: MapStyle) {
   return {
     sourcesDiff: diffSources(prevStyle, nextStyle),
     layersDiff: diffLayers(prevStyle, nextStyle)
