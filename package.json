@@ -43,18 +43,18 @@
     "babel-preset-react": "6.24.1",
     "commitizen": "2.9.6",
     "cz-conventional-changelog": "2.0.0",
-    "documentation": "4.0.0-rc.1",
+    "documentation": "5.0.1",
     "eslint": "3.19.0",
     "eslint-config-airbnb": "15.1.0",
     "eslint-plugin-flowtype": "2.35.0",
     "eslint-plugin-import": "2.7.0",
     "eslint-plugin-jsx-a11y": "5.1.1",
     "eslint-plugin-react": "7.1.0",
-    "flow-bin": "0.51.0",
+    "flow-bin": "0.51.1",
     "mapbox-gl": "0.39.1",
     "react": "15.6.1",
     "react-dom": "15.6.1",
     "standard-version": "4.2.0",
-    "webpack": "3.3.0"
+    "webpack": "3.4.1"
   }
 }
