@@ -123,7 +123,9 @@ class MapGL extends PureComponent<*, Props, *> {
     }
 
     // Attach optional onLoad function
-    map.once('load', this.props.onLoad);
+    if (this.props.onLoad) {
+      map.once('load', this.props.onLoad);
+    }
 
     map.on('drag', this._onViewportChange);
     map.on('zoom', this._onViewportChange);
@@ -403,7 +405,7 @@ MapGL.defaultProps = {
   preventStyleDiffing: false,
   bearing: 0,
   pitch: 0,
-  onLoad: noop
+  onLoad: null
 };
 
 export default MapGL;
