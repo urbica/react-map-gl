@@ -36,7 +36,7 @@ const accessToken = <TOKEN> // Mapbox access token
 />
 ```
 
-See [API](https://github.com/urbica/react-map-gl/blob/master/API.md) for more info.
+See [API](https://urbica.github.io/react-map-gl/) for more info.
 
 ## Development
 

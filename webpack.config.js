@@ -46,5 +46,5 @@ module.exports = {
       }
     ]
   },
-  plugins: [new webpack.EnvironmentPlugin(['MAPBOX_ACCESS_TOKEN'])]
+  plugins: [new webpack.EnvironmentPlugin(['NODE_ENV', 'MAPBOX_ACCESS_TOKEN'])]
 };
