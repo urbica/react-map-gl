@@ -1,1 +1,1 @@
-export { MapGL as default } from './components/MapGL';
+export { default } from './components/MapGL';
