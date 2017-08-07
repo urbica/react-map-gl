@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
   bail: true,
@@ -29,11 +30,14 @@ module.exports = {
           options: {
             presets: [
               ['es2015', { modules: false }],
-              ['env', {
-                targets: {
-                  browsers: ['last 2 versions']
+              [
+                'env',
+                {
+                  targets: {
+                    browsers: ['last 2 versions']
+                  }
                 }
-              }],
+              ],
               'react',
               'flow'
             ]
@@ -41,5 +45,6 @@ module.exports = {
         }
       }
     ]
-  }
+  },
+  plugins: [new webpack.EnvironmentPlugin(['MAPBOX_ACCESS_TOKEN'])]
 };

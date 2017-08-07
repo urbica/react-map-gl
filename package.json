@@ -17,8 +17,8 @@
     "docs": "documentation build src/index.js --format md --output API.md",
     "commit": "npm run build && git-cz",
     "release": "standard-version",
-    "storybook": "start-storybook -p 6006",
-    "deploy-storybook": "storybook-to-ghpages"
+    "styleguide": "styleguidist server",
+    "styleguide:build": "styleguidist build"
   },
   "config": {
     "commitizen": {
@@ -30,10 +30,6 @@
     "mapbox-gl": "0.39.1"
   },
   "devDependencies": {
-    "@storybook/addon-actions": "3.1.9",
-    "@storybook/cli": "3.1.9",
-    "@storybook/react": "3.1.9",
-    "@storybook/storybook-deployer": "2.0.0",
     "babel-core": "6.25.0",
     "babel-eslint": "7.2.3",
     "babel-jest": "20.0.3",
@@ -44,7 +40,7 @@
     "babel-preset-react": "6.24.1",
     "commitizen": "2.9.6",
     "cz-conventional-changelog": "2.0.0",
-    "documentation": "5.0.1",
+    "documentation": "5.1.1",
     "enzyme": "2.9.1",
     "eslint": "3.19.0",
     "eslint-config-airbnb": "15.1.0",
@@ -52,11 +48,13 @@
     "eslint-plugin-import": "2.7.0",
     "eslint-plugin-jsx-a11y": "5.1.1",
     "eslint-plugin-react": "7.1.0",
-    "flow-bin": "0.51.1",
+    "flow-bin": "0.52.0",
+    "immutable": "4.0.0-rc.2",
     "jest": "20.0.4",
     "mapbox-gl": "0.39.1",
     "react": "15.6.1",
     "react-dom": "15.6.1",
+    "react-styleguidist": "6.0.8",
     "react-test-renderer": "15.6.1",
     "standard-version": "4.2.0",
     "webpack": "3.4.1"

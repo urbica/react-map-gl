@@ -8,14 +8,14 @@ React Component for Mapbox GL JS
 
 ## Installation
 
-    npm install --save @urbica/react-map-gl
+    npm install --save mapbox-gl immutable@4.0.0-rc.2 @urbica/react-map-gl
 
 ## Example
 
 ```js
 import MapGL from '@urbica/react-map-gl';
 
-const accessToken = <...> // Mapbox access token
+const accessToken = <TOKEN> // Mapbox access token
 
 <MapGL
   style={{ width: '400px', height: '400px' }}
@@ -41,6 +41,6 @@ Install project dependencies and check that the tests run
 
 Then start the storybook by running the shortcut
 
-    STORYBOOK_MAPBOX_ACCESS_TOKEN=<TOKEN> npm run storybook
+    MAPBOX_ACCESS_TOKEN=<TOKEN> yarn styleguide
 
-where `TOKEN` is a valid Mapbox access token
+where `<TOKEN>` is a valid Mapbox [access token](https://www.mapbox.com/help/define-access-token/).
