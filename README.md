@@ -47,6 +47,6 @@ Install project dependencies and check that the tests run
 
 Then start the storybook by running the shortcut
 
-    MAPBOX_ACCESS_TOKEN=<TOKEN> yarn styleguide
+    MAPBOX_ACCESS_TOKEN=<TOKEN> npm run styleguide
 
 where `<TOKEN>` is a valid Mapbox [access token](https://www.mapbox.com/help/define-access-token/).
