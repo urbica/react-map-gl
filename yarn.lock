@@ -6162,9 +6162,9 @@ react-icons@^2.2.5:
   dependencies:
     react-icon-base "2.0.7"
 
-react-styleguidist@6.0.8:
-  version "6.0.8"
-  resolved "https://registry.yarnpkg.com/react-styleguidist/-/react-styleguidist-6.0.8.tgz#6a1afe9584af9a19376f0723a868d4d6a2a37fac"
+react-styleguidist@6.0.10:
+  version "6.0.10"
+  resolved "https://registry.yarnpkg.com/react-styleguidist/-/react-styleguidist-6.0.10.tgz#33d8e02be91ab900bd546f74535de05b99c3884f"
   dependencies:
     ast-types "^0.9.12"
     buble "^0.15.2"
@@ -7724,9 +7724,9 @@ webpack-sources@^1.0.1:
     source-list-map "^2.0.0"
     source-map "~0.5.3"
 
-webpack@3.5.2:
-  version "3.5.2"
-  resolved "https://registry.yarnpkg.com/webpack/-/webpack-3.5.2.tgz#a9601066e23af3c80f3bf9758fd794ca9778f251"
+webpack@3.5.3:
+  version "3.5.3"
+  resolved "https://registry.yarnpkg.com/webpack/-/webpack-3.5.3.tgz#e68653963bda146e212832c04a4d8041d2b4b8c8"
   dependencies:
     acorn "^5.0.0"
     acorn-dynamic-import "^2.0.0"

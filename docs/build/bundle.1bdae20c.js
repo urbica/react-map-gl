@@ -35276,8 +35276,8 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 /* harmony default export */ __webpack_exports__["a"] = (__WEBPACK_IMPORTED_MODULE_2_lodash_memoize___default()(function (styles, config, componentName) {
-	var mergedTheme = __WEBPACK_IMPORTED_MODULE_1_lodash_merge___default()(__WEBPACK_IMPORTED_MODULE_3__theme__, config.theme);
-	var mergedStyles = __WEBPACK_IMPORTED_MODULE_1_lodash_merge___default()(styles(mergedTheme), config.styles && config.styles[componentName]);
+	var mergedTheme = __WEBPACK_IMPORTED_MODULE_1_lodash_merge___default()({}, __WEBPACK_IMPORTED_MODULE_3__theme__, config.theme);
+	var mergedStyles = __WEBPACK_IMPORTED_MODULE_1_lodash_merge___default()({}, styles(mergedTheme), config.styles && config.styles[componentName]);
 	return __WEBPACK_IMPORTED_MODULE_0_jss___default.a.createStyleSheet(mergedStyles, { meta: componentName, link: true });
 }));
 
