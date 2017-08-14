@@ -45,16 +45,16 @@
     "eslint-plugin-flowtype": "2.35.0",
     "eslint-plugin-import": "2.7.0",
     "eslint-plugin-jsx-a11y": "5.1.1",
-    "eslint-plugin-react": "7.2.0",
+    "eslint-plugin-react": "7.2.1",
     "flow-bin": "0.52.0",
     "immutable": "4.0.0-rc.2",
     "jest": "20.0.4",
     "mapbox-gl": "0.39.1",
     "react": "15.6.1",
     "react-dom": "15.6.1",
-    "react-styleguidist": "6.0.10",
+    "react-styleguidist": "6.0.12",
     "react-test-renderer": "15.6.1",
     "standard-version": "4.2.0",
-    "webpack": "3.5.3"
+    "webpack": "3.5.4"
   }
 }

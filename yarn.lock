@@ -2639,9 +2639,9 @@ eslint-plugin-jsx-a11y@5.1.1:
     emoji-regex "^6.1.0"
     jsx-ast-utils "^1.4.0"
 
-eslint-plugin-react@7.2.0:
-  version "7.2.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-react/-/eslint-plugin-react-7.2.0.tgz#25c77a4ec307e3eebb248ea3350960e372ab6406"
+eslint-plugin-react@7.2.1:
+  version "7.2.1"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-react/-/eslint-plugin-react-7.2.1.tgz#c2673526ed6571b08c69c5f453d03f5f13e8ddbe"
   dependencies:
     doctrine "^2.0.0"
     has "^1.0.1"
@@ -4492,9 +4492,9 @@ jss-global@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/jss-global/-/jss-global-2.0.0.tgz#a162f822f17e5d760151d908bdb41d7f2824c28f"
 
-jss-isolate@^4.0.0:
-  version "4.0.1"
-  resolved "https://registry.yarnpkg.com/jss-isolate/-/jss-isolate-4.0.1.tgz#a9fd2ca251a7405a83a6cdc3daab3a496e5ed8bd"
+jss-isolate@4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/jss-isolate/-/jss-isolate-4.0.0.tgz#b33eb4f60f6e66fb8fd85f02dc25515c7b271302"
 
 jss-nested@^5.0.0:
   version "5.0.0"
@@ -6162,9 +6162,9 @@ react-icons@^2.2.5:
   dependencies:
     react-icon-base "2.0.7"
 
-react-styleguidist@6.0.10:
-  version "6.0.10"
-  resolved "https://registry.yarnpkg.com/react-styleguidist/-/react-styleguidist-6.0.10.tgz#33d8e02be91ab900bd546f74535de05b99c3884f"
+react-styleguidist@6.0.12:
+  version "6.0.12"
+  resolved "https://registry.yarnpkg.com/react-styleguidist/-/react-styleguidist-6.0.12.tgz#05909f25b7b30babcbee5c072464d1dd16eeeae2"
   dependencies:
     ast-types "^0.9.12"
     buble "^0.15.2"
@@ -6194,7 +6194,7 @@ react-styleguidist@6.0.10:
     jss-compose "^4.0.0"
     jss-default-unit "^7.0.0"
     jss-global "^2.0.0"
-    jss-isolate "^4.0.0"
+    jss-isolate "4.0.0"
     jss-nested "^5.0.0"
     leven "^2.1.0"
     listify "^1.0.0"
@@ -7724,9 +7724,9 @@ webpack-sources@^1.0.1:
     source-list-map "^2.0.0"
     source-map "~0.5.3"
 
-webpack@3.5.3:
-  version "3.5.3"
-  resolved "https://registry.yarnpkg.com/webpack/-/webpack-3.5.3.tgz#e68653963bda146e212832c04a4d8041d2b4b8c8"
+webpack@3.5.4:
+  version "3.5.4"
+  resolved "https://registry.yarnpkg.com/webpack/-/webpack-3.5.4.tgz#5583eb263ed27b78b5bd17bfdfb0eb1b1cd1bf81"
   dependencies:
     acorn "^5.0.0"
     acorn-dynamic-import "^2.0.0"
