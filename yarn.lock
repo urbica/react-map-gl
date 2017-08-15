@@ -6162,9 +6162,9 @@ react-icons@^2.2.5:
   dependencies:
     react-icon-base "2.0.7"
 
-react-styleguidist@6.0.12:
-  version "6.0.12"
-  resolved "https://registry.yarnpkg.com/react-styleguidist/-/react-styleguidist-6.0.12.tgz#05909f25b7b30babcbee5c072464d1dd16eeeae2"
+react-styleguidist@6.0.13:
+  version "6.0.13"
+  resolved "https://registry.yarnpkg.com/react-styleguidist/-/react-styleguidist-6.0.13.tgz#cf69457e382ec33a25d06f260985c7d8ea58bc1c"
   dependencies:
     ast-types "^0.9.12"
     buble "^0.15.2"

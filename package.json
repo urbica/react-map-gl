@@ -52,7 +52,7 @@
     "mapbox-gl": "0.39.1",
     "react": "15.6.1",
     "react-dom": "15.6.1",
-    "react-styleguidist": "6.0.12",
+    "react-styleguidist": "6.0.13",
     "react-test-renderer": "15.6.1",
     "standard-version": "4.2.0",
     "webpack": "3.5.4"
