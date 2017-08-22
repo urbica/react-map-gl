@@ -30,7 +30,7 @@ const accessToken = <TOKEN> // Mapbox access token
   latitude={37.7577}
   longitude={-122.4376}
   zoom={8}
-  onChangeViewport={viewport => {
+  onViewportChange={viewport => {
     // Call `setState` and use the state to update the map.
   }}
 />
