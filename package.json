@@ -31,7 +31,7 @@
   "devDependencies": {
     "babel-core": "6.26.0",
     "babel-eslint": "7.2.3",
-    "babel-jest": "20.0.3",
+    "babel-jest": "21.0.0",
     "babel-loader": "7.1.2",
     "babel-preset-env": "1.6.0",
     "babel-preset-es2015": "6.24.1",
@@ -40,21 +40,21 @@
     "commitizen": "2.9.6",
     "cz-conventional-changelog": "2.0.0",
     "enzyme": "2.9.1",
-    "eslint": "4.5.0",
+    "eslint": "4.6.1",
     "eslint-config-airbnb": "15.1.0",
-    "eslint-plugin-flowtype": "2.35.0",
+    "eslint-plugin-flowtype": "2.35.1",
     "eslint-plugin-import": "2.7.0",
     "eslint-plugin-jsx-a11y": "5.1.1",
-    "eslint-plugin-react": "7.2.1",
-    "flow-bin": "0.53.1",
+    "eslint-plugin-react": "7.3.0",
+    "flow-bin": "0.54.1",
     "immutable": "4.0.0-rc.2",
-    "jest": "20.0.4",
+    "jest": "21.0.1",
     "mapbox-gl": "0.39.1",
     "react": "15.6.1",
     "react-dom": "15.6.1",
-    "react-styleguidist": "6.0.16",
+    "react-styleguidist": "6.0.24",
     "react-test-renderer": "15.6.1",
     "standard-version": "4.2.0",
-    "webpack": "3.5.5"
+    "webpack": "3.5.6"
   }
 }

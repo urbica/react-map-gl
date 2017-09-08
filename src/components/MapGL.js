@@ -127,8 +127,8 @@ class MapGL extends PureComponent<*, Props, *> {
       map.once('load', this.props.onLoad);
     }
 
-    map.on('drag', this._onViewportChange);
-    map.on('zoom', this._onViewportChange);
+    map.on('dragend', this._onViewportChange);
+    map.on('zoomend', this._onViewportChange);
 
     this._map = map;
     this._updateMapViewport(this.props);
