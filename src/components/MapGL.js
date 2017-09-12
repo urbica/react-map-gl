@@ -43,6 +43,23 @@ type Props = {
    */
   onViewportChange: (viewport: Viewport) => mixed,
 
+  /**
+    * Called when the map is clicked.
+    * @callback
+    * @param {Object} event - The mouse event.
+    * @param {[Number, Number]} event.lngLat - The coordinates of the pointer
+    * @param {Array} event.features - The features under the pointer, using Mapbox's
+    * queryRenderedFeatures API:
+    * https://www.mapbox.com/mapbox-gl-js/api/#Map#queryRenderedFeatures
+    * To make a layer interactive, set the `interactive` property in the
+    * layer style to `true`. See Mapbox's style spec
+    * https://www.mapbox.com/mapbox-gl-style-spec/#layer-interactive
+    */
+  onClick: (event: mapboxgl.MapEvent) => mixed,
+
+  /** Radius to detect features around a clicked point. Defaults to 0. */
+  clickRadius: number,
+
   /** The longitude of the center of the map. */
   longitude: number,
 
@@ -62,7 +79,7 @@ type Props = {
   onLoad: Function
 };
 
-class MapGL extends PureComponent<*, Props, *> {
+class MapGL extends PureComponent<Props, *> {
   props: Props;
 
   componentDidMount: Function;
@@ -92,6 +109,7 @@ class MapGL extends PureComponent<*, Props, *> {
       this.componentDidUpdate = noop;
     }
 
+    this._onClick = this._onClick.bind(this);
     this._onViewportChange = this._onViewportChange.bind(this);
   }
 
@@ -127,12 +145,13 @@ class MapGL extends PureComponent<*, Props, *> {
       map.once('load', this.props.onLoad);
     }
 
+    map.on('click', this._onClick);
     map.on('dragend', this._onViewportChange);
     map.on('zoomend', this._onViewportChange);
 
     this._map = map;
     this._updateMapViewport(this.props);
-    this._updateQueryParams(mapStyle);
+    this._updateQueryParams(this.props.mapStyle);
   }
 
   componentWillReceiveProps(newProps: Props) {
@@ -229,7 +248,6 @@ class MapGL extends PureComponent<*, Props, *> {
     map.removeSource(update.id);
     map.addSource(update.id, newSource);
   }
-
 
   /**
    * Individually update the maps source and layers that have changed if all
@@ -383,6 +401,31 @@ class MapGL extends PureComponent<*, Props, *> {
     this.props.onViewportChange(viewport);
   }
 
+  _getFeatures(position: [number, number], radius: number) {
+    // Radius enables point features, like marker symbols, to be clicked.
+    if (radius) {
+      const bbox = [
+        [position[0] - radius, position[1] - radius],
+        [position[0] + radius, position[1] + radius]
+      ];
+
+      return this._map.queryRenderedFeatures(bbox, this._queryParams);
+    }
+
+    return this._map.queryRenderedFeatures(position, this._queryParams);
+  }
+
+  _onClick(event: mapboxgl.MapEvent): void {
+    if (this.props.onClick) {
+      const position = [event.point.x, event.point.y];
+
+      /* eslint-disable no-param-reassign */
+      event.features = this._getFeatures(position, this.props.clickRadius);
+
+      this.props.onClick(event);
+    }
+  }
+
   render() {
     const { className, style } = this.props;
 
@@ -401,6 +444,8 @@ MapGL.defaultProps = {
   accessToken: null,
   preserveDrawingBuffer: false,
   onViewportChange: null,
+  onClick: null,
+  clickRadius: 0,
   attributionControl: true,
   preventStyleDiffing: false,
   bearing: 0,

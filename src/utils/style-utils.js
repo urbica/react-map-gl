@@ -4,7 +4,7 @@ import { Map } from 'immutable';
 import type { MapStyle } from '../types';
 
 function getInteractiveLayerIds(mapStyle: MapStyle): Array<String> {
-  if (mapStyle instanceof Map) {
+  if (Map.isMap(mapStyle)) {
     const layers = mapStyle.get('layers');
     if (layers) {
       return layers

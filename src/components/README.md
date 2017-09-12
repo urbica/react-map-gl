@@ -74,3 +74,48 @@ if (!state.mapStyle) {
   {...state.viewport}
 />
 ```
+
+## onClick
+
+```jsx
+const Immutable = require('immutable');
+const accessToken = require('../utils/accessToken');
+
+const onClick = (event) => {
+  console.log('features', event.features);
+};
+
+const mapStyle = Immutable.fromJS({
+  version: 8,
+  sources: {
+    marker: {
+      type: 'geojson',
+      data: {
+        type: 'Feature',
+        geometry: { type: 'Point', coordinates: [0, 0] },
+        properties: {}
+      }
+    }
+  },
+  layers: [{
+    id: 'marker',
+    type: 'circle',
+    source: 'marker',
+    interactive: true,
+    paint: {
+      'circle-radius': 16,
+      'circle-color': '#f00'
+    }
+  }]
+});
+
+<MapGL
+  style={{ width: "100%", height: "400px" }}
+  mapStyle={mapStyle}
+  accessToken={accessToken}
+  latitude={0}
+  longitude={0}
+  zoom={0}
+  onClick={onClick}
+/>
+```
