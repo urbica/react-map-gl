@@ -75,15 +75,11 @@ if (!state.mapStyle) {
 />
 ```
 
-## onClick
+## onHover & onClick
 
 ```jsx
 const Immutable = require('immutable');
 const accessToken = require('../utils/accessToken');
-
-const onClick = (event) => {
-  console.log('features', event.features);
-};
 
 const mapStyle = Immutable.fromJS({
   version: 8,
@@ -91,9 +87,13 @@ const mapStyle = Immutable.fromJS({
     marker: {
       type: 'geojson',
       data: {
-        type: 'Feature',
-        geometry: { type: 'Point', coordinates: [0, 0] },
-        properties: {}
+        type: 'FeatureCollection',
+        features: [
+          { type: 'Feature', geometry: { type: 'Point', coordinates: [10, 10] } },
+          { type: 'Feature', geometry: { type: 'Point', coordinates: [10, -10] } },
+          { type: 'Feature', geometry: { type: 'Point', coordinates: [-10, -10] } },
+          { type: 'Feature', geometry: { type: 'Point', coordinates: [-10, 10] } }
+        ]
       }
     }
   },
@@ -101,7 +101,7 @@ const mapStyle = Immutable.fromJS({
     id: 'marker',
     type: 'circle',
     source: 'marker',
-    interactive: true,
+    interactive: true, // this will make layer interactive
     paint: {
       'circle-radius': 16,
       'circle-color': '#f00'
@@ -109,13 +109,22 @@ const mapStyle = Immutable.fromJS({
   }]
 });
 
+const onHover = (event) => {
+  console.log('hover over features', event.features);
+};
+
+const onClick = (event) => {
+  console.log('click on features', event.features);
+};
+
 <MapGL
   style={{ width: "100%", height: "400px" }}
   mapStyle={mapStyle}
   accessToken={accessToken}
   latitude={0}
   longitude={0}
-  zoom={0}
+  zoom={2}
+  onHover={onHover}
   onClick={onClick}
 />
 ```

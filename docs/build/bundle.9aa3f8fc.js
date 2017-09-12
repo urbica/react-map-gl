@@ -66769,6 +66769,7 @@ var MapGL = function (_PureComponent) {
     }
 
     _this._onClick = _this._onClick.bind(_this);
+    _this._onHover = _this._onHover.bind(_this);
     _this._onViewportChange = _this._onViewportChange.bind(_this);
     return _this;
   }
@@ -66806,6 +66807,7 @@ var MapGL = function (_PureComponent) {
       }
 
       map.on('click', this._onClick);
+      map.on('mousemove', this._onHover);
       map.on('dragend', this._onViewportChange);
       map.on('zoomend', this._onViewportChange);
 
@@ -67098,6 +67100,21 @@ var MapGL = function (_PureComponent) {
       return this._map.queryRenderedFeatures(position, this._queryParams);
     }
   }, {
+    key: '_onHover',
+    value: function _onHover(event) {
+      if (this.props.onHover) {
+        var position = [event.point.x, event.point.y];
+
+        /* eslint-disable no-param-reassign */
+        event.features = this._getFeatures(position, this.props.clickRadius);
+        /* eslint-enable no-param-reassign */
+
+        if (event.features.length > 0) {
+          this.props.onHover(event);
+        }
+      }
+    }
+  }, {
     key: '_onClick',
     value: function _onClick(event) {
       if (this.props.onClick) {
@@ -67105,6 +67122,7 @@ var MapGL = function (_PureComponent) {
 
         /* eslint-disable no-param-reassign */
         event.features = this._getFeatures(position, this.props.clickRadius);
+        /* eslint-enable no-param-reassign */
 
         this.props.onClick(event);
       }
@@ -67140,6 +67158,7 @@ MapGL.defaultProps = {
   preserveDrawingBuffer: false,
   onViewportChange: null,
   onClick: null,
+  onHover: null,
   clickRadius: 0,
   attributionControl: true,
   preventStyleDiffing: false,
@@ -67852,6 +67871,70 @@ module.exports = {
             },
             'tags': {}
         },
+        'onHover': {
+            'flowType': {
+                'name': 'signature',
+                'type': 'function',
+                'raw': '(event: mapboxgl.MapEvent) => mixed',
+                'signature': {
+                    'arguments': [{
+                            'name': 'event',
+                            'type': { 'name': 'unknown' }
+                        }],
+                    'return': { 'name': 'mixed' }
+                }
+            },
+            'required': true,
+            'description': 'Called when the map is hovered over.',
+            'defaultValue': {
+                'value': 'null',
+                'computed': false
+            },
+            'tags': {
+                'callback': [{
+                        'title': 'callback',
+                        'description': null
+                    }],
+                'param': [
+                    {
+                        'title': 'param',
+                        'description': 'The mouse event.',
+                        'type': {
+                            'type': 'NameExpression',
+                            'name': 'Object'
+                        },
+                        'name': 'event'
+                    },
+                    {
+                        'title': 'param',
+                        'description': 'The coordinates of the pointer',
+                        'type': {
+                            'type': 'ArrayType',
+                            'elements': [
+                                {
+                                    'type': 'NameExpression',
+                                    'name': 'Number'
+                                },
+                                {
+                                    'type': 'NameExpression',
+                                    'name': 'Number'
+                                }
+                            ]
+                        },
+                        'name': 'event.lngLat'
+                    },
+                    {
+                        'title': 'param',
+                        'description': 'The features under the pointer, using Mapbox\'s\nqueryRenderedFeatures API:\nhttps://www.mapbox.com/mapbox-gl-js/api/#Map#queryRenderedFeatures\nTo make a layer interactive, set the `interactive` property in the\nlayer style to `true`. See Mapbox\'s style spec\nhttps://www.mapbox.com/mapbox-gl-style-spec/#layer-interactive',
+                        'type': {
+                            'type': 'NameExpression',
+                            'name': 'Array'
+                        },
+                        'name': 'event.features'
+                    }
+                ]
+            }
+        },
         'onClick': {
             'flowType': {
                 'name': 'signature',
@@ -68032,11 +68115,11 @@ module.exports = [
     },
     {
         'type': 'markdown',
-        'content': '## onClick'
+        'content': '## onHover & onClick'
     },
     {
         'type': 'code',
-        'content': 'const Immutable = require(\'immutable\');\nconst accessToken = require(\'../utils/accessToken\');\n\nconst onClick = (event) => {\n  console.log(\'features\', event.features);\n};\n\nconst mapStyle = Immutable.fromJS({\n  version: 8,\n  sources: {\n    marker: {\n      type: \'geojson\',\n      data: {\n        type: \'Feature\',\n        geometry: { type: \'Point\', coordinates: [0, 0] },\n        properties: {}\n      }\n    }\n  },\n  layers: [{\n    id: \'marker\',\n    type: \'circle\',\n    source: \'marker\',\n    interactive: true,\n    paint: {\n      \'circle-radius\': 16,\n      \'circle-color\': \'#f00\'\n    }\n  }]\n});\n\n<MapGL\n  style={{ width: "100%", height: "400px" }}\n  mapStyle={mapStyle}\n  accessToken={accessToken}\n  latitude={0}\n  longitude={0}\n  zoom={0}\n  onClick={onClick}\n/>',
+        'content': 'const Immutable = require(\'immutable\');\nconst accessToken = require(\'../utils/accessToken\');\n\nconst mapStyle = Immutable.fromJS({\n  version: 8,\n  sources: {\n    marker: {\n      type: \'geojson\',\n      data: {\n        type: \'FeatureCollection\',\n        features: [\n          { type: \'Feature\', geometry: { type: \'Point\', coordinates: [10, 10] } },\n          { type: \'Feature\', geometry: { type: \'Point\', coordinates: [10, -10] } },\n          { type: \'Feature\', geometry: { type: \'Point\', coordinates: [-10, -10] } },\n          { type: \'Feature\', geometry: { type: \'Point\', coordinates: [-10, 10] } }\n        ]\n      }\n    }\n  },\n  layers: [{\n    id: \'marker\',\n    type: \'circle\',\n    source: \'marker\',\n    interactive: true, // this will make layer interactive\n    paint: {\n      \'circle-radius\': 16,\n      \'circle-color\': \'#f00\'\n    }\n  }]\n});\n\nconst onHover = (event) => {\n  console.log(\'hover over features\', event.features);\n};\n\nconst onClick = (event) => {\n  console.log(\'click on features\', event.features);\n};\n\n<MapGL\n  style={{ width: "100%", height: "400px" }}\n  mapStyle={mapStyle}\n  accessToken={accessToken}\n  latitude={0}\n  longitude={0}\n  zoom={2}\n  onHover={onHover}\n  onClick={onClick}\n/>',
         'settings': {},
         'evalInContext': evalInContext
     }

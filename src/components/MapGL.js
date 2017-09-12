@@ -43,18 +43,32 @@ type Props = {
    */
   onViewportChange: (viewport: Viewport) => mixed,
 
-  /**
-    * Called when the map is clicked.
-    * @callback
-    * @param {Object} event - The mouse event.
-    * @param {[Number, Number]} event.lngLat - The coordinates of the pointer
-    * @param {Array} event.features - The features under the pointer, using Mapbox's
-    * queryRenderedFeatures API:
-    * https://www.mapbox.com/mapbox-gl-js/api/#Map#queryRenderedFeatures
-    * To make a layer interactive, set the `interactive` property in the
-    * layer style to `true`. See Mapbox's style spec
-    * https://www.mapbox.com/mapbox-gl-style-spec/#layer-interactive
-    */
+ /**
+  * Called when the map is hovered over.
+  * @callback
+  * @param {Object} event - The mouse event.
+  * @param {[Number, Number]} event.lngLat - The coordinates of the pointer
+  * @param {Array} event.features - The features under the pointer, using Mapbox's
+  * queryRenderedFeatures API:
+  * https://www.mapbox.com/mapbox-gl-js/api/#Map#queryRenderedFeatures
+  * To make a layer interactive, set the `interactive` property in the
+  * layer style to `true`. See Mapbox's style spec
+  * https://www.mapbox.com/mapbox-gl-style-spec/#layer-interactive
+  */
+  onHover: (event: mapboxgl.MapEvent) => mixed,
+
+ /**
+  * Called when the map is clicked.
+  * @callback
+  * @param {Object} event - The mouse event.
+  * @param {[Number, Number]} event.lngLat - The coordinates of the pointer
+  * @param {Array} event.features - The features under the pointer, using Mapbox's
+  * queryRenderedFeatures API:
+  * https://www.mapbox.com/mapbox-gl-js/api/#Map#queryRenderedFeatures
+  * To make a layer interactive, set the `interactive` property in the
+  * layer style to `true`. See Mapbox's style spec
+  * https://www.mapbox.com/mapbox-gl-style-spec/#layer-interactive
+  */
   onClick: (event: mapboxgl.MapEvent) => mixed,
 
   /** Radius to detect features around a clicked point. Defaults to 0. */
@@ -110,6 +124,7 @@ class MapGL extends PureComponent<Props, *> {
     }
 
     this._onClick = this._onClick.bind(this);
+    this._onHover = this._onHover.bind(this);
     this._onViewportChange = this._onViewportChange.bind(this);
   }
 
@@ -146,6 +161,7 @@ class MapGL extends PureComponent<Props, *> {
     }
 
     map.on('click', this._onClick);
+    map.on('mousemove', this._onHover);
     map.on('dragend', this._onViewportChange);
     map.on('zoomend', this._onViewportChange);
 
@@ -415,12 +431,27 @@ class MapGL extends PureComponent<Props, *> {
     return this._map.queryRenderedFeatures(position, this._queryParams);
   }
 
+  _onHover(event: mapboxgl.MapEvent): void {
+    if (this.props.onHover) {
+      const position = [event.point.x, event.point.y];
+
+      /* eslint-disable no-param-reassign */
+      event.features = this._getFeatures(position, this.props.clickRadius);
+      /* eslint-enable no-param-reassign */
+
+      if (event.features.length > 0) {
+        this.props.onHover(event);
+      }
+    }
+  }
+
   _onClick(event: mapboxgl.MapEvent): void {
     if (this.props.onClick) {
       const position = [event.point.x, event.point.y];
 
       /* eslint-disable no-param-reassign */
       event.features = this._getFeatures(position, this.props.clickRadius);
+      /* eslint-enable no-param-reassign */
 
       this.props.onClick(event);
     }
@@ -445,6 +476,7 @@ MapGL.defaultProps = {
   preserveDrawingBuffer: false,
   onViewportChange: null,
   onClick: null,
+  onHover: null,
   clickRadius: 0,
   attributionControl: true,
   preventStyleDiffing: false,
