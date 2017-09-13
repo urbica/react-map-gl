@@ -26,7 +26,7 @@
   },
   "peerDependencies": {
     "immutable": "4.0.0-rc.2",
-    "mapbox-gl": "0.39.1"
+    "mapbox-gl": "^0.40.0"
   },
   "devDependencies": {
     "babel-core": "6.26.0",
@@ -48,8 +48,8 @@
     "eslint-plugin-react": "7.3.0",
     "flow-bin": "0.54.1",
     "immutable": "4.0.0-rc.2",
-    "jest": "21.0.2",
-    "mapbox-gl": "0.39.1",
+    "jest": "21.1.0",
+    "mapbox-gl": "0.40.0",
     "react": "15.6.1",
     "react-dom": "15.6.1",
     "react-styleguidist": "6.0.24",
