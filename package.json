@@ -55,6 +55,6 @@
     "react-styleguidist": "6.0.24",
     "react-test-renderer": "15.6.1",
     "standard-version": "4.2.0",
-    "webpack": "3.5.6"
+    "webpack": "3.6.0"
   }
 }
