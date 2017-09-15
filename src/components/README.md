@@ -66,6 +66,8 @@ if (!state.mapStyle) {
     );
 }
 
+console.log(state.viewport);
+
 <MapGL
   style={{ width: "100%", height: "400px" }}
   mapStyle={state.mapStyle}
