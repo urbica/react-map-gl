@@ -43,7 +43,7 @@ type Props = {
    */
   onViewportChange: (viewport: Viewport) => mixed,
 
- /**
+  /**
   * Called when the map is hovered over.
   * @callback
   * @param {Object} event - The mouse event.
@@ -57,7 +57,7 @@ type Props = {
   */
   onHover: (event: mapboxgl.MapEvent) => mixed,
 
- /**
+  /**
   * Called when the map is clicked.
   * @callback
   * @param {Object} event - The mouse event.
@@ -103,7 +103,9 @@ class MapGL extends PureComponent<Props, *> {
   _map: mapboxgl.Map;
   _container: HTMLElement;
   _queryParams: Object;
-  _onViewportChange: (event: mapboxgl.MapMouseEvent | mapboxgl.MapTouchEvent) => void;
+  _onViewportChange: (
+    event: mapboxgl.MapMouseEvent | mapboxgl.MapTouchEvent
+  ) => void;
 
   static supported() {
     return mapboxgl && mapboxgl.supported();
@@ -162,11 +164,14 @@ class MapGL extends PureComponent<Props, *> {
 
     map.on('click', this._onClick);
     map.on('mousemove', this._onHover);
-    map.on('dragend', this._onViewportChange);
-    map.on('zoomend', this._onViewportChange);
-    map.on('rotateend', this._onViewportChange);
-    map.on('pitchend', this._onViewportChange);
-    map.on('boxzoomend', this._onViewportChange);
+
+    if (this.props.onViewportChange) {
+      map.on('dragend', this._onViewportChange);
+      map.on('zoomend', this._onViewportChange);
+      map.on('rotateend', this._onViewportChange);
+      map.on('pitchend', this._onViewportChange);
+      map.on('boxzoomend', this._onViewportChange);
+    }
 
     this._map = map;
     this._updateMapViewport(this.props);
@@ -211,7 +216,10 @@ class MapGL extends PureComponent<Props, *> {
     *   Point or an array of two points defining the bounding box
     * @param {Object} parameters - query options
     */
-  queryRenderedFeatures(geometry: mapboxgl.Point | mapboxgl.Point[], parameters: Object) {
+  queryRenderedFeatures(
+    geometry: mapboxgl.Point | mapboxgl.Point[],
+    parameters: Object
+  ) {
     const queryParams = parameters || this._queryParams;
     if (queryParams.layers && queryParams.layers.length === 0) {
       return [];
@@ -402,7 +410,9 @@ class MapGL extends PureComponent<Props, *> {
    * @private
    * @param {(mapboxgl.MapMouseEvent | mapboxgl.MapTouchEvent)} event
    */
-  _onViewportChange(event: mapboxgl.MapMouseEvent | mapboxgl.MapTouchEvent): void {
+  _onViewportChange(
+    event: mapboxgl.MapMouseEvent | mapboxgl.MapTouchEvent
+  ): void {
     const map = event.target;
     const { lng, lat } = map.getCenter();
     const zoom = map.getZoom();
