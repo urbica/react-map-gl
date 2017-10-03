@@ -31,7 +31,7 @@ type Props = {
   attributionControl: boolean,
 
   /** The Mapbox style. A string url or a MapboxGL style Immutable.Map object. */
-  mapStyle: MapStyle,
+  mapStyle: String | MapStyle,
 
   /** There are known issues with style diffing. As stopgap, add option to prevent style diffing. */
   preventStyleDiffing: boolean,
@@ -41,7 +41,7 @@ type Props = {
    * map. The object passed to the callback contains viewport properties
    * such as `longitude`, `latitude`, `zoom` etc.
    */
-  onViewportChange: (viewport: Viewport) => mixed,
+  onViewportChange: (viewport: Viewport) => void,
 
   /**
   * Called when the map is hovered over.
@@ -55,7 +55,7 @@ type Props = {
   * layer style to `true`. See Mapbox's style spec
   * https://www.mapbox.com/mapbox-gl-style-spec/#layer-interactive
   */
-  onHover: (event: mapboxgl.MapEvent) => mixed,
+  onHover: (event: mapboxgl.MapEvent) => void,
 
   /**
   * Called when the map is clicked.
@@ -69,7 +69,7 @@ type Props = {
   * layer style to `true`. See Mapbox's style spec
   * https://www.mapbox.com/mapbox-gl-style-spec/#layer-interactive
   */
-  onClick: (event: mapboxgl.MapEvent) => mixed,
+  onClick: (event: mapboxgl.MapEvent) => void,
 
   /** Radius to detect features around a clicked point. Defaults to 0. */
   clickRadius: number,
@@ -95,17 +95,19 @@ type Props = {
 
 class MapGL extends PureComponent<Props, *> {
   props: Props;
+  static defaultProps: {};
 
   componentDidMount: Function;
   componentWillReceiveProps: Function;
   componentDidUpdate: Function;
 
   _map: mapboxgl.Map;
-  _container: HTMLElement;
+  _container: ?HTMLElement;
   _queryParams: Object;
-  _onViewportChange: (
-    event: mapboxgl.MapMouseEvent | mapboxgl.MapTouchEvent
-  ) => void;
+
+  _onClick: (event: mapboxgl.MapEvent) => void;
+  _onHover: (event: mapboxgl.MapEvent) => void;
+  _onViewportChange: (event: mapboxgl.MapMouseEvent | mapboxgl.MapTouchEvent) => void;
 
   static supported() {
     return mapboxgl && mapboxgl.supported();
@@ -136,7 +138,7 @@ class MapGL extends PureComponent<Props, *> {
     }
 
     const mapStyle = Map.isMap(this.props.mapStyle)
-      ? this.props.mapStyle.toJS()
+      ? (this.props.mapStyle: MapStyle).toJS()
       : this.props.mapStyle;
 
     const map = new mapboxgl.Map({
@@ -216,10 +218,7 @@ class MapGL extends PureComponent<Props, *> {
     *   Point or an array of two points defining the bounding box
     * @param {Object} parameters - query options
     */
-  queryRenderedFeatures(
-    geometry: mapboxgl.Point | mapboxgl.Point[],
-    parameters: Object
-  ) {
+  queryRenderedFeatures(geometry: mapboxgl.Point | mapboxgl.Point[], parameters: Object) {
     const queryParams = parameters || this._queryParams;
     if (queryParams.layers && queryParams.layers.length === 0) {
       return [];
@@ -259,8 +258,7 @@ class MapGL extends PureComponent<Props, *> {
             newSource.buffer === oldOpts.geojsonVtOptions.buffer) &&
           (newSource.tolerance === undefined ||
             newSource.tolerance === oldOpts.geojsonVtOptions.tolerance) &&
-          (newSource.cluster === undefined ||
-            newSource.cluster === oldOpts.cluster) &&
+          (newSource.cluster === undefined || newSource.cluster === oldOpts.cluster) &&
           (newSource.clusterRadius === undefined ||
             newSource.clusterRadius === oldOpts.superclusterOptions.radius) &&
           (newSource.clusterMaxZoom === undefined ||
@@ -288,7 +286,11 @@ class MapGL extends PureComponent<Props, *> {
    */
   _setDiffStyle(prevStyle: MapStyle, nextStyle: MapStyle): void {
     function styleKeysMap(style: MapStyle) {
-      return style.map(() => true).delete('layers').delete('sources').toJS();
+      return style
+        .map(() => true)
+        .delete('layers')
+        .delete('sources')
+        .toJS();
     }
 
     const prevKeysMap = prevStyle && (styleKeysMap(prevStyle) || {});
@@ -329,9 +331,7 @@ class MapGL extends PureComponent<Props, *> {
       return;
     }
 
-    sourcesDiff.enter.forEach(enter =>
-      map.addSource(enter.id, enter.source.toJS())
-    );
+    sourcesDiff.enter.forEach(enter => map.addSource(enter.id, enter.source.toJS()));
 
     sourcesDiff.update.forEach(update => this._updateSource(update));
 
@@ -366,7 +366,7 @@ class MapGL extends PureComponent<Props, *> {
     if (mapStyle !== oldMapStyle) {
       if (Map.isMap(mapStyle)) {
         if (this.props.preventStyleDiffing) {
-          this._map.setStyle(mapStyle.toJS());
+          this._map.setStyle((mapStyle: MapStyle).toJS());
         } else {
           this._setDiffStyle(oldMapStyle, mapStyle);
         }
@@ -410,9 +410,7 @@ class MapGL extends PureComponent<Props, *> {
    * @private
    * @param {(mapboxgl.MapMouseEvent | mapboxgl.MapTouchEvent)} event
    */
-  _onViewportChange(
-    event: mapboxgl.MapMouseEvent | mapboxgl.MapTouchEvent
-  ): void {
+  _onViewportChange(event: mapboxgl.MapMouseEvent | mapboxgl.MapTouchEvent): void {
     const map = event.target;
     const { lng, lat } = map.getCenter();
     const zoom = map.getZoom();
@@ -474,7 +472,7 @@ class MapGL extends PureComponent<Props, *> {
     const { className, style } = this.props;
 
     return createElement('div', {
-      ref: ref => this._container = ref,
+      ref: ref => (this._container = ref),
       style,
       className
     });
@@ -484,6 +482,7 @@ class MapGL extends PureComponent<Props, *> {
 MapGL.displayName = 'MapGL';
 MapGL.defaultProps = {
   className: null,
+  style: null,
   mapStyle: 'mapbox://styles/mapbox/light-v8',
   accessToken: null,
   preserveDrawingBuffer: false,

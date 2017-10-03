@@ -2,7 +2,7 @@
 
 import { Map } from 'immutable';
 
-export type MapStyle = String | Map<any, any>;
+export type MapStyle = Map<any, any>;
 
 export type SourcesDiffElement = { id: string, source: Map<any, any> };
 
