@@ -1,3 +1,4 @@
 {
-  "presets": ["es2015", "react"]
+  "presets": ["env", "react", "flow"],
+  "plugins": ["transform-object-rest-spread", "transform-class-properties"]
 }

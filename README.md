@@ -14,7 +14,7 @@ This package is heavily inspired by [uber/react-map-gl](https://github.com/uber/
 
 ## Installation
 
-    npm install --save mapbox-gl immutable@4.0.0-rc.2 @urbica/react-map-gl
+    npm install --save mapbox-gl immutable@4.0.0-rc.7 @urbica/react-map-gl
 
 ## Example
 
@@ -45,8 +45,8 @@ Install project dependencies and check that the tests run
     npm install
     npm test
 
-Then start the storybook by running the shortcut
+Then start `react-styleguidist` by running
 
-    MAPBOX_ACCESS_TOKEN=<TOKEN> npm run styleguide
+    MAPBOX_ACCESS_TOKEN=<TOKEN> npm start
 
 where `<TOKEN>` is a valid Mapbox [access token](https://www.mapbox.com/help/define-access-token/).

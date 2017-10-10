@@ -44,31 +44,31 @@ type Props = {
   onViewportChange: (viewport: Viewport) => void,
 
   /**
-  * Called when the map is hovered over.
-  * @callback
-  * @param {Object} event - The mouse event.
-  * @param {[Number, Number]} event.lngLat - The coordinates of the pointer
-  * @param {Array} event.features - The features under the pointer, using Mapbox's
-  * queryRenderedFeatures API:
-  * https://www.mapbox.com/mapbox-gl-js/api/#Map#queryRenderedFeatures
-  * To make a layer interactive, set the `interactive` property in the
-  * layer style to `true`. See Mapbox's style spec
-  * https://www.mapbox.com/mapbox-gl-style-spec/#layer-interactive
-  */
+   * Called when the map is hovered over.
+   * @callback
+   * @param {Object} event - The mouse event.
+   * @param {[Number, Number]} event.lngLat - The coordinates of the pointer
+   * @param {Array} event.features - The features under the pointer, using Mapbox's
+   * queryRenderedFeatures API:
+   * https://www.mapbox.com/mapbox-gl-js/api/#Map#queryRenderedFeatures
+   * To make a layer interactive, set the `interactive` property in the
+   * layer style to `true`. See Mapbox's style spec
+   * https://www.mapbox.com/mapbox-gl-style-spec/#layer-interactive
+   */
   onHover: (event: mapboxgl.MapEvent) => void,
 
   /**
-  * Called when the map is clicked.
-  * @callback
-  * @param {Object} event - The mouse event.
-  * @param {[Number, Number]} event.lngLat - The coordinates of the pointer
-  * @param {Array} event.features - The features under the pointer, using Mapbox's
-  * queryRenderedFeatures API:
-  * https://www.mapbox.com/mapbox-gl-js/api/#Map#queryRenderedFeatures
-  * To make a layer interactive, set the `interactive` property in the
-  * layer style to `true`. See Mapbox's style spec
-  * https://www.mapbox.com/mapbox-gl-style-spec/#layer-interactive
-  */
+   * Called when the map is clicked.
+   * @callback
+   * @param {Object} event - The mouse event.
+   * @param {[Number, Number]} event.lngLat - The coordinates of the pointer
+   * @param {Array} event.features - The features under the pointer, using Mapbox's
+   * queryRenderedFeatures API:
+   * https://www.mapbox.com/mapbox-gl-js/api/#Map#queryRenderedFeatures
+   * To make a layer interactive, set the `interactive` property in the
+   * layer style to `true`. See Mapbox's style spec
+   * https://www.mapbox.com/mapbox-gl-style-spec/#layer-interactive
+   */
   onClick: (event: mapboxgl.MapEvent) => void,
 
   /** Radius to detect features around a clicked point. Defaults to 0. */
@@ -303,12 +303,8 @@ class MapGL extends PureComponent<Props, *> {
         return true;
       }
       // `nextStyle` and `prevStyle` should not have the same set of props.
-      if (
-        nextKeysList.some(
-          key => prevStyle.get(key) !== nextStyle.get(key)
-          // But the value of one of those props is different.
-        )
-      ) {
+      // But the value of one of those props is different.
+      if (nextKeysList.some(key => prevStyle.get(key) !== nextStyle.get(key))) {
         return true;
       }
       return false;
@@ -361,7 +357,7 @@ class MapGL extends PureComponent<Props, *> {
    * @param {Props} newProps
    */
   _updateMapStyle(oldProps: Props, newProps: Props): void {
-    const mapStyle = newProps.mapStyle;
+    const { mapStyle } = newProps;
     const oldMapStyle = oldProps.mapStyle;
     if (mapStyle !== oldMapStyle) {
       if (Map.isMap(mapStyle)) {

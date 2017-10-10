@@ -28,23 +28,12 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: [
-              ['es2015', { modules: false }],
-              [
-                'env',
-                {
-                  targets: {
-                    browsers: ['last 2 versions']
-                  }
-                }
-              ],
-              'react',
-              'flow'
-            ]
+            presets: ['env', 'react', 'flow'],
+            plugins: ['transform-object-rest-spread', 'transform-class-properties']
           }
         }
       }
     ]
   },
-  plugins: [new webpack.EnvironmentPlugin(['NODE_ENV', 'MAPBOX_ACCESS_TOKEN'])]
+  plugins: [new webpack.EnvironmentPlugin(['MAPBOX_ACCESS_TOKEN'])]
 };
