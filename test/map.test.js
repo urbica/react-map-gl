@@ -7,7 +7,7 @@ import MapGL from '../src';
 Enzyme.configure({ adapter: new Adapter() });
 
 const mockOn = jest.fn();
-const mockOnce = jest.fn();
+const mockOnce = jest.fn((_, fn) => fn());
 const mockFlyTo = jest.fn();
 const mockGetCanvas = jest.fn();
 const mockGetCenter = jest.fn(() => ({ lat: 0, lng: 0 }));
@@ -37,5 +37,5 @@ test('MapGL#render', () => {
 test('MapGL#onLoad', () => {
   const onLoad = jest.fn();
   mount(<MapGL latitude={0} longitude={0} zoom={0} onLoad={onLoad} />);
-  expect(mockOnce).toHaveBeenCalledWith('load', onLoad);
+  expect(onLoad).toHaveBeenCalled();
 });

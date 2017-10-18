@@ -19,9 +19,14 @@
     "styleguide": "styleguidist server",
     "styleguide:build": "styleguidist build",
     "styleguide:deploy": "gh-pages -d styleguide",
-    "commit": "npm run build && git-cz",
+    "commit": "git-cz",
     "release": "standard-version",
     "postpublish": "npm run docs && npm run styleguide:build && npm run styleguide:deploy"
+  },
+  "jest": {
+    "setupFiles": [
+      "<rootDir>/test/setup.js"
+    ]
   },
   "config": {
     "commitizen": {

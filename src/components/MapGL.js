@@ -46,7 +46,10 @@ type Props = {
    * map. The object passed to the callback contains viewport properties
    * such as `longitude`, `latitude`, `zoom` etc.
    */
-  onViewportChange: (viewport: Viewport) => void
+  onViewportChange: (viewport: Viewport) => void,
+
+  /** The onLoad callback for the map */
+  onLoad: Function
 };
 
 type State = {
@@ -65,7 +68,9 @@ class MapGL extends PureComponent<Props, State> {
     accessToken: null,
     preserveDrawingBuffer: false,
     bearing: 0,
-    pitch: 0
+    pitch: 0,
+    onViewportChange: null,
+    onLoad: null
   };
 
   constructor(props: Props) {
@@ -102,7 +107,9 @@ class MapGL extends PureComponent<Props, State> {
       preserveDrawingBuffer: this.props.preserveDrawingBuffer
     });
 
-    map.once('load', () => this.setState({ loaded: true }));
+    map.once('load', () => {
+      this.setState({ loaded: true }, this.props.onLoad);
+    });
 
     if (this.props.onViewportChange) {
       map.on('dragend', this._onViewportChange);
