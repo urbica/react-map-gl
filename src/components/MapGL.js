@@ -1,78 +1,30 @@
-/* @flow */
+// @flow
 
 import mapboxgl from 'mapbox-gl';
-import { Map } from 'immutable';
-import { PureComponent, createElement } from 'react';
+import { Children, PureComponent, createElement } from 'react';
+import { isImmutable } from 'immutable';
+import type { Node } from 'react';
 
-import diffStyles from '../utils/diff-styles';
-import getInteractiveLayerIds from '../utils/style-utils';
+import type { MapStyle, Viewport } from '../types';
 
-import type { MapStyle, SourcesDiffElement, Viewport } from '../types';
-
-function noop() {}
-
-/**
- * Properties
- */
 type Props = {
   /** container className */
-  className: string,
+  className: String,
 
   /** container style */
   style: Object,
+
+  /** The Mapbox style. A string url or a MapboxGL style Immutable.Map object. */
+  mapStyle: string | MapStyle,
+
+  /** Sources and Layers */
+  children?: Node,
 
   /** Mapbox API access token for mapbox-gl-js. Required when using Mapbox vector tiles/styles. */
   accessToken: string,
 
   /** Mapbox WebGL context creation option. Useful when you want to export the canvas as a PNG. */
   preserveDrawingBuffer: boolean,
-
-  /** Show attribution control or not. */
-  attributionControl: boolean,
-
-  /** The Mapbox style. A string url or a MapboxGL style Immutable.Map object. */
-  mapStyle: String | MapStyle,
-
-  /** There are known issues with style diffing. As stopgap, add option to prevent style diffing. */
-  preventStyleDiffing: boolean,
-
-  /**
-   * `onViewportChange` callback is fired when the user interacted with the
-   * map. The object passed to the callback contains viewport properties
-   * such as `longitude`, `latitude`, `zoom` etc.
-   */
-  onViewportChange: (viewport: Viewport) => void,
-
-  /**
-   * Called when the map is hovered over.
-   * @callback
-   * @param {Object} event - The mouse event.
-   * @param {[Number, Number]} event.lngLat - The coordinates of the pointer
-   * @param {Array} event.features - The features under the pointer, using Mapbox's
-   * queryRenderedFeatures API:
-   * https://www.mapbox.com/mapbox-gl-js/api/#Map#queryRenderedFeatures
-   * To make a layer interactive, set the `interactive` property in the
-   * layer style to `true`. See Mapbox's style spec
-   * https://www.mapbox.com/mapbox-gl-style-spec/#layer-interactive
-   */
-  onHover: (event: mapboxgl.MapEvent) => void,
-
-  /**
-   * Called when the map is clicked.
-   * @callback
-   * @param {Object} event - The mouse event.
-   * @param {[Number, Number]} event.lngLat - The coordinates of the pointer
-   * @param {Array} event.features - The features under the pointer, using Mapbox's
-   * queryRenderedFeatures API:
-   * https://www.mapbox.com/mapbox-gl-js/api/#Map#queryRenderedFeatures
-   * To make a layer interactive, set the `interactive` property in the
-   * layer style to `true`. See Mapbox's style spec
-   * https://www.mapbox.com/mapbox-gl-style-spec/#layer-interactive
-   */
-  onClick: (event: mapboxgl.MapEvent) => void,
-
-  /** Radius to detect features around a clicked point. Defaults to 0. */
-  clickRadius: number,
 
   /** The longitude of the center of the map. */
   longitude: number,
@@ -89,56 +41,54 @@ type Props = {
   /** Specify the pitch of the viewport */
   pitch: number,
 
-  /** The onLoad callback for the map */
-  onLoad: Function
+  /**
+   * `onViewportChange` callback is fired when the user interacted with the
+   * map. The object passed to the callback contains viewport properties
+   * such as `longitude`, `latitude`, `zoom` etc.
+   */
+  onViewportChange: (viewport: Viewport) => void
 };
 
-class MapGL extends PureComponent<Props, *> {
-  props: Props;
-  static defaultProps: {};
+type State = {
+  loaded: boolean
+};
 
-  componentDidMount: Function;
-  componentWillReceiveProps: Function;
-  componentDidUpdate: Function;
-
+class MapGL extends PureComponent<Props, State> {
   _map: mapboxgl.Map;
   _container: ?HTMLElement;
-  _queryParams: Object;
-
-  _onClick: (event: mapboxgl.MapEvent) => void;
-  _onHover: (event: mapboxgl.MapEvent) => void;
   _onViewportChange: (event: mapboxgl.MapMouseEvent | mapboxgl.MapTouchEvent) => void;
 
-  static supported() {
-    return mapboxgl && mapboxgl.supported();
-  }
+  static defaultProps = {
+    className: null,
+    style: null,
+    mapStyle: 'mapbox://styles/mapbox/light-v8',
+    accessToken: null,
+    preserveDrawingBuffer: false,
+    bearing: 0,
+    pitch: 0
+  };
 
   constructor(props: Props) {
     super(props);
-    this._queryParams = {};
 
     if (mapboxgl) {
       mapboxgl.accessToken = props.accessToken;
     }
 
-    if (!MapGL.supported()) {
-      this.componentDidMount = noop;
-      this.componentWillReceiveProps = noop;
-      this.componentDidUpdate = noop;
-    }
-
-    this._onClick = this._onClick.bind(this);
-    this._onHover = this._onHover.bind(this);
     this._onViewportChange = this._onViewportChange.bind(this);
   }
+
+  state = {
+    loaded: false
+  };
 
   componentDidMount() {
     if (!mapboxgl) {
       return;
     }
 
-    const mapStyle = Map.isMap(this.props.mapStyle)
-      ? (this.props.mapStyle: MapStyle).toJS()
+    const mapStyle = isImmutable(this.props.mapStyle)
+      ? ((this.props.mapStyle: any): MapStyle).toJS()
       : this.props.mapStyle;
 
     const map = new mapboxgl.Map({
@@ -149,23 +99,10 @@ class MapGL extends PureComponent<Props, *> {
       pitch: this.props.pitch,
       bearing: this.props.bearing,
       interactive: !!this.props.onViewportChange,
-      attributionControl: this.props.attributionControl,
       preserveDrawingBuffer: this.props.preserveDrawingBuffer
     });
 
-    // Disable outline style
-    const canvas = map.getCanvas();
-    if (canvas) {
-      canvas.style.outline = 'none';
-    }
-
-    // Attach optional onLoad function
-    if (this.props.onLoad) {
-      map.once('load', this.props.onLoad);
-    }
-
-    map.on('click', this._onClick);
-    map.on('mousemove', this._onHover);
+    map.once('load', () => this.setState({ loaded: true }));
 
     if (this.props.onViewportChange) {
       map.on('dragend', this._onViewportChange);
@@ -176,200 +113,36 @@ class MapGL extends PureComponent<Props, *> {
     }
 
     this._map = map;
+    window.map = map;
     this._updateMapViewport(this.props);
-    this._updateQueryParams(this.props.mapStyle);
   }
 
   componentWillReceiveProps(newProps: Props) {
-    if (!mapboxgl) {
-      return;
-    }
-
     this._updateMapViewport(newProps);
     this._updateMapStyle(this.props, newProps);
   }
 
   componentWillUnmount() {
-    if (!mapboxgl) {
-      return;
-    }
-
     if (this._map) {
       this._map.remove();
     }
   }
 
   /**
-   * Exposes Mapbox GL Map instance.
-   * External apps can access map this way
-   *
-   * @returns {mapboxgl.Map}
-   */
-  getMap(): mapboxgl.Map {
-    return this._map;
-  }
-
-  /** Uses Mapbox's
-    * queryRenderedFeatures API to find features at point or in a bounding box.
-    * https://www.mapbox.com/mapbox-gl-js/api/#Map#queryRenderedFeatures
-    * To query only some of the layers, set the `interactive` property in the
-    * layer style to `true`.
-    * @param {[Number, Number]|[[Number, Number], [Number, Number]]} geometry -
-    *   Point or an array of two points defining the bounding box
-    * @param {Object} parameters - query options
-    */
-  queryRenderedFeatures(geometry: mapboxgl.Point | mapboxgl.Point[], parameters: Object) {
-    const queryParams = parameters || this._queryParams;
-    if (queryParams.layers && queryParams.layers.length === 0) {
-      return [];
-    }
-    return this._map.queryRenderedFeatures(geometry, queryParams);
-  }
-
-  /**
-   * Hover and click only query layers whose interactive property is true
-   *
-   * @private
-   * @param {MapStyle} mapStyle
-   */
-  _updateQueryParams(mapStyle: MapStyle): void {
-    const interactiveLayerIds = getInteractiveLayerIds(mapStyle);
-    this._queryParams = { layers: interactiveLayerIds };
-  }
-
-  /**
-   * Update a source in the map style
-   *
-   * @private
-   * @param {SourcesDiffElement} update
-   */
-  _updateSource(update: SourcesDiffElement): void {
-    const map = this._map;
-    const newSource = update.source.toJS();
-    if (newSource.type === 'geojson') {
-      const oldSource = map.getSource(update.id);
-      if (oldSource.type === 'geojson') {
-        // update data if no other GeoJSONSource options were changed
-        const oldOpts = oldSource.workerOptions;
-        if (
-          (newSource.maxzoom === undefined ||
-            newSource.maxzoom === oldOpts.geojsonVtOptions.maxZoom) &&
-          (newSource.buffer === undefined ||
-            newSource.buffer === oldOpts.geojsonVtOptions.buffer) &&
-          (newSource.tolerance === undefined ||
-            newSource.tolerance === oldOpts.geojsonVtOptions.tolerance) &&
-          (newSource.cluster === undefined || newSource.cluster === oldOpts.cluster) &&
-          (newSource.clusterRadius === undefined ||
-            newSource.clusterRadius === oldOpts.superclusterOptions.radius) &&
-          (newSource.clusterMaxZoom === undefined ||
-            newSource.clusterMaxZoom === oldOpts.superclusterOptions.maxZoom)
-        ) {
-          oldSource.setData(newSource.data);
-          return;
-        }
-      }
-    }
-
-    map.removeSource(update.id);
-    map.addSource(update.id, newSource);
-  }
-
-  /**
-   * Individually update the maps source and layers that have changed if all
-   * other style props haven't changed. This prevents flicking of the map when
-   * styles only change sources or layers.
-   *
-   * @private
-   * @param {MapStyle} prevStyle
-   * @param {MapStyle} nextStyle
-   * @returns {void}
-   */
-  _setDiffStyle(prevStyle: MapStyle, nextStyle: MapStyle): void {
-    function styleKeysMap(style: MapStyle) {
-      return style
-        .map(() => true)
-        .delete('layers')
-        .delete('sources')
-        .toJS();
-    }
-
-    const prevKeysMap = prevStyle && (styleKeysMap(prevStyle) || {});
-    const nextKeysMap = styleKeysMap(nextStyle);
-
-    function propsOtherThanLayersOrSourcesDiffer() {
-      const prevKeysList = Object.keys(prevKeysMap);
-      const nextKeysList = Object.keys(nextKeysMap);
-      if (prevKeysList.length !== nextKeysList.length) {
-        return true;
-      }
-      // `nextStyle` and `prevStyle` should not have the same set of props.
-      // But the value of one of those props is different.
-      if (nextKeysList.some(key => prevStyle.get(key) !== nextStyle.get(key))) {
-        return true;
-      }
-      return false;
-    }
-
-    const map = this._map;
-
-    if (!prevStyle || propsOtherThanLayersOrSourcesDiffer()) {
-      map.setStyle(nextStyle.toJS());
-      return;
-    }
-
-    const { sourcesDiff, layersDiff } = diffStyles(prevStyle, nextStyle);
-
-    // TODO: It's rather difficult to determine style diffing in the presence
-    // of refs. For now, if any style update has a ref, fallback to no diffing.
-    // We can come back to this case if there's a solid usecase.
-    if (layersDiff.updates.some(node => node.layer.get('ref'))) {
-      map.setStyle(nextStyle.toJS());
-      return;
-    }
-
-    sourcesDiff.enter.forEach(enter => map.addSource(enter.id, enter.source.toJS()));
-
-    sourcesDiff.update.forEach(update => this._updateSource(update));
-
-    sourcesDiff.exit.forEach(exit => map.removeSource(exit.id));
-
-    layersDiff.exiting.forEach((exit) => {
-      if (map.style.getLayer(exit.id)) {
-        map.removeLayer(exit.id);
-      }
-    });
-
-    layersDiff.updates.forEach((update) => {
-      if (!update.enter) {
-        // This is an old layer that needs to be updated. Remove the old layer
-        // with the same id and add it back again.
-        map.removeLayer(update.id);
-      }
-      map.addLayer(update.layer.toJS(), update.before);
-    });
-  }
-
-  /**
    * Update Map style from newProps
    *
    * @private
-   * @param {Props} oldProps
+   * @param {Props} prevProps
    * @param {Props} newProps
    */
-  _updateMapStyle(oldProps: Props, newProps: Props): void {
-    const { mapStyle } = newProps;
-    const oldMapStyle = oldProps.mapStyle;
-    if (mapStyle !== oldMapStyle) {
-      if (Map.isMap(mapStyle)) {
-        if (this.props.preventStyleDiffing) {
-          this._map.setStyle((mapStyle: MapStyle).toJS());
-        } else {
-          this._setDiffStyle(oldMapStyle, mapStyle);
-        }
-      } else {
-        this._map.setStyle(mapStyle);
-      }
-      this._updateQueryParams(mapStyle);
+  _updateMapStyle(prevProps: Props, newProps: Props): void {
+    const newMapStyle = newProps.mapStyle;
+    const prevMapStyle = prevProps.mapStyle;
+
+    if (isImmutable(newMapStyle) && !((newMapStyle: any): MapStyle).equals(prevMapStyle)) {
+      this._map.setStyle(((newMapStyle: any): MapStyle).toJS());
+    } else if (newMapStyle !== prevMapStyle) {
+      this._map.setStyle(newMapStyle);
     }
   }
 
@@ -424,73 +197,22 @@ class MapGL extends PureComponent<Props, *> {
     this.props.onViewportChange(viewport);
   }
 
-  _getFeatures(position: [number, number], radius: number) {
-    // Radius enables point features, like marker symbols, to be clicked.
-    if (radius) {
-      const bbox = [
-        [position[0] - radius, position[1] - radius],
-        [position[0] + radius, position[1] + radius]
-      ];
-
-      return this._map.queryRenderedFeatures(bbox, this._queryParams);
-    }
-
-    return this._map.queryRenderedFeatures(position, this._queryParams);
-  }
-
-  _onHover(event: mapboxgl.MapEvent): void {
-    if (this.props.onHover) {
-      const position = [event.point.x, event.point.y];
-
-      /* eslint-disable no-param-reassign */
-      event.features = this._getFeatures(position, this.props.clickRadius);
-      /* eslint-enable no-param-reassign */
-
-      if (event.features.length > 0) {
-        this.props.onHover(event);
-      }
-    }
-  }
-
-  _onClick(event: mapboxgl.MapEvent): void {
-    if (this.props.onClick) {
-      const position = [event.point.x, event.point.y];
-
-      /* eslint-disable no-param-reassign */
-      event.features = this._getFeatures(position, this.props.clickRadius);
-      /* eslint-enable no-param-reassign */
-
-      this.props.onClick(event);
-    }
-  }
-
   render() {
-    const { className, style } = this.props;
+    const { loaded } = this.state;
+    const { children, className, style } = this.props;
 
-    return createElement('div', {
-      ref: ref => (this._container = ref),
-      style,
-      className
-    });
+    return createElement(
+      'div',
+      {
+        ref: ref => (this._container = ref),
+        style,
+        className
+      },
+      loaded &&
+        Children.map(children, ({ type, props }) =>
+          createElement(type, { map: this._map, ...props }))
+    );
   }
 }
-
-MapGL.displayName = 'MapGL';
-MapGL.defaultProps = {
-  className: null,
-  style: null,
-  mapStyle: 'mapbox://styles/mapbox/light-v8',
-  accessToken: null,
-  preserveDrawingBuffer: false,
-  onViewportChange: null,
-  onClick: null,
-  onHover: null,
-  clickRadius: 0,
-  attributionControl: true,
-  preventStyleDiffing: false,
-  bearing: 0,
-  pitch: 0,
-  onLoad: null
-};
 
 export default MapGL;

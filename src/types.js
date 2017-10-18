@@ -1,33 +1,17 @@
-/* @flow */
+// @flow
 
 import { Map } from 'immutable';
 
-export type MapStyle = Map<any, any>;
+export type MapStyle = Map<string, any>;
 
-export type SourcesDiffElement = { id: string, source: Map<any, any> };
+export type MapSource = Map<string, any>;
 
-export type SourcesDiff = {
-  enter: Array<SourcesDiffElement>,
-  update: Array<SourcesDiffElement>,
-  exit: Array<SourcesDiffElement>
-};
-
-export type LayersDiffElement = {
-  layer: Map<any, any>,
-  id: string,
-  before: String | null,
-  enter?: Boolean
-};
-
-export type LayersDiff = {
-  updates: Array<LayersDiffElement>,
-  exiting: Array<LayersDiffElement>
-};
+export type MapLayer = Map<string, any>;
 
 export type Viewport = {
   latitude: number,
   longitude: number,
   zoom: number,
-  pitch: number,
-  bearing: number
+  pitch?: number,
+  bearing?: number
 };
