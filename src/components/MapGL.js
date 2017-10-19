@@ -38,6 +38,9 @@ type Props = {
   /** Specify the pitch of the viewport */
   pitch?: number,
 
+  /** If  true, multiple copies of the world will be rendered, when zoomed out */
+  renderWorldCopies?: boolean,
+
   /** Mapbox WebGL context creation option. Useful when you want to export the canvas as a PNG. */
   preserveDrawingBuffer?: boolean,
 
@@ -68,6 +71,7 @@ class MapGL extends PureComponent<Props, State> {
     accessToken: null,
     bearing: 0,
     pitch: 0,
+    renderWorldCopies: true,
     preserveDrawingBuffer: false,
     onViewportChange: null,
     onLoad: null
@@ -103,6 +107,7 @@ class MapGL extends PureComponent<Props, State> {
       zoom: this.props.zoom,
       pitch: this.props.pitch,
       bearing: this.props.bearing,
+      renderWorldCopies: this.props.renderWorldCopies,
       interactive: !!this.props.onViewportChange,
       preserveDrawingBuffer: this.props.preserveDrawingBuffer
     });
