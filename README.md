@@ -4,6 +4,8 @@
 
 React Component for Mapbox GL JS.
 
+[Examples](https://urbica.github.io/react-map-gl/).
+
 [Mapbox GL JS](https://github.com/mapbox/mapbox-gl-js) is a JavaScript library that renders interactive maps from vector tiles and Mapbox styles using WebGL.
 
 To use any of Mapbox’s tools, APIs, or SDKs, you’ll need a Mapbox [access token](https://www.mapbox.com/help/define-access-token/). Mapbox uses access tokens to associate requests to API resources with your account. You can find all your access tokens, create new ones, or delete existing ones on your [API access tokens page](https://www.mapbox.com/studio/account/tokens/).
@@ -14,7 +16,7 @@ This package is heavily inspired by [uber/react-map-gl](https://github.com/uber/
 
 ## Installation
 
-    npm install --save mapbox-gl immutable@4.0.0-rc.7 @urbica/react-map-gl
+    npm install --save mapbox-gl immutable@4.0.0-rc.9 @urbica/react-map-gl
 
 ## Example
 
@@ -36,7 +38,7 @@ const accessToken = <TOKEN> // Mapbox access token
 />
 ```
 
-See [API](https://urbica.github.io/react-map-gl/) for more info.
+See [Examples](https://urbica.github.io/react-map-gl/) for more info.
 
 ## Development
 
