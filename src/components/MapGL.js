@@ -93,7 +93,7 @@ class MapGL extends PureComponent<Props, State> {
     }
 
     const mapStyle = isImmutable(this.props.mapStyle)
-      ? ((this.props.mapStyle: any): MapStyle).toJS()
+      ? (this.props.mapStyle: MapStyle).toJS()
       : this.props.mapStyle;
 
     const map = new mapboxgl.Map({
@@ -120,7 +120,6 @@ class MapGL extends PureComponent<Props, State> {
     }
 
     this._map = map;
-    window.map = map;
     this._updateMapViewport(this.props);
   }
 
@@ -146,8 +145,8 @@ class MapGL extends PureComponent<Props, State> {
     const newMapStyle = newProps.mapStyle;
     const prevMapStyle = prevProps.mapStyle;
 
-    if (isImmutable(newMapStyle) && !((newMapStyle: any): MapStyle).equals(prevMapStyle)) {
-      this._map.setStyle(((newMapStyle: any): MapStyle).toJS());
+    if (isImmutable(newMapStyle) && !(newMapStyle: MapStyle).equals(prevMapStyle)) {
+      this._map.setStyle((newMapStyle: MapStyle).toJS());
     } else if (newMapStyle !== prevMapStyle) {
       this._map.setStyle(newMapStyle);
     }
@@ -160,8 +159,8 @@ class MapGL extends PureComponent<Props, State> {
    * @param {Props} newProps
    */
   _updateMapViewport(newProps: Props): void {
-    const map = this._map;
-    const center = map.getCenter();
+    const map: mapboxgl.Map = this._map;
+    const center: mapboxgl.LngLat = map.getCenter();
 
     const viewportChanged =
       newProps.latitude !== center.lat ||
@@ -187,13 +186,13 @@ class MapGL extends PureComponent<Props, State> {
    * @param {(mapboxgl.MapMouseEvent | mapboxgl.MapTouchEvent)} event
    */
   _onViewportChange(event: mapboxgl.MapMouseEvent | mapboxgl.MapTouchEvent): void {
-    const map = event.target;
+    const map: mapboxgl.Map = event.target;
     const { lng, lat } = map.getCenter();
     const zoom = map.getZoom();
     const pitch = map.getPitch();
     const bearing = map.getBearing();
 
-    const viewport = {
+    const viewport: Viewport = {
       latitude: lat,
       longitude: lng,
       zoom,

@@ -30,3 +30,4 @@ jobs:
       - run: yarn lint
       - run: yarn typecheck
       - run: yarn test
+      - run: yarn coverage

@@ -6,7 +6,7 @@ import MapGL from '../src';
 
 Enzyme.configure({ adapter: new Adapter() });
 
-const mockOn = jest.fn();
+const mockOn = jest.fn((_, fn) => fn());
 const mockOnce = jest.fn((_, fn) => fn());
 const mockFlyTo = jest.fn();
 const mockGetCanvas = jest.fn();
@@ -39,3 +39,9 @@ test('MapGL#onLoad', () => {
   mount(<MapGL latitude={0} longitude={0} zoom={0} onLoad={onLoad} />);
   expect(onLoad).toHaveBeenCalled();
 });
+
+// test('MapGL#onViewportChange', () => {
+//   const onViewportChange = jest.fn();
+//   mount(<MapGL latitude={0} longitude={0} zoom={0} onViewportChange={onViewportChange} />);
+//   expect(onViewportChange).toHaveBeenCalled();
+// });

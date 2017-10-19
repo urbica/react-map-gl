@@ -8,6 +8,7 @@
 
 # testing
 /coverage
+/flow-coverage
 
 # misc
 .env
