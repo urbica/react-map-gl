@@ -32,6 +32,12 @@
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/@mapbox/whoots-js/-/whoots-js-3.0.0.tgz#c1de4293081424da3ac30c23afa850af1019bb54"
 
+"@turf/random@4.7.3":
+  version "4.7.3"
+  resolved "https://registry.yarnpkg.com/@turf/random/-/random-4.7.3.tgz#0a8a3b84a1f15b8916d4dce43566beb2e2bda522"
+  dependencies:
+    geojson-random "^0.2.2"
+
 "@types/node@^6.0.46":
   version "6.0.89"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-6.0.89.tgz#154be0e6a823760cd6083aa8c48f952e2e63e0b0"
@@ -3906,6 +3912,10 @@ geojson-area@0.1.0:
   resolved "https://registry.yarnpkg.com/geojson-area/-/geojson-area-0.1.0.tgz#d48d807082cfadf4a78df1349be50f38bf1894ae"
   dependencies:
     wgs84 "0.0.0"
+
+geojson-random@^0.2.2:
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/geojson-random/-/geojson-random-0.2.2.tgz#ab4838f126adc5e16f8f94e655def820f9119dbc"
 
 geojson-rewind@^0.2.0:
   version "0.2.0"

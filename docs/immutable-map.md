@@ -10,7 +10,7 @@ initialState = {
   }
 };
 
-const styleUrl = `https://api.mapbox.com/styles/v1/mapbox/streets-v9?access_token=${MAPBOX_ACCESS_TOKEN}`;
+const styleUrl = `https://api.mapbox.com/styles/v1/mapbox/light-v9?access_token=${MAPBOX_ACCESS_TOKEN}`;
 
 if (!state.mapStyle) {
   fetch(styleUrl)

@@ -42,13 +42,22 @@ initialState = {
   }
 };
 
-const onHover = (event) => {
+const onEnter = (event) => {
   const feature = event.features[0];
   if (!feature) return;
 
   const newLayers = state.layers.setIn(
     ['highlighted-marker', 'filter', 2],
     feature.properties.id
+  );
+
+  setState({ layers: newLayers });
+};
+
+const onLeave = (event) => {
+  const newLayers = state.layers.setIn(
+    ['highlighted-marker', 'filter', 2],
+    ''
   );
 
   setState({ layers: newLayers });
@@ -61,7 +70,11 @@ const onHover = (event) => {
   {...state.viewport}
 >
   <Source id='markers' source={state.sources.get('markers')} />
-  <Layer layer={state.layers.get('markers')} onHover={onHover} />
+  <Layer
+    onEnter={onEnter}
+    onLeave={onLeave}
+    layer={state.layers.get('markers')}
+  />
   <Layer layer={state.layers.get('highlighted-marker')} />
 </MapGL>
 ```

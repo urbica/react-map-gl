@@ -1,23 +1,17 @@
 ```jsx
 const Immutable = require('immutable');
+const random = require('@turf/random');
+
+const points = random('points', 10);
+points.features.forEach((feature, index) => {
+  feature.properties.id = index;
+});
 
 initialState = {
-  mapStyle: Immutable.fromJS({
-    version: 8,
-    sources: {},
-    layers: []
-  }),
   sources: Immutable.fromJS({
     markers: {
       type: 'geojson',
-      data: {
-        type: 'FeatureCollection',
-        features: [
-          { type: 'Feature', properties: { id: 1 }, geometry: { type: 'Point', coordinates: [0, 20] } },
-          { type: 'Feature', properties: { id: 2 }, geometry: { type: 'Point', coordinates: [-20, 0] } },
-          { type: 'Feature', properties: { id: 3 }, geometry: { type: 'Point', coordinates: [20, 0] } }
-        ]
-      }
+      data: points
     }
   }),
   layers: Immutable.fromJS({
@@ -38,13 +32,13 @@ initialState = {
         'circle-radius': 16,
         'circle-color': '#f28a25'
       },
-      filter: ['==', 'id', 0]
+      filter: ['==', 'id', '']
     }
   }),
   viewport: {
     latitude: 0,
     longitude: 0,
-    zoom: 2
+    zoom: 0
   }
 };
 
@@ -62,7 +56,7 @@ const onClick = (event) => {
 
 <MapGL
   style={{ width: "100%", height: "400px" }}
-  mapStyle={state.mapStyle}
+  mapStyle="mapbox://styles/mapbox/light-v9"
   accessToken={MAPBOX_ACCESS_TOKEN}
   {...state.viewport}
 >

@@ -41,6 +41,10 @@ module.exports = {
         {
           name: 'onHover',
           content: 'docs/hoverable-map.md'
+        },
+        {
+          name: 'onEnter and onLeave',
+          content: 'docs/another-hoverable-map.md'
         }
       ]
     }

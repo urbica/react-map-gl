@@ -9,10 +9,10 @@ import type { MapStyle, Viewport } from '../types';
 
 type Props = {
   /** container className */
-  className: String,
+  className?: String,
 
   /** container style */
-  style: Object,
+  style?: Object,
 
   /** The Mapbox style. A string url or a MapboxGL style Immutable.Map object. */
   mapStyle: string | MapStyle,
@@ -21,10 +21,7 @@ type Props = {
   children?: Node,
 
   /** Mapbox API access token for mapbox-gl-js. Required when using Mapbox vector tiles/styles. */
-  accessToken: string,
-
-  /** Mapbox WebGL context creation option. Useful when you want to export the canvas as a PNG. */
-  preserveDrawingBuffer: boolean,
+  accessToken?: string,
 
   /** The longitude of the center of the map. */
   longitude: number,
@@ -36,20 +33,23 @@ type Props = {
   zoom: number,
 
   /** Specify the bearing of the viewport */
-  bearing: number,
+  bearing?: number,
 
   /** Specify the pitch of the viewport */
-  pitch: number,
+  pitch?: number,
+
+  /** Mapbox WebGL context creation option. Useful when you want to export the canvas as a PNG. */
+  preserveDrawingBuffer?: boolean,
 
   /**
    * `onViewportChange` callback is fired when the user interacted with the
    * map. The object passed to the callback contains viewport properties
    * such as `longitude`, `latitude`, `zoom` etc.
    */
-  onViewportChange: (viewport: Viewport) => void,
+  onViewportChange?: (viewport: Viewport) => void,
 
   /** The onLoad callback for the map */
-  onLoad: Function
+  onLoad?: Function
 };
 
 type State = {
@@ -66,9 +66,9 @@ class MapGL extends PureComponent<Props, State> {
     style: null,
     mapStyle: 'mapbox://styles/mapbox/light-v8',
     accessToken: null,
-    preserveDrawingBuffer: false,
     bearing: 0,
     pitch: 0,
+    preserveDrawingBuffer: false,
     onViewportChange: null,
     onLoad: null
   };
@@ -200,6 +200,7 @@ class MapGL extends PureComponent<Props, State> {
       bearing
     };
 
+    // $FlowFixMe
     this.props.onViewportChange(viewport);
   }
 

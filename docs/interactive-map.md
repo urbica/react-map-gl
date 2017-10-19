@@ -9,7 +9,7 @@ initialState = {
 
 <MapGL
   style={{ width: "100%", height: "400px" }}
-  mapStyle="mapbox://styles/mapbox/streets-v9"
+  mapStyle="mapbox://styles/mapbox/light-v9"
   accessToken={MAPBOX_ACCESS_TOKEN}
   onViewportChange={viewport => setState({ viewport })}
   {...state.viewport}
