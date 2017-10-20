@@ -39,6 +39,10 @@ module.exports = {
           content: 'docs/immutable-map.md'
         },
         {
+          name: 'Map Instance',
+          content: 'docs/map-instance.md'
+        },
+        {
           name: 'onClick',
           content: 'docs/clickable-map.md'
         },

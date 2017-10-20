@@ -248,6 +248,11 @@ class MapGL extends PureComponent<Props, State> {
     }
   }
 
+  // External apps can access map this way
+  getMap() {
+    return this._map;
+  }
+
   /**
    * Update Map style from newProps
    *
