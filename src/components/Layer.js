@@ -11,10 +11,10 @@ type Props = {
   /** Mapbox GL JS map instance */
   map: mapboxgl.Map,
 
-  /** Mapbox GL layer id */
+  /** Mapbox GL Layer id */
   id?: string,
 
-  /** ImmutableJS Object representing Mapbox GL layer */
+  /** Mapbox GL Layer as Immutable object */
   layer: MapLayer,
 
   /**

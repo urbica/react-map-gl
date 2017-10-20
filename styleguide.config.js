@@ -17,7 +17,11 @@ module.exports = {
     },
     {
       name: 'Props',
-      components: () => ['src/components/MapGL.js']
+      components: () => [
+        'src/components/MapGL.js',
+        'src/components/Source.js',
+        'src/components/Layer.js'
+      ]
     },
     {
       name: 'Examples',
@@ -70,6 +74,8 @@ module.exports = {
       test: /\.css$/,
       use: ['style-loader', 'css-loader']
     });
+
+    webpackConfig.plugins.push(new webpack.EnvironmentPlugin(['MAPBOX_ACCESS_TOKEN']));
 
     return webpackConfig;
   }

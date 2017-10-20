@@ -6,8 +6,13 @@ import { isImmutable } from 'immutable';
 import type { MapSource } from '../types';
 
 type Props = {
+  /** Mapbox GL JS map instance */
   map: mapboxgl.Map,
+
+  /** Mapbox GL Source id */
   id: string,
+
+  /** Mapbox GL Source as Immutable object */
   source: MapSource
 };
 
