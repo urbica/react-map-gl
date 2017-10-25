@@ -22,6 +22,7 @@ This package is heavily inspired by [uber/react-map-gl](https://github.com/uber/
 
 ```js
 import MapGL from '@urbica/react-map-gl';
+import 'mapbox-gl/dist/mapbox-gl.css';
 
 const accessToken = <TOKEN> // Mapbox access token
 
