@@ -1280,6 +1280,10 @@ babylon@v7.0.0-beta.20:
   version "7.0.0-beta.20"
   resolved "https://registry.yarnpkg.com/babylon/-/babylon-7.0.0-beta.20.tgz#7dbc70cc88de13334066fe5200e0efaa30c0490e"
 
+babylon@~5.8.3:
+  version "5.8.38"
+  resolved "https://registry.yarnpkg.com/babylon/-/babylon-5.8.38.tgz#ec9b120b11bf6ccd4173a18bf217e60b79859ffd"
+
 bail@^1.0.0:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/bail/-/bail-1.0.2.tgz#f7d6c1731630a9f9f0d4d35ed1f962e2074a1764"
@@ -7371,6 +7375,18 @@ react-docgen-displayname-handler@^1.0.1:
   resolved "https://registry.yarnpkg.com/react-docgen-displayname-handler/-/react-docgen-displayname-handler-1.0.1.tgz#6944875d19c51d3f657f2506610958bb19c66fcc"
   dependencies:
     recast "0.12.6"
+
+react-docgen@2.19.0:
+  version "2.19.0"
+  resolved "https://registry.yarnpkg.com/react-docgen/-/react-docgen-2.19.0.tgz#a9e356277aa31f42df163f0b4917d3b077985f9d"
+  dependencies:
+    async "^2.1.4"
+    babel-runtime "^6.9.2"
+    babylon "~5.8.3"
+    commander "^2.9.0"
+    doctrine "^2.0.0"
+    node-dir "^0.1.10"
+    recast "^0.12.6"
 
 react-docgen@^3.0.0-beta8:
   version "3.0.0-beta8"

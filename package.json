@@ -19,7 +19,7 @@
     "docs": "documentation build src/index.js -g -f md -o docs/props.md",
     "styleguide": "styleguidist server",
     "styleguide:build": "styleguidist build",
-    "styleguide:deploy": "gh-pages -d styleguide",
+    "styleguide:deploy": "gh-pages -m 'auto commit [ci skip]' -d styleguide",
     "commit": "git-cz",
     "release": "standard-version",
     "postpublish": "npm run docs && npm run styleguide:build && npm run styleguide:deploy"
@@ -67,6 +67,7 @@
     "jest": "21.2.1",
     "mapbox-gl": "0.41.0",
     "react": "16.0.0",
+    "react-docgen": "2.19.0",
     "react-dom": "16.0.0",
     "react-styleguidist": "6.0.32",
     "react-test-renderer": "16.0.0",
