@@ -92,6 +92,9 @@ type Props = {
   /** If set, the map will be constrained to the given bounds. */
   maxBounds?: mapboxgl.LngLatBoundsLike,
 
+  /** If `true`, the "scroll to zoom" interaction is enabled. */
+  scrollZoom?: boolean | Object,
+
   /** If `true`, the "box zoom" interaction is enabled */
   boxZoom?: boolean,
 
@@ -158,6 +161,7 @@ class MapGL extends PureComponent<Props, State> {
     preserveDrawingBuffer: false,
     refreshExpiredTiles: true,
     boxZoom: true,
+    scrollZoom: true,
     dragRotate: true,
     dragPan: true,
     keyboard: true,
@@ -211,6 +215,7 @@ class MapGL extends PureComponent<Props, State> {
       preserveDrawingBuffer: this.props.preserveDrawingBuffer,
       refreshExpiredTiles: this.props.refreshExpiredTiles,
       maxBounds: this.props.maxBounds,
+      scrollZoom: this.props.scrollZoom,
       boxZoom: this.props.boxZoom,
       dragRotate: this.props.dragRotate,
       dragPan: this.props.dragPan,
