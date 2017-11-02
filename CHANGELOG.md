@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.3.2"></a>
+## [0.3.2](https://github.com/urbica/react-map-gl/compare/v0.3.1...v0.3.2) (2017-11-02)
+
+
+### Bug Fixes
+
+* **Map:** add scrollZoom prop ([e916c87](https://github.com/urbica/react-map-gl/commit/e916c87))
+
+
+
 <a name="0.3.1"></a>
 ## [0.3.1](https://github.com/urbica/react-map-gl/compare/v0.3.0...v0.3.1) (2017-10-20)
 
