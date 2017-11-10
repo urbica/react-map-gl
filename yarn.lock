@@ -85,11 +85,15 @@
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/@mapbox/whoots-js/-/whoots-js-3.0.0.tgz#c1de4293081424da3ac30c23afa850af1019bb54"
 
-"@turf/random@4.7.3":
-  version "4.7.3"
-  resolved "https://registry.yarnpkg.com/@turf/random/-/random-4.7.3.tgz#0a8a3b84a1f15b8916d4dce43566beb2e2bda522"
+"@turf/helpers@^5.0.4":
+  version "5.0.4"
+  resolved "https://registry.yarnpkg.com/@turf/helpers/-/helpers-5.0.4.tgz#e47a4e4f38dee3b47a3177a69de162d7a7a5837f"
+
+"@turf/random@5.0.4":
+  version "5.0.4"
+  resolved "https://registry.yarnpkg.com/@turf/random/-/random-5.0.4.tgz#28b9747f03d611d87ef55bc44dd79dc471aa4239"
   dependencies:
-    geojson-random "^0.2.2"
+    "@turf/helpers" "^5.0.4"
 
 "@types/node@^6.0.46":
   version "6.0.89"
@@ -3733,9 +3737,9 @@ flow-annotation-check@1.3.1:
     glob "7.1.1"
     load-pkg "^3.0.1"
 
-flow-bin@0.58.0:
-  version "0.58.0"
-  resolved "https://registry.yarnpkg.com/flow-bin/-/flow-bin-0.58.0.tgz#62d5a776589419e5656800a0e5230a5e585ca65e"
+flow-bin@0.59.0:
+  version "0.59.0"
+  resolved "https://registry.yarnpkg.com/flow-bin/-/flow-bin-0.59.0.tgz#8c151ee7f09f1deed9bf0b9d1f2e8ab9d470f1bb"
 
 flow-coverage-report@0.4.0:
   version "0.4.0"
@@ -3933,10 +3937,6 @@ geojson-area@0.1.0:
   resolved "https://registry.yarnpkg.com/geojson-area/-/geojson-area-0.1.0.tgz#d48d807082cfadf4a78df1349be50f38bf1894ae"
   dependencies:
     wgs84 "0.0.0"
-
-geojson-random@^0.2.2:
-  version "0.2.2"
-  resolved "https://registry.yarnpkg.com/geojson-random/-/geojson-random-0.2.2.tgz#ab4838f126adc5e16f8f94e655def820f9119dbc"
 
 geojson-rewind@^0.2.0:
   version "0.2.0"
@@ -7371,9 +7371,9 @@ react-docgen-displayname-handler@^1.0.1:
   dependencies:
     recast "0.12.6"
 
-react-docgen@2.19.0:
-  version "2.19.0"
-  resolved "https://registry.yarnpkg.com/react-docgen/-/react-docgen-2.19.0.tgz#a9e356277aa31f42df163f0b4917d3b077985f9d"
+react-docgen@2.20.0:
+  version "2.20.0"
+  resolved "https://registry.yarnpkg.com/react-docgen/-/react-docgen-2.20.0.tgz#41a6da483a34a4aaed041a9909f5e61864d681cb"
   dependencies:
     async "^2.1.4"
     babel-runtime "^6.9.2"
@@ -7404,9 +7404,9 @@ react-dom@15.5.4:
     object-assign "^4.1.0"
     prop-types "~15.5.7"
 
-react-dom@16.0.0:
-  version "16.0.0"
-  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.0.0.tgz#9cc3079c3dcd70d4c6e01b84aab2a7e34c303f58"
+react-dom@16.1.0:
+  version "16.1.0"
+  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.1.0.tgz#ab6fd2a285096f388aeba51919a573d06c9bdde4"
   dependencies:
     fbjs "^0.8.16"
     loose-envify "^1.1.0"
@@ -7488,7 +7488,15 @@ react-styleguidist@6.0.33:
     webpack-dev-server "^2.8.2"
     webpack-merge "^4.1.0"
 
-react-test-renderer@16.0.0, react-test-renderer@^16.0.0-0:
+react-test-renderer@16.1.0:
+  version "16.1.0"
+  resolved "https://registry.yarnpkg.com/react-test-renderer/-/react-test-renderer-16.1.0.tgz#33a1d3ce896311e0dd1547649b1456ffa7fda415"
+  dependencies:
+    fbjs "^0.8.16"
+    object-assign "^4.1.1"
+    prop-types "^15.6.0"
+
+react-test-renderer@^16.0.0-0:
   version "16.0.0"
   resolved "https://registry.yarnpkg.com/react-test-renderer/-/react-test-renderer-16.0.0.tgz#9fe7b8308f2f71f29fc356d4102086f131c9cb15"
   dependencies:
@@ -7504,9 +7512,9 @@ react@15.5.4:
     object-assign "^4.1.0"
     prop-types "^15.5.7"
 
-react@16.0.0:
-  version "16.0.0"
-  resolved "https://registry.yarnpkg.com/react/-/react-16.0.0.tgz#ce7df8f1941b036f02b2cca9dbd0cb1f0e855e2d"
+react@16.1.0:
+  version "16.1.0"
+  resolved "https://registry.yarnpkg.com/react/-/react-16.1.0.tgz#1c2bdac3c17fe7ee9282fa35aca6cc36387903e1"
   dependencies:
     fbjs "^0.8.16"
     loose-envify "^1.1.0"

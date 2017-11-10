@@ -39,7 +39,7 @@
     "mapbox-gl": "^0.40.0"
   },
   "devDependencies": {
-    "@turf/random": "4.7.3",
+    "@turf/random": "5.0.4",
     "babel-core": "6.26.0",
     "babel-eslint": "8.0.2",
     "babel-jest": "21.2.0",
@@ -60,17 +60,17 @@
     "eslint-plugin-import": "2.8.0",
     "eslint-plugin-jsx-a11y": "6.0.2",
     "eslint-plugin-react": "7.4.0",
-    "flow-bin": "0.58.0",
+    "flow-bin": "0.59.0",
     "flow-coverage-report": "0.4.0",
     "gh-pages": "1.0.0",
     "immutable": "4.0.0-rc.9",
     "jest": "21.2.1",
     "mapbox-gl": "0.41.0",
-    "react": "16.0.0",
-    "react-docgen": "2.19.0",
-    "react-dom": "16.0.0",
+    "react": "16.1.0",
+    "react-docgen": "2.20.0",
+    "react-dom": "16.1.0",
     "react-styleguidist": "6.0.33",
-    "react-test-renderer": "16.0.0",
+    "react-test-renderer": "16.1.0",
     "standard-version": "4.2.0",
     "webpack": "3.8.1"
   }

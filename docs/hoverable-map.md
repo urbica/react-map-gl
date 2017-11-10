@@ -2,7 +2,7 @@
 const Immutable = require('immutable');
 const random = require('@turf/random');
 
-const points = random('points', 10);
+const points = random.randomPoint(10);
 points.features.forEach((feature, index) => {
   feature.properties.id = index;
 });
