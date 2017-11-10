@@ -20,7 +20,8 @@ module.exports = {
       components: () => [
         'src/components/MapGL.js',
         'src/components/Source.js',
-        'src/components/Layer.js'
+        'src/components/Layer.js',
+        'src/components/Marker.js'
       ]
     },
     {
@@ -41,6 +42,10 @@ module.exports = {
         {
           name: 'Map Instance',
           content: 'docs/map-instance.md'
+        },
+        {
+          name: 'Marker',
+          content: 'docs/marker.md'
         },
         {
           name: 'onClick',
