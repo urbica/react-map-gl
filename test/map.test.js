@@ -1,33 +1,10 @@
 import React from 'react';
 import Enzyme, { mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-
 import MapGL from '../src';
 
 Enzyme.configure({ adapter: new Adapter() });
-
-const mockOn = jest.fn((_, fn) => fn());
-const mockOnce = jest.fn((_, fn) => fn());
-const mockFlyTo = jest.fn();
-const mockGetCanvas = jest.fn();
-const mockGetCenter = jest.fn(() => ({ lat: 0, lng: 0 }));
-const mockGetBearing = jest.fn(() => 0);
-const mockGetPitch = jest.fn(() => 0);
-const mockGetZoom = jest.fn(() => 0);
-
-jest.mock('mapbox-gl', () => ({
-  Map: jest.fn(() => ({
-    on: mockOn,
-    once: mockOnce,
-    flyTo: mockFlyTo,
-    getCanvas: mockGetCanvas,
-    getCenter: mockGetCenter,
-    getBearing: mockGetBearing,
-    getPitch: mockGetPitch,
-    getZoom: mockGetZoom
-  })),
-  supported: () => true
-}));
+jest.mock('mapbox-gl');
 
 test('MapGL#render', () => {
   const wrapper = mount(<MapGL latitude={0} longitude={0} zoom={0} />);
@@ -40,8 +17,8 @@ test('MapGL#onLoad', () => {
   expect(onLoad).toHaveBeenCalled();
 });
 
-// test('MapGL#onViewportChange', () => {
-//   const onViewportChange = jest.fn();
-//   mount(<MapGL latitude={0} longitude={0} zoom={0} onViewportChange={onViewportChange} />);
-//   expect(onViewportChange).toHaveBeenCalled();
-// });
+test('MapGL#onViewportChange', () => {
+  const onViewportChange = jest.fn();
+  mount(<MapGL latitude={0} longitude={0} zoom={0} onViewportChange={onViewportChange} />);
+  expect(onViewportChange).toHaveBeenCalled();
+});
