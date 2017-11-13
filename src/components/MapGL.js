@@ -193,7 +193,7 @@ class MapGL extends PureComponent<Props, State> {
     }
 
     const mapStyle = isImmutable(this.props.mapStyle)
-      ? (this.props.mapStyle: MapStyle).toJS()
+      ? this.props.mapStyle.toJS()
       : this.props.mapStyle;
 
     const map = new mapboxgl.Map({
@@ -269,8 +269,10 @@ class MapGL extends PureComponent<Props, State> {
     const newMapStyle = newProps.mapStyle;
     const prevMapStyle = prevProps.mapStyle;
 
-    if (isImmutable(newMapStyle) && !(newMapStyle: MapStyle).equals(prevMapStyle)) {
-      this._map.setStyle((newMapStyle: MapStyle).toJS());
+    if (isImmutable(newMapStyle)) {
+      if (!newMapStyle.equals(prevMapStyle)) {
+        this._map.setStyle(newMapStyle.toJS());
+      }
     } else if (newMapStyle !== prevMapStyle) {
       this._map.setStyle(newMapStyle);
     }
