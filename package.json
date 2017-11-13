@@ -8,7 +8,7 @@
     "type": "git",
     "url": "git://github.com/urbica/react-map-gl.git"
   },
-  "main": "dist/bundle.js",
+  "main": "dist/react-map-gl.js",
   "scripts": {
     "start": "styleguidist server",
     "lint": "eslint src test",
@@ -22,6 +22,7 @@
     "styleguide:deploy": "gh-pages -m 'auto commit [ci skip]' -d styleguide",
     "commit": "git-cz",
     "release": "npm run build && standard-version",
+    "prepublish": "npm run build",
     "postpublish": "npm run docs && npm run styleguide:build && npm run styleguide:deploy"
   },
   "jest": {

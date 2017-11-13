@@ -6,7 +6,7 @@ module.exports = {
   devtool: 'source-map',
   entry: path.resolve(__dirname, 'src', 'index.js'),
   output: {
-    filename: 'bundle.js',
+    filename: 'react-map-gl.js',
     path: path.resolve(__dirname, 'dist'),
     library: '@urbica/react-map-gl',
     libraryTarget: 'umd'
