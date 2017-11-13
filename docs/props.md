@@ -8,7 +8,9 @@
 -   [children](#children)
 -   [accessToken](#accesstoken)
 -   [longitude](#longitude)
+-   [longitude](#longitude-1)
 -   [latitude](#latitude)
+-   [latitude](#latitude-1)
 -   [zoom](#zoom)
 -   [bearing](#bearing)
 -   [pitch](#pitch)
@@ -35,6 +37,7 @@
 -   [onLoad](#onload)
 -   [map](#map)
 -   [map](#map-1)
+-   [map](#map-2)
 -   [id](#id)
 -   [id](#id-1)
 -   [layer](#layer)
@@ -44,82 +47,96 @@
 -   [onLeave](#onleave)
 -   [radius](#radius)
 -   [source](#source)
+-   [element](#element)
+-   [offset](#offset)
 
 ## className
 
-[src/components/MapGL.js:12-12](https://github.com/urbica/react-map-gl/blob/81506039b2f4816fbbac1a9ac369cc7aa636e441/src/components/MapGL.js#L12-L12 "Source code on GitHub")
+[src/components/MapGL.js:12-12](https://github.com/urbica/react-map-gl/blob/34b073b5c428691109577d1bd0ab53cf5d2be597/src/components/MapGL.js#L12-L12 "Source code on GitHub")
 
 container className
 
 ## style
 
-[src/components/MapGL.js:15-15](https://github.com/urbica/react-map-gl/blob/81506039b2f4816fbbac1a9ac369cc7aa636e441/src/components/MapGL.js#L15-L15 "Source code on GitHub")
+[src/components/MapGL.js:15-15](https://github.com/urbica/react-map-gl/blob/34b073b5c428691109577d1bd0ab53cf5d2be597/src/components/MapGL.js#L15-L15 "Source code on GitHub")
 
 container style
 
 ## mapStyle
 
-[src/components/MapGL.js:18-18](https://github.com/urbica/react-map-gl/blob/81506039b2f4816fbbac1a9ac369cc7aa636e441/src/components/MapGL.js#L18-L18 "Source code on GitHub")
+[src/components/MapGL.js:18-18](https://github.com/urbica/react-map-gl/blob/34b073b5c428691109577d1bd0ab53cf5d2be597/src/components/MapGL.js#L18-L18 "Source code on GitHub")
 
 The Mapbox style. A string url or a MapboxGL style Immutable.Map object.
 
 ## children
 
-[src/components/MapGL.js:21-21](https://github.com/urbica/react-map-gl/blob/81506039b2f4816fbbac1a9ac369cc7aa636e441/src/components/MapGL.js#L21-L21 "Source code on GitHub")
+[src/components/MapGL.js:21-21](https://github.com/urbica/react-map-gl/blob/34b073b5c428691109577d1bd0ab53cf5d2be597/src/components/MapGL.js#L21-L21 "Source code on GitHub")
 
 Sources and Layers
 
 ## accessToken
 
-[src/components/MapGL.js:24-24](https://github.com/urbica/react-map-gl/blob/81506039b2f4816fbbac1a9ac369cc7aa636e441/src/components/MapGL.js#L24-L24 "Source code on GitHub")
+[src/components/MapGL.js:24-24](https://github.com/urbica/react-map-gl/blob/34b073b5c428691109577d1bd0ab53cf5d2be597/src/components/MapGL.js#L24-L24 "Source code on GitHub")
 
 Mapbox API access token for mapbox-gl-js. Required when using Mapbox vector tiles/styles.
 
 ## longitude
 
-[src/components/MapGL.js:27-27](https://github.com/urbica/react-map-gl/blob/81506039b2f4816fbbac1a9ac369cc7aa636e441/src/components/MapGL.js#L27-L27 "Source code on GitHub")
+[src/components/MapGL.js:27-27](https://github.com/urbica/react-map-gl/blob/34b073b5c428691109577d1bd0ab53cf5d2be597/src/components/MapGL.js#L27-L27 "Source code on GitHub")
 
 The longitude of the center of the map.
 
+## longitude
+
+[src/components/Marker.js:15-15](https://github.com/urbica/react-map-gl/blob/34b073b5c428691109577d1bd0ab53cf5d2be597/src/components/Marker.js#L15-L15 "Source code on GitHub")
+
+The longitude of the center of the marker.
+
 ## latitude
 
-[src/components/MapGL.js:30-30](https://github.com/urbica/react-map-gl/blob/81506039b2f4816fbbac1a9ac369cc7aa636e441/src/components/MapGL.js#L30-L30 "Source code on GitHub")
+[src/components/MapGL.js:30-30](https://github.com/urbica/react-map-gl/blob/34b073b5c428691109577d1bd0ab53cf5d2be597/src/components/MapGL.js#L30-L30 "Source code on GitHub")
 
 The latitude of the center of the map.
 
+## latitude
+
+[src/components/Marker.js:18-18](https://github.com/urbica/react-map-gl/blob/34b073b5c428691109577d1bd0ab53cf5d2be597/src/components/Marker.js#L18-L18 "Source code on GitHub")
+
+The latitude of the center of the marker.
+
 ## zoom
 
-[src/components/MapGL.js:33-33](https://github.com/urbica/react-map-gl/blob/81506039b2f4816fbbac1a9ac369cc7aa636e441/src/components/MapGL.js#L33-L33 "Source code on GitHub")
+[src/components/MapGL.js:33-33](https://github.com/urbica/react-map-gl/blob/34b073b5c428691109577d1bd0ab53cf5d2be597/src/components/MapGL.js#L33-L33 "Source code on GitHub")
 
 The tile zoom level of the map.
 
 ## bearing
 
-[src/components/MapGL.js:36-36](https://github.com/urbica/react-map-gl/blob/81506039b2f4816fbbac1a9ac369cc7aa636e441/src/components/MapGL.js#L36-L36 "Source code on GitHub")
+[src/components/MapGL.js:36-36](https://github.com/urbica/react-map-gl/blob/34b073b5c428691109577d1bd0ab53cf5d2be597/src/components/MapGL.js#L36-L36 "Source code on GitHub")
 
 Specify the bearing of the viewport
 
 ## pitch
 
-[src/components/MapGL.js:39-39](https://github.com/urbica/react-map-gl/blob/81506039b2f4816fbbac1a9ac369cc7aa636e441/src/components/MapGL.js#L39-L39 "Source code on GitHub")
+[src/components/MapGL.js:39-39](https://github.com/urbica/react-map-gl/blob/34b073b5c428691109577d1bd0ab53cf5d2be597/src/components/MapGL.js#L39-L39 "Source code on GitHub")
 
 Specify the pitch of the viewport
 
 ## minZoom
 
-[src/components/MapGL.js:42-42](https://github.com/urbica/react-map-gl/blob/81506039b2f4816fbbac1a9ac369cc7aa636e441/src/components/MapGL.js#L42-L42 "Source code on GitHub")
+[src/components/MapGL.js:42-42](https://github.com/urbica/react-map-gl/blob/34b073b5c428691109577d1bd0ab53cf5d2be597/src/components/MapGL.js#L42-L42 "Source code on GitHub")
 
 The minimum zoom level of the map (0-22).
 
 ## maxZoom
 
-[src/components/MapGL.js:45-45](https://github.com/urbica/react-map-gl/blob/81506039b2f4816fbbac1a9ac369cc7aa636e441/src/components/MapGL.js#L45-L45 "Source code on GitHub")
+[src/components/MapGL.js:45-45](https://github.com/urbica/react-map-gl/blob/34b073b5c428691109577d1bd0ab53cf5d2be597/src/components/MapGL.js#L45-L45 "Source code on GitHub")
 
 The maximum zoom level of the map (0-22).
 
 ## hash
 
-[src/components/MapGL.js:53-53](https://github.com/urbica/react-map-gl/blob/81506039b2f4816fbbac1a9ac369cc7aa636e441/src/components/MapGL.js#L53-L53 "Source code on GitHub")
+[src/components/MapGL.js:53-53](https://github.com/urbica/react-map-gl/blob/34b073b5c428691109577d1bd0ab53cf5d2be597/src/components/MapGL.js#L53-L53 "Source code on GitHub")
 
 If `true`, the map's position (zoom, center latitude,
 center longitude, bearing, and pitch) will be synced
@@ -128,7 +145,7 @@ with the hash fragment of the page's URL. For example,
 
 ## bearingSnap
 
-[src/components/MapGL.js:62-62](https://github.com/urbica/react-map-gl/blob/81506039b2f4816fbbac1a9ac369cc7aa636e441/src/components/MapGL.js#L62-L62 "Source code on GitHub")
+[src/components/MapGL.js:62-62](https://github.com/urbica/react-map-gl/blob/34b073b5c428691109577d1bd0ab53cf5d2be597/src/components/MapGL.js#L62-L62 "Source code on GitHub")
 
 The threshold, measured in degrees, that determines when
 the map's bearing (rotation) will snap to north. For
@@ -138,20 +155,20 @@ snap to exact north.
 
 ## pitchWithRotate
 
-[src/components/MapGL.js:68-68](https://github.com/urbica/react-map-gl/blob/81506039b2f4816fbbac1a9ac369cc7aa636e441/src/components/MapGL.js#L68-L68 "Source code on GitHub")
+[src/components/MapGL.js:68-68](https://github.com/urbica/react-map-gl/blob/34b073b5c428691109577d1bd0ab53cf5d2be597/src/components/MapGL.js#L68-L68 "Source code on GitHub")
 
 If `false`, the map's pitch (tilt) control with "drag to
 rotate" interaction will be disabled.
 
 ## attributionControl
 
-[src/components/MapGL.js:71-71](https://github.com/urbica/react-map-gl/blob/81506039b2f4816fbbac1a9ac369cc7aa636e441/src/components/MapGL.js#L71-L71 "Source code on GitHub")
+[src/components/MapGL.js:71-71](https://github.com/urbica/react-map-gl/blob/34b073b5c428691109577d1bd0ab53cf5d2be597/src/components/MapGL.js#L71-L71 "Source code on GitHub")
 
 If `true`, an AttributionControl will be added to the map.
 
 ## failIfMajorPerformanceCaveat
 
-[src/components/MapGL.js:81-81](https://github.com/urbica/react-map-gl/blob/81506039b2f4816fbbac1a9ac369cc7aa636e441/src/components/MapGL.js#L81-L81 "Source code on GitHub")
+[src/components/MapGL.js:81-81](https://github.com/urbica/react-map-gl/blob/34b073b5c428691109577d1bd0ab53cf5d2be597/src/components/MapGL.js#L81-L81 "Source code on GitHub")
 
 If `true`, map creation will fail if the performance of Mapbox
 GL JS would be dramatically worse than expected (i.e. a software
@@ -159,68 +176,68 @@ renderer would be used).
 
 ## preserveDrawingBuffer
 
-[src/components/MapGL.js:84-84](https://github.com/urbica/react-map-gl/blob/81506039b2f4816fbbac1a9ac369cc7aa636e441/src/components/MapGL.js#L84-L84 "Source code on GitHub")
+[src/components/MapGL.js:84-84](https://github.com/urbica/react-map-gl/blob/34b073b5c428691109577d1bd0ab53cf5d2be597/src/components/MapGL.js#L84-L84 "Source code on GitHub")
 
 Mapbox WebGL context creation option. Useful when you want to export the canvas as a PNG.
 
 ## refreshExpiredTiles
 
-[src/components/MapGL.js:90-90](https://github.com/urbica/react-map-gl/blob/81506039b2f4816fbbac1a9ac369cc7aa636e441/src/components/MapGL.js#L90-L90 "Source code on GitHub")
+[src/components/MapGL.js:90-90](https://github.com/urbica/react-map-gl/blob/34b073b5c428691109577d1bd0ab53cf5d2be597/src/components/MapGL.js#L90-L90 "Source code on GitHub")
 
 If `false`, the map won't attempt to re-request tiles once they
 expire per their HTTP `cacheControl`/`expires` headers.
 
 ## maxBounds
 
-[src/components/MapGL.js:93-93](https://github.com/urbica/react-map-gl/blob/81506039b2f4816fbbac1a9ac369cc7aa636e441/src/components/MapGL.js#L93-L93 "Source code on GitHub")
+[src/components/MapGL.js:93-93](https://github.com/urbica/react-map-gl/blob/34b073b5c428691109577d1bd0ab53cf5d2be597/src/components/MapGL.js#L93-L93 "Source code on GitHub")
 
 If set, the map will be constrained to the given bounds.
 
 ## scrollZoom
 
-[src/components/MapGL.js:96-96](https://github.com/urbica/react-map-gl/blob/81506039b2f4816fbbac1a9ac369cc7aa636e441/src/components/MapGL.js#L96-L96 "Source code on GitHub")
+[src/components/MapGL.js:96-96](https://github.com/urbica/react-map-gl/blob/34b073b5c428691109577d1bd0ab53cf5d2be597/src/components/MapGL.js#L96-L96 "Source code on GitHub")
 
 If `true`, the "scroll to zoom" interaction is enabled.
 
 ## boxZoom
 
-[src/components/MapGL.js:99-99](https://github.com/urbica/react-map-gl/blob/81506039b2f4816fbbac1a9ac369cc7aa636e441/src/components/MapGL.js#L99-L99 "Source code on GitHub")
+[src/components/MapGL.js:99-99](https://github.com/urbica/react-map-gl/blob/34b073b5c428691109577d1bd0ab53cf5d2be597/src/components/MapGL.js#L99-L99 "Source code on GitHub")
 
 If `true`, the "box zoom" interaction is enabled
 
 ## dragRotate
 
-[src/components/MapGL.js:102-102](https://github.com/urbica/react-map-gl/blob/81506039b2f4816fbbac1a9ac369cc7aa636e441/src/components/MapGL.js#L102-L102 "Source code on GitHub")
+[src/components/MapGL.js:102-102](https://github.com/urbica/react-map-gl/blob/34b073b5c428691109577d1bd0ab53cf5d2be597/src/components/MapGL.js#L102-L102 "Source code on GitHub")
 
 If `true`, the "drag to rotate" interaction is enabled
 
 ## dragPan
 
-[src/components/MapGL.js:105-105](https://github.com/urbica/react-map-gl/blob/81506039b2f4816fbbac1a9ac369cc7aa636e441/src/components/MapGL.js#L105-L105 "Source code on GitHub")
+[src/components/MapGL.js:105-105](https://github.com/urbica/react-map-gl/blob/34b073b5c428691109577d1bd0ab53cf5d2be597/src/components/MapGL.js#L105-L105 "Source code on GitHub")
 
 If `true`, the "drag to pan" interaction is enabled
 
 ## keyboard
 
-[src/components/MapGL.js:108-108](https://github.com/urbica/react-map-gl/blob/81506039b2f4816fbbac1a9ac369cc7aa636e441/src/components/MapGL.js#L108-L108 "Source code on GitHub")
+[src/components/MapGL.js:108-108](https://github.com/urbica/react-map-gl/blob/34b073b5c428691109577d1bd0ab53cf5d2be597/src/components/MapGL.js#L108-L108 "Source code on GitHub")
 
 If `true`, keyboard shortcuts are enabled
 
 ## doubleClickZoom
 
-[src/components/MapGL.js:111-111](https://github.com/urbica/react-map-gl/blob/81506039b2f4816fbbac1a9ac369cc7aa636e441/src/components/MapGL.js#L111-L111 "Source code on GitHub")
+[src/components/MapGL.js:111-111](https://github.com/urbica/react-map-gl/blob/34b073b5c428691109577d1bd0ab53cf5d2be597/src/components/MapGL.js#L111-L111 "Source code on GitHub")
 
 If `true`, the "double click to zoom" interaction is enabled
 
 ## trackResize
 
-[src/components/MapGL.js:114-114](https://github.com/urbica/react-map-gl/blob/81506039b2f4816fbbac1a9ac369cc7aa636e441/src/components/MapGL.js#L114-L114 "Source code on GitHub")
+[src/components/MapGL.js:114-114](https://github.com/urbica/react-map-gl/blob/34b073b5c428691109577d1bd0ab53cf5d2be597/src/components/MapGL.js#L114-L114 "Source code on GitHub")
 
 If `true`, the map will automatically resize when the browser window resizes.
 
 ## maxTileCacheSize
 
-[src/components/MapGL.js:121-121](https://github.com/urbica/react-map-gl/blob/81506039b2f4816fbbac1a9ac369cc7aa636e441/src/components/MapGL.js#L121-L121 "Source code on GitHub")
+[src/components/MapGL.js:121-121](https://github.com/urbica/react-map-gl/blob/34b073b5c428691109577d1bd0ab53cf5d2be597/src/components/MapGL.js#L121-L121 "Source code on GitHub")
 
 The maxiumum number of tiles stored in the tile cache for a given
 source. If omitted, the cache will be dynamically sized based on
@@ -228,13 +245,13 @@ the current viewport.
 
 ## renderWorldCopies
 
-[src/components/MapGL.js:124-124](https://github.com/urbica/react-map-gl/blob/81506039b2f4816fbbac1a9ac369cc7aa636e441/src/components/MapGL.js#L124-L124 "Source code on GitHub")
+[src/components/MapGL.js:124-124](https://github.com/urbica/react-map-gl/blob/34b073b5c428691109577d1bd0ab53cf5d2be597/src/components/MapGL.js#L124-L124 "Source code on GitHub")
 
 If  true, multiple copies of the world will be rendered, when zoomed out
 
 ## onViewportChange
 
-[src/components/MapGL.js:131-131](https://github.com/urbica/react-map-gl/blob/81506039b2f4816fbbac1a9ac369cc7aa636e441/src/components/MapGL.js#L131-L131 "Source code on GitHub")
+[src/components/MapGL.js:131-131](https://github.com/urbica/react-map-gl/blob/34b073b5c428691109577d1bd0ab53cf5d2be597/src/components/MapGL.js#L131-L131 "Source code on GitHub")
 
 `onViewportChange` callback is fired when the user interacted with the
 map. The object passed to the callback contains viewport properties
@@ -242,43 +259,49 @@ such as `longitude`, `latitude`, `zoom` etc.
 
 ## onLoad
 
-[src/components/MapGL.js:134-134](https://github.com/urbica/react-map-gl/blob/81506039b2f4816fbbac1a9ac369cc7aa636e441/src/components/MapGL.js#L134-L134 "Source code on GitHub")
+[src/components/MapGL.js:134-134](https://github.com/urbica/react-map-gl/blob/34b073b5c428691109577d1bd0ab53cf5d2be597/src/components/MapGL.js#L134-L134 "Source code on GitHub")
 
 The onLoad callback for the map
 
 ## map
 
-[src/components/Layer.js:12-12](https://github.com/urbica/react-map-gl/blob/81506039b2f4816fbbac1a9ac369cc7aa636e441/src/components/Layer.js#L12-L12 "Source code on GitHub")
+[src/components/Layer.js:12-12](https://github.com/urbica/react-map-gl/blob/34b073b5c428691109577d1bd0ab53cf5d2be597/src/components/Layer.js#L12-L12 "Source code on GitHub")
 
 Mapbox GL JS map instance
 
 ## map
 
-[src/components/Source.js:10-10](https://github.com/urbica/react-map-gl/blob/81506039b2f4816fbbac1a9ac369cc7aa636e441/src/components/Source.js#L10-L10 "Source code on GitHub")
+[src/components/Source.js:10-10](https://github.com/urbica/react-map-gl/blob/34b073b5c428691109577d1bd0ab53cf5d2be597/src/components/Source.js#L10-L10 "Source code on GitHub")
+
+Mapbox GL JS map instance
+
+## map
+
+[src/components/Marker.js:9-9](https://github.com/urbica/react-map-gl/blob/34b073b5c428691109577d1bd0ab53cf5d2be597/src/components/Marker.js#L9-L9 "Source code on GitHub")
 
 Mapbox GL JS map instance
 
 ## id
 
-[src/components/Layer.js:15-15](https://github.com/urbica/react-map-gl/blob/81506039b2f4816fbbac1a9ac369cc7aa636e441/src/components/Layer.js#L15-L15 "Source code on GitHub")
+[src/components/Layer.js:15-15](https://github.com/urbica/react-map-gl/blob/34b073b5c428691109577d1bd0ab53cf5d2be597/src/components/Layer.js#L15-L15 "Source code on GitHub")
 
 Mapbox GL Layer id
 
 ## id
 
-[src/components/Source.js:13-13](https://github.com/urbica/react-map-gl/blob/81506039b2f4816fbbac1a9ac369cc7aa636e441/src/components/Source.js#L13-L13 "Source code on GitHub")
+[src/components/Source.js:13-13](https://github.com/urbica/react-map-gl/blob/34b073b5c428691109577d1bd0ab53cf5d2be597/src/components/Source.js#L13-L13 "Source code on GitHub")
 
 Mapbox GL Source id
 
 ## layer
 
-[src/components/Layer.js:18-18](https://github.com/urbica/react-map-gl/blob/81506039b2f4816fbbac1a9ac369cc7aa636e441/src/components/Layer.js#L18-L18 "Source code on GitHub")
+[src/components/Layer.js:18-18](https://github.com/urbica/react-map-gl/blob/34b073b5c428691109577d1bd0ab53cf5d2be597/src/components/Layer.js#L18-L18 "Source code on GitHub")
 
 Mapbox GL Layer as Immutable object
 
 ## onClick
 
-[src/components/Layer.js:29-29](https://github.com/urbica/react-map-gl/blob/81506039b2f4816fbbac1a9ac369cc7aa636e441/src/components/Layer.js#L29-L29 "Source code on GitHub")
+[src/components/Layer.js:29-29](https://github.com/urbica/react-map-gl/blob/34b073b5c428691109577d1bd0ab53cf5d2be597/src/components/Layer.js#L29-L29 "Source code on GitHub")
 
 Called when the layer is clicked.
 
@@ -294,7 +317,7 @@ Type: [Function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Referen
 
 ## onHover
 
-[src/components/Layer.js:40-40](https://github.com/urbica/react-map-gl/blob/81506039b2f4816fbbac1a9ac369cc7aa636e441/src/components/Layer.js#L40-L40 "Source code on GitHub")
+[src/components/Layer.js:40-40](https://github.com/urbica/react-map-gl/blob/34b073b5c428691109577d1bd0ab53cf5d2be597/src/components/Layer.js#L40-L40 "Source code on GitHub")
 
 Called when the layer is hovered over.
 
@@ -310,7 +333,7 @@ Type: [Function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Referen
 
 ## onEnter
 
-[src/components/Layer.js:51-51](https://github.com/urbica/react-map-gl/blob/81506039b2f4816fbbac1a9ac369cc7aa636e441/src/components/Layer.js#L51-L51 "Source code on GitHub")
+[src/components/Layer.js:51-51](https://github.com/urbica/react-map-gl/blob/34b073b5c428691109577d1bd0ab53cf5d2be597/src/components/Layer.js#L51-L51 "Source code on GitHub")
 
 Called when the layer feature is entered.
 
@@ -326,7 +349,7 @@ Type: [Function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Referen
 
 ## onLeave
 
-[src/components/Layer.js:62-62](https://github.com/urbica/react-map-gl/blob/81506039b2f4816fbbac1a9ac369cc7aa636e441/src/components/Layer.js#L62-L62 "Source code on GitHub")
+[src/components/Layer.js:62-62](https://github.com/urbica/react-map-gl/blob/34b073b5c428691109577d1bd0ab53cf5d2be597/src/components/Layer.js#L62-L62 "Source code on GitHub")
 
 Called when the layer feature is leaved.
 
@@ -342,12 +365,25 @@ Type: [Function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Referen
 
 ## radius
 
-[src/components/Layer.js:65-65](https://github.com/urbica/react-map-gl/blob/81506039b2f4816fbbac1a9ac369cc7aa636e441/src/components/Layer.js#L65-L65 "Source code on GitHub")
+[src/components/Layer.js:65-65](https://github.com/urbica/react-map-gl/blob/34b073b5c428691109577d1bd0ab53cf5d2be597/src/components/Layer.js#L65-L65 "Source code on GitHub")
 
 Radius to detect features around a clicked/hovered point (defaults to 0)
 
 ## source
 
-[src/components/Source.js:16-16](https://github.com/urbica/react-map-gl/blob/81506039b2f4816fbbac1a9ac369cc7aa636e441/src/components/Source.js#L16-L16 "Source code on GitHub")
+[src/components/Source.js:16-16](https://github.com/urbica/react-map-gl/blob/34b073b5c428691109577d1bd0ab53cf5d2be597/src/components/Source.js#L16-L16 "Source code on GitHub")
 
 Mapbox GL Source as Immutable object
+
+## element
+
+[src/components/Marker.js:12-12](https://github.com/urbica/react-map-gl/blob/34b073b5c428691109577d1bd0ab53cf5d2be597/src/components/Marker.js#L12-L12 "Source code on GitHub")
+
+DOM element to use as a marker (creates a div element by default)
+
+## offset
+
+[src/components/Marker.js:24-24](https://github.com/urbica/react-map-gl/blob/34b073b5c428691109577d1bd0ab53cf5d2be597/src/components/Marker.js#L24-L24 "Source code on GitHub")
+
+The offset in pixels as a `PointLike` object to apply
+relative to the element's center. Negatives indicate left and up.

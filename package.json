@@ -21,7 +21,7 @@
     "styleguide:build": "styleguidist build",
     "styleguide:deploy": "gh-pages -m 'auto commit [ci skip]' -d styleguide",
     "commit": "git-cz",
-    "release": "standard-version",
+    "release": "npm run build && standard-version",
     "postpublish": "npm run docs && npm run styleguide:build && npm run styleguide:deploy"
   },
   "jest": {
