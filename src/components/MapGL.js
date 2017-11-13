@@ -310,6 +310,8 @@ class MapGL extends PureComponent<Props, State> {
    * @param {(mapboxgl.MapMouseEvent | mapboxgl.MapTouchEvent)} event
    */
   _onViewportChange(event: mapboxgl.MapMouseEvent | mapboxgl.MapTouchEvent): void {
+    if (!event.originalEvent) return;
+
     const map: mapboxgl.Map = event.target;
     const { lng, lat } = map.getCenter();
     const zoom = map.getZoom();
