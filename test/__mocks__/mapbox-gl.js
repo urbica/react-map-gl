@@ -1,3 +1,7 @@
+// LngLatBounds
+function LngLatBounds() {}
+LngLatBounds.prototype.toArray = () => [[-180, -90], [180, 90]];
+
 // Map
 function Map() {
   this._sources = {};
@@ -32,6 +36,8 @@ Map.prototype.removeSource = function removeSource(name) {
 
 Map.prototype.addLayer = function addLayer() {};
 Map.prototype.removeLayer = function removeLayer() {};
+
+Map.prototype.getBounds = () => new LngLatBounds();
 
 // Marker
 function Marker() {

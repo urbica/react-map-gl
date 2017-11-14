@@ -21,7 +21,8 @@ module.exports = {
         'src/components/MapGL.js',
         'src/components/Source.js',
         'src/components/Layer.js',
-        'src/components/Marker.js'
+        'src/components/Marker.js',
+        'src/components/Cluster.js'
       ]
     },
     {
@@ -44,8 +45,12 @@ module.exports = {
           content: 'docs/map-instance.md'
         },
         {
-          name: 'Marker',
+          name: 'Markers',
           content: 'docs/marker.md'
+        },
+        {
+          name: 'Marker Clustering',
+          content: 'docs/cluster.md'
         },
         {
           name: 'onClick',
@@ -84,7 +89,8 @@ module.exports = {
       use: ['style-loader', 'css-loader']
     });
 
-    webpackConfig.plugins.push(new webpack.EnvironmentPlugin(['MAPBOX_ACCESS_TOKEN']));
+    const envPlugin = new webpack.EnvironmentPlugin(['MAPBOX_ACCESS_TOKEN']);
+    webpackConfig.plugins.push(envPlugin);
 
     return webpackConfig;
   }

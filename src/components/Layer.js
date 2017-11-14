@@ -22,8 +22,8 @@ type Props = {
    * @callback
    * @param {Object} event - The mouse event.
    * @param {[Number, Number]} event.lngLat - The coordinates of the pointer
-   * @param {Array} event.features - The features under the pointer, using Mapbox's
-   * queryRenderedFeatures API:
+   * @param {Array} event.features - The features under the pointer,
+   * using Mapbox's queryRenderedFeatures API:
    * https://www.mapbox.com/mapbox-gl-js/api/#Map#queryRenderedFeatures
    */
   onClick: (event: mapboxgl.MapEvent) => any,
@@ -33,8 +33,8 @@ type Props = {
    * @callback
    * @param {Object} event - The mouse event.
    * @param {[Number, Number]} event.lngLat - The coordinates of the pointer
-   * @param {Array} event.features - The features under the pointer, using Mapbox's
-   * queryRenderedFeatures API:
+   * @param {Array} event.features - The features under the pointer,
+   * using Mapbox's queryRenderedFeatures API:
    * https://www.mapbox.com/mapbox-gl-js/api/#Map#queryRenderedFeatures
    */
   onHover: (event: mapboxgl.MapEvent) => any,
@@ -44,8 +44,8 @@ type Props = {
    * @callback
    * @param {Object} event - The mouse event.
    * @param {[Number, Number]} event.lngLat - The coordinates of the pointer
-   * @param {Array} event.features - The features under the pointer, using Mapbox's
-   * queryRenderedFeatures API:
+   * @param {Array} event.features - The features under the pointer,
+   * using Mapbox's queryRenderedFeatures API:
    * https://www.mapbox.com/mapbox-gl-js/api/#Map#queryRenderedFeatures
    */
   onEnter: (event: mapboxgl.MapEvent) => any,
@@ -55,13 +55,16 @@ type Props = {
    * @callback
    * @param {Object} event - The mouse event.
    * @param {[Number, Number]} event.lngLat - The coordinates of the pointer
-   * @param {Array} event.features - The features under the pointer, using Mapbox's
-   * queryRenderedFeatures API:
+   * @param {Array} event.features - The features under the pointer,
+   * using Mapbox's queryRenderedFeatures API:
    * https://www.mapbox.com/mapbox-gl-js/api/#Map#queryRenderedFeatures
    */
   onLeave: (event: mapboxgl.MapEvent) => any,
 
-  /** Radius to detect features around a clicked/hovered point (defaults to 0) */
+  /**
+   * Radius to detect features around a clicked/hovered point
+   * (defaults to 0)
+   */
   radius: number
 };
 

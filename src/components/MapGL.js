@@ -4,8 +4,9 @@ import mapboxgl from 'mapbox-gl';
 import { Children, PureComponent, createElement } from 'react';
 import { isImmutable } from 'immutable';
 import type { Node } from 'react';
-
 import type { MapStyle, Viewport } from '../types';
+
+type ViewportChangeEvent = mapboxgl.MapMouseEvent | mapboxgl.MapTouchEvent;
 
 type Props = {
   /** container className */
@@ -14,13 +15,18 @@ type Props = {
   /** container style */
   style?: Object,
 
-  /** The Mapbox style. A string url or a MapboxGL style Immutable.Map object. */
+  /**
+   * The Mapbox style. A string url or a MapboxGL style Immutable.Map object.
+   */
   mapStyle: string | MapStyle,
 
   /** Sources and Layers */
   children?: Node,
 
-  /** Mapbox API access token for mapbox-gl-js. Required when using Mapbox vector tiles/styles. */
+  /**
+   * Mapbox API access token for mapbox-gl-js.
+   * Required when using Mapbox vector tiles/styles.
+   */
   accessToken?: string,
 
   /** The longitude of the center of the map. */
@@ -80,7 +86,10 @@ type Props = {
    */
   failIfMajorPerformanceCaveat?: boolean,
 
-  /** Mapbox WebGL context creation option. Useful when you want to export the canvas as a PNG. */
+  /**
+   * Mapbox WebGL context creation option.
+   * Useful when you want to export the canvas as a PNG.
+   */
   preserveDrawingBuffer?: boolean,
 
   /**
@@ -110,7 +119,10 @@ type Props = {
   /** If `true`, the "double click to zoom" interaction is enabled */
   doubleClickZoom?: boolean,
 
-  /** If `true`, the map will automatically resize when the browser window resizes. */
+  /**
+   * If `true`, the map will automatically resize
+   * when the browser window resizes.
+   */
   trackResize?: boolean,
 
   /**
@@ -120,7 +132,10 @@ type Props = {
    */
   maxTileCacheSize?: number,
 
-  /** If  true, multiple copies of the world will be rendered, when zoomed out */
+  /**
+   * If `true`, multiple copies of the world
+   * will be rendered, when zoomed out
+   */
   renderWorldCopies?: boolean,
 
   /**
@@ -141,7 +156,7 @@ type State = {
 class MapGL extends PureComponent<Props, State> {
   _map: mapboxgl.Map;
   _container: ?HTMLElement;
-  _onViewportChange: (event: mapboxgl.MapMouseEvent | mapboxgl.MapTouchEvent) => void;
+  _onViewportChange: (event: ViewportChangeEvent) => void;
 
   static defaultProps = {
     className: null,
@@ -309,9 +324,9 @@ class MapGL extends PureComponent<Props, State> {
    * fires `onViewportChange` callback when the user interacted with the map.
    *
    * @private
-   * @param {(mapboxgl.MapMouseEvent | mapboxgl.MapTouchEvent)} event
+   * @param {ViewportChangeEvent} event
    */
-  _onViewportChange(event: mapboxgl.MapMouseEvent | mapboxgl.MapTouchEvent): void {
+  _onViewportChange(event: ViewportChangeEvent): void {
     if (!event.originalEvent) return;
 
     const map: mapboxgl.Map = event.target;

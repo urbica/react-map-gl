@@ -2,7 +2,12 @@
 
 import mapboxgl from 'mapbox-gl';
 
-export default (map: mapboxgl.Map, layerId: string, position: [number, number], radius: number) => {
+export default (
+  map: mapboxgl.Map,
+  layerId: string,
+  position: [number, number],
+  radius: number
+) => {
   const parameters = { layers: [layerId] };
 
   if (radius) {

@@ -12,6 +12,10 @@
   },
   "rules": {
     "comma-dangle": ["error", "never"],
+    "max-len": [
+      "error",
+      80
+    ],
     "no-return-assign": 0,
     "no-underscore-dangle": ["error", { "allowAfterThis": true }],
     "react/prop-types": [1, { "skipUndeclared": true }],

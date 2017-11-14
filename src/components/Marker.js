@@ -3,13 +3,14 @@
 import mapboxgl from 'mapbox-gl';
 import ReactDOM from 'react-dom';
 import { PureComponent } from 'react';
+import type { Element } from 'react';
 
 type Props = {
   /** Mapbox GL JS map instance */
   map: mapboxgl.Map,
 
-  /** DOM element to use as a marker (creates a div element by default) */
-  element: React$Element<any>,
+  /** ReactDOM element to use as a marker */
+  element: Element<any>,
 
   /** The longitude of the center of the marker. */
   longitude: number,
@@ -46,7 +47,8 @@ class Marker extends PureComponent<Props> {
 
   componentWillReceiveProps(newProps: Props) {
     const positionChanged =
-      newProps.latitude !== this.props.latitude || newProps.longitude !== this.props.longitude;
+      newProps.latitude !== this.props.latitude ||
+      newProps.longitude !== this.props.longitude;
 
     if (positionChanged) {
       this._marker.setLngLat([newProps.longitude, newProps.latitude]);

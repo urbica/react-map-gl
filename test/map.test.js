@@ -19,6 +19,11 @@ test('MapGL#onLoad', () => {
 
 // test('MapGL#onViewportChange', () => {
 //   const onViewportChange = jest.fn();
-//   mount(<MapGL latitude={0} longitude={0} zoom={0} onViewportChange={onViewportChange} />);
+//   mount(<MapGL
+//     latitude={0}
+//     longitude={0}
+//     zoom={0}
+//     onViewportChange={onViewportChange}
+//   />);
 //   expect(onViewportChange).toHaveBeenCalled();
 // });

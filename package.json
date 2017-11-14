@@ -16,7 +16,7 @@
     "test": "jest",
     "coverage": "flow-coverage-report -i 'src/**/*.js' -t html",
     "build": "webpack -p --config webpack.config.js",
-    "docs": "documentation build src/index.js -g -f md -o docs/props.md",
+    "docs": "documentation build src/index.js -f md -o docs/props.md",
     "styleguide": "styleguidist server",
     "styleguide:build": "styleguidist build",
     "styleguide:deploy": "gh-pages -m 'auto commit [ci skip]' -d styleguide",
@@ -74,5 +74,9 @@
     "react-test-renderer": "16.1.0",
     "standard-version": "4.2.0",
     "webpack": "3.8.1"
+  },
+  "dependencies": {
+    "@turf/helpers": "5.0.4",
+    "supercluster": "3.0.1"
   }
 }
