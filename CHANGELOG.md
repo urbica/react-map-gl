@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.5.0"></a>
+# [0.5.0](https://github.com/urbica/react-map-gl/compare/v0.4.2...v0.5.0) (2017-11-14)
+
+
+### Features
+
+* **Cluster:** add Cluster component ([330d6e6](https://github.com/urbica/react-map-gl/commit/330d6e6))
+
+
+
 <a name="0.4.2"></a>
 ## [0.4.2](https://github.com/urbica/react-map-gl/compare/v0.4.1...v0.4.2) (2017-11-13)
 
