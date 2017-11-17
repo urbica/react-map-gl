@@ -35,9 +35,13 @@
       "path": "cz-conventional-changelog"
     }
   },
+  "dependencies": {
+    "@turf/helpers": "5.0.4",
+    "supercluster": "3.0.1"
+  },
   "peerDependencies": {
-    "immutable": "^4.0.0",
-    "mapbox-gl": "^0.40.0"
+    "immutable": "^4.x",
+    "mapbox-gl": "^0.40.x"
   },
   "devDependencies": {
     "@turf/random": "5.0.4",
@@ -74,9 +78,5 @@
     "react-test-renderer": "16.1.1",
     "standard-version": "4.2.0",
     "webpack": "3.8.1"
-  },
-  "dependencies": {
-    "@turf/helpers": "5.0.4",
-    "supercluster": "3.0.1"
   }
 }

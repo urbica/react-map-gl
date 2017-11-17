@@ -1,4 +1,5 @@
 // @flow
+/* eslint-disable react/no-unused-prop-types */
 
 import mapboxgl from 'mapbox-gl';
 import supercluster from 'supercluster';
@@ -43,6 +44,7 @@ type State = {
 class Cluster extends PureComponent<Props, State> {
   _cluster: Object;
   _recalculate: () => void;
+  _createCluster: (props: Props) => void;
 
   static displayName = 'Cluster';
 
@@ -63,22 +65,28 @@ class Cluster extends PureComponent<Props, State> {
     };
 
     this._recalculate = this._recalculate.bind(this);
+    this._createCluster = this._createCluster.bind(this);
   }
 
   componentDidMount() {
-    const {
-      map,
-      minZoom,
-      maxZoom,
-      radius,
-      extent,
-      nodeSize,
-      log,
-      children
-    } = this.props;
+    const { map } = this.props;
 
-    const points = Children.map(children, child =>
-      point([child.props.longitude, child.props.latitude], child));
+    this._createCluster(this.props);
+    this._recalculate();
+
+    map.on('moveend', this._recalculate);
+  }
+
+  componentWillReceiveProps(newProps: Props) {
+    // TODO: compare props
+    this._createCluster(newProps);
+    this._recalculate();
+  }
+
+  _createCluster(props: Props) {
+    const {
+      minZoom, maxZoom, radius, extent, nodeSize, log, children
+    } = props;
 
     const cluster = supercluster({
       minZoom,
@@ -89,11 +97,11 @@ class Cluster extends PureComponent<Props, State> {
       log
     });
 
+    const points = Children.map(children, child =>
+      point([child.props.longitude, child.props.latitude], child));
+
     cluster.load(points);
     this._cluster = cluster;
-
-    map.on('moveend', this._recalculate);
-    this._recalculate();
   }
 
   _recalculate() {
@@ -103,7 +111,7 @@ class Cluster extends PureComponent<Props, State> {
     const bbox = bounds[0].concat(bounds[1]);
 
     const clusters = this._cluster.getClusters(bbox, Math.floor(zoom));
-    this.setState({ clusters });
+    this.setState(() => ({ clusters }));
   }
 
   render() {
