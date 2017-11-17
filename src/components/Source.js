@@ -17,6 +17,8 @@ type Props = {
 };
 
 class Source extends PureComponent<Props> {
+  static displayName = 'Source';
+
   componentDidMount() {
     const { map, id, source } = this.props;
     map.addSource(id, source.toJS());

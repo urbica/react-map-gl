@@ -28,6 +28,8 @@ type Props = {
 class Marker extends PureComponent<Props> {
   _marker: mapboxgl.Marker;
 
+  static displayName = 'Marker';
+
   static defaultProps = {
     offset: null
   };

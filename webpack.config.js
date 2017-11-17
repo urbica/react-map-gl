@@ -29,7 +29,10 @@ module.exports = {
           loader: 'babel-loader',
           options: {
             presets: ['env', 'react', 'flow'],
-            plugins: ['transform-object-rest-spread', 'transform-class-properties']
+            plugins: [
+              'transform-object-rest-spread',
+              'transform-class-properties'
+            ]
           }
         }
       }

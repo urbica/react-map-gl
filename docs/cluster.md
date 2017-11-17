@@ -2,16 +2,15 @@
 const random = require('@turf/random');
 
 const bbox = [-160, -70, 160, 70];
-const points = random.randomPoint(50, { bbox });
-points.features.forEach((point, index) => point.id = index);
+const points = random.randomPoint(50, { bbox }).features;
+points.forEach((point, index) => point.id = index);
 
 initialState = {
   viewport: {
     latitude: 0,
     longitude: 0,
     zoom: 0
-  },
-  points: points.features
+  }
 };
 
 const style = {
@@ -42,7 +41,7 @@ const ClusterElement = ({ point_count_abbreviated }) =>
     element={ClusterElement}
   >
     {
-      state.points.map(point => (
+      points.map(point => (
         <Marker
           key={point.id}
           longitude={point.geometry.coordinates[0]}
