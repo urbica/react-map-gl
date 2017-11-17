@@ -44,6 +44,8 @@ class Cluster extends PureComponent<Props, State> {
   _cluster: Object;
   _recalculate: () => void;
 
+  static displayName = 'Cluster';
+
   static defaultProps = {
     minZoom: 0,
     maxZoom: 16,

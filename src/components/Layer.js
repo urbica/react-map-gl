@@ -75,6 +75,8 @@ class Layer extends PureComponent<Props> {
   _onEnter: (event: mapboxgl.MapEvent) => void;
   _onLeave: (event: mapboxgl.MapEvent) => void;
 
+  static displayName = 'Layer';
+
   static defaultProps = {
     onClick: null,
     radius: 0
