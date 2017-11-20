@@ -10,7 +10,7 @@ type ViewportChangeEvent = mapboxgl.MapMouseEvent | mapboxgl.MapTouchEvent;
 
 type Props = {
   /** container className */
-  className?: String,
+  className?: string,
 
   /** container style */
   style?: Object,

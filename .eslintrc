@@ -14,7 +14,7 @@
     "comma-dangle": ["error", "never"],
     "max-len": [
       "error",
-      80
+      90
     ],
     "no-return-assign": 0,
     "no-underscore-dangle": ["error", { "allowAfterThis": true }],

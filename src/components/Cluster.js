@@ -1,5 +1,4 @@
 // @flow
-/* eslint-disable react/no-unused-prop-types */
 
 import mapboxgl from 'mapbox-gl';
 import supercluster from 'supercluster';
@@ -7,33 +6,39 @@ import { point } from '@turf/helpers';
 import { Children, PureComponent, createElement } from 'react';
 import type { Node, Component } from 'react';
 import Marker from './Marker';
+import shallowCompareChildren from '../utils/shallowCompareChildren';
 
 type Props = {
   /** Mapbox GL JS map instance */
   map: mapboxgl.Map,
 
   /** Minimum zoom level at which clusters are generated */
-  minZoom: Number,
+  minZoom: number,
 
   /** Maximum zoom level at which clusters are generated */
-  maxZoom: Number,
+  maxZoom: number,
 
   /** Cluster radius, in pixels */
-  radius: Number,
+  radius: number,
 
   /** (Tiles) Tile extent. Radius is calculated relative to this value */
-  extent: Number,
+  extent: number,
 
   /** Size of the KD-tree leaf node. Affects performance */
-  nodeSize: Number,
-
-  /** Whether timing info should be logged */
-  log: Boolean,
+  nodeSize: number,
 
   /** ReactDOM element to use as a marker */
   element: Class<Component<any, any>>,
 
-  /** Markers */
+  /**
+   * Callback that is called with the supercluster instance as an argument
+   * after componentDidMount
+   */
+  /* eslint-disable react/no-unused-prop-types */
+  innerRef: (cluster: supercluster.Supercluster) => void,
+  /* eslint-enable react/no-unused-prop-types */
+
+  /** Markers as children */
   children: Node
 };
 
@@ -53,8 +58,7 @@ class Cluster extends PureComponent<Props, State> {
     maxZoom: 16,
     radius: 40,
     extent: 512,
-    nodeSize: 64,
-    log: false
+    nodeSize: 64
   };
 
   constructor(props: Props) {
@@ -78,14 +82,23 @@ class Cluster extends PureComponent<Props, State> {
   }
 
   componentWillReceiveProps(newProps: Props) {
-    // TODO: compare props
-    this._createCluster(newProps);
-    this._recalculate();
+    const shouldUpdate =
+      newProps.minZoom !== this.props.minZoom ||
+      newProps.maxZoom !== this.props.maxZoom ||
+      newProps.radius !== this.props.radius ||
+      newProps.extent !== this.props.extent ||
+      newProps.nodeSize !== this.props.nodeSize ||
+      !shallowCompareChildren(this.props.children, newProps.children);
+
+    if (shouldUpdate) {
+      this._createCluster(newProps);
+      this._recalculate();
+    }
   }
 
   _createCluster(props: Props) {
     const {
-      minZoom, maxZoom, radius, extent, nodeSize, log, children
+      minZoom, maxZoom, radius, extent, nodeSize, children, innerRef
     } = props;
 
     const cluster = supercluster({
@@ -93,8 +106,7 @@ class Cluster extends PureComponent<Props, State> {
       maxZoom,
       radius,
       extent,
-      nodeSize,
-      log
+      nodeSize
     });
 
     const points = Children.map(children, child =>
@@ -102,6 +114,7 @@ class Cluster extends PureComponent<Props, State> {
 
     cluster.load(points);
     this._cluster = cluster;
+    if (innerRef) innerRef(this._cluster);
   }
 
   _recalculate() {
@@ -125,7 +138,7 @@ class Cluster extends PureComponent<Props, State> {
           map,
           longitude,
           latitude,
-          element: createElement(element, cluster.properties),
+          element: createElement(element, cluster),
           key: `cluster-${cluster.properties.cluster_id}`
         });
       }

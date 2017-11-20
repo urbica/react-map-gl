@@ -4,8 +4,8 @@ import mapboxgl from 'mapbox-gl';
 import { PureComponent } from 'react';
 import { is } from 'immutable';
 import type { MapLayer } from '../types';
-import diff from '../diff';
-import queryRenderedFeatures from '../queryRenderedFeatures';
+import diff from '../utils/diff';
+import queryRenderedFeatures from '../utils/queryRenderedFeatures';
 
 type Props = {
   /** Mapbox GL JS map instance */

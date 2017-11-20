@@ -53,6 +53,10 @@ module.exports = {
           content: 'docs/cluster.md'
         },
         {
+          name: 'Cluster Instance',
+          content: 'docs/cluster-instance.md'
+        },
+        {
           name: 'onClick',
           content: 'docs/clickable-map.md'
         },
