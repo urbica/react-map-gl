@@ -8,7 +8,8 @@
 [include]
 
 [libs]
-node_modules/mapbox-gl/flow-typed
+/flow-typed
+/node_modules/mapbox-gl/flow-typed
 
 [options]
 esproposal.class_static_fields=enable

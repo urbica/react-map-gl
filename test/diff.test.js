@@ -1,5 +1,5 @@
 import { Map } from 'immutable';
-import diff from '../src/diff';
+import diff from '../src/utils/diff';
 
 test('diff#undefined', () => {
   expect(diff(undefined, undefined)).toEqual([]);
