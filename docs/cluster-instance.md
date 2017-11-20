@@ -43,6 +43,7 @@ const MarkerElement = <div style={MarkerStyle}/>;
 
 const ClusterMarkerStyle = {
   ...MarkerStyle,
+  cursor: "pointer",
   background: "#f28a25"
 };
 
