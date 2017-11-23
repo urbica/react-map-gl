@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.5.3"></a>
+## [0.5.3](https://github.com/urbica/react-map-gl/compare/v0.5.2...v0.5.3) (2017-11-23)
+
+
+### Bug Fixes
+
+* **Layer:** unsubscribe from events on componentWillUnmount  ([#7](https://github.com/urbica/react-map-gl/issues/7)) ([6ea478d](https://github.com/urbica/react-map-gl/commit/6ea478d))
+
+
+
 <a name="0.5.2"></a>
 ## [0.5.2](https://github.com/urbica/react-map-gl/compare/v0.5.1...v0.5.2) (2017-11-20)
 
