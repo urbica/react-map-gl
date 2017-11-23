@@ -139,6 +139,10 @@ class Layer extends PureComponent<Props> {
       return;
     }
 
+    map.off('click', this._id, this._onClick);
+    map.off('mousemove', this._id, this._onHover);
+    map.off('mouseenter', this._id, this._onEnter);
+    map.off('mouseleave', this._id, this._onLeave);
     map.removeLayer(this._id);
   }
 
