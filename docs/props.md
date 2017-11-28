@@ -57,7 +57,7 @@
 -   [offset](#offset)
 -   [extent](#extent)
 -   [nodeSize](#nodesize)
--   [log](#log)
+-   [innerRef](#innerref)
 
 ## className
 
@@ -77,7 +77,7 @@ Sources and Layers
 
 ## children
 
-Markers
+Markers as children
 
 ## accessToken
 
@@ -340,6 +340,7 @@ relative to the element's center. Negatives indicate left and up.
 
 Size of the KD-tree leaf node. Affects performance
 
-## log
+## innerRef
 
-Whether timing info should be logged
+Callback that is called with the supercluster instance as an argument
+after componentDidMount
