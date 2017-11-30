@@ -1,9 +1,10 @@
 // @flow
 
-import mapboxgl from 'mapbox-gl';
 import ReactDOM from 'react-dom';
 import { PureComponent } from 'react';
 import type { Element } from 'react';
+
+import mapboxgl from '../utils/mapbox-gl';
 
 type Props = {
   /** Mapbox GL JS map instance */

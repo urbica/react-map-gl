@@ -1,10 +1,11 @@
 // @flow
 
-import mapboxgl from 'mapbox-gl';
 import supercluster from 'supercluster';
 import { point } from '@turf/helpers';
 import { Children, PureComponent, createElement } from 'react';
 import type { Node, Component } from 'react';
+
+import mapboxgl from '../utils/mapbox-gl';
 import Marker from './Marker';
 import shallowCompareChildren from '../utils/shallowCompareChildren';
 

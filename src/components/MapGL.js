@@ -1,9 +1,10 @@
 // @flow
 
-import mapboxgl from 'mapbox-gl';
 import { Children, PureComponent, createElement } from 'react';
 import { isImmutable } from 'immutable';
 import type { Node } from 'react';
+
+import mapboxgl from '../utils/mapbox-gl';
 import type { MapStyle, Viewport } from '../types';
 
 type ViewportChangeEvent = mapboxgl.MapMouseEvent | mapboxgl.MapTouchEvent;

@@ -1,11 +1,12 @@
 // @flow
 
-import mapboxgl from 'mapbox-gl';
 import { PureComponent } from 'react';
 import { is } from 'immutable';
-import type { MapLayer } from '../types';
+
+import mapboxgl from '../utils/mapbox-gl';
 import diff from '../utils/diff';
 import queryRenderedFeatures from '../utils/queryRenderedFeatures';
+import type { MapLayer } from '../types';
 
 type Props = {
   /** Mapbox GL JS map instance */

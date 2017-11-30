@@ -1,8 +1,9 @@
 // @flow
 
-import mapboxgl from 'mapbox-gl';
 import { PureComponent } from 'react';
 import { isImmutable } from 'immutable';
+
+import mapboxgl from '../utils/mapbox-gl';
 import type { MapSource } from '../types';
 
 type Props = {
