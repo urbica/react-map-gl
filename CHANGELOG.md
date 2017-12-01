@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.6.0-beta.0"></a>
+# [0.6.0-beta.0](https://github.com/urbica/react-map-gl/compare/v0.5.3...v0.6.0-beta.0) (2017-12-01)
+
+
+### Features
+
+* **SSR:** do not require mapbox-gl on non-browser environments ([2b1ebe1](https://github.com/urbica/react-map-gl/commit/2b1ebe1))
+
+
+
 <a name="0.5.3"></a>
 ## [0.5.3](https://github.com/urbica/react-map-gl/compare/v0.5.2...v0.5.3) (2017-11-23)
 
