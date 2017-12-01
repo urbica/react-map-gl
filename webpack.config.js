@@ -1,8 +1,10 @@
 const path = require('path');
 const webpack = require('webpack');
+// const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 module.exports = {
   bail: true,
+  stats: 'detailed',
   devtool: 'source-map',
   entry: path.resolve(__dirname, 'src', 'index.js'),
   output: {
@@ -26,17 +28,14 @@ module.exports = {
         test: /\.jsx?$/,
         exclude: /node_modules/,
         use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['env', 'react', 'flow'],
-            plugins: [
-              'transform-object-rest-spread',
-              'transform-class-properties'
-            ]
-          }
+          loader: 'babel-loader'
         }
       }
     ]
   },
-  plugins: [new webpack.EnvironmentPlugin(['MAPBOX_ACCESS_TOKEN'])]
+  plugins: [
+    // new BundleAnalyzerPlugin(),
+    new webpack.optimize.ModuleConcatenationPlugin(),
+    new webpack.EnvironmentPlugin(['MAPBOX_ACCESS_TOKEN'])
+  ]
 };
