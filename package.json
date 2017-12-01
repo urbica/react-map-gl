@@ -40,8 +40,8 @@
     "supercluster": "3.0.1"
   },
   "peerDependencies": {
-    "immutable": "^4.x",
-    "mapbox-gl": "^0.40.x"
+    "immutable": "4.x",
+    "mapbox-gl": ">= 0.40.0 < 1"
   },
   "devDependencies": {
     "@turf/random": "5.0.4",
