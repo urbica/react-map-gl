@@ -1,5 +1,8 @@
-global.process.browser = true;
+import Enzyme from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
 
-global.requestAnimationFrame = function requestAnimationFrame(callback) {
-  setTimeout(callback, 0);
-};
+Enzyme.configure({ adapter: new Adapter() });
+
+jest.mock('mapbox-gl');
+
+global.process.browser = true;

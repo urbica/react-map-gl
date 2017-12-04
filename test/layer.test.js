@@ -1,11 +1,7 @@
 import React from 'react';
-import Enzyme, { mount } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
+import { mount } from 'enzyme';
 import Immutable from 'immutable';
 import MapGL, { Source, Layer } from '../src';
-
-Enzyme.configure({ adapter: new Adapter() });
-jest.mock('mapbox-gl');
 
 const source = Immutable.fromJS({
   type: 'geojson',

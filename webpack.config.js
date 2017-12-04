@@ -1,6 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
-// const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 module.exports = {
   bail: true,
@@ -20,7 +20,8 @@ module.exports = {
     react: 'react',
     immutable: 'immutable',
     'react-dom': 'react-dom',
-    'mapbox-gl': 'mapbox-gl'
+    'mapbox-gl': 'mapbox-gl',
+    'prop-types': 'prop-types'
   },
   module: {
     rules: [
@@ -34,8 +35,11 @@ module.exports = {
     ]
   },
   plugins: [
-    // new BundleAnalyzerPlugin(),
     new webpack.optimize.ModuleConcatenationPlugin(),
-    new webpack.EnvironmentPlugin(['MAPBOX_ACCESS_TOKEN'])
+    new webpack.EnvironmentPlugin(['MAPBOX_ACCESS_TOKEN']),
+    new BundleAnalyzerPlugin({
+      analyzerMode: 'static',
+      openAnalyzer: false
+    })
   ]
 };
