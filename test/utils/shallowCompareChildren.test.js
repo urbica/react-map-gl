@@ -61,3 +61,15 @@ test('diff#multiple-2', () => {
 
   expect(shallowCompareChildren(prevChildren, newChildren)).toEqual(false);
 });
+
+test('diff#different-count', () => {
+  const prevChildren = shallow(<ul><li key="1" /></ul>)
+    .find('ul')
+    .children();
+
+  const newChildren = shallow(<ul><li key="1" /><li key="2" /></ul>)
+    .find('ul')
+    .children();
+
+  expect(shallowCompareChildren(prevChildren, newChildren)).toEqual(false);
+});
