@@ -1,6 +1,7 @@
 # Urbica React Mapbox GL JS
 
 [![Circle CI build status](https://circleci.com/gh/urbica/react-map-gl.svg?style=shield)](https://circleci.com/gh/urbica/react-map-gl/tree/master)
+[![codecov](https://codecov.io/gh/urbica/ui-kit/branch/master/graph/badge.svg)](https://codecov.io/gh/urbica/ui-kit)
 [![Greenkeeper badge](https://badges.greenkeeper.io/urbica/react-map-gl.svg)](https://greenkeeper.io/)
 
 React Component for Mapbox GL JS.

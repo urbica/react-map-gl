@@ -13,8 +13,9 @@
     "start": "styleguidist server",
     "lint": "eslint src test",
     "typecheck": "flow check src",
+    "typecheck:coverage": "flow-coverage-report -i 'src/**/*.js' -t html",
     "test": "jest",
-    "coverage": "flow-coverage-report -i 'src/**/*.js' -t html",
+    "test:coverage": "jest --coverage && codecov",
     "build": "webpack -p --config webpack.config.js",
     "docs": "documentation build src/index.js -f md -o docs/props.md",
     "styleguide": "styleguidist server",
@@ -26,9 +27,7 @@
     "postpublish": "npm run docs && npm run styleguide:build && npm run styleguide:deploy"
   },
   "jest": {
-    "setupFiles": [
-      "<rootDir>/test/setup.js"
-    ]
+    "setupFiles": ["<rootDir>/test/setup.js"]
   },
   "config": {
     "commitizen": {
@@ -54,6 +53,7 @@
     "babel-preset-env": "1.6.1",
     "babel-preset-flow": "6.23.0",
     "babel-preset-react": "6.24.1",
+    "codecov": "3.0.0",
     "commitizen": "2.9.6",
     "cz-conventional-changelog": "2.1.0",
     "documentation": "5.3.3",
