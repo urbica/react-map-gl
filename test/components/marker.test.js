@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import MapGL, { Marker } from '../src';
+import MapGL, { Marker } from '../../src';
 
 test('Marker#render', () => {
   const Element = <div>ok</div>;

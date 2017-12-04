@@ -2,7 +2,7 @@
 
 import mapboxgl from 'mapbox-gl';
 
-export default (
+const queryRenderedFeatures = (
   map: mapboxgl.Map,
   layerId: string,
   position: [number, number],
@@ -21,3 +21,5 @@ export default (
 
   return map.queryRenderedFeatures(position, parameters);
 };
+
+export default queryRenderedFeatures;

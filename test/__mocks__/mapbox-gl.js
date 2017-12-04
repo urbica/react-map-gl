@@ -12,6 +12,7 @@ function Map() {
   this.getBearing = jest.fn(() => 0);
   this.getPitch = jest.fn(() => 0);
   this.getZoom = jest.fn(() => 0);
+  this.queryRenderedFeatures = jest.fn(() => []);
 
   return this;
 }

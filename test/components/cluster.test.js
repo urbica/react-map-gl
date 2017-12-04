@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import MapGL, { Cluster, Marker } from '../src';
+import MapGL, { Cluster, Marker } from '../../src';
 
 test('Cluster#render', () => {
   const Element = <div>ok</div>;
