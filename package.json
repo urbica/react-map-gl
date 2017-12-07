@@ -35,7 +35,7 @@
     }
   },
   "dependencies": {
-    "@turf/helpers": "5.0.4",
+    "@turf/helpers": "5.1.0",
     "supercluster": "3.0.1"
   },
   "peerDependencies": {
