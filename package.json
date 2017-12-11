@@ -43,7 +43,7 @@
     "mapbox-gl": ">= 0.40.0 < 1"
   },
   "devDependencies": {
-    "@turf/random": "5.1.0",
+    "@turf/random": "5.1.4",
     "babel-core": "6.26.0",
     "babel-eslint": "8.0.3",
     "babel-jest": "21.2.0",
