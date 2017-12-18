@@ -69,7 +69,7 @@
     "flow-coverage-report": "0.4.0",
     "gh-pages": "1.1.0",
     "immutable": "4.0.0-rc.9",
-    "jest": "21.3.0-beta.11",
+    "jest": "22.0.0",
     "mapbox-gl": "0.42.2",
     "react": "16.2.0",
     "react-docgen": "2.20.0",
