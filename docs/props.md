@@ -45,6 +45,7 @@
 -   [id](#id)
 -   [id](#id-1)
 -   [layer](#layer)
+-   [before](#before)
 -   [onClick](#onclick)
 -   [onHover](#onhover)
 -   [onEnter](#onenter)
@@ -249,6 +250,10 @@ Mapbox GL Source id
 ## layer
 
 Mapbox GL Layer as Immutable object
+
+## before
+
+The id of an existing layer to insert the new layer before.
 
 ## onClick
 

@@ -1,4 +1,4 @@
-import { Map } from 'immutable';
+import { Map, fromJS } from 'immutable';
 import diff from '../../src/utils/diff';
 
 test('diff#undefined', () => {
@@ -6,32 +6,41 @@ test('diff#undefined', () => {
 });
 
 test('diff#empty', () => {
-  const prevMap = new Map();
-  const newMap = new Map();
+  const prevMap = fromJS();
+  const newMap = fromJS();
 
   expect(diff(newMap, prevMap)).toEqual([]);
 });
 
 test('diff#add', () => {
-  const prevMap = new Map({ a: 1, b: 2 });
-  const newMap = new Map({
-    a: 1, b: 2, c: 3, d: 4
+  const prevMap = fromJS({ a: 1, b: 2 });
+  const newMap = fromJS({
+    a: 1,
+    b: 2,
+    c: 3,
+    d: 4
   });
 
   expect(diff(newMap, prevMap)).toEqual([['c', 3], ['d', 4]]);
 });
 
 test('diff#remove', () => {
-  const prevMap = new Map({ a: 1, b: 2 });
-  const newMap = new Map();
+  const prevMap = fromJS({ a: 1, b: 2 });
+  const newMap = fromJS();
 
   expect(diff(newMap, prevMap)).toEqual([['a', undefined], ['b', undefined]]);
 });
 
 test('diff#override', () => {
-  const prevMap = new Map({ a: 1, b: 2 });
-  const newMap = new Map({ a: 3, b: 4 });
+  const prevMap = fromJS({ a: 1, b: 2 });
+  const newMap = fromJS({ a: 3, b: 4 });
 
   expect(diff(newMap, prevMap)).toEqual([['a', 3], ['b', 4]]);
 });
 
+test('diff#nested', () => {
+  const prevMap = fromJS({ a: 1, b: { c: 2 } });
+  const newMap = fromJS({ a: 1, b: { c: 3 } });
+
+  expect(diff(newMap, prevMap)).toEqual([['b', fromJS({ c: 3 })]]);
+});

@@ -1,7 +1,7 @@
 // @flow
 
 import { PureComponent } from 'react';
-import { is } from 'immutable';
+import { is, isImmutable } from 'immutable';
 
 import mapboxgl from '../utils/mapbox-gl';
 import diff from '../utils/diff';
@@ -116,15 +116,19 @@ class Layer extends PureComponent<Props> {
       const newPaint = newLayer.get('paint');
       const prevPaint = prevLayer.get('paint');
       if (!is(newPaint, prevPaint)) {
-        diff(newPaint, prevPaint).forEach(([key, value]) =>
-          map.setPaintProperty(this._id, key, value));
+        diff(newPaint, prevPaint).forEach(([key, value]) => {
+          const newValue = isImmutable(value) ? value.toJS() : value;
+          map.setPaintProperty(this._id, key, newValue);
+        });
       }
 
       const newLayout = newLayer.get('layout');
       const prevLayout = prevLayer.get('layout');
       if (!is(newLayout, prevLayout)) {
-        diff(newLayout, prevLayout).forEach(([key, value]) =>
-          map.setLayoutProperty(this._id, key, value));
+        diff(newLayout, prevLayout).forEach(([key, value]) => {
+          const newValue = isImmutable(value) ? value.toJS() : value;
+          map.setLayoutProperty(this._id, key, newValue);
+        });
       }
 
       const newFilter = newLayer.get('filter');

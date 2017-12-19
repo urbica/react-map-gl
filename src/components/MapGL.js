@@ -6,7 +6,6 @@ import type { Node } from 'react';
 
 import Layer from './Layer';
 import mapboxgl from '../utils/mapbox-gl';
-import shallowCompareChildren from '../utils/shallowCompareChildren';
 import type { MapStyle, Viewport } from '../types';
 
 type ViewportChangeEvent = mapboxgl.MapMouseEvent | mapboxgl.MapTouchEvent;
@@ -267,10 +266,7 @@ class MapGL extends PureComponent<Props, State> {
   componentWillReceiveProps(newProps: Props) {
     this._updateMapViewport(newProps);
     this._updateMapStyle(this.props, newProps);
-
-    if (!shallowCompareChildren(this.props.children, newProps.children)) {
-      this._preserveChildren(newProps.children);
-    }
+    this._preserveChildren(newProps.children);
   }
 
   componentWillUnmount() {
