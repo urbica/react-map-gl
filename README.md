@@ -1,8 +1,8 @@
 # Urbica React Mapbox GL JS
 
-[![Circle CI build status](https://circleci.com/gh/urbica/react-map-gl.svg?style=shield)](https://circleci.com/gh/urbica/react-map-gl/tree/master)
-[![codecov](https://codecov.io/gh/urbica/react-map-gl/branch/master/graph/badge.svg)](https://codecov.io/gh/urbica/react-map-gl)
-[![Greenkeeper badge](https://badges.greenkeeper.io/urbica/react-map-gl.svg)](https://greenkeeper.io/)
+[![npm](https://img.shields.io/npm/v/@urbica/react-map-gl.svg?style=for-the-badge)](https://www.npmjs.com/package/@urbica/react-map-gl)
+[![CircleCI](https://img.shields.io/circleci/project/github/urbica/react-map-gl.svg?style=for-the-badge)](https://circleci.com/gh/urbica/react-map-gl/tree/master)
+[![Codecov](https://img.shields.io/codecov/c/github/urbica/react-map-gl.svg?style=for-the-badge)](https://codecov.io/gh/urbica/react-map-gl)
 
 React Component for Mapbox GL JS.
 
@@ -44,6 +44,8 @@ const accessToken = <TOKEN> // Mapbox access token
 See [Examples](https://urbica.github.io/react-map-gl/) for more info.
 
 ## Development
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/urbica/react-map-gl.svg)](https://greenkeeper.io/)
 
 Install project dependencies and check that the tests run
 

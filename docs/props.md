@@ -259,13 +259,13 @@ The id of an existing layer to insert the new layer before.
 
 Called when the layer is clicked.
 
-Type: [Function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)
+Type: [Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function)
 
 **Parameters**
 
--   `event` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** The mouse event.
-    -   `event.lngLat` **\[[Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number), [Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)]** The coordinates of the pointer
-    -   `event.features` **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)** The features under the pointer,
+-   `event` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** The mouse event.
+    -   `event.lngLat` **\[[Number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number), [Number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)]** The coordinates of the pointer
+    -   `event.features` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)** The features under the pointer,
         using Mapbox's queryRenderedFeatures API:
         <https://www.mapbox.com/mapbox-gl-js/api/#Map#queryRenderedFeatures>
 
@@ -273,13 +273,13 @@ Type: [Function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Referen
 
 Called when the layer is hovered over.
 
-Type: [Function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)
+Type: [Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function)
 
 **Parameters**
 
--   `event` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** The mouse event.
-    -   `event.lngLat` **\[[Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number), [Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)]** The coordinates of the pointer
-    -   `event.features` **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)** The features under the pointer,
+-   `event` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** The mouse event.
+    -   `event.lngLat` **\[[Number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number), [Number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)]** The coordinates of the pointer
+    -   `event.features` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)** The features under the pointer,
         using Mapbox's queryRenderedFeatures API:
         <https://www.mapbox.com/mapbox-gl-js/api/#Map#queryRenderedFeatures>
 
@@ -287,13 +287,13 @@ Type: [Function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Referen
 
 Called when the layer feature is entered.
 
-Type: [Function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)
+Type: [Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function)
 
 **Parameters**
 
--   `event` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** The mouse event.
-    -   `event.lngLat` **\[[Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number), [Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)]** The coordinates of the pointer
-    -   `event.features` **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)** The features under the pointer,
+-   `event` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** The mouse event.
+    -   `event.lngLat` **\[[Number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number), [Number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)]** The coordinates of the pointer
+    -   `event.features` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)** The features under the pointer,
         using Mapbox's queryRenderedFeatures API:
         <https://www.mapbox.com/mapbox-gl-js/api/#Map#queryRenderedFeatures>
 
@@ -301,13 +301,13 @@ Type: [Function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Referen
 
 Called when the layer feature is leaved.
 
-Type: [Function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)
+Type: [Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function)
 
 **Parameters**
 
--   `event` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** The mouse event.
-    -   `event.lngLat` **\[[Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number), [Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)]** The coordinates of the pointer
-    -   `event.features` **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)** The features under the pointer,
+-   `event` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** The mouse event.
+    -   `event.lngLat` **\[[Number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number), [Number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)]** The coordinates of the pointer
+    -   `event.features` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)** The features under the pointer,
         using Mapbox's queryRenderedFeatures API:
         <https://www.mapbox.com/mapbox-gl-js/api/#Map#queryRenderedFeatures>
 
