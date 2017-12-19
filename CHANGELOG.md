@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.6.0-beta.2"></a>
+# [0.6.0-beta.2](https://github.com/urbica/react-map-gl/compare/v0.6.0-beta.1...v0.6.0-beta.2) (2017-12-19)
+
+
+### Bug Fixes
+
+* **MapGL:** fix layers ordering issue ([03c9b16](https://github.com/urbica/react-map-gl/commit/03c9b16))
+* **package:** update [@turf](https://github.com/turf)/helpers to version 5.1.0 ([#10](https://github.com/urbica/react-map-gl/issues/10)) ([0e87072](https://github.com/urbica/react-map-gl/commit/0e87072))
+* **package:** update [@turf](https://github.com/turf)/helpers to version 5.1.4 ([#14](https://github.com/urbica/react-map-gl/issues/14)) ([a3edc4d](https://github.com/urbica/react-map-gl/commit/a3edc4d))
+
+
+
 <a name="0.6.0-beta.1"></a>
 # [0.6.0-beta.1](https://github.com/urbica/react-map-gl/compare/v0.6.0-beta.0...v0.6.0-beta.1) (2017-12-01)
 

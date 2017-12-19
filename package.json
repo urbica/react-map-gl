@@ -1,6 +1,6 @@
 {
   "name": "@urbica/react-map-gl",
-  "version": "0.6.0-beta.1",
+  "version": "0.6.0-beta.2",
   "description": "React Component for Mapbox GL JS",
   "author": "Stepan Kuzmin <to.stepan.kuzmin@gmail.com> (stepankuzmin.ru)",
   "license": "MIT",
@@ -27,7 +27,9 @@
     "postpublish": "npm run docs && npm run styleguide:build && npm run styleguide:deploy"
   },
   "jest": {
-    "setupFiles": ["<rootDir>/test/setup.js"]
+    "setupFiles": [
+      "<rootDir>/test/setup.js"
+    ]
   },
   "config": {
     "commitizen": {
