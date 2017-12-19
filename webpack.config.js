@@ -20,7 +20,12 @@ module.exports = {
     react: 'react',
     immutable: 'immutable',
     'react-dom': 'react-dom',
-    'mapbox-gl': 'mapbox-gl',
+    'mapbox-gl': {
+      commonjs: 'mapbox-gl',
+      commonjs2: 'mapbox-gl',
+      amd: 'mapbox-gl',
+      root: 'mapboxgl'
+    },
     'prop-types': 'prop-types'
   },
   module: {

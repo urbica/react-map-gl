@@ -1,10 +1,12 @@
 // @flow
 
-import { Children, PureComponent, createElement } from 'react';
+import { Children, PureComponent, createElement, cloneElement } from 'react';
 import { isImmutable } from 'immutable';
 import type { Node } from 'react';
 
+import Layer from './Layer';
 import mapboxgl from '../utils/mapbox-gl';
+import shallowCompareChildren from '../utils/shallowCompareChildren';
 import type { MapStyle, Viewport } from '../types';
 
 type ViewportChangeEvent = mapboxgl.MapMouseEvent | mapboxgl.MapTouchEvent;
@@ -151,7 +153,8 @@ type Props = {
 };
 
 type State = {
-  loaded: boolean
+  loaded: boolean,
+  children: React$Element<any>[]
 };
 
 class MapGL extends PureComponent<Props, State> {
@@ -202,7 +205,8 @@ class MapGL extends PureComponent<Props, State> {
   }
 
   state = {
-    loaded: false
+    loaded: false,
+    children: Children.toArray(this.props.children).filter(Boolean)
   };
 
   componentDidMount() {
@@ -263,6 +267,10 @@ class MapGL extends PureComponent<Props, State> {
   componentWillReceiveProps(newProps: Props) {
     this._updateMapViewport(newProps);
     this._updateMapStyle(this.props, newProps);
+
+    if (!shallowCompareChildren(this.props.children, newProps.children)) {
+      this._preserveChildren(newProps.children);
+    }
   }
 
   componentWillUnmount() {
@@ -274,6 +282,31 @@ class MapGL extends PureComponent<Props, State> {
   // External apps can access map this way
   getMap() {
     return this._map;
+  }
+
+  _preserveChildren(children: Node): void {
+    const { layerChildren, otherChildren } = Children.toArray(children)
+      .reduce(
+        (acc, child) => {
+          if (child.type === Layer) {
+            acc.layerChildren.push(child);
+          } else {
+            acc.otherChildren.push(child);
+          }
+          return acc;
+        },
+        {
+          layerChildren: [],
+          otherChildren: []
+        }
+      );
+
+    const nextLayerIds = layerChildren.slice(1).map(child => child.props.layer.get('id'));
+
+    const layerChildrenWithBefore = layerChildren.map((child, index) =>
+      cloneElement(child, { before: nextLayerIds[index] }));
+
+    this.setState({ children: layerChildrenWithBefore.concat(otherChildren) });
   }
 
   /**
@@ -351,8 +384,8 @@ class MapGL extends PureComponent<Props, State> {
   }
 
   render() {
-    const { loaded } = this.state;
-    const { children, className, style } = this.props;
+    const { loaded, children } = this.state;
+    const { className, style } = this.props;
 
     return createElement(
       'div',

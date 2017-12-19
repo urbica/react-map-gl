@@ -18,6 +18,9 @@ type Props = {
   /** Mapbox GL Layer as Immutable object */
   layer: MapLayer,
 
+  /** The id of an existing layer to insert the new layer before. */
+  before?: string,
+
   /**
    * Called when the layer is clicked.
    * @callback
@@ -94,8 +97,8 @@ class Layer extends PureComponent<Props> {
   }
 
   componentDidMount() {
-    const { map, layer } = this.props;
-    map.addLayer(layer.toJS());
+    const { map, layer, before } = this.props;
+    map.addLayer(layer.toJS(), before);
 
     map.on('click', this._id, this._onClick);
     map.on('mousemove', this._id, this._onHover);
