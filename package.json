@@ -27,9 +27,7 @@
     "postpublish": "npm run docs && npm run styleguide:build && npm run styleguide:deploy"
   },
   "jest": {
-    "setupFiles": [
-      "<rootDir>/test/setup.js"
-    ]
+    "setupFiles": ["<rootDir>/test/setup.js"]
   },
   "config": {
     "commitizen": {
@@ -37,49 +35,49 @@
     }
   },
   "dependencies": {
-    "@turf/helpers": "5.1.4",
-    "supercluster": "3.0.1"
+    "@turf/helpers": "^5.1.5",
+    "supercluster": "^3.0.1"
   },
   "peerDependencies": {
     "immutable": "4.x",
     "mapbox-gl": ">= 0.40.0 < 1"
   },
   "devDependencies": {
-    "@turf/random": "5.1.4",
-    "babel-core": "6.26.0",
-    "babel-eslint": "8.0.3",
-    "babel-jest": "22.0.1",
-    "babel-loader": "7.1.2",
-    "babel-plugin-transform-class-properties": "6.24.1",
-    "babel-plugin-transform-object-rest-spread": "6.26.0",
-    "babel-preset-env": "1.6.1",
-    "babel-preset-flow": "6.23.0",
-    "babel-preset-react": "6.24.1",
-    "codecov": "3.0.0",
-    "commitizen": "2.9.6",
-    "cz-conventional-changelog": "2.1.0",
-    "documentation": "5.3.4",
-    "enzyme": "3.2.0",
-    "enzyme-adapter-react-16": "1.1.1",
-    "eslint": "4.13.1",
-    "eslint-config-airbnb": "16.1.0",
-    "eslint-plugin-flowtype": "2.40.1",
-    "eslint-plugin-import": "2.8.0",
-    "eslint-plugin-jsx-a11y": "6.0.3",
-    "eslint-plugin-react": "7.5.1",
-    "flow-bin": "0.61.0",
-    "flow-coverage-report": "0.4.0",
-    "gh-pages": "1.1.0",
-    "immutable": "4.0.0-rc.9",
-    "jest": "22.0.0",
-    "mapbox-gl": "0.42.2",
-    "react": "16.2.0",
-    "react-docgen": "2.20.0",
-    "react-dom": "16.2.0",
-    "react-styleguidist": "6.1.0",
-    "react-test-renderer": "16.2.0",
-    "standard-version": "4.2.0",
-    "webpack": "3.10.0",
-    "webpack-bundle-analyzer": "2.9.1"
+    "@turf/random": "^5.1.5",
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.0.3",
+    "babel-jest": "^22.0.3",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-flow": "^6.23.0",
+    "babel-preset-react": "^6.24.1",
+    "codecov": "^3.0.0",
+    "commitizen": "^2.9.6",
+    "cz-conventional-changelog": "^2.1.0",
+    "documentation": "^5.3.5",
+    "enzyme": "^3.2.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "eslint": "^4.13.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-flowtype": "^2.40.1",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.5.1",
+    "flow-bin": "^0.61.0",
+    "flow-coverage-report": "^0.4.0",
+    "gh-pages": "^1.1.0",
+    "immutable": "^4.0.0-rc.9",
+    "jest": "^22.0.3",
+    "mapbox-gl": "^0.42.2",
+    "react": "^16.2.0",
+    "react-docgen": "^2.20.0",
+    "react-dom": "^16.2.0",
+    "react-styleguidist": "^6.1.0",
+    "react-test-renderer": "^16.2.0",
+    "standard-version": "^4.2.0",
+    "webpack": "^3.10.0",
+    "webpack-bundle-analyzer": "^2.9.1"
   }
 }

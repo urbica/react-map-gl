@@ -73,19 +73,9 @@ module.exports = {
   ],
   dangerouslyUpdateWebpackConfig: (webpackConfig, env) => {
     if (env === 'production') {
-      /* eslint-disable no-param-reassign */
-      webpackConfig.plugins[3] = new webpack.optimize.UglifyJsPlugin({
-        compress: {
-          screw_ie8: true,
-          warnings: false,
-          comparisons: false
-        },
-        mangle: false,
-        output: {
-          comments: false,
-          screw_ie8: true
-        }
-      });
+      // remove UglifyJs plugin
+      const UglifyJsPluginIndex = 3;
+      webpackConfig.plugins.splice(UglifyJsPluginIndex, 1);
     }
 
     webpackConfig.module.rules.push({

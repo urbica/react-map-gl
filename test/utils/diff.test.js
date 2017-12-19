@@ -1,4 +1,4 @@
-import { Map, fromJS } from 'immutable';
+import { fromJS } from 'immutable';
 import diff from '../../src/utils/diff';
 
 test('diff#undefined', () => {
