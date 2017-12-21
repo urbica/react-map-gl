@@ -1,6 +1,6 @@
 {
   "name": "@urbica/react-map-gl",
-  "version": "0.6.0-beta.4",
+  "version": "0.6.0-beta.5",
   "description": "React Component for Mapbox GL JS",
   "author": "Stepan Kuzmin <to.stepan.kuzmin@gmail.com> (stepankuzmin.ru)",
   "license": "MIT",
