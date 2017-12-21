@@ -9244,7 +9244,12 @@ var Layer_Layer = function (_PureComponent) {
         layer = _props.layer,
         before = _props.before;
 
-    map.addLayer(layer.toJS(), before);
+
+    if (map.getLayer(before)) {
+      map.addLayer(layer.toJS(), before);
+    } else {
+      map.addLayer(layer.toJS());
+    }
 
     map.on('click', this._id, this._onClick);
     map.on('mousemove', this._id, this._onHover);
@@ -11379,8 +11384,7 @@ var MapGL = function (_PureComponent) {
     var _this = _possibleConstructorReturn(this, _PureComponent.call(this, props));
 
     _this.state = {
-      loaded: false,
-      children: __WEBPACK_IMPORTED_MODULE_0_react__["Children"].toArray(_this.props.children).filter(Boolean)
+      loaded: false
     };
 
 
@@ -11450,7 +11454,6 @@ var MapGL = function (_PureComponent) {
   MapGL.prototype.componentWillReceiveProps = function componentWillReceiveProps(newProps) {
     this._updateMapViewport(newProps);
     this._updateMapStyle(this.props, newProps);
-    this._preserveChildren(newProps.children);
   };
 
   MapGL.prototype.componentWillUnmount = function componentWillUnmount() {
@@ -11464,32 +11467,6 @@ var MapGL = function (_PureComponent) {
 
   MapGL.prototype.getMap = function getMap() {
     return this._map;
-  };
-
-  MapGL.prototype._preserveChildren = function _preserveChildren(children) {
-    var _Children$toArray$red = __WEBPACK_IMPORTED_MODULE_0_react__["Children"].toArray(children).reduce(function (acc, child) {
-      if (child.type === __WEBPACK_IMPORTED_MODULE_2__Layer__["default"]) {
-        acc.layerChildren.push(child);
-      } else {
-        acc.otherChildren.push(child);
-      }
-      return acc;
-    }, {
-      layerChildren: [],
-      otherChildren: []
-    }),
-        layerChildren = _Children$toArray$red.layerChildren,
-        otherChildren = _Children$toArray$red.otherChildren;
-
-    var nextLayerIds = layerChildren.slice(1).map(function (child) {
-      return child.props.layer.get('id');
-    });
-
-    var layerChildrenWithBefore = layerChildren.map(function (child, index) {
-      return Object(__WEBPACK_IMPORTED_MODULE_0_react__["cloneElement"])(child, { before: nextLayerIds[index] });
-    });
-
-    this.setState({ children: layerChildrenWithBefore.concat(otherChildren) });
   };
 
   /**
@@ -11574,13 +11551,35 @@ var MapGL = function (_PureComponent) {
   MapGL.prototype.render = function render() {
     var _this3 = this;
 
-    var _state = this.state,
-        loaded = _state.loaded,
-        children = _state.children;
+    var loaded = this.state.loaded;
     var _props = this.props,
         className = _props.className,
         style = _props.style;
 
+    var _Children$toArray$fil = __WEBPACK_IMPORTED_MODULE_0_react__["Children"].toArray(this.props.children).filter(Boolean).reduce(function (acc, child) {
+      if (child.type === __WEBPACK_IMPORTED_MODULE_2__Layer__["default"]) {
+        acc.layerChildren.push(child);
+      } else {
+        acc.otherChildren.push(child);
+      }
+      return acc;
+    }, {
+      layerChildren: [],
+      otherChildren: []
+    }),
+        layerChildren = _Children$toArray$fil.layerChildren,
+        otherChildren = _Children$toArray$fil.otherChildren;
+
+    var nextLayerIds = layerChildren.slice(1).map(function (child) {
+      return child.props.layer.get('id');
+    });
+
+    var layerChildrenWithBefore = layerChildren.map(function (child, index) {
+      return Object(__WEBPACK_IMPORTED_MODULE_0_react__["cloneElement"])(child, { before: nextLayerIds[index] });
+    });
+
+    // TODO: preserve children order
+    var children = otherChildren.concat(layerChildrenWithBefore);
 
     return Object(__WEBPACK_IMPORTED_MODULE_0_react__["createElement"])('div', {
       ref: function ref(_ref) {
