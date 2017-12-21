@@ -36,6 +36,7 @@ Map.prototype.removeSource = function removeSource(name) {
 };
 
 Map.prototype.addLayer = function addLayer() {};
+Map.prototype.getLayer = function addLayer() {};
 Map.prototype.removeLayer = function removeLayer() {};
 
 Map.prototype.getBounds = () => new LngLatBounds();

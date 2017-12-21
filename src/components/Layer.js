@@ -98,7 +98,12 @@ class Layer extends PureComponent<Props> {
 
   componentDidMount() {
     const { map, layer, before } = this.props;
-    map.addLayer(layer.toJS(), before);
+
+    if (map.getLayer(before)) {
+      map.addLayer(layer.toJS(), before);
+    } else {
+      map.addLayer(layer.toJS());
+    }
 
     map.on('click', this._id, this._onClick);
     map.on('mousemove', this._id, this._onHover);

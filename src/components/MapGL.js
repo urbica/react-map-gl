@@ -152,8 +152,7 @@ type Props = {
 };
 
 type State = {
-  loaded: boolean,
-  children: React$Element<any>[]
+  loaded: boolean
 };
 
 class MapGL extends PureComponent<Props, State> {
@@ -204,8 +203,7 @@ class MapGL extends PureComponent<Props, State> {
   }
 
   state = {
-    loaded: false,
-    children: Children.toArray(this.props.children).filter(Boolean)
+    loaded: false
   };
 
   componentDidMount() {
@@ -266,7 +264,6 @@ class MapGL extends PureComponent<Props, State> {
   componentWillReceiveProps(newProps: Props) {
     this._updateMapViewport(newProps);
     this._updateMapStyle(this.props, newProps);
-    this._preserveChildren(newProps.children);
   }
 
   componentWillUnmount() {
@@ -278,31 +275,6 @@ class MapGL extends PureComponent<Props, State> {
   // External apps can access map this way
   getMap() {
     return this._map;
-  }
-
-  _preserveChildren(children: Node): void {
-    const { layerChildren, otherChildren } = Children.toArray(children)
-      .reduce(
-        (acc, child) => {
-          if (child.type === Layer) {
-            acc.layerChildren.push(child);
-          } else {
-            acc.otherChildren.push(child);
-          }
-          return acc;
-        },
-        {
-          layerChildren: [],
-          otherChildren: []
-        }
-      );
-
-    const nextLayerIds = layerChildren.slice(1).map(child => child.props.layer.get('id'));
-
-    const layerChildrenWithBefore = layerChildren.map((child, index) =>
-      cloneElement(child, { before: nextLayerIds[index] }));
-
-    this.setState({ children: layerChildrenWithBefore.concat(otherChildren) });
   }
 
   /**
@@ -380,8 +352,34 @@ class MapGL extends PureComponent<Props, State> {
   }
 
   render() {
-    const { loaded, children } = this.state;
+    const { loaded } = this.state;
     const { className, style } = this.props;
+
+    const { layerChildren, otherChildren } = Children
+      .toArray(this.props.children)
+      .filter(Boolean)
+      .reduce(
+        (acc, child) => {
+          if (child.type === Layer) {
+            acc.layerChildren.push(child);
+          } else {
+            acc.otherChildren.push(child);
+          }
+          return acc;
+        },
+        {
+          layerChildren: [],
+          otherChildren: []
+        }
+      );
+
+    const nextLayerIds = layerChildren.slice(1).map(child => child.props.layer.get('id'));
+
+    const layerChildrenWithBefore = layerChildren.map((child, index) =>
+      cloneElement(child, { before: nextLayerIds[index] }));
+
+    // TODO: preserve children order
+    const children = otherChildren.concat(layerChildrenWithBefore);
 
     return createElement(
       'div',
