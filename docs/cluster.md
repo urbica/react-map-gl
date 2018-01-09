@@ -24,7 +24,7 @@ const style = {
 
 const Element = <div style={style}/>;
 
-const ClusterElement = ({ point_count_abbreviated }) =>
+const ClusterElement = ({ properties: { point_count_abbreviated } }) =>
   <div style={{...style, background: "#f28a25" }}>{point_count_abbreviated}</div>;
 
 <MapGL

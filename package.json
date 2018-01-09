@@ -38,7 +38,7 @@
   },
   "dependencies": {
     "@turf/helpers": "^5.1.5",
-    "supercluster": "^3.0.1"
+    "supercluster": "^3.0.2"
   },
   "peerDependencies": {
     "immutable": "4.x",
@@ -47,8 +47,8 @@
   "devDependencies": {
     "@turf/random": "^5.1.5",
     "babel-core": "^6.26.0",
-    "babel-eslint": "^8.0.3",
-    "babel-jest": "^22.0.3",
+    "babel-eslint": "^8.2.1",
+    "babel-jest": "^22.0.4",
     "babel-loader": "^7.1.2",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
@@ -59,11 +59,11 @@
     "commitizen": "^2.9.6",
     "cz-conventional-changelog": "^2.1.0",
     "documentation": "^5.3.5",
-    "enzyme": "^3.2.0",
+    "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
-    "eslint": "^4.13.1",
+    "eslint": "^4.15.0",
     "eslint-config-airbnb": "^16.1.0",
-    "eslint-plugin-flowtype": "^2.40.1",
+    "eslint-plugin-flowtype": "^2.41.0",
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.5.1",
@@ -71,15 +71,15 @@
     "flow-coverage-report": "^0.4.0",
     "gh-pages": "^1.1.0",
     "immutable": "^4.0.0-rc.9",
-    "jest": "^22.0.3",
+    "jest": "^22.0.4",
     "mapbox-gl": "^0.43.0",
     "react": "^16.2.0",
     "react-docgen": "^2.20.0",
     "react-dom": "^16.2.0",
     "react-styleguidist": "^6.1.0",
     "react-test-renderer": "^16.2.0",
-    "standard-version": "^4.2.0",
+    "standard-version": "^4.3.0",
     "webpack": "^3.10.0",
-    "webpack-bundle-analyzer": "^2.9.1"
+    "webpack-bundle-analyzer": "^2.9.2"
   }
 }
