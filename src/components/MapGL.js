@@ -141,6 +141,37 @@ type Props = {
   renderWorldCopies?: boolean,
 
   /**
+   * If specified, defines a CSS font-family for locally overriding
+   * generation of glyphs in the 'CJK Unified Ideographs' and
+   * 'Hangul Syllables' ranges. In these ranges, font settings from the
+   * map's style will be ignored, except for font-weight keywords
+   * (light/regular/medium/bold). The purpose of this option is to avoid
+   * bandwidth-intensive glyph server requests.
+   * (see https://www.mapbox.com/mapbox-gl-js/example/local-ideographs )
+   */
+  localIdeographFontFamily?: boolean,
+
+  /**
+   * A callback run before the Map makes a request for an external URL.
+   * The callback can be used to modify the url, set headers, or set the
+   * credentials property for cross-origin requests. Expected to return
+   * an object with a  url property and optionally  headers and
+   * credentials properties.
+   */
+  transformRequest?: (
+    url: string,
+    resourceType: string
+  ) => { url: string, headers?: Object, credentials?: string },
+
+  /**
+   * If true, Resource Timing API information will be collected for
+   * requests made by GeoJSON and Vector Tile web workers (this information
+   * is normally inaccessible from the main Javascript thread). Information
+   * will be returned in a resourceTiming property of relevant data events.
+   */
+  collectResourceTiming?: boolean,
+
+  /**
    * `onViewportChange` callback is fired when the user interacted with the
    * map. The object passed to the callback contains viewport properties
    * such as `longitude`, `latitude`, `zoom` etc.
@@ -189,7 +220,10 @@ class MapGL extends PureComponent<Props, State> {
     renderWorldCopies: true,
     maxTileCacheSize: null,
     onViewportChange: null,
-    onLoad: null
+    onLoad: null,
+    localIdeographFontFamily: null,
+    transformRequest: null,
+    collectResourceTiming: false
   };
 
   constructor(props: Props) {
@@ -242,7 +276,10 @@ class MapGL extends PureComponent<Props, State> {
       doubleClickZoom: this.props.doubleClickZoom,
       trackResize: this.props.trackResize,
       renderWorldCopies: this.props.renderWorldCopies,
-      maxTileCacheSize: this.props.maxTileCacheSize
+      maxTileCacheSize: this.props.maxTileCacheSize,
+      localIdeographFontFamily: this.props.localIdeographFontFamily,
+      transformRequest: this.props.transformRequest,
+      collectResourceTiming: this.props.collectResourceTiming
     });
 
     map.once('load', () => {
@@ -355,8 +392,7 @@ class MapGL extends PureComponent<Props, State> {
     const { loaded } = this.state;
     const { className, style } = this.props;
 
-    const { layerChildren, otherChildren } = Children
-      .toArray(this.props.children)
+    const { layerChildren, otherChildren } = Children.toArray(this.props.children)
       .filter(Boolean)
       .reduce(
         (acc, child) => {
