@@ -1,6 +1,6 @@
 webpackJsonp([0],{
 
-/***/ 309:
+/***/ 311:
 /***/ (function(module, exports, __webpack_require__) {
 
 // CodeMirror, copyright (c) by Marijn Haverbeke and others
@@ -9672,7 +9672,7 @@ return CodeMirror$1;
 
 /***/ }),
 
-/***/ 310:
+/***/ 312:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9692,7 +9692,7 @@ var React = __webpack_require__(0);
 var cm;
 var SERVER_RENDERED = typeof navigator === 'undefined';
 if (!SERVER_RENDERED) {
-    cm = __webpack_require__(309);
+    cm = __webpack_require__(311);
 }
 var Shared = (function () {
     function Shared(editor, props) {
@@ -10223,7 +10223,7 @@ exports.UnControlled = UnControlled;
 
 /***/ }),
 
-/***/ 311:
+/***/ 313:
 /***/ (function(module, exports, __webpack_require__) {
 
 // CodeMirror, copyright (c) by Marijn Haverbeke and others
@@ -10231,7 +10231,7 @@ exports.UnControlled = UnControlled;
 
 (function(mod) {
   if (true) // CommonJS
-    mod(__webpack_require__(309), __webpack_require__(312), __webpack_require__(313))
+    mod(__webpack_require__(311), __webpack_require__(314), __webpack_require__(315))
   else if (typeof define == "function" && define.amd) // AMD
     define(["../../lib/codemirror", "../xml/xml", "../javascript/javascript"], mod)
   else // Plain browser env
@@ -10378,7 +10378,7 @@ exports.UnControlled = UnControlled;
 
 /***/ }),
 
-/***/ 312:
+/***/ 314:
 /***/ (function(module, exports, __webpack_require__) {
 
 // CodeMirror, copyright (c) by Marijn Haverbeke and others
@@ -10386,7 +10386,7 @@ exports.UnControlled = UnControlled;
 
 (function(mod) {
   if (true) // CommonJS
-    mod(__webpack_require__(309));
+    mod(__webpack_require__(311));
   else if (typeof define == "function" && define.amd) // AMD
     define(["../../lib/codemirror"], mod);
   else // Plain browser env
@@ -10779,7 +10779,7 @@ if (!CodeMirror.mimeModes.hasOwnProperty("text/html"))
 
 /***/ }),
 
-/***/ 313:
+/***/ 315:
 /***/ (function(module, exports, __webpack_require__) {
 
 // CodeMirror, copyright (c) by Marijn Haverbeke and others
@@ -10787,7 +10787,7 @@ if (!CodeMirror.mimeModes.hasOwnProperty("text/html"))
 
 (function(mod) {
   if (true) // CommonJS
-    mod(__webpack_require__(309));
+    mod(__webpack_require__(311));
   else if (typeof define == "function" && define.amd) // AMD
     define(["../../lib/codemirror"], mod);
   else // Plain browser env
@@ -11661,13 +11661,13 @@ CodeMirror.defineMIME("application/typescript", { name: "javascript", typescript
 
 /***/ }),
 
-/***/ 314:
+/***/ 316:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(315);
+var content = __webpack_require__(317);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -11693,7 +11693,7 @@ if(false) {
 
 /***/ }),
 
-/***/ 315:
+/***/ 317:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(61)(undefined);
@@ -11708,13 +11708,13 @@ exports.push([module.i, "/* BASICS */\n\n.CodeMirror {\n  /* Set height, width, 
 
 /***/ }),
 
-/***/ 316:
+/***/ 318:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(317);
+var content = __webpack_require__(319);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -11740,7 +11740,7 @@ if(false) {
 
 /***/ }),
 
-/***/ 317:
+/***/ 319:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(61)(undefined);
@@ -11755,7 +11755,7 @@ exports.push([module.i, "/*\n\n    Name:       Base16 Default Light\n    Author:
 
 /***/ }),
 
-/***/ 318:
+/***/ 320:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -11766,12 +11766,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_prop_types__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_lodash_debounce__ = __webpack_require__(104);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_lodash_debounce___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_lodash_debounce__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_codemirror2__ = __webpack_require__(310);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_codemirror2__ = __webpack_require__(312);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_codemirror2___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_react_codemirror2__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_codemirror_mode_jsx_jsx__ = __webpack_require__(311);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_codemirror_mode_jsx_jsx__ = __webpack_require__(313);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_codemirror_mode_jsx_jsx___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_codemirror_mode_jsx_jsx__);
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -11789,18 +11787,9 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 // We’re explicitly specifying Webpack loaders here so we could skip specifying them in Webpack configuration.
 // That way we could avoid clashes between our loaders and user loaders.
 // eslint-disable-next-line import/no-unresolved
-__webpack_require__(314);
-// eslint-disable-next-line import/no-unresolved
 __webpack_require__(316);
-
-var codemirrorOptions = {
-	mode: 'jsx',
-	lineNumbers: false,
-	lineWrapping: true,
-	smartIndent: false,
-	matchBrackets: true,
-	viewportMargin: Infinity
-};
+// eslint-disable-next-line import/no-unresolved
+__webpack_require__(318);
 
 var UPDATE_DELAY = 10;
 
@@ -11830,12 +11819,9 @@ var Editor = function (_Component) {
 		key: 'render',
 		value: function render() {
 			var code = this.props.code;
-			var highlightTheme = this.context.config.highlightTheme;
+			var editorConfig = this.context.config.editorConfig;
 
-			var options = _extends({}, codemirrorOptions, {
-				theme: highlightTheme
-			});
-			return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_react_codemirror2__["UnControlled"], { value: code, onChange: this.handleChange, options: options });
+			return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_react_codemirror2__["UnControlled"], { value: code, onChange: this.handleChange, options: editorConfig });
 		}
 	}]);
 
