@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.6.0-beta.6"></a>
+# [0.6.0-beta.6](https://github.com/urbica/react-map-gl/compare/v0.6.0-beta.5...v0.6.0-beta.6) (2018-02-14)
+
+
+### Bug Fixes
+
+* **package:** update [@turf](https://github.com/turf)/helpers to version 6.0.0 ([#30](https://github.com/urbica/react-map-gl/issues/30)) ([7c93762](https://github.com/urbica/react-map-gl/commit/7c93762))
+* add localIdeographFontFamily, transformRequest and collectResourceTiming props ([25d7b0c](https://github.com/urbica/react-map-gl/commit/25d7b0c))
+
+
+
 <a name="0.6.0-beta.5"></a>
 # [0.6.0-beta.5](https://github.com/urbica/react-map-gl/compare/v0.6.0-beta.4...v0.6.0-beta.5) (2017-12-21)
 
