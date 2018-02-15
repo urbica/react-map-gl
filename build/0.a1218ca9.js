@@ -1,6 +1,6 @@
 webpackJsonp([0],{
 
-/***/ 311:
+/***/ 310:
 /***/ (function(module, exports, __webpack_require__) {
 
 // CodeMirror, copyright (c) by Marijn Haverbeke and others
@@ -9672,7 +9672,7 @@ return CodeMirror$1;
 
 /***/ }),
 
-/***/ 312:
+/***/ 311:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9692,7 +9692,7 @@ var React = __webpack_require__(0);
 var cm;
 var SERVER_RENDERED = typeof navigator === 'undefined';
 if (!SERVER_RENDERED) {
-    cm = __webpack_require__(311);
+    cm = __webpack_require__(310);
 }
 var Shared = (function () {
     function Shared(editor, props) {
@@ -10223,7 +10223,7 @@ exports.UnControlled = UnControlled;
 
 /***/ }),
 
-/***/ 313:
+/***/ 312:
 /***/ (function(module, exports, __webpack_require__) {
 
 // CodeMirror, copyright (c) by Marijn Haverbeke and others
@@ -10231,7 +10231,7 @@ exports.UnControlled = UnControlled;
 
 (function(mod) {
   if (true) // CommonJS
-    mod(__webpack_require__(311), __webpack_require__(314), __webpack_require__(315))
+    mod(__webpack_require__(310), __webpack_require__(313), __webpack_require__(314))
   else if (typeof define == "function" && define.amd) // AMD
     define(["../../lib/codemirror", "../xml/xml", "../javascript/javascript"], mod)
   else // Plain browser env
@@ -10378,7 +10378,7 @@ exports.UnControlled = UnControlled;
 
 /***/ }),
 
-/***/ 314:
+/***/ 313:
 /***/ (function(module, exports, __webpack_require__) {
 
 // CodeMirror, copyright (c) by Marijn Haverbeke and others
@@ -10386,7 +10386,7 @@ exports.UnControlled = UnControlled;
 
 (function(mod) {
   if (true) // CommonJS
-    mod(__webpack_require__(311));
+    mod(__webpack_require__(310));
   else if (typeof define == "function" && define.amd) // AMD
     define(["../../lib/codemirror"], mod);
   else // Plain browser env
@@ -10779,7 +10779,7 @@ if (!CodeMirror.mimeModes.hasOwnProperty("text/html"))
 
 /***/ }),
 
-/***/ 315:
+/***/ 314:
 /***/ (function(module, exports, __webpack_require__) {
 
 // CodeMirror, copyright (c) by Marijn Haverbeke and others
@@ -10787,7 +10787,7 @@ if (!CodeMirror.mimeModes.hasOwnProperty("text/html"))
 
 (function(mod) {
   if (true) // CommonJS
-    mod(__webpack_require__(311));
+    mod(__webpack_require__(310));
   else if (typeof define == "function" && define.amd) // AMD
     define(["../../lib/codemirror"], mod);
   else // Plain browser env
@@ -11661,13 +11661,13 @@ CodeMirror.defineMIME("application/typescript", { name: "javascript", typescript
 
 /***/ }),
 
-/***/ 316:
+/***/ 315:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(317);
+var content = __webpack_require__(316);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -11675,7 +11675,7 @@ var transform;
 var options = {"hmr":true}
 options.transform = transform
 // add the styles to the DOM
-var update = __webpack_require__(62)(content, options);
+var update = __webpack_require__(63)(content, options);
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -11693,10 +11693,10 @@ if(false) {
 
 /***/ }),
 
-/***/ 317:
+/***/ 316:
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(61)(undefined);
+exports = module.exports = __webpack_require__(62)(undefined);
 // imports
 
 
@@ -11708,13 +11708,13 @@ exports.push([module.i, "/* BASICS */\n\n.CodeMirror {\n  /* Set height, width, 
 
 /***/ }),
 
-/***/ 318:
+/***/ 317:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(319);
+var content = __webpack_require__(318);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -11722,7 +11722,7 @@ var transform;
 var options = {"hmr":true}
 options.transform = transform
 // add the styles to the DOM
-var update = __webpack_require__(62)(content, options);
+var update = __webpack_require__(63)(content, options);
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -11740,10 +11740,10 @@ if(false) {
 
 /***/ }),
 
-/***/ 319:
+/***/ 318:
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(61)(undefined);
+exports = module.exports = __webpack_require__(62)(undefined);
 // imports
 
 
@@ -11755,7 +11755,7 @@ exports.push([module.i, "/*\n\n    Name:       Base16 Default Light\n    Author:
 
 /***/ }),
 
-/***/ 320:
+/***/ 319:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -11764,11 +11764,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_prop_types__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_lodash_debounce__ = __webpack_require__(104);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_lodash_debounce__ = __webpack_require__(105);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_lodash_debounce___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_lodash_debounce__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_codemirror2__ = __webpack_require__(312);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_codemirror2__ = __webpack_require__(311);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_codemirror2___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_react_codemirror2__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_codemirror_mode_jsx_jsx__ = __webpack_require__(313);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_codemirror_mode_jsx_jsx__ = __webpack_require__(312);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_codemirror_mode_jsx_jsx___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_codemirror_mode_jsx_jsx__);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -11787,9 +11787,9 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 // We’re explicitly specifying Webpack loaders here so we could skip specifying them in Webpack configuration.
 // That way we could avoid clashes between our loaders and user loaders.
 // eslint-disable-next-line import/no-unresolved
-__webpack_require__(316);
+__webpack_require__(315);
 // eslint-disable-next-line import/no-unresolved
-__webpack_require__(318);
+__webpack_require__(317);
 
 var UPDATE_DELAY = 10;
 
