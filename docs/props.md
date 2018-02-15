@@ -36,6 +36,9 @@
 -   [trackResize](#trackresize)
 -   [maxTileCacheSize](#maxtilecachesize)
 -   [renderWorldCopies](#renderworldcopies)
+-   [localIdeographFontFamily](#localideographfontfamily)
+-   [transformRequest](#transformrequest)
+-   [collectResourceTiming](#collectresourcetiming)
 -   [onViewportChange](#onviewportchange)
 -   [onLoad](#onload)
 -   [map](#map)
@@ -212,6 +215,31 @@ the current viewport.
 
 If `true`, multiple copies of the world
 will be rendered, when zoomed out
+
+## localIdeographFontFamily
+
+If specified, defines a CSS font-family for locally overriding
+generation of glyphs in the 'CJK Unified Ideographs' and
+'Hangul Syllables' ranges. In these ranges, font settings from the
+map's style will be ignored, except for font-weight keywords
+(light/regular/medium/bold). The purpose of this option is to avoid
+bandwidth-intensive glyph server requests.
+(see <https://www.mapbox.com/mapbox-gl-js/example/local-ideographs> )
+
+## transformRequest
+
+A callback run before the Map makes a request for an external URL.
+The callback can be used to modify the url, set headers, or set the
+credentials property for cross-origin requests. Expected to return
+an object with a  url property and optionally  headers and
+credentials properties.
+
+## collectResourceTiming
+
+If true, Resource Timing API information will be collected for
+requests made by GeoJSON and Vector Tile web workers (this information
+is normally inaccessible from the main Javascript thread). Information
+will be returned in a resourceTiming property of relevant data events.
 
 ## onViewportChange
 

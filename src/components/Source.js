@@ -31,11 +31,19 @@ class Source extends PureComponent<Props> {
 
     if (!newSource.equals(prevSource)) {
       const { map, id } = this.props;
+      const type = newSource.get('type');
 
-      if (newSource.get('type') === 'geojson') {
+      if (type === 'geojson') {
         const newData = newSource.get('data');
         if (isImmutable(newData) && !newData.equals(prevSource.get('data'))) {
           map.getSource(id).setData(newData.toJS());
+        }
+      } else if (type === 'vector') {
+        const newStyle = map.getStyle();
+        const tiles = newSource.get('tiles');
+        if (isImmutable(tiles) && !tiles.equals(prevSource.get('tiles'))) {
+          newStyle.sources[id].tiles = tiles.toJS();
+          map.setStyle(newStyle);
         }
       } else {
         map.removeSource(id);
@@ -50,7 +58,16 @@ class Source extends PureComponent<Props> {
       return;
     }
 
-    map.removeSource(id);
+    if (map.getSource(id)) {
+      const { layers } = map.getStyle();
+      if (layers) {
+        layers
+          .filter(layer => layer.source === id)
+          .forEach(layer => map.removeLayer(layer.id));
+      }
+
+      map.removeSource(id);
+    }
   }
 
   render() {
