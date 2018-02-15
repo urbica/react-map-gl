@@ -2,6 +2,36 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.6.0-beta.8"></a>
+# [0.6.0-beta.8](https://github.com/urbica/react-map-gl/compare/v0.6.0-beta.6...v0.6.0-beta.8) (2018-02-15)
+
+
+### Bug Fixes
+
+* **Source:** remove dependent layers on source removal and support vector source tiles update ([99d3390](https://github.com/urbica/react-map-gl/commit/99d3390))
+
+
+### Features
+
+* switch to next React Context API ([6c26667](https://github.com/urbica/react-map-gl/commit/6c26667))
+
+
+
+<a name="0.6.0-beta.7"></a>
+# [0.6.0-beta.7](https://github.com/urbica/react-map-gl/compare/v0.6.0-beta.6...v0.6.0-beta.7) (2018-02-15)
+
+
+### Bug Fixes
+
+* **Source:** remove dependent layers on source removal and support vector source tiles update ([99d3390](https://github.com/urbica/react-map-gl/commit/99d3390))
+
+
+### Features
+
+* switch to next React Context API ([6c26667](https://github.com/urbica/react-map-gl/commit/6c26667))
+
+
+
 <a name="0.6.0-beta.6"></a>
 # [0.6.0-beta.6](https://github.com/urbica/react-map-gl/compare/v0.6.0-beta.5...v0.6.0-beta.6) (2018-02-14)
 
