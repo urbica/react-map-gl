@@ -21,15 +21,18 @@
     "styleguide": "styleguidist server",
     "styleguide:build": "styleguidist build",
     "styleguide:deploy": "gh-pages -m 'auto commit [ci skip]' -d styleguide",
-    "commit": "git-cz",
+    "format": "prettier-eslint --write \"src/**/*.js\"",
+    "precommit": "lint-staged",
+    "cz": "git-cz",
     "release": "npm run build && standard-version",
-    "prepublish": "npm run build",
+    "prepublishOnly": "npm run build",
     "postpublish": "npm run docs && npm run styleguide:build && npm run styleguide:deploy"
   },
   "jest": {
-    "setupFiles": [
-      "<rootDir>/test/setup.js"
-    ]
+    "setupFiles": ["<rootDir>/test/setup.js"]
+  },
+  "lint-staged": {
+    "*.{js,json,css,md}": ["prettier-eslint --write", "git add"]
   },
   "config": {
     "commitizen": {
@@ -70,9 +73,14 @@
     "flow-bin": "^0.65.0",
     "flow-coverage-report": "^0.4.1",
     "gh-pages": "^1.1.0",
+    "husky": "^0.14.3",
     "immutable": "^4.0.0-rc.9",
     "jest": "^22.3.0",
+    "lint-staged": "^6.1.0",
     "mapbox-gl": "^0.44.1",
+    "prettier": "^1.10.2",
+    "prettier-eslint": "^8.8.1",
+    "prettier-eslint-cli": "^4.7.1",
     "react": "^16.2.0",
     "react-docgen": "^2.20.0",
     "react-dom": "^16.2.0",
