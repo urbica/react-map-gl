@@ -1,17 +1,15 @@
 // @flow
 
-import { PureComponent } from 'react';
+import { PureComponent, createElement } from 'react';
 import { is, isImmutable } from 'immutable';
 
-import mapboxgl from '../utils/mapbox-gl';
+import MapContext from './MapContext';
 import diff from '../utils/diff';
+import mapboxgl from '../utils/mapbox-gl';
 import queryRenderedFeatures from '../utils/queryRenderedFeatures';
 import type { MapLayer } from '../types';
 
 type Props = {
-  /** Mapbox GL JS map instance */
-  map: mapboxgl.Map,
-
   /** Mapbox GL Layer id */
   id?: string,
 
@@ -74,6 +72,7 @@ type Props = {
 
 class Layer extends PureComponent<Props> {
   _id: string;
+  _map: mapboxgl.Map;
   _onClick: (event: mapboxgl.MapEvent) => void;
   _onHover: (event: mapboxgl.MapEvent) => void;
   _onEnter: (event: mapboxgl.MapEvent) => void;
@@ -97,18 +96,18 @@ class Layer extends PureComponent<Props> {
   }
 
   componentDidMount() {
-    const { map, layer, before } = this.props;
+    const { layer, before } = this.props;
 
-    if (map.getLayer(before)) {
-      map.addLayer(layer.toJS(), before);
+    if (this._map.getLayer(before)) {
+      this._map.addLayer(layer.toJS(), before);
     } else {
-      map.addLayer(layer.toJS());
+      this._map.addLayer(layer.toJS());
     }
 
-    map.on('click', this._id, this._onClick);
-    map.on('mousemove', this._id, this._onHover);
-    map.on('mouseenter', this._id, this._onEnter);
-    map.on('mouseleave', this._id, this._onLeave);
+    this._map.on('click', this._id, this._onClick);
+    this._map.on('mousemove', this._id, this._onHover);
+    this._map.on('mouseenter', this._id, this._onEnter);
+    this._map.on('mouseleave', this._id, this._onLeave);
   }
 
   componentWillReceiveProps(newProps: Props) {
@@ -116,14 +115,12 @@ class Layer extends PureComponent<Props> {
     const prevLayer = this.props.layer;
 
     if (!is(newLayer, prevLayer)) {
-      const { map } = newProps;
-
       const newPaint = newLayer.get('paint');
       const prevPaint = prevLayer.get('paint');
       if (!is(newPaint, prevPaint)) {
         diff(newPaint, prevPaint).forEach(([key, value]) => {
           const newValue = isImmutable(value) ? value.toJS() : value;
-          map.setPaintProperty(this._id, key, newValue);
+          this._map.setPaintProperty(this._id, key, newValue);
         });
       }
 
@@ -132,42 +129,41 @@ class Layer extends PureComponent<Props> {
       if (!is(newLayout, prevLayout)) {
         diff(newLayout, prevLayout).forEach(([key, value]) => {
           const newValue = isImmutable(value) ? value.toJS() : value;
-          map.setLayoutProperty(this._id, key, newValue);
+          this._map.setLayoutProperty(this._id, key, newValue);
         });
       }
 
       const newFilter = newLayer.get('filter');
       const prevFilter = prevLayer.get('filter');
       if (!newFilter) {
-        map.setFilter(this._id, undefined);
+        this._map.setFilter(this._id, undefined);
       } else if (!is(newFilter, prevFilter)) {
-        map.setFilter(this._id, newFilter.toArray());
+        this._map.setFilter(this._id, newFilter.toArray());
       }
     }
   }
 
   componentWillUnmount() {
-    const { map } = this.props;
-    if (!map || !map.getStyle()) {
+    if (!this._map || !this._map.getStyle()) {
       return;
     }
 
-    if (map.getLayer(this._id)) {
-      map.off('click', this._id, this._onClick);
-      map.off('mousemove', this._id, this._onHover);
-      map.off('mouseenter', this._id, this._onEnter);
-      map.off('mouseleave', this._id, this._onLeave);
-      map.removeLayer(this._id);
+    if (this._map.getLayer(this._id)) {
+      this._map.off('click', this._id, this._onClick);
+      this._map.off('mousemove', this._id, this._onHover);
+      this._map.off('mouseenter', this._id, this._onEnter);
+      this._map.off('mouseleave', this._id, this._onLeave);
+      this._map.removeLayer(this._id);
     }
   }
 
   _onClick(event: mapboxgl.MapEvent): void {
     if (this.props.onClick) {
-      const { map, radius } = this.props;
+      const { radius } = this.props;
       const position = [event.point.x, event.point.y];
 
       /* eslint-disable no-param-reassign */
-      event.features = queryRenderedFeatures(map, this._id, position, radius);
+      event.features = queryRenderedFeatures(this._map, this._id, position, radius);
       /* eslint-enable no-param-reassign */
 
       this.props.onClick(event);
@@ -176,11 +172,11 @@ class Layer extends PureComponent<Props> {
 
   _onHover(event: mapboxgl.MapEvent): void {
     if (this.props.onHover) {
-      const { map, radius } = this.props;
+      const { radius } = this.props;
       const position = [event.point.x, event.point.y];
 
       /* eslint-disable no-param-reassign */
-      event.features = queryRenderedFeatures(map, this._id, position, radius);
+      event.features = queryRenderedFeatures(this._map, this._id, position, radius);
       /* eslint-enable no-param-reassign */
 
       this.props.onHover(event);
@@ -189,11 +185,11 @@ class Layer extends PureComponent<Props> {
 
   _onEnter(event: mapboxgl.MapEvent): void {
     if (this.props.onEnter) {
-      const { map, radius } = this.props;
+      const { radius } = this.props;
       const position = [event.point.x, event.point.y];
 
       /* eslint-disable no-param-reassign */
-      event.features = queryRenderedFeatures(map, this._id, position, radius);
+      event.features = queryRenderedFeatures(this._map, this._id, position, radius);
       /* eslint-enable no-param-reassign */
 
       this.props.onEnter(event);
@@ -202,11 +198,11 @@ class Layer extends PureComponent<Props> {
 
   _onLeave(event: mapboxgl.MapEvent): void {
     if (this.props.onLeave) {
-      const { map, radius } = this.props;
+      const { radius } = this.props;
       const position = [event.point.x, event.point.y];
 
       /* eslint-disable no-param-reassign */
-      event.features = queryRenderedFeatures(map, this._id, position, radius);
+      event.features = queryRenderedFeatures(this._map, this._id, position, radius);
       /* eslint-enable no-param-reassign */
 
       this.props.onLeave(event);
@@ -214,7 +210,10 @@ class Layer extends PureComponent<Props> {
   }
 
   render() {
-    return null;
+    return createElement(MapContext.Consumer, {}, (map) => {
+      this._map = map;
+      return null;
+    });
   }
 }
 

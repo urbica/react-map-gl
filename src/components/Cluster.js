@@ -5,14 +5,12 @@ import { point } from '@turf/helpers';
 import { Children, PureComponent, createElement } from 'react';
 import type { Node, Component } from 'react';
 
-import mapboxgl from '../utils/mapbox-gl';
 import Marker from './Marker';
+import mapboxgl from '../utils/mapbox-gl';
+import MapContext from './MapContext';
 import shallowCompareChildren from '../utils/shallowCompareChildren';
 
 type Props = {
-  /** Mapbox GL JS map instance */
-  map: mapboxgl.Map,
-
   /** Minimum zoom level at which clusters are generated */
   minZoom: number,
 
@@ -48,6 +46,7 @@ type State = {
 };
 
 class Cluster extends PureComponent<Props, State> {
+  _map: mapboxgl.Map;
   _cluster: Object;
   _recalculate: () => void;
   _createCluster: (props: Props) => void;
@@ -74,12 +73,10 @@ class Cluster extends PureComponent<Props, State> {
   }
 
   componentDidMount() {
-    const { map } = this.props;
-
     this._createCluster(this.props);
     this._recalculate();
 
-    map.on('moveend', this._recalculate);
+    this._map.on('moveend', this._recalculate);
   }
 
   componentWillReceiveProps(newProps: Props) {
@@ -119,9 +116,8 @@ class Cluster extends PureComponent<Props, State> {
   }
 
   _recalculate() {
-    const { map } = this.props;
-    const zoom = map.getZoom();
-    const bounds = map.getBounds().toArray();
+    const zoom = this._map.getZoom();
+    const bounds = this._map.getBounds().toArray();
     const bbox = bounds[0].concat(bounds[1]);
 
     const clusters = this._cluster.getClusters(bbox, Math.floor(zoom));
@@ -129,14 +125,12 @@ class Cluster extends PureComponent<Props, State> {
   }
 
   render() {
-    const { clusters } = this.state;
-    const { map, element } = this.props;
+    const { element } = this.props;
 
-    return clusters.map((cluster) => {
+    const clusters = this.state.clusters.map((cluster) => {
       if (cluster.properties.cluster) {
         const [longitude, latitude] = cluster.geometry.coordinates;
         return createElement(Marker, {
-          map,
           longitude,
           latitude,
           element: createElement(element, cluster),
@@ -144,7 +138,12 @@ class Cluster extends PureComponent<Props, State> {
         });
       }
       const { type, key, props } = cluster.properties;
-      return createElement(type, { map, key, ...props });
+      return createElement(type, { key, ...props });
+    });
+
+    return createElement(MapContext.Consumer, {}, (map) => {
+      this._map = map;
+      return clusters;
     });
   }
 }

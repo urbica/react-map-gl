@@ -5,10 +5,9 @@ import { isImmutable } from 'immutable';
 import type { Node } from 'react';
 
 import Layer from './Layer';
+import MapContext from './MapContext';
 import mapboxgl from '../utils/mapbox-gl';
-import type { MapStyle, Viewport } from '../types';
-
-type ViewportChangeEvent = mapboxgl.MapMouseEvent | mapboxgl.MapTouchEvent;
+import type { MapStyle, Viewport, ViewportChangeEvent } from '../types';
 
 type Props = {
   /** container className */
@@ -418,15 +417,17 @@ class MapGL extends PureComponent<Props, State> {
     const children = otherChildren.concat(layerChildrenWithBefore);
 
     return createElement(
-      'div',
-      {
-        ref: ref => (this._container = ref),
-        style,
-        className
-      },
-      loaded &&
-        Children.map(children, ({ type, props }) =>
-          createElement(type, { map: this._map, ...props }))
+      MapContext.Provider,
+      { value: this._map },
+      createElement(
+        'div',
+        {
+          ref: ref => (this._container = ref),
+          style,
+          className
+        },
+        loaded && Children.map(children, ({ type, props }) => createElement(type, props))
+      )
     );
   }
 }

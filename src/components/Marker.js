@@ -1,15 +1,13 @@
 // @flow
 
-import ReactDOM from 'react-dom';
-import { PureComponent } from 'react';
+import { render } from 'react-dom';
+import { PureComponent, createElement } from 'react';
 import type { Element } from 'react';
 
+import MapContext from './MapContext';
 import mapboxgl from '../utils/mapbox-gl';
 
 type Props = {
-  /** Mapbox GL JS map instance */
-  map: mapboxgl.Map,
-
   /** ReactDOM element to use as a marker */
   element: Element<any>,
 
@@ -27,6 +25,7 @@ type Props = {
 };
 
 class Marker extends PureComponent<Props> {
+  _map: mapboxgl.Map;
   _marker: mapboxgl.Marker;
 
   static displayName = 'Marker';
@@ -37,14 +36,14 @@ class Marker extends PureComponent<Props> {
 
   componentDidMount() {
     const {
-      map, element, longitude, latitude, offset
+      element, longitude, latitude, offset
     } = this.props;
 
     const div = document.createElement('div');
-    ReactDOM.render(element, div);
+    render(element, div);
 
     const marker = new mapboxgl.Marker(div, { offset });
-    marker.setLngLat([longitude, latitude]).addTo(map);
+    marker.setLngLat([longitude, latitude]).addTo(this._map);
     this._marker = marker;
   }
 
@@ -59,10 +58,10 @@ class Marker extends PureComponent<Props> {
   }
 
   componentWillUnmount() {
-    const { map } = this.props;
-    if (!map || !map.getStyle()) {
+    if (!this._map || !this._map.getStyle()) {
       return;
     }
+
     this._marker.remove();
   }
 
@@ -72,7 +71,10 @@ class Marker extends PureComponent<Props> {
   }
 
   render() {
-    return null;
+    return createElement(MapContext.Consumer, {}, (map) => {
+      this._map = map;
+      return null;
+    });
   }
 }
 

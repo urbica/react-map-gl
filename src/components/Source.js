@@ -1,15 +1,13 @@
 // @flow
 
-import { PureComponent } from 'react';
+import { PureComponent, createElement } from 'react';
 import { isImmutable } from 'immutable';
 
+import MapContext from './MapContext';
 import mapboxgl from '../utils/mapbox-gl';
 import type { MapSource } from '../types';
 
 type Props = {
-  /** Mapbox GL JS map instance */
-  map: mapboxgl.Map,
-
   /** Mapbox GL Source id */
   id: string,
 
@@ -18,11 +16,12 @@ type Props = {
 };
 
 class Source extends PureComponent<Props> {
+  _map: mapboxgl.Map;
   static displayName = 'Source';
 
   componentDidMount() {
-    const { map, id, source } = this.props;
-    map.addSource(id, source.toJS());
+    const { id, source } = this.props;
+    this._map.addSource(id, source.toJS());
   }
 
   componentWillReceiveProps(newProps: Props) {
@@ -30,48 +29,51 @@ class Source extends PureComponent<Props> {
     const prevSource = this.props.source;
 
     if (!newSource.equals(prevSource)) {
-      const { map, id } = this.props;
+      const { id } = this.props;
       const type = newSource.get('type');
 
       if (type === 'geojson') {
         const newData = newSource.get('data');
         if (isImmutable(newData) && !newData.equals(prevSource.get('data'))) {
-          map.getSource(id).setData(newData.toJS());
+          this._map.getSource(id).setData(newData.toJS());
         }
       } else if (type === 'vector') {
-        const newStyle = map.getStyle();
+        const newStyle = this._map.getStyle();
         const tiles = newSource.get('tiles');
         if (isImmutable(tiles) && !tiles.equals(prevSource.get('tiles'))) {
           newStyle.sources[id].tiles = tiles.toJS();
-          map.setStyle(newStyle);
+          this._map.setStyle(newStyle);
         }
       } else {
-        map.removeSource(id);
-        map.addSource(id, newSource.toJS());
+        this._map.removeSource(id);
+        this._map.addSource(id, newSource.toJS());
       }
     }
   }
 
   componentWillUnmount() {
-    const { map, id } = this.props;
-    if (!map || !map.getStyle()) {
+    const { id } = this.props;
+    if (!this._map || !this._map.getStyle()) {
       return;
     }
 
-    if (map.getSource(id)) {
-      const { layers } = map.getStyle();
+    if (this._map.getSource(id)) {
+      const { layers } = this._map.getStyle();
       if (layers) {
         layers
           .filter(layer => layer.source === id)
-          .forEach(layer => map.removeLayer(layer.id));
+          .forEach(layer => this._map.removeLayer(layer.id));
       }
 
-      map.removeSource(id);
+      this._map.removeSource(id);
     }
   }
 
   render() {
-    return null;
+    return createElement(MapContext.Consumer, {}, (map) => {
+      this._map = map;
+      return null;
+    });
   }
 }
 

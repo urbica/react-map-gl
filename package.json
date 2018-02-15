@@ -45,7 +45,9 @@
   },
   "peerDependencies": {
     "immutable": "4.x",
-    "mapbox-gl": ">= 0.40.0 < 1"
+    "mapbox-gl": ">= 0.40.0 < 1",
+    "react": "^16.3.0-alpha.1",
+    "react-dom": "^16.3.0-alpha.1"
   },
   "devDependencies": {
     "@turf/random": "^5.1.5",
@@ -81,10 +83,10 @@
     "prettier": "^1.10.2",
     "prettier-eslint": "^8.8.1",
     "prettier-eslint-cli": "^4.7.1",
-    "react": "^16.2.0",
+    "react": "^16.3.0-alpha.1",
     "react-docgen": "^2.20.0",
-    "react-dom": "^16.2.0",
-    "react-styleguidist": "^6.2.4",
+    "react-dom": "^16.3.0-alpha.1",
+    "react-styleguidist": "^6.2.5",
     "react-test-renderer": "^16.2.0",
     "standard-version": "^4.3.0",
     "webpack": "^3.11.0",

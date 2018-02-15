@@ -3,7 +3,7 @@ const webpack = require('webpack');
 
 module.exports = {
   title: 'Urbica React Map GL',
-  showCode: true,
+  showCode: false,
   showUsage: true,
   require: [path.resolve(__dirname, 'styleguide.setup.js')],
   sections: [

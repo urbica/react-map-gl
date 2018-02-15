@@ -1,6 +1,7 @@
 // @flow
 
 import { Map } from 'immutable';
+import mapboxgl from './utils/mapbox-gl';
 
 export type MapStyle = Map<string, any>;
 
@@ -15,3 +16,5 @@ export type Viewport = {
   pitch?: number,
   bearing?: number
 };
+
+export type ViewportChangeEvent = mapboxgl.MapMouseEvent | mapboxgl.MapTouchEvent;
