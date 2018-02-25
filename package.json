@@ -94,7 +94,7 @@
     "react-styleguidist": "^6.2.5",
     "react-test-renderer": "^16.2.0",
     "standard-version": "^4.3.0",
-    "webpack": "^3.11.0",
+    "webpack": "^4.0.0",
     "webpack-bundle-analyzer": "^2.10.0"
   }
 }
