@@ -83,7 +83,7 @@
     "husky": "^0.14.3",
     "immutable": "^4.0.0-rc.9",
     "jest": "^22.3.0",
-    "lint-staged": "^6.1.0",
+    "lint-staged": "^7.0.0",
     "mapbox-gl": "^0.44.1",
     "prettier": "^1.10.2",
     "prettier-eslint": "^8.8.1",
