@@ -41,10 +41,6 @@
 -   [collectResourceTiming](#collectresourcetiming)
 -   [onViewportChange](#onviewportchange)
 -   [onLoad](#onload)
--   [map](#map)
--   [map](#map-1)
--   [map](#map-2)
--   [map](#map-3)
 -   [id](#id)
 -   [id](#id-1)
 -   [layer](#layer)
@@ -250,22 +246,6 @@ such as `longitude`, `latitude`, `zoom` etc.
 ## onLoad
 
 The onLoad callback for the map
-
-## map
-
-Mapbox GL JS map instance
-
-## map
-
-Mapbox GL JS map instance
-
-## map
-
-Mapbox GL JS map instance
-
-## map
-
-Mapbox GL JS map instance
 
 ## id
 
