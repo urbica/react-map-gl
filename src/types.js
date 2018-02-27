@@ -1,13 +1,22 @@
 // @flow
 
-import { Map } from 'immutable';
-import mapboxgl from './utils/mapbox-gl';
+import Immutable from 'immutable';
+import type Map from 'mapbox-gl/src/ui/map';
+import type { MapMouseEvent, MapTouchEvent } from 'mapbox-gl/src/ui/events';
 
-export type MapStyle = Map<string, any>;
+export type MapboxMap = Map;
 
-export type MapSource = Map<string, any>;
+export type MapboxLayer = LayerSpecification;
 
-export type MapLayer = Map<string, any>;
+export type { MapMouseEvent, MapTouchEvent };
+
+export type MapStyle = Immutable.Map<string, any>;
+
+export type MapSource = Immutable.Map<string, any>;
+
+export type MapLayer = {
+  toJS: () => LayerSpecification
+} & Immutable.Map<string, any>;
 
 export type Viewport = {
   latitude: number,
@@ -17,4 +26,4 @@ export type Viewport = {
   bearing?: number
 };
 
-export type ViewportChangeEvent = mapboxgl.MapMouseEvent | mapboxgl.MapTouchEvent;
+export type ViewportChangeEvent = MapMouseEvent | MapTouchEvent;

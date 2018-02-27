@@ -5,9 +5,8 @@ import { is, isImmutable } from 'immutable';
 
 import MapContext from './MapContext';
 import diff from '../utils/diff';
-import mapboxgl from '../utils/mapbox-gl';
 import queryRenderedFeatures from '../utils/queryRenderedFeatures';
-import type { MapLayer } from '../types';
+import type { MapboxMap, MapboxLayer, MapLayer, MapMouseEvent } from '../types';
 
 type Props = {
   /** Mapbox GL Layer id */
@@ -28,7 +27,7 @@ type Props = {
    * using Mapbox's queryRenderedFeatures API:
    * https://www.mapbox.com/mapbox-gl-js/api/#Map#queryRenderedFeatures
    */
-  onClick: (event: mapboxgl.MapEvent) => any,
+  onClick: (event: MapMouseEvent) => any,
 
   /**
    * Called when the layer is hovered over.
@@ -39,7 +38,7 @@ type Props = {
    * using Mapbox's queryRenderedFeatures API:
    * https://www.mapbox.com/mapbox-gl-js/api/#Map#queryRenderedFeatures
    */
-  onHover: (event: mapboxgl.MapEvent) => any,
+  onHover: (event: MapMouseEvent) => any,
 
   /**
    * Called when the layer feature is entered.
@@ -50,7 +49,7 @@ type Props = {
    * using Mapbox's queryRenderedFeatures API:
    * https://www.mapbox.com/mapbox-gl-js/api/#Map#queryRenderedFeatures
    */
-  onEnter: (event: mapboxgl.MapEvent) => any,
+  onEnter: (event: MapMouseEvent) => any,
 
   /**
    * Called when the layer feature is leaved.
@@ -61,7 +60,7 @@ type Props = {
    * using Mapbox's queryRenderedFeatures API:
    * https://www.mapbox.com/mapbox-gl-js/api/#Map#queryRenderedFeatures
    */
-  onLeave: (event: mapboxgl.MapEvent) => any,
+  onLeave: (event: any) => any,
 
   /**
    * Radius to detect features around a clicked/hovered point
@@ -72,16 +71,19 @@ type Props = {
 
 class Layer extends PureComponent<Props> {
   _id: string;
-  _map: mapboxgl.Map;
-  _onClick: (event: mapboxgl.MapEvent) => void;
-  _onHover: (event: mapboxgl.MapEvent) => void;
-  _onEnter: (event: mapboxgl.MapEvent) => void;
-  _onLeave: (event: mapboxgl.MapEvent) => void;
+  _map: MapboxMap;
+  _onClick: (event: MapMouseEvent) => void;
+  _onHover: (event: MapMouseEvent) => void;
+  _onEnter: (event: MapMouseEvent) => void;
+  _onLeave: (event: MapMouseEvent) => void;
 
   static displayName = 'Layer';
 
   static defaultProps = {
     onClick: null,
+    onHover: null,
+    onEnter: null,
+    onLeave: null,
     radius: 0
   };
 
@@ -96,18 +98,21 @@ class Layer extends PureComponent<Props> {
   }
 
   componentDidMount() {
+    const map = this._map;
     const { layer, before } = this.props;
 
-    if (this._map.getLayer(before)) {
-      this._map.addLayer(layer.toJS(), before);
+    if (before && map.getLayer(before)) {
+      const mapboxLayer: MapboxLayer = layer.toJS();
+      map.addLayer(mapboxLayer, before);
     } else {
-      this._map.addLayer(layer.toJS());
+      const mapboxLayer: MapboxLayer = layer.toJS();
+      map.addLayer(mapboxLayer);
     }
 
-    this._map.on('click', this._id, this._onClick);
-    this._map.on('mousemove', this._id, this._onHover);
-    this._map.on('mouseenter', this._id, this._onEnter);
-    this._map.on('mouseleave', this._id, this._onLeave);
+    map.on('click', this._id, this._onClick);
+    map.on('mousemove', this._id, this._onHover);
+    map.on('mouseenter', this._id, this._onEnter);
+    map.on('mouseleave', this._id, this._onLeave);
   }
 
   componentWillReceiveProps(newProps: Props) {
@@ -157,61 +162,71 @@ class Layer extends PureComponent<Props> {
     }
   }
 
-  _onClick(event: mapboxgl.MapEvent): void {
+  _onClick(event: MapMouseEvent): void {
     if (this.props.onClick) {
-      const { radius } = this.props;
       const position = [event.point.x, event.point.y];
 
-      /* eslint-disable no-param-reassign */
-      event.features = queryRenderedFeatures(this._map, this._id, position, radius);
-      /* eslint-enable no-param-reassign */
+      const features = queryRenderedFeatures(
+        this._map,
+        this._id,
+        position,
+        this.props.radius
+      );
 
-      this.props.onClick(event);
+      this.props.onClick({ ...event, features });
     }
   }
 
-  _onHover(event: mapboxgl.MapEvent): void {
+  _onHover(event: MapMouseEvent): void {
     if (this.props.onHover) {
-      const { radius } = this.props;
       const position = [event.point.x, event.point.y];
 
-      /* eslint-disable no-param-reassign */
-      event.features = queryRenderedFeatures(this._map, this._id, position, radius);
-      /* eslint-enable no-param-reassign */
+      const features = queryRenderedFeatures(
+        this._map,
+        this._id,
+        position,
+        this.props.radius
+      );
 
-      this.props.onHover(event);
+      this.props.onHover({ ...event, features });
     }
   }
 
-  _onEnter(event: mapboxgl.MapEvent): void {
+  _onEnter(event: MapMouseEvent): void {
     if (this.props.onEnter) {
-      const { radius } = this.props;
       const position = [event.point.x, event.point.y];
 
-      /* eslint-disable no-param-reassign */
-      event.features = queryRenderedFeatures(this._map, this._id, position, radius);
-      /* eslint-enable no-param-reassign */
+      const features = queryRenderedFeatures(
+        this._map,
+        this._id,
+        position,
+        this.props.radius
+      );
 
-      this.props.onEnter(event);
+      this.props.onEnter({ ...event, features });
     }
   }
 
-  _onLeave(event: mapboxgl.MapEvent): void {
+  _onLeave(event: MapMouseEvent) {
     if (this.props.onLeave) {
-      const { radius } = this.props;
-      const position = [event.point.x, event.point.y];
+      const position: [number, number] = [event.point.x, event.point.y];
 
-      /* eslint-disable no-param-reassign */
-      event.features = queryRenderedFeatures(this._map, this._id, position, radius);
-      /* eslint-enable no-param-reassign */
+      const features = queryRenderedFeatures(
+        this._map,
+        this._id,
+        position,
+        this.props.radius
+      );
 
-      this.props.onLeave(event);
+      this.props.onLeave({ ...event, features });
     }
   }
 
   render() {
-    return createElement(MapContext.Consumer, {}, (map) => {
-      this._map = map;
+    return createElement(MapContext.Consumer, {}, (map: ?MapboxMap) => {
+      if (map) {
+        this._map = map;
+      }
       return null;
     });
   }

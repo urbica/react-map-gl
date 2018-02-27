@@ -29,15 +29,10 @@
     "postpublish": "npm run docs && npm run styleguide:build && npm run styleguide:deploy"
   },
   "jest": {
-    "setupFiles": [
-      "<rootDir>/test/setup.js"
-    ]
+    "setupFiles": ["<rootDir>/test/setup.js"]
   },
   "lint-staged": {
-    "*.{js}": [
-      "prettier-eslint --write",
-      "git add"
-    ]
+    "*.{js}": ["prettier-eslint --write", "git add"]
   },
   "config": {
     "commitizen": {
@@ -95,7 +90,7 @@
     "react-styleguidist": "^6.2.5",
     "react-test-renderer": "^16.2.0",
     "standard-version": "^4.3.0",
-    "webpack": "^4.0.0",
+    "webpack": "^3.11.0",
     "webpack-bundle-analyzer": "^2.11.0"
   }
 }

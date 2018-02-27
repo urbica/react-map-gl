@@ -7,7 +7,7 @@ import type { Node } from 'react';
 import Layer from './Layer';
 import MapContext from './MapContext';
 import mapboxgl from '../utils/mapbox-gl';
-import type { MapStyle, Viewport, ViewportChangeEvent } from '../types';
+import type { MapboxMap, MapStyle, Viewport, ViewportChangeEvent } from '../types';
 
 type Props = {
   /** container className */
@@ -186,7 +186,7 @@ type State = {
 };
 
 class MapGL extends PureComponent<Props, State> {
-  _map: mapboxgl.Map;
+  _map: MapboxMap;
   _container: ?HTMLElement;
   _onViewportChange: (event: ViewportChangeEvent) => void;
 
@@ -369,7 +369,7 @@ class MapGL extends PureComponent<Props, State> {
   _onViewportChange(event: ViewportChangeEvent): void {
     if (!event.originalEvent) return;
 
-    const map: mapboxgl.Map = event.target;
+    const map: MapboxMap = event.target;
     const { lng, lat } = map.getCenter();
     const zoom = map.getZoom();
     const pitch = map.getPitch();

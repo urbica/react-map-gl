@@ -1,6 +1,6 @@
 // @flow
 
-import mapboxgl from 'mapbox-gl';
+import mapboxgl from './mapbox-gl';
 
 const queryRenderedFeatures = (
   map: mapboxgl.Map,
