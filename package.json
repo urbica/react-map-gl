@@ -29,10 +29,15 @@
     "postpublish": "npm run docs && npm run styleguide:build && npm run styleguide:deploy"
   },
   "jest": {
-    "setupFiles": ["<rootDir>/test/setup.js"]
+    "setupFiles": [
+      "<rootDir>/test/setup.js"
+    ]
   },
   "lint-staged": {
-    "*.{js}": ["prettier-eslint --write", "git add"]
+    "*.{js}": [
+      "prettier-eslint --write",
+      "git add"
+    ]
   },
   "config": {
     "commitizen": {
@@ -81,7 +86,7 @@
     "jest": "^22.4.2",
     "lint-staged": "^7.0.0",
     "mapbox-gl": "^0.44.1",
-    "prettier": "^1.10.2",
+    "prettier": "^1.11.0",
     "prettier-eslint": "^8.8.1",
     "prettier-eslint-cli": "^4.7.1",
     "react": "^16.3.0-alpha.1",
