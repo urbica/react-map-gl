@@ -6,6 +6,7 @@ import type { Element } from 'react';
 
 import MapContext from './MapContext';
 import mapboxgl from '../utils/mapbox-gl';
+import type { MapboxMap } from '../types';
 
 type Props = {
   /** ReactDOM element to use as a marker */
@@ -25,7 +26,7 @@ type Props = {
 };
 
 class Marker extends PureComponent<Props> {
-  _map: mapboxgl.Map;
+  _map: MapboxMap;
   _marker: mapboxgl.Marker;
 
   static displayName = 'Marker';
@@ -72,7 +73,9 @@ class Marker extends PureComponent<Props> {
 
   render() {
     return createElement(MapContext.Consumer, {}, (map) => {
-      this._map = map;
+      if (map) {
+        this._map = map;
+      }
       return null;
     });
   }

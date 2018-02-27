@@ -9,6 +9,7 @@ import Marker from './Marker';
 import mapboxgl from '../utils/mapbox-gl';
 import MapContext from './MapContext';
 import shallowCompareChildren from '../utils/shallowCompareChildren';
+import type { MapboxMap } from '../types';
 
 type Props = {
   /** Minimum zoom level at which clusters are generated */
@@ -46,7 +47,7 @@ type State = {
 };
 
 class Cluster extends PureComponent<Props, State> {
-  _map: mapboxgl.Map;
+  _map: MapboxMap;
   _cluster: Object;
   _recalculate: () => void;
   _createCluster: (props: Props) => void;
@@ -125,24 +126,25 @@ class Cluster extends PureComponent<Props, State> {
   }
 
   render() {
-    const { element } = this.props;
-
-    const clusters = this.state.clusters.map((cluster) => {
-      if (cluster.properties.cluster) {
-        const [longitude, latitude] = cluster.geometry.coordinates;
-        return createElement(Marker, {
-          longitude,
-          latitude,
-          element: createElement(element, cluster),
-          key: `cluster-${cluster.properties.cluster_id}`
-        });
-      }
-      const { type, key, props } = cluster.properties;
-      return createElement(type, { key, ...props });
-    });
-
     return createElement(MapContext.Consumer, {}, (map) => {
-      this._map = map;
+      if (map) {
+        this._map = map;
+      }
+
+      const clusters = this.state.clusters.map((cluster) => {
+        if (cluster.properties.cluster) {
+          const [longitude, latitude] = cluster.geometry.coordinates;
+          return createElement(Marker, {
+            longitude,
+            latitude,
+            element: createElement(this.props.element, cluster),
+            key: `cluster-${cluster.properties.cluster_id}`
+          });
+        }
+        const { type, key, props } = cluster.properties;
+        return createElement(type, { key, ...props });
+      });
+
       return clusters;
     });
   }
