@@ -4,8 +4,7 @@ import { PureComponent, createElement } from 'react';
 import { isImmutable } from 'immutable';
 
 import MapContext from './MapContext';
-import mapboxgl from '../utils/mapbox-gl';
-import type { MapSource } from '../types';
+import type { MapboxMap, MapSource } from '../types';
 
 type Props = {
   /** Mapbox GL Source id */
@@ -16,7 +15,7 @@ type Props = {
 };
 
 class Source extends PureComponent<Props> {
-  _map: mapboxgl.Map;
+  _map: MapboxMap;
   static displayName = 'Source';
 
   componentDidMount() {
@@ -71,7 +70,9 @@ class Source extends PureComponent<Props> {
 
   render() {
     return createElement(MapContext.Consumer, {}, (map) => {
-      this._map = map;
+      if (map) {
+        this._map = map;
+      }
       return null;
     });
   }

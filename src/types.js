@@ -12,7 +12,9 @@ export type { MapMouseEvent, MapTouchEvent };
 
 export type MapStyle = Immutable.Map<string, any>;
 
-export type MapSource = Immutable.Map<string, any>;
+export type MapSource = {
+  toJS: () => SourceSpecification
+} & Immutable.Map<string, any>;
 
 export type MapLayer = {
   toJS: () => LayerSpecification

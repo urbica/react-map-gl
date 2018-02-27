@@ -15,6 +15,7 @@
     "typecheck": "flow check src",
     "typecheck:coverage": "flow-coverage-report -i 'src/**/*.js' -t html",
     "test": "jest",
+    "test:staged": "jest --findRelatedTests",
     "test:coverage": "jest --coverage && codecov",
     "build": "webpack -p --config webpack.config.js",
     "docs": "documentation build src/index.js -f md -o docs/props.md",
@@ -29,15 +30,10 @@
     "postpublish": "npm run docs && npm run styleguide:build && npm run styleguide:deploy"
   },
   "jest": {
-    "setupFiles": [
-      "<rootDir>/test/setup.js"
-    ]
+    "setupFiles": ["<rootDir>/test/setup.js"]
   },
   "lint-staged": {
-    "*.{js}": [
-      "prettier-eslint --write",
-      "git add"
-    ]
+    "*.{js}": ["test:staged", "prettier-eslint --write", "git add"]
   },
   "config": {
     "commitizen": {
