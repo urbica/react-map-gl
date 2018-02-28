@@ -5,11 +5,10 @@ import { point } from '@turf/helpers';
 import { Children, PureComponent, createElement } from 'react';
 import type { Node, Component } from 'react';
 
-import Marker from './Marker';
-import mapboxgl from '../utils/mapbox-gl';
-import MapContext from './MapContext';
-import shallowCompareChildren from '../utils/shallowCompareChildren';
-import type { MapboxMap } from '../types';
+import Marker from '../Marker';
+import MapContext from '../MapContext';
+import shallowCompareChildren from '../../utils/shallowCompareChildren';
+import type { MapboxMap } from '../../types';
 
 type Props = {
   /** Minimum zoom level at which clusters are generated */

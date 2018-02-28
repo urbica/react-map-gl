@@ -2554,9 +2554,9 @@ create-hmac@^1.1.0, create-hmac@^1.1.2, create-hmac@^1.1.4:
     safe-buffer "^5.0.1"
     sha.js "^2.4.8"
 
-create-react-context@^0.2.0:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/create-react-context/-/create-react-context-0.2.0.tgz#a3411a39a46984e0e4e17ac169b8e789f7555e26"
+create-react-context@^0.2.1:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/create-react-context/-/create-react-context-0.2.1.tgz#425a3d96f4b7690c2fbf20aed5aeae2e2007a959"
   dependencies:
     fbjs "^0.8.0"
     gud "^1.0.0"

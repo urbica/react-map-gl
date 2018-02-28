@@ -4,9 +4,9 @@ import { render } from 'react-dom';
 import { PureComponent, createElement } from 'react';
 import type { Element } from 'react';
 
-import MapContext from './MapContext';
-import mapboxgl from '../utils/mapbox-gl';
-import type { MapboxMap } from '../types';
+import MapContext from '../MapContext';
+import mapboxgl from '../../utils/mapbox-gl';
+import type { MapboxMap } from '../../types';
 
 type Props = {
   /** ReactDOM element to use as a marker */

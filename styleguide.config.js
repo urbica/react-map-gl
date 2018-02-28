@@ -18,11 +18,11 @@ module.exports = {
     {
       name: 'Props',
       components: () => [
-        'src/components/MapGL.js',
-        'src/components/Source.js',
-        'src/components/Layer.js',
-        'src/components/Marker.js',
-        'src/components/Cluster.js'
+        'src/components/MapGL/index.js',
+        'src/components/Source/index.js',
+        'src/components/Layer/index.js',
+        'src/components/Marker/index.js',
+        'src/components/Cluster/index.js'
       ]
     },
     {

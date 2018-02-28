@@ -3,8 +3,8 @@
 import { PureComponent, createElement } from 'react';
 import { isImmutable } from 'immutable';
 
-import MapContext from './MapContext';
-import type { MapboxMap, MapSource } from '../types';
+import MapContext from '../MapContext';
+import type { MapboxMap, MapSource } from '../../types';
 
 type Props = {
   /** Mapbox GL Source id */
