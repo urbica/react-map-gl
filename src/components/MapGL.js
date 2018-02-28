@@ -329,7 +329,7 @@ class MapGL extends PureComponent<Props, State> {
         this._map.setStyle(newMapStyle.toJS());
       }
     } else if (newMapStyle !== prevMapStyle) {
-      this._map.setStyle(newMapStyle);
+      this._map.setStyle(((newMapStyle: any): string));
     }
   }
 
@@ -368,8 +368,8 @@ class MapGL extends PureComponent<Props, State> {
    */
   _onViewportChange(event: ViewportChangeEvent): void {
     if (!event.originalEvent) return;
+    const map = this._map;
 
-    const map: MapboxMap = event.target;
     const { lng, lat } = map.getCenter();
     const zoom = map.getZoom();
     const pitch = map.getPitch();
