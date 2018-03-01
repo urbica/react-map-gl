@@ -7,7 +7,6 @@ import type { Node } from 'react';
 import Layer from '../Layer';
 import MapContext from '../MapContext';
 import mapboxgl from '../../utils/mapbox-gl';
-import type { MapboxMap, MapStyle, Viewport, ViewportChangeEvent } from '../../types';
 
 type Props = {
   /** container className */

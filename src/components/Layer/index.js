@@ -6,7 +6,6 @@ import { is, isImmutable } from 'immutable';
 import MapContext from '../MapContext';
 import diff from '../../utils/diff';
 import queryRenderedFeatures from '../../utils/queryRenderedFeatures';
-import type { MapboxMap, MapboxLayer, MapLayer, MapMouseEvent } from '../../types';
 
 type Props = {
   /** Mapbox GL Layer id */

@@ -34,7 +34,7 @@
     "setupFiles": ["<rootDir>/test/setup.js"]
   },
   "lint-staged": {
-    "*.{js,json,md}": ["jest --findRelatedTests", "prettier-eslint --write", "git add"]
+    "*.{js,json}": ["jest --findRelatedTests", "prettier-eslint --write", "git add"]
   },
   "config": {
     "commitizen": {
