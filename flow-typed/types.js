@@ -4,25 +4,23 @@ import Immutable from 'immutable';
 import type Map from 'mapbox-gl/src/ui/map';
 import type { MapMouseEvent, MapTouchEvent } from 'mapbox-gl/src/ui/events';
 
-export type MapboxMap = Map;
+declare type MapboxMap = Map;
 
-export type MapboxLayer = LayerSpecification;
+declare type MapboxLayer = LayerSpecification;
 
-export type { MapMouseEvent, MapTouchEvent };
-
-export type MapStyle = {
+declare type MapStyle = {
   toJS: () => StyleSpecification
 } & Immutable.Map<string, any>;
 
-export type MapSource = {
+declare type MapSource = {
   toJS: () => SourceSpecification
 } & Immutable.Map<string, any>;
 
-export type MapLayer = {
+declare type MapLayer = {
   toJS: () => LayerSpecification
 } & Immutable.Map<string, any>;
 
-export type Viewport = {
+declare type Viewport = {
   latitude: number,
   longitude: number,
   zoom: number,
@@ -30,4 +28,4 @@ export type Viewport = {
   bearing?: number
 };
 
-export type ViewportChangeEvent = MapMouseEvent | MapTouchEvent;
+declare type ViewportChangeEvent = MapMouseEvent | MapTouchEvent;

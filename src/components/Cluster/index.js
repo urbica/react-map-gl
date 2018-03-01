@@ -8,7 +8,6 @@ import type { Node, Component } from 'react';
 import Marker from '../Marker';
 import MapContext from '../MapContext';
 import shallowCompareChildren from '../../utils/shallowCompareChildren';
-import type { MapboxMap } from '../../types';
 
 type Props = {
   /** Minimum zoom level at which clusters are generated */
