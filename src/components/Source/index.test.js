@@ -9,9 +9,11 @@ const source = Immutable.fromJS({
 });
 
 test('Source#render', () => {
-  const wrapper = mount(<MapGL latitude={0} longitude={0} zoom={0}>
-    <Source id="test" source={source} />
-                        </MapGL>);
+  const wrapper = mount(
+    <MapGL latitude={0} longitude={0} zoom={0}>
+      <Source id="test" source={source} />
+    </MapGL>
+  );
 
   expect(wrapper.find('Source').exists()).toBe(true);
 });

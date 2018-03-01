@@ -95,9 +95,7 @@ class Cluster extends PureComponent<Props, State> {
   }
 
   _createCluster(props: Props) {
-    const {
-      minZoom, maxZoom, radius, extent, nodeSize, children, innerRef
-    } = props;
+    const { minZoom, maxZoom, radius, extent, nodeSize, children, innerRef } = props;
 
     const cluster = supercluster({
       minZoom,
@@ -108,7 +106,8 @@ class Cluster extends PureComponent<Props, State> {
     });
 
     const points = Children.map(children, child =>
-      point([child.props.longitude, child.props.latitude], child));
+      point([child.props.longitude, child.props.latitude], child)
+    );
 
     cluster.load(points);
     this._cluster = cluster;
@@ -125,12 +124,12 @@ class Cluster extends PureComponent<Props, State> {
   }
 
   render() {
-    return createElement(MapContext.Consumer, {}, (map) => {
+    return createElement(MapContext.Consumer, {}, map => {
       if (map) {
         this._map = map;
       }
 
-      const clusters = this.state.clusters.map((cluster) => {
+      const clusters = this.state.clusters.map(cluster => {
         if (cluster.properties.cluster) {
           const [longitude, latitude] = cluster.geometry.coordinates;
           return createElement(Marker, {

@@ -15,10 +15,12 @@ const layer = Immutable.fromJS({
 });
 
 test('Layer#render', () => {
-  const wrapper = mount(<MapGL latitude={0} longitude={0} zoom={0}>
-    <Source id="test" source={source} />
-    <Layer layer={layer} />
-                        </MapGL>);
+  const wrapper = mount(
+    <MapGL latitude={0} longitude={0} zoom={0}>
+      <Source id="test" source={source} />
+      <Layer layer={layer} />
+    </MapGL>
+  );
 
   expect(wrapper.find('Layer').exists()).toBe(true);
 });

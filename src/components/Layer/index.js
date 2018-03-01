@@ -166,12 +166,7 @@ class Layer extends PureComponent<Props> {
     if (this.props.onClick) {
       const position = [event.point.x, event.point.y];
 
-      const features = queryRenderedFeatures(
-        this._map,
-        this._id,
-        position,
-        this.props.radius
-      );
+      const features = queryRenderedFeatures(this._map, this._id, position, this.props.radius);
 
       this.props.onClick({ ...event, features });
     }
@@ -181,12 +176,7 @@ class Layer extends PureComponent<Props> {
     if (this.props.onHover) {
       const position = [event.point.x, event.point.y];
 
-      const features = queryRenderedFeatures(
-        this._map,
-        this._id,
-        position,
-        this.props.radius
-      );
+      const features = queryRenderedFeatures(this._map, this._id, position, this.props.radius);
 
       this.props.onHover({ ...event, features });
     }
@@ -196,12 +186,7 @@ class Layer extends PureComponent<Props> {
     if (this.props.onEnter) {
       const position = [event.point.x, event.point.y];
 
-      const features = queryRenderedFeatures(
-        this._map,
-        this._id,
-        position,
-        this.props.radius
-      );
+      const features = queryRenderedFeatures(this._map, this._id, position, this.props.radius);
 
       this.props.onEnter({ ...event, features });
     }
@@ -211,19 +196,14 @@ class Layer extends PureComponent<Props> {
     if (this.props.onLeave) {
       const position: [number, number] = [event.point.x, event.point.y];
 
-      const features = queryRenderedFeatures(
-        this._map,
-        this._id,
-        position,
-        this.props.radius
-      );
+      const features = queryRenderedFeatures(this._map, this._id, position, this.props.radius);
 
       this.props.onLeave({ ...event, features });
     }
   }
 
   render() {
-    return createElement(MapContext.Consumer, {}, (map) => {
+    return createElement(MapContext.Consumer, {}, map => {
       if (map) {
         this._map = map;
       }

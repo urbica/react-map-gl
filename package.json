@@ -8,15 +8,17 @@
     "type": "git",
     "url": "git://github.com/urbica/react-map-gl.git"
   },
-  "main": "dist/react-map-gl.js",
+  "main": "dist/react-map-gl.cjs.js",
+  "module": "dist/react-map-gl.esm.js",
+  "files": ["dist", "flow-typed"],
   "scripts": {
-    "start": "styleguidist server",
+    "start": "npm run styleguide",
     "lint": "eslint src test",
     "typecheck": "flow check src",
     "typecheck:coverage": "flow-coverage-report -i 'src/**/*.js' -t html",
     "test": "jest",
     "test:coverage": "jest --coverage && codecov",
-    "build": "webpack -p --config webpack.config.js",
+    "build": "rollup -c",
     "docs": "documentation build src/index.js -f md -o docs/props.md",
     "styleguide": "styleguidist server",
     "styleguide:build": "styleguidist build",
@@ -59,6 +61,7 @@
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.6.1",
+    "babel-preset-es2015-rollup": "^3.0.0",
     "babel-preset-flow": "^6.23.0",
     "babel-preset-react": "^6.24.1",
     "codecov": "^3.0.0",
@@ -69,6 +72,7 @@
     "enzyme-adapter-react-16": "^1.1.1",
     "eslint": "^4.18.1",
     "eslint-config-airbnb": "^16.1.0",
+    "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-flowtype": "^2.46.1",
     "eslint-plugin-import": "^2.9.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
@@ -89,8 +93,11 @@
     "react-dom": "^16.2.0",
     "react-styleguidist": "^6.2.5",
     "react-test-renderer": "^16.2.0",
+    "rollup": "^0.56.3",
+    "rollup-plugin-babel": "^3.0.3",
+    "rollup-plugin-commonjs": "^8.3.0",
+    "rollup-plugin-node-resolve": "^3.0.3",
     "standard-version": "^4.3.0",
-    "webpack": "^3.11.0",
-    "webpack-bundle-analyzer": "^2.11.0"
+    "webpack": "^3.11.0"
   }
 }

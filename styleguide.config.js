@@ -71,6 +71,19 @@ module.exports = {
       ]
     }
   ],
+  webpackConfig: {
+    module: {
+      rules: [
+        {
+          test: /\.jsx?$/,
+          exclude: /node_modules/,
+          use: {
+            loader: 'babel-loader'
+          }
+        }
+      ]
+    }
+  },
   dangerouslyUpdateWebpackConfig: (webpackConfig, env) => {
     if (env === 'production') {
       // remove UglifyJs plugin

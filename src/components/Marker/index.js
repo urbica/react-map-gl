@@ -36,9 +36,7 @@ class Marker extends PureComponent<Props> {
   };
 
   componentDidMount() {
-    const {
-      element, longitude, latitude, offset
-    } = this.props;
+    const { element, longitude, latitude, offset } = this.props;
 
     const div = document.createElement('div');
     render(element, div);
@@ -50,8 +48,7 @@ class Marker extends PureComponent<Props> {
 
   componentWillReceiveProps(newProps: Props) {
     const positionChanged =
-      newProps.latitude !== this.props.latitude ||
-      newProps.longitude !== this.props.longitude;
+      newProps.latitude !== this.props.latitude || newProps.longitude !== this.props.longitude;
 
     if (positionChanged) {
       this._marker.setLngLat([newProps.longitude, newProps.latitude]);
@@ -72,7 +69,7 @@ class Marker extends PureComponent<Props> {
   }
 
   render() {
-    return createElement(MapContext.Consumer, {}, (map) => {
+    return createElement(MapContext.Consumer, {}, map => {
       if (map) {
         this._map = map;
       }
