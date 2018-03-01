@@ -14,6 +14,18 @@ All notable changes to this project will be documented in this file. See [standa
 
 
 
+<a name="0.6.0-beta.9"></a>
+# [0.6.0-beta.9](https://github.com/urbica/react-map-gl/compare/v0.6.0-beta.8...v0.6.0-beta.9) (2018-03-01)
+
+
+### Bug Fixes
+
+* **MapContext:** use create-react-context polyfill ([557f196](https://github.com/urbica/react-map-gl/commit/557f196))
+* **package:** update create-react-context to version 0.2.0 ([#36](https://github.com/urbica/react-map-gl/issues/36)) ([64328bb](https://github.com/urbica/react-map-gl/commit/64328bb))
+* fix react version ([51093ee](https://github.com/urbica/react-map-gl/commit/51093ee))
+
+
+
 <a name="0.6.0-beta.8"></a>
 # [0.6.0-beta.8](https://github.com/urbica/react-map-gl/compare/v0.6.0-beta.6...v0.6.0-beta.8) (2018-02-15)
 
