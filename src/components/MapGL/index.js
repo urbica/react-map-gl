@@ -1,7 +1,7 @@
 // @flow
 
 import { Children, PureComponent, createElement, cloneElement } from 'react';
-import { isImmutable } from 'immutable';
+import { hash, isImmutable } from 'immutable';
 import type { Node } from 'react';
 
 import Layer from '../Layer';
@@ -280,6 +280,8 @@ class MapGL extends PureComponent<Props, State> {
       collectResourceTiming: this.props.collectResourceTiming
     });
 
+    map.on('styledata', () => this.setState({ loaded: true }));
+
     map.once('load', () => {
       this.setState({ loaded: true }, this.props.onLoad);
     });
@@ -328,7 +330,7 @@ class MapGL extends PureComponent<Props, State> {
         this._map.setStyle(newMapStyle.toJS());
       }
     } else if (newMapStyle !== prevMapStyle) {
-      this._map.setStyle(((newMapStyle: any): string));
+      this.setState({ loaded: false }, () => this._map.setStyle(((newMapStyle: any): string)));
     }
   }
 
@@ -416,6 +418,9 @@ class MapGL extends PureComponent<Props, State> {
     // TODO: preserve children order
     const children = otherChildren.concat(layerChildrenWithBefore);
 
+    // append mapStyleKey to children
+    const mapStyleKey = hash(this.props.mapStyle);
+
     return createElement(
       MapContext.Provider,
       { value: this._map },
@@ -426,7 +431,10 @@ class MapGL extends PureComponent<Props, State> {
           style,
           className
         },
-        loaded && Children.map(children, ({ type, props }) => createElement(type, props))
+        loaded &&
+          Children.map(children, ({ key, type, props }) =>
+            createElement(type, { ...props, key: `${key}$${mapStyleKey}` })
+          )
       )
     );
   }
