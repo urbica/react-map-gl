@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.6.0-beta.10"></a>
+# [0.6.0-beta.10](https://github.com/urbica/react-map-gl/compare/v0.6.0-beta.9...v0.6.0-beta.10) (2018-03-07)
+
+
+### Bug Fixes
+
+* **MapGL:** preserve children on mapStyle updates ([b0381fb](https://github.com/urbica/react-map-gl/commit/b0381fb))
+
+
+
 <a name="0.6.0-beta.9"></a>
 # [0.6.0-beta.9](https://github.com/urbica/react-map-gl/compare/v0.6.0-beta.8...v0.6.0-beta.9) (2018-03-01)
 

@@ -1,6 +1,6 @@
 {
   "name": "@urbica/react-map-gl",
-  "version": "0.6.0-beta.9",
+  "version": "0.6.0-beta.10",
   "description": "React Component for Mapbox GL JS",
   "author": "Stepan Kuzmin <to.stepan.kuzmin@gmail.com> (stepankuzmin.ru)",
   "license": "MIT",
@@ -10,7 +10,10 @@
   },
   "main": "dist/react-map-gl.cjs.js",
   "module": "dist/react-map-gl.esm.js",
-  "files": ["dist", "flow-typed"],
+  "files": [
+    "dist",
+    "flow-typed"
+  ],
   "scripts": {
     "start": "npm run styleguide",
     "lint": "eslint src test",
@@ -31,10 +34,16 @@
     "postpublish": "npm run docs && npm run styleguide:build && npm run styleguide:deploy"
   },
   "jest": {
-    "setupFiles": ["<rootDir>/test/setup.js"]
+    "setupFiles": [
+      "<rootDir>/test/setup.js"
+    ]
   },
   "lint-staged": {
-    "*.js": ["jest --findRelatedTests", "prettier-eslint --write", "git add"]
+    "*.js": [
+      "jest --findRelatedTests",
+      "prettier-eslint --write",
+      "git add"
+    ]
   },
   "config": {
     "commitizen": {
