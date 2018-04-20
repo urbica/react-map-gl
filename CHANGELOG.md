@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.6.0-beta.11"></a>
+# [0.6.0-beta.11](https://github.com/urbica/react-map-gl/compare/v0.6.0-beta.10...v0.6.0-beta.11) (2018-04-20)
+
+
+### Bug Fixes
+
+* **MapGL:** fix layer before prop passing ([7ab5f4f](https://github.com/urbica/react-map-gl/commit/7ab5f4f))
+
+
+
 <a name="0.6.0-beta.10"></a>
 # [0.6.0-beta.10](https://github.com/urbica/react-map-gl/compare/v0.6.0-beta.9...v0.6.0-beta.10) (2018-03-07)
 
