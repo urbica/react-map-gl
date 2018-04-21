@@ -142,7 +142,7 @@ class Layer extends PureComponent<Props> {
       if (!newFilter) {
         this._map.setFilter(this._id, undefined);
       } else if (!is(newFilter, prevFilter)) {
-        this._map.setFilter(this._id, newFilter.toArray());
+        this._map.setFilter(this._id, newFilter.toJS());
       }
     }
   }
