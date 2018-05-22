@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.6.0-beta.12"></a>
+# [0.6.0-beta.12](https://github.com/urbica/react-map-gl/compare/v0.6.0-beta.11...v0.6.0-beta.12) (2018-05-22)
+
+
+### Bug Fixes
+
+* layer filters can be deep nested List now ([#49](https://github.com/urbica/react-map-gl/issues/49)) ([665a8e0](https://github.com/urbica/react-map-gl/commit/665a8e0))
+
+
+### Features
+
+* **Popup:** add Popup component ([c08f524](https://github.com/urbica/react-map-gl/commit/c08f524))
+
+
+
 <a name="0.6.0-beta.11"></a>
 # [0.6.0-beta.11](https://github.com/urbica/react-map-gl/compare/v0.6.0-beta.10...v0.6.0-beta.11) (2018-04-20)
 
