@@ -41,6 +41,13 @@ Map.prototype.removeLayer = function removeLayer() {};
 
 Map.prototype.getBounds = () => new LngLatBounds();
 
+// Popup
+function Popup() {
+  this.setLngLat = jest.fn(() => this);
+  this.addTo = jest.fn(() => this);
+  return this;
+}
+
 // Marker
 function Marker() {
   this.setLngLat = jest.fn(() => this);
@@ -50,6 +57,7 @@ function Marker() {
 
 module.exports = {
   Map,
+  Popup,
   Marker,
   supported: () => true
 };

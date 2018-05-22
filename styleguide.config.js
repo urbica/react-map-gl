@@ -21,6 +21,7 @@ module.exports = {
         'src/components/MapGL/index.js',
         'src/components/Source/index.js',
         'src/components/Layer/index.js',
+        'src/components/Popup/index.js',
         'src/components/Marker/index.js',
         'src/components/Cluster/index.js'
       ]
@@ -43,6 +44,10 @@ module.exports = {
         {
           name: 'Map Instance',
           content: 'docs/map-instance.md'
+        },
+        {
+          name: 'Popups',
+          content: 'docs/popup.md'
         },
         {
           name: 'Markers',
