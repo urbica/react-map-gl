@@ -76,7 +76,7 @@
     "codecov": "^3.0.2",
     "commitizen": "^2.9.6",
     "cz-conventional-changelog": "^2.1.0",
-    "documentation": "^6.3.3",
+    "documentation": "^7.0.0",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "eslint": "^4.19.1",
