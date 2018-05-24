@@ -10,54 +10,58 @@
 -   [accessToken][6]
 -   [longitude][7]
 -   [longitude][8]
--   [latitude][9]
+-   [longitude][9]
 -   [latitude][10]
--   [zoom][11]
--   [bearing][12]
--   [pitch][13]
--   [minZoom][14]
--   [minZoom][15]
--   [maxZoom][16]
--   [maxZoom][17]
--   [hash][18]
--   [bearingSnap][19]
--   [pitchWithRotate][20]
--   [attributionControl][21]
--   [failIfMajorPerformanceCaveat][22]
--   [preserveDrawingBuffer][23]
--   [refreshExpiredTiles][24]
--   [maxBounds][25]
--   [scrollZoom][26]
--   [boxZoom][27]
--   [dragRotate][28]
--   [dragPan][29]
--   [keyboard][30]
--   [doubleClickZoom][31]
--   [trackResize][32]
--   [maxTileCacheSize][33]
--   [renderWorldCopies][34]
--   [localIdeographFontFamily][35]
--   [transformRequest][36]
--   [collectResourceTiming][37]
--   [onViewportChange][38]
--   [onLoad][39]
--   [id][40]
--   [id][41]
--   [layer][42]
--   [before][43]
--   [onClick][44]
--   [onHover][45]
--   [onEnter][46]
--   [onLeave][47]
--   [radius][48]
--   [radius][49]
--   [source][50]
--   [element][51]
--   [element][52]
--   [offset][53]
--   [extent][54]
--   [nodeSize][55]
--   [innerRef][56]
+-   [latitude][11]
+-   [latitude][12]
+-   [zoom][13]
+-   [bearing][14]
+-   [pitch][15]
+-   [minZoom][16]
+-   [minZoom][17]
+-   [maxZoom][18]
+-   [maxZoom][19]
+-   [hash][20]
+-   [bearingSnap][21]
+-   [pitchWithRotate][22]
+-   [attributionControl][23]
+-   [failIfMajorPerformanceCaveat][24]
+-   [preserveDrawingBuffer][25]
+-   [refreshExpiredTiles][26]
+-   [maxBounds][27]
+-   [scrollZoom][28]
+-   [boxZoom][29]
+-   [dragRotate][30]
+-   [dragPan][31]
+-   [keyboard][32]
+-   [doubleClickZoom][33]
+-   [trackResize][34]
+-   [maxTileCacheSize][35]
+-   [renderWorldCopies][36]
+-   [localIdeographFontFamily][37]
+-   [transformRequest][38]
+-   [collectResourceTiming][39]
+-   [onViewportChange][40]
+-   [onLoad][41]
+-   [id][42]
+-   [id][43]
+-   [layer][44]
+-   [before][45]
+-   [onClick][46]
+-   [onHover][47]
+-   [onEnter][48]
+-   [onLeave][49]
+-   [radius][50]
+-   [radius][51]
+-   [source][52]
+-   [element][53]
+-   [element][54]
+-   [element][55]
+-   [offset][56]
+-   [offset][57]
+-   [extent][58]
+-   [nodeSize][59]
+-   [innerRef][60]
 
 ## className
 
@@ -90,11 +94,19 @@ The longitude of the center of the map.
 
 ## longitude
 
+The longitude of the center of the popup.
+
+## longitude
+
 The longitude of the center of the marker.
 
 ## latitude
 
 The latitude of the center of the map.
+
+## latitude
+
+The latitude of the center of the popup.
 
 ## latitude
 
@@ -133,7 +145,7 @@ Maximum zoom level at which clusters are generated
 If `true`, the map's position (zoom, center latitude,
 center longitude, bearing, and pitch) will be synced
 with the hash fragment of the page's URL. For example,
-[http://path/to/my/page.html#2.59/39.26/53.07/-24.1/60][57].
+[http://path/to/my/page.html#2.59/39.26/53.07/-24.1/60][61].
 
 ## bearingSnap
 
@@ -220,7 +232,7 @@ generation of glyphs in the 'CJK Unified Ideographs' and
 map's style will be ignored, except for font-weight keywords
 (light/regular/medium/bold). The purpose of this option is to avoid
 bandwidth-intensive glyph server requests.
-(see [https://www.mapbox.com/mapbox-gl-js/example/local-ideographs][58] )
+(see [https://www.mapbox.com/mapbox-gl-js/example/local-ideographs][62] )
 
 ## transformRequest
 
@@ -267,57 +279,57 @@ The id of an existing layer to insert the new layer before.
 
 Called when the layer is clicked.
 
-Type: [Function][59]
+Type: [Function][63]
 
 **Parameters**
 
--   `event` **[Object][60]** The mouse event.
-    -   `event.lngLat` **\[[Number][61], [Number][61]]** The coordinates of the pointer
-    -   `event.features` **[Array][62]** The features under the pointer,
+-   `event` **[Object][64]** The mouse event.
+    -   `event.lngLat` **\[[Number][65], [Number][65]]** The coordinates of the pointer
+    -   `event.features` **[Array][66]** The features under the pointer,
         using Mapbox's queryRenderedFeatures API:
-        [https://www.mapbox.com/mapbox-gl-js/api/#Map#queryRenderedFeatures][63]
+        [https://www.mapbox.com/mapbox-gl-js/api/#Map#queryRenderedFeatures][67]
 
 ## onHover
 
 Called when the layer is hovered over.
 
-Type: [Function][59]
+Type: [Function][63]
 
 **Parameters**
 
--   `event` **[Object][60]** The mouse event.
-    -   `event.lngLat` **\[[Number][61], [Number][61]]** The coordinates of the pointer
-    -   `event.features` **[Array][62]** The features under the pointer,
+-   `event` **[Object][64]** The mouse event.
+    -   `event.lngLat` **\[[Number][65], [Number][65]]** The coordinates of the pointer
+    -   `event.features` **[Array][66]** The features under the pointer,
         using Mapbox's queryRenderedFeatures API:
-        [https://www.mapbox.com/mapbox-gl-js/api/#Map#queryRenderedFeatures][63]
+        [https://www.mapbox.com/mapbox-gl-js/api/#Map#queryRenderedFeatures][67]
 
 ## onEnter
 
 Called when the layer feature is entered.
 
-Type: [Function][59]
+Type: [Function][63]
 
 **Parameters**
 
--   `event` **[Object][60]** The mouse event.
-    -   `event.lngLat` **\[[Number][61], [Number][61]]** The coordinates of the pointer
-    -   `event.features` **[Array][62]** The features under the pointer,
+-   `event` **[Object][64]** The mouse event.
+    -   `event.lngLat` **\[[Number][65], [Number][65]]** The coordinates of the pointer
+    -   `event.features` **[Array][66]** The features under the pointer,
         using Mapbox's queryRenderedFeatures API:
-        [https://www.mapbox.com/mapbox-gl-js/api/#Map#queryRenderedFeatures][63]
+        [https://www.mapbox.com/mapbox-gl-js/api/#Map#queryRenderedFeatures][67]
 
 ## onLeave
 
 Called when the layer feature is leaved.
 
-Type: [Function][59]
+Type: [Function][63]
 
 **Parameters**
 
--   `event` **[Object][60]** The mouse event.
-    -   `event.lngLat` **\[[Number][61], [Number][61]]** The coordinates of the pointer
-    -   `event.features` **[Array][62]** The features under the pointer,
+-   `event` **[Object][64]** The mouse event.
+    -   `event.lngLat` **\[[Number][65], [Number][65]]** The coordinates of the pointer
+    -   `event.features` **[Array][66]** The features under the pointer,
         using Mapbox's queryRenderedFeatures API:
-        [https://www.mapbox.com/mapbox-gl-js/api/#Map#queryRenderedFeatures][63]
+        [https://www.mapbox.com/mapbox-gl-js/api/#Map#queryRenderedFeatures][67]
 
 ## radius
 
@@ -334,11 +346,20 @@ Mapbox GL Source as Immutable object
 
 ## element
 
+ReactDOM element to use as a popup
+
+## element
+
 ReactDOM element to use as a marker
 
 ## element
 
 ReactDOM element to use as a marker
+
+## offset
+
+The offset in pixels as a `PointLike` object to apply
+relative to the element's center. Negatives indicate left and up.
 
 ## offset
 
@@ -374,112 +395,120 @@ after componentDidMount
 
 [8]: #longitude-1
 
-[9]: #latitude
+[9]: #longitude-2
 
-[10]: #latitude-1
+[10]: #latitude
 
-[11]: #zoom
+[11]: #latitude-1
 
-[12]: #bearing
+[12]: #latitude-2
 
-[13]: #pitch
+[13]: #zoom
 
-[14]: #minzoom
+[14]: #bearing
 
-[15]: #minzoom-1
+[15]: #pitch
 
-[16]: #maxzoom
+[16]: #minzoom
 
-[17]: #maxzoom-1
+[17]: #minzoom-1
 
-[18]: #hash
+[18]: #maxzoom
 
-[19]: #bearingsnap
+[19]: #maxzoom-1
 
-[20]: #pitchwithrotate
+[20]: #hash
 
-[21]: #attributioncontrol
+[21]: #bearingsnap
 
-[22]: #failifmajorperformancecaveat
+[22]: #pitchwithrotate
 
-[23]: #preservedrawingbuffer
+[23]: #attributioncontrol
 
-[24]: #refreshexpiredtiles
+[24]: #failifmajorperformancecaveat
 
-[25]: #maxbounds
+[25]: #preservedrawingbuffer
 
-[26]: #scrollzoom
+[26]: #refreshexpiredtiles
 
-[27]: #boxzoom
+[27]: #maxbounds
 
-[28]: #dragrotate
+[28]: #scrollzoom
 
-[29]: #dragpan
+[29]: #boxzoom
 
-[30]: #keyboard
+[30]: #dragrotate
 
-[31]: #doubleclickzoom
+[31]: #dragpan
 
-[32]: #trackresize
+[32]: #keyboard
 
-[33]: #maxtilecachesize
+[33]: #doubleclickzoom
 
-[34]: #renderworldcopies
+[34]: #trackresize
 
-[35]: #localideographfontfamily
+[35]: #maxtilecachesize
 
-[36]: #transformrequest
+[36]: #renderworldcopies
 
-[37]: #collectresourcetiming
+[37]: #localideographfontfamily
 
-[38]: #onviewportchange
+[38]: #transformrequest
 
-[39]: #onload
+[39]: #collectresourcetiming
 
-[40]: #id
+[40]: #onviewportchange
 
-[41]: #id-1
+[41]: #onload
 
-[42]: #layer
+[42]: #id
 
-[43]: #before
+[43]: #id-1
 
-[44]: #onclick
+[44]: #layer
 
-[45]: #onhover
+[45]: #before
 
-[46]: #onenter
+[46]: #onclick
 
-[47]: #onleave
+[47]: #onhover
 
-[48]: #radius
+[48]: #onenter
 
-[49]: #radius-1
+[49]: #onleave
 
-[50]: #source
+[50]: #radius
 
-[51]: #element
+[51]: #radius-1
 
-[52]: #element-1
+[52]: #source
 
-[53]: #offset
+[53]: #element
 
-[54]: #extent
+[54]: #element-1
 
-[55]: #nodesize
+[55]: #element-2
 
-[56]: #innerref
+[56]: #offset
 
-[57]: http://path/to/my/page.html#2.59/39.26/53.07/-24.1/60
+[57]: #offset-1
 
-[58]: https://www.mapbox.com/mapbox-gl-js/example/local-ideographs
+[58]: #extent
 
-[59]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function
+[59]: #nodesize
 
-[60]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
+[60]: #innerref
 
-[61]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
+[61]: http://path/to/my/page.html#2.59/39.26/53.07/-24.1/60
 
-[62]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
+[62]: https://www.mapbox.com/mapbox-gl-js/example/local-ideographs
 
-[63]: https://www.mapbox.com/mapbox-gl-js/api/#Map#queryRenderedFeatures
+[63]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function
+
+[64]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
+
+[65]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
+
+[66]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
+
+[67]: https://www.mapbox.com/mapbox-gl-js/api/#Map#queryRenderedFeatures
