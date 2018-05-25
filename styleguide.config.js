@@ -38,6 +38,10 @@ module.exports = {
           content: 'docs/interactive-map.md'
         },
         {
+          name: 'Events',
+          content: 'docs/events.md'
+        },
+        {
           name: 'Using with Immutable.js',
           content: 'docs/immutable-map.md'
         },

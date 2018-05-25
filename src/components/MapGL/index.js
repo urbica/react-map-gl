@@ -3,12 +3,15 @@
 import { Children, PureComponent, createElement, cloneElement } from 'react';
 import { hash, isImmutable } from 'immutable';
 import type { Node } from 'react';
+import type { EventProps } from './eventProps';
 
 import Layer from '../Layer';
 import MapContext from '../MapContext';
 import mapboxgl from '../../utils/mapbox-gl';
+import events from './events';
+import capitalizeFirstLetter from '../../utils/capitalizeFirstLetter';
 
-type Props = {
+type Props = EventProps & {
   /** container className */
   className?: string,
 
@@ -192,6 +195,7 @@ class MapGL extends PureComponent<Props, State> {
   static displayName = 'MapGL';
 
   static defaultProps = {
+    children: null,
     className: null,
     style: null,
     mapStyle: 'mapbox://styles/mapbox/light-v8',
@@ -200,6 +204,7 @@ class MapGL extends PureComponent<Props, State> {
     pitch: 0,
     minZoom: 0,
     maxZoom: 22,
+    maxBounds: null,
     hash: false,
     bearingSnap: 7,
     pitchWithRotate: true,
@@ -293,6 +298,13 @@ class MapGL extends PureComponent<Props, State> {
       map.on('pitchend', this._onViewportChange);
       map.on('boxzoomend', this._onViewportChange);
     }
+
+    events.forEach(event => {
+      const propName = `on${capitalizeFirstLetter(event)}`;
+      if (this.props[propName]) {
+        map.on(event, this.props[propName]);
+      }
+    });
 
     this._map = map;
     this._updateMapViewport(this.props);
