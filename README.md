@@ -1,8 +1,7 @@
 # Urbica React Mapbox GL JS
 
-[![npm](https://img.shields.io/npm/v/@urbica/react-map-gl.svg?style=for-the-badge)](https://www.npmjs.com/package/@urbica/react-map-gl)
-[![CircleCI](https://img.shields.io/circleci/project/github/urbica/react-map-gl.svg?style=for-the-badge)](https://circleci.com/gh/urbica/react-map-gl/tree/master)
-[![Codecov](https://img.shields.io/codecov/c/github/urbica/react-map-gl.svg?style=for-the-badge)](https://codecov.io/gh/urbica/react-map-gl)
+[![npm](https://img.shields.io/npm/v/@urbica/react-map-gl.svg)](https://www.npmjs.com/package/@urbica/react-map-gl)
+[![CircleCI](https://img.shields.io/circleci/project/github/urbica/react-map-gl.svg)](https://circleci.com/gh/urbica/react-map-gl/tree/master)
 
 React Component for Mapbox GL JS.
 
@@ -22,7 +21,27 @@ This package is heavily inspired by [uber/react-map-gl](https://github.com/uber/
 
 ## Example
 
-```js
+Static map
+
+```jsx
+import MapGL from '@urbica/react-map-gl';
+import 'mapbox-gl/dist/mapbox-gl.css';
+
+const accessToken = <TOKEN> // Mapbox access token
+
+<MapGL
+  style={{ width: "400px", height: "400px" }}
+  mapStyle="mapbox://styles/mapbox/light-v9"
+  accessToken={accessToken}
+  latitude={37.78}
+  longitude={-122.41}
+  zoom={11}
+/>
+```
+
+Interactive map
+
+```jsx
 import MapGL from '@urbica/react-map-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
@@ -39,6 +58,44 @@ const accessToken = <TOKEN> // Mapbox access token
     // Call `setState` and use the state to update the map.
   }}
 />
+```
+
+Map with `Source` and `Layer` components
+
+```jsx
+import MapGL, { Source, Layer } from '@urbica/react-map-gl';
+import Immutable from "immutable";
+import random from "@turf/random";
+import "mapbox-gl/dist/mapbox-gl.css";
+
+const accessToken = <TOKEN> // Mapbox access token
+
+const source = Immutable.fromJS({
+  type: "geojson",
+  data: random.randomPoint(10)
+});
+
+const layer = Immutable.fromJS({
+  id: "markers",
+  type: "circle",
+  source: "markers",
+  paint: {
+    "circle-radius": 16,
+    "circle-color": "#1978c8"
+  }
+});
+
+<MapGL
+  style={{ width: "400px", height: "400px" }}
+  mapStyle="mapbox://styles/mapbox/light-v9"
+  accessToken={MAPBOX_ACCESS_TOKEN}
+  latitude={0}
+  longitude={0}
+  zoom={0}
+>
+  <Source id="markers" source={source} />
+  <Layer layer={layer} />
+</MapGL>
 ```
 
 See [Examples](https://urbica.github.io/react-map-gl/) for more info.
