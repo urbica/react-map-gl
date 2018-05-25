@@ -180,7 +180,10 @@ type Props = EventProps & {
   onViewportChange?: (viewport: Viewport) => void,
 
   /** The onLoad callback for the map */
-  onLoad?: Function
+  onLoad?: Function,
+
+  /** Map cursor style as CSS value */
+  cursorStyle?: string
 };
 
 type State = {
@@ -226,7 +229,8 @@ class MapGL extends PureComponent<Props, State> {
     onLoad: null,
     localIdeographFontFamily: null,
     transformRequest: null,
-    collectResourceTiming: false
+    collectResourceTiming: false,
+    cursorStyle: null
   };
 
   constructor(props: Props) {
@@ -306,6 +310,10 @@ class MapGL extends PureComponent<Props, State> {
       }
     });
 
+    if (this.props.cursorStyle) {
+      map.getCanvas().style.cursor = this.props.cursorStyle;
+    }
+
     this._map = map;
     this._updateMapViewport(this.props);
   }
@@ -313,6 +321,10 @@ class MapGL extends PureComponent<Props, State> {
   componentWillReceiveProps(newProps: Props) {
     this._updateMapViewport(newProps);
     this._updateMapStyle(this.props, newProps);
+
+    if (!newProps.cursorStyle !== this.props.cursorStyle) {
+      this._map.getCanvas().style.cursor = newProps.cursorStyle;
+    }
   }
 
   componentWillUnmount() {
