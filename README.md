@@ -1,8 +1,5 @@
 # Urbica React Mapbox GL JS
 
-[![npm](https://img.shields.io/npm/v/@urbica/react-map-gl.svg)](https://www.npmjs.com/package/@urbica/react-map-gl)
-[![CircleCI](https://img.shields.io/circleci/project/github/urbica/react-map-gl.svg)](https://circleci.com/gh/urbica/react-map-gl/tree/master)
-
 React Component for Mapbox GL JS.
 
 [Examples](https://urbica.github.io/react-map-gl/).
