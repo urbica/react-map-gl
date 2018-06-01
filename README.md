@@ -16,9 +16,22 @@ This package is heavily inspired by [uber/react-map-gl](https://github.com/uber/
 
     npm install --save mapbox-gl immutable@4.0.0-rc.9 @urbica/react-map-gl
 
-## Example
+## List of React components
 
-Static map
+`@urbica/react-map-gl` provides a set of components:
+
+- MapGL
+- Source
+- Layer
+- Cluster
+- Popup
+- Marker
+
+## Examples
+
+You can see more examples [here](https://urbica.github.io/react-map-gl/).
+
+### Static map
 
 ```jsx
 import MapGL from '@urbica/react-map-gl';
@@ -36,7 +49,7 @@ const accessToken = <TOKEN> // Mapbox access token
 />
 ```
 
-Interactive map
+### Interactive map
 
 ```jsx
 import MapGL from '@urbica/react-map-gl';
@@ -57,7 +70,7 @@ const accessToken = <TOKEN> // Mapbox access token
 />
 ```
 
-Map with `Source` and `Layer` components
+### Map with `Source` and `Layer` components
 
 ```jsx
 import MapGL, { Source, Layer } from '@urbica/react-map-gl';
