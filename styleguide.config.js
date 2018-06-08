@@ -21,6 +21,7 @@ module.exports = {
         'src/components/MapGL/index.js',
         'src/components/Source/index.js',
         'src/components/Layer/index.js',
+        'src/components/Popup/index.js',
         'src/components/Marker/index.js',
         'src/components/Cluster/index.js'
       ]
@@ -37,12 +38,20 @@ module.exports = {
           content: 'docs/interactive-map.md'
         },
         {
+          name: 'Events',
+          content: 'docs/events.md'
+        },
+        {
           name: 'Using with Immutable.js',
           content: 'docs/immutable-map.md'
         },
         {
           name: 'Map Instance',
           content: 'docs/map-instance.md'
+        },
+        {
+          name: 'Popups',
+          content: 'docs/popup.md'
         },
         {
           name: 'Markers',

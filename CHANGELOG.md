@@ -2,6 +2,37 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.6.0-beta.14"></a>
+# [0.6.0-beta.14](https://github.com/urbica/react-map-gl/compare/v0.6.0-beta.13...v0.6.0-beta.14) (2018-05-31)
+
+
+
+<a name="0.6.0-beta.13"></a>
+# [0.6.0-beta.13](https://github.com/urbica/react-map-gl/compare/v0.6.0-beta.12...v0.6.0-beta.13) (2018-05-25)
+
+
+### Features
+
+* **MapGL:** add cursorStyle prop ([73294d3](https://github.com/urbica/react-map-gl/commit/73294d3))
+* **MapGL:** add mapbox-gl event listener props support ([c0b1ec5](https://github.com/urbica/react-map-gl/commit/c0b1ec5))
+
+
+
+<a name="0.6.0-beta.12"></a>
+# [0.6.0-beta.12](https://github.com/urbica/react-map-gl/compare/v0.6.0-beta.11...v0.6.0-beta.12) (2018-05-22)
+
+
+### Bug Fixes
+
+* layer filters can be deep nested List now ([#49](https://github.com/urbica/react-map-gl/issues/49)) ([665a8e0](https://github.com/urbica/react-map-gl/commit/665a8e0))
+
+
+### Features
+
+* **Popup:** add Popup component ([c08f524](https://github.com/urbica/react-map-gl/commit/c08f524))
+
+
+
 <a name="0.6.0-beta.11"></a>
 # [0.6.0-beta.11](https://github.com/urbica/react-map-gl/compare/v0.6.0-beta.10...v0.6.0-beta.11) (2018-04-20)
 
