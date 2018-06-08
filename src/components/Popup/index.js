@@ -23,6 +23,9 @@ type Props = {
   /* If true, the popup will closed when the map is clicked. */
   closeOnClick?: boolean,
 
+  /** The onPopupClose callback is fired when the popup closed */
+  onPopupClose?: Function,
+
   /*
    * A string indicating the part of the Popup that should be positioned closest to the coordinate
    * */
@@ -52,12 +55,13 @@ class Popup extends PureComponent<Props> {
   static defaultProps = {
     closeButton: true,
     closeOnClick: true,
+    onPopupClose: null,
     anchor: null,
     offset: null
   };
 
   componentDidMount() {
-    const { element, longitude, latitude, offset, closeButton, closeOnClick, anchor } = this.props;
+    const { element, longitude, latitude, offset, closeButton, closeOnClick, onPopupClose, anchor } = this.props;
 
     const div = document.createElement('div');
     render(element, div);
@@ -65,6 +69,11 @@ class Popup extends PureComponent<Props> {
     const popup = new mapboxgl.Popup({ offset, closeButton, closeOnClick, anchor });
     popup.setLngLat([longitude, latitude]).addTo(this._map);
     popup.setDOMContent(div);
+
+    if (onPopupClose) {
+      popup.on('close', onPopupClose);
+    }
+
     this._popup = popup;
   }
 
