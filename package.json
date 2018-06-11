@@ -53,7 +53,7 @@
   "dependencies": {
     "@turf/helpers": "^6.1.4",
     "create-react-context": "^0.2.2",
-    "supercluster": "^3.0.3"
+    "supercluster": "^4.0.0"
   },
   "peerDependencies": {
     "immutable": "4.x",
