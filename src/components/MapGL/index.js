@@ -192,7 +192,9 @@ type State = {
 
 class MapGL extends PureComponent<Props, State> {
   _map: MapboxMap;
+
   _container: ?HTMLElement;
+
   _onViewportChange: (event: ViewportChangeEvent) => void;
 
   static displayName = 'MapGL';

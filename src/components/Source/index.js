@@ -15,6 +15,7 @@ type Props = {
 
 class Source extends PureComponent<Props> {
   _map: MapboxMap;
+
   static displayName = 'Source';
 
   componentDidMount() {

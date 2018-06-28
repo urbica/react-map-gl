@@ -26,7 +26,7 @@ type Props = {
    * using Mapbox's queryRenderedFeatures API:
    * https://www.mapbox.com/mapbox-gl-js/api/#Map#queryRenderedFeatures
    */
-  onClick: (event: MapMouseEvent) => any,
+  onClick?: (event: MapMouseEvent) => any,
 
   /**
    * Called when the layer is hovered over.
@@ -37,7 +37,7 @@ type Props = {
    * using Mapbox's queryRenderedFeatures API:
    * https://www.mapbox.com/mapbox-gl-js/api/#Map#queryRenderedFeatures
    */
-  onHover: (event: MapMouseEvent) => any,
+  onHover?: (event: MapMouseEvent) => any,
 
   /**
    * Called when the layer feature is entered.
@@ -48,7 +48,7 @@ type Props = {
    * using Mapbox's queryRenderedFeatures API:
    * https://www.mapbox.com/mapbox-gl-js/api/#Map#queryRenderedFeatures
    */
-  onEnter: (event: MapMouseEvent) => any,
+  onEnter?: (event: MapMouseEvent) => any,
 
   /**
    * Called when the layer feature is leaved.
@@ -59,21 +59,25 @@ type Props = {
    * using Mapbox's queryRenderedFeatures API:
    * https://www.mapbox.com/mapbox-gl-js/api/#Map#queryRenderedFeatures
    */
-  onLeave: (event: any) => any,
+  onLeave?: (event: any) => any,
 
   /**
    * Radius to detect features around a clicked/hovered point
-   * (defaults to 0)
    */
-  radius: number
+  radius?: number
 };
 
 class Layer extends PureComponent<Props> {
   _id: string;
+
   _map: MapboxMap;
+
   _onClick: (event: MapMouseEvent) => void;
+
   _onHover: (event: MapMouseEvent) => void;
+
   _onEnter: (event: MapMouseEvent) => void;
+
   _onLeave: (event: MapMouseEvent) => void;
 
   static displayName = 'Layer';

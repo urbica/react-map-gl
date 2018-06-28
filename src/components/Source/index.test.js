@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import Immutable from 'immutable';
-import MapGL, { Source } from '../../';
+import MapGL, { Source } from '../..';
 
 const source = Immutable.fromJS({
   type: 'geojson',

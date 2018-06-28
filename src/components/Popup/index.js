@@ -43,11 +43,12 @@ type Props = {
    * The offset in pixels as a `PointLike` object to apply
    * relative to the element's center. Negatives indicate left and up.
    */
-  offset: mapboxgl.LngLatLike
+  offset?: mapboxgl.LngLatLike
 };
 
 class Popup extends PureComponent<Props> {
   _map: MapboxMap;
+
   _popup: mapboxgl.Popup;
 
   static displayName = 'Popup';

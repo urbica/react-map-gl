@@ -1,10 +1,18 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import MapGL, { Cluster, Marker } from '../../';
+import MapGL, { Cluster, Marker } from '../..';
 
 test('Cluster#render', () => {
-  const Element = <div>ok</div>;
-  const ClusterElement = () => <div>ok</div>;
+  const Element = (
+    <div>
+ok
+    </div>
+);
+  const ClusterElement = () => (
+    <div>
+ok
+    </div>
+);
 
   const wrapper = mount(
     <MapGL latitude={0} longitude={0} zoom={0}>

@@ -11,19 +11,19 @@ import shallowCompareChildren from '../../utils/shallowCompareChildren';
 
 type Props = {
   /** Minimum zoom level at which clusters are generated */
-  minZoom: number,
+  minZoom?: number,
 
   /** Maximum zoom level at which clusters are generated */
-  maxZoom: number,
+  maxZoom?: number,
 
   /** Cluster radius, in pixels */
-  radius: number,
+  radius?: number,
 
   /** (Tiles) Tile extent. Radius is calculated relative to this value */
-  extent: number,
+  extent?: number,
 
   /** Size of the KD-tree leaf node. Affects performance */
-  nodeSize: number,
+  nodeSize?: number,
 
   /** ReactDOM element to use as a marker */
   element: Class<Component<any, any>>,
@@ -46,8 +46,11 @@ type State = {
 
 class Cluster extends PureComponent<Props, State> {
   _map: MapboxMap;
+
   _cluster: Object;
+
   _recalculate: () => void;
+
   _createCluster: (props: Props) => void;
 
   static displayName = 'Cluster';
