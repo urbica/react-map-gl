@@ -61,7 +61,16 @@ class Popup extends PureComponent<Props> {
   };
 
   componentDidMount() {
-    const { element, longitude, latitude, offset, closeButton, closeOnClick, onPopupClose, anchor } = this.props;
+    const {
+      element,
+      longitude,
+      latitude,
+      offset,
+      closeButton,
+      closeOnClick,
+      onPopupClose,
+      anchor
+    } = this.props;
 
     const div = document.createElement('div');
     render(element, div);

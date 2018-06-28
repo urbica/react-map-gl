@@ -9,7 +9,7 @@ import queryRenderedFeatures from '../../utils/queryRenderedFeatures';
 
 type Props = {
   /** Mapbox GL Layer id */
-  id?: string,
+  id: string,
 
   /** Mapbox GL Layer as Immutable object */
   layer: MapLayer,
@@ -83,6 +83,7 @@ class Layer extends PureComponent<Props> {
     onHover: null,
     onEnter: null,
     onLeave: null,
+    before: null,
     radius: 0
   };
 
