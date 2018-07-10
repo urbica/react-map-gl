@@ -59,12 +59,12 @@ type Props = {
    * using Mapbox's queryRenderedFeatures API:
    * https://www.mapbox.com/mapbox-gl-js/api/#Map#queryRenderedFeatures
    */
-  onLeave?: (event: any) => any,
+  onLeave?: (event: MapMouseEvent) => any,
 
   /**
    * Radius to detect features around a clicked/hovered point
    */
-  radius?: number
+  radius: number
 };
 
 class Layer extends PureComponent<Props> {
@@ -83,11 +83,6 @@ class Layer extends PureComponent<Props> {
   static displayName = 'Layer';
 
   static defaultProps = {
-    onClick: null,
-    onHover: null,
-    onEnter: null,
-    onLeave: null,
-    before: null,
     radius: 0
   };
 
@@ -168,41 +163,37 @@ class Layer extends PureComponent<Props> {
 
   _onClick(event: MapMouseEvent): void {
     if (this.props.onClick) {
+      const { onClick } = this.props;
       const position = [event.point.x, event.point.y];
-
       const features = queryRenderedFeatures(this._map, this._id, position, this.props.radius);
-
-      this.props.onClick({ ...event, features });
+      onClick({ ...event, features });
     }
   }
 
   _onHover(event: MapMouseEvent): void {
     if (this.props.onHover) {
+      const { onHover } = this.props;
       const position = [event.point.x, event.point.y];
-
       const features = queryRenderedFeatures(this._map, this._id, position, this.props.radius);
-
-      this.props.onHover({ ...event, features });
+      onHover({ ...event, features });
     }
   }
 
   _onEnter(event: MapMouseEvent): void {
     if (this.props.onEnter) {
+      const { onEnter } = this.props;
       const position = [event.point.x, event.point.y];
-
       const features = queryRenderedFeatures(this._map, this._id, position, this.props.radius);
-
-      this.props.onEnter({ ...event, features });
+      onEnter({ ...event, features });
     }
   }
 
   _onLeave(event: MapMouseEvent) {
     if (this.props.onLeave) {
+      const { onLeave } = this.props;
       const position: [number, number] = [event.point.x, event.point.y];
-
       const features = queryRenderedFeatures(this._map, this._id, position, this.props.radius);
-
-      this.props.onLeave({ ...event, features });
+      onLeave({ ...event, features });
     }
   }
 
