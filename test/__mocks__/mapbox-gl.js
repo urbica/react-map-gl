@@ -12,6 +12,7 @@ function Map() {
   this.getBearing = jest.fn(() => 0);
   this.getPitch = jest.fn(() => 0);
   this.getZoom = jest.fn(() => 0);
+  this.getStyle = jest.fn(() => {});
   this.queryRenderedFeatures = jest.fn(() => []);
 
   return this;
@@ -45,6 +46,7 @@ Map.prototype.getBounds = () => new LngLatBounds();
 function Popup() {
   this.setLngLat = jest.fn(() => this);
   this.addTo = jest.fn(() => this);
+  this.setDOMContent = jest.fn(() => this);
   return this;
 }
 
