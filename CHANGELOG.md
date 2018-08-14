@@ -2,6 +2,32 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.6.0-beta.15"></a>
+# [0.6.0-beta.15](https://github.com/urbica/react-map-gl/compare/v0.6.0-beta.14...v0.6.0-beta.15) (2018-08-14)
+
+
+### Bug Fixes
+
+* add onPopupClose prop for Popup ([#60](https://github.com/urbica/react-map-gl/issues/60)) ([b1735a4](https://github.com/urbica/react-map-gl/commit/b1735a4))
+* **Layer:** fix props type definitions ([20655d1](https://github.com/urbica/react-map-gl/commit/20655d1))
+* change deprecated componentWillReceiveProps to componentDidUpdate ([b7bfa80](https://github.com/urbica/react-map-gl/commit/b7bfa80))
+* fix propTypes defaults ([e687a16](https://github.com/urbica/react-map-gl/commit/e687a16))
+* **MapGL:** reverse layers paint order to respect layers before prop ([107bb38](https://github.com/urbica/react-map-gl/commit/107bb38))
+* **Popup:** rename onPopupClose to onClose ([8591e3d](https://github.com/urbica/react-map-gl/commit/8591e3d))
+
+
+### Code Refactoring
+
+* remove external dependencies ([2a8392c](https://github.com/urbica/react-map-gl/commit/2a8392c))
+
+
+### BREAKING CHANGES
+
+* **Popup:** Popup onPopupClose prop is renamed to onClick
+* supercluster is a peer dependency now
+
+
+
 <a name="0.6.0-beta.14"></a>
 # [0.6.0-beta.14](https://github.com/urbica/react-map-gl/compare/v0.6.0-beta.13...v0.6.0-beta.14) (2018-05-31)
 
