@@ -435,11 +435,16 @@ class MapGL extends PureComponent<Props, State> {
         }
       );
 
-    const nextLayerIds = layerChildren.slice(1).map(child => child.props.layer.get('id'));
+    const nextLayerIds = layerChildren
+      .slice(1)
+      .map(child => child.props.layer.get('id'))
+      .reverse();
 
-    const layerChildrenWithBefore = layerChildren.map((child, index) =>
-      cloneElement(child, { before: child.props.before || nextLayerIds[index] })
-    );
+    const layerChildrenWithBefore = layerChildren
+      .reverse()
+      .map((child, index) =>
+        cloneElement(child, { before: child.props.before || nextLayerIds[index - 1] })
+      );
 
     // TODO: preserve children order
     const children = otherChildren.concat(layerChildrenWithBefore);

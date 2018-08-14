@@ -100,11 +100,10 @@ class Layer extends PureComponent<Props> {
     const map = this._map;
     const { layer, before } = this.props;
 
+    const mapboxLayer: MapboxLayer = layer.toJS();
     if (before && map.getLayer(before)) {
-      const mapboxLayer: MapboxLayer = layer.toJS();
       map.addLayer(mapboxLayer, before);
     } else {
-      const mapboxLayer: MapboxLayer = layer.toJS();
       map.addLayer(mapboxLayer);
     }
 
@@ -117,6 +116,10 @@ class Layer extends PureComponent<Props> {
   componentDidUpdate(prevProps: Props) {
     const newLayer = this.props.layer;
     const prevLayer = prevProps.layer;
+
+    if (this.props.before !== prevProps.before) {
+      this._map.moveLayer(newLayer.get('id'), this.props.before);
+    }
 
     if (!is(newLayer, prevLayer)) {
       const newPaint = newLayer.get('paint');
