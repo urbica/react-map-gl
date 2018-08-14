@@ -1,28 +1,27 @@
 ```jsx
-const random = require("@turf/random");
-
-const bbox = [-160, -70, 160, 70];
-const [longitude, latitude] = random.randomPosition(bbox);
-
 initialState = {
   viewport: {
     latitude: 0,
     longitude: 0,
     zoom: 0
   },
-  isOpenPopup: true,
-  longitude,
-  latitude
+  isOpen: true,
+  longitude: 0,
+  latitude: 0
 };
 
-const onClick = () => {
-  const [longitude, latitude] = random.randomPosition(bbox);
-  setState({ longitude, latitude, isOpenPopup: true });
+const onClick = ({ lngLat }) => {
+  setState(state => ({
+    ...state,
+    longitude: lngLat.lng,
+    latitude: lngLat.lat,
+    isOpen: true
+  }));
 };
 
-const onPopupClose = () => {
-  setState({ isOpenPopup: false });
-}
+const onClose = () => {
+  setState(state => ({ ...state, isOpen: false }));
+};
 
 const Element = <div>Popup</div>;
 
@@ -33,15 +32,14 @@ const Element = <div>Popup</div>;
   onClick={onClick}
   {...state.viewport}
 >
-{
-  state.isOpenPopup &&
+  {state.isOpen && (
     <Popup
       longitude={state.longitude}
       latitude={state.latitude}
-      onPopupClose={onPopupClose}
       closeOnClick={false}
+      onClose={onClose}
       element={Element}
     />
-  }
-</MapGL>;
+  )}
+</MapGL>
 ```

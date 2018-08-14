@@ -1,5 +1,5 @@
 ```jsx
-const Immutable = require('immutable');
+const Immutable = require("immutable");
 
 initialState = {
   mapStyle: null,
@@ -12,12 +12,10 @@ initialState = {
 
 const styleUrl = `https://api.mapbox.com/styles/v1/mapbox/light-v9?access_token=${MAPBOX_ACCESS_TOKEN}`;
 
-if (!state.mapStyle) {
+if (!state.mapStyle && setState) {
   fetch(styleUrl)
     .then(r => r.json())
-    .then(mapStyle =>
-      setState({ mapStyle: Immutable.fromJS(mapStyle) })
-    );
+    .then(mapStyle => setState({ mapStyle: Immutable.fromJS(mapStyle) }));
 }
 
 <MapGL

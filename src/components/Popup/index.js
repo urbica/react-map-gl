@@ -23,8 +23,8 @@ type Props = {
   /* If true, the popup will closed when the map is clicked. */
   closeOnClick?: boolean,
 
-  /** The onPopupClose callback is fired when the popup closed */
-  onPopupClose?: Function,
+  /** The onClose callback is fired when the popup closed */
+  onClose?: Function,
 
   /*
    * A string indicating the part of the Popup that should be positioned closest to the coordinate
@@ -56,7 +56,7 @@ class Popup extends PureComponent<Props> {
   static defaultProps = {
     closeButton: true,
     closeOnClick: true,
-    onPopupClose: null,
+    onClose: null,
     anchor: null,
     offset: null
   };
@@ -69,7 +69,7 @@ class Popup extends PureComponent<Props> {
       offset,
       closeButton,
       closeOnClick,
-      onPopupClose,
+      onClose,
       anchor
     } = this.props;
 
@@ -80,8 +80,8 @@ class Popup extends PureComponent<Props> {
     popup.setLngLat([longitude, latitude]).addTo(this._map);
     popup.setDOMContent(div);
 
-    if (onPopupClose) {
-      popup.on('close', onPopupClose);
+    if (onClose) {
+      popup.on('close', onClose);
     }
 
     this._popup = popup;
