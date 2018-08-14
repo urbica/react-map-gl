@@ -1,5 +1,8 @@
 # Urbica React Mapbox GL JS
 
+![npm](https://img.shields.io/npm/v/@urbica/react-map-gl.svg?style=popout)
+![CircleCI](https://img.shields.io/circleci/project/github/urbica/react-map-gl.svg?style=popout)
+
 React Component for Mapbox GL JS.
 
 [Examples](https://urbica.github.io/react-map-gl/).
@@ -16,16 +19,18 @@ This package is heavily inspired by [uber/react-map-gl](https://github.com/uber/
 
     npm install --save mapbox-gl immutable@4.0.0-rc.9 @urbica/react-map-gl
 
+You may also want to install `supercluster` package for `Cluster` component.
+
 ## List of React components
 
 `@urbica/react-map-gl` provides a set of components:
 
-- MapGL
-- Source
-- Layer
-- Cluster
-- Popup
-- Marker
+- [MapGL](https://urbica.github.io/react-map-gl/#mapgl)
+- [Source](https://urbica.github.io/react-map-gl/#source)
+- [Layer](https://urbica.github.io/react-map-gl/#layer)
+- [Cluster](https://urbica.github.io/react-map-gl/#cluster)
+- [Popup](https://urbica.github.io/react-map-gl/#popup)
+- [Marker](https://urbica.github.io/react-map-gl/#marker)
 
 ## Examples
 
