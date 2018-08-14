@@ -50,16 +50,12 @@
       "path": "cz-conventional-changelog"
     }
   },
-  "dependencies": {
-    "@turf/helpers": "^6.1.4",
-    "create-react-context": "^0.2.2",
-    "supercluster": "^4.1.1"
-  },
   "peerDependencies": {
     "immutable": "4.x",
     "mapbox-gl": ">= 0.40.0 < 1",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0"
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2",
+    "supercluster": "^4.1.1"
   },
   "devDependencies": {
     "@turf/random": "^6.0.2",
@@ -106,6 +102,7 @@
     "rollup-plugin-babel": "^3.0.7",
     "rollup-plugin-commonjs": "^9.1.5",
     "rollup-plugin-node-resolve": "^3.3.0",
+    "rollup-plugin-terser": "^1.0.1",
     "standard-version": "^4.4.0",
     "webpack": "^4.16.5"
   }

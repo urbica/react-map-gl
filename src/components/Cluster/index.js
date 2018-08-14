@@ -1,12 +1,13 @@
 // @flow
 
 import supercluster from 'supercluster';
-import { point } from '@turf/helpers';
 import { Children, PureComponent, createElement } from 'react';
 import type { Node, Component } from 'react';
 
 import Marker from '../Marker';
 import MapContext from '../MapContext';
+
+import point from '../../utils/point';
 import shallowCompareChildren from '../../utils/shallowCompareChildren';
 
 type Props = {
