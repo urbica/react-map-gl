@@ -76,6 +76,10 @@ module.exports = {
         {
           name: 'onEnter and onLeave',
           content: 'docs/another-hoverable-map.md'
+        },
+        {
+          name: 'Change Map style',
+          content: 'docs/change-map-style.md'
         }
       ]
     }
