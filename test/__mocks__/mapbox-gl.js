@@ -7,7 +7,7 @@ function Map() {
   this._sources = {};
 
   this.flyTo = jest.fn();
-  this.getCanvas = jest.fn();
+  this.getCanvas = jest.fn(() => ({ style: { cursor: 'default' } }));
   this.getCenter = jest.fn(() => ({ lat: 0, lng: 0 }));
   this.getBearing = jest.fn(() => 0);
   this.getPitch = jest.fn(() => 0);

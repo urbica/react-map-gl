@@ -46,12 +46,12 @@ class Marker extends PureComponent<Props> {
     this._marker = marker;
   }
 
-  componentWillReceiveProps(newProps: Props) {
+  componentDidUpdate(prevProps: Props) {
     const positionChanged =
-      newProps.latitude !== this.props.latitude || newProps.longitude !== this.props.longitude;
+      prevProps.latitude !== this.props.latitude || prevProps.longitude !== this.props.longitude;
 
     if (positionChanged) {
-      this._marker.setLngLat([newProps.longitude, newProps.latitude]);
+      this._marker.setLngLat([this.props.longitude, this.props.latitude]);
     }
   }
 

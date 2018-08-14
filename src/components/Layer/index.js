@@ -114,9 +114,9 @@ class Layer extends PureComponent<Props> {
     map.on('mouseleave', this._id, this._onLeave);
   }
 
-  componentWillReceiveProps(newProps: Props) {
-    const newLayer = newProps.layer;
-    const prevLayer = this.props.layer;
+  componentDidUpdate(prevProps: Props) {
+    const newLayer = this.props.layer;
+    const prevLayer = prevProps.layer;
 
     if (!is(newLayer, prevLayer)) {
       const newPaint = newLayer.get('paint');

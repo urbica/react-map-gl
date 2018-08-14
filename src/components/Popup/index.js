@@ -87,12 +87,12 @@ class Popup extends PureComponent<Props> {
     this._popup = popup;
   }
 
-  componentWillReceiveProps(newProps: Props) {
+  componentDidUpdate(prevProps: Props) {
     const positionChanged =
-      newProps.latitude !== this.props.latitude || newProps.longitude !== this.props.longitude;
+      prevProps.latitude !== this.props.latitude || prevProps.longitude !== this.props.longitude;
 
     if (positionChanged) {
-      this._popup.setLngLat([newProps.longitude, newProps.latitude]);
+      this._popup.setLngLat([this.props.longitude, this.props.latitude]);
     }
   }
 

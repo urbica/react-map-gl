@@ -320,12 +320,12 @@ class MapGL extends PureComponent<Props, State> {
     this._updateMapViewport(this.props);
   }
 
-  componentWillReceiveProps(newProps: Props) {
-    this._updateMapViewport(newProps);
-    this._updateMapStyle(this.props, newProps);
+  componentDidUpdate(prevProps: Props) {
+    this._updateMapViewport(this.props);
+    this._updateMapStyle(prevProps, this.props);
 
-    if (!newProps.cursorStyle !== this.props.cursorStyle) {
-      this._map.getCanvas().style.cursor = newProps.cursorStyle;
+    if (!prevProps.cursorStyle !== this.props.cursorStyle) {
+      this._map.getCanvas().style.cursor = this.props.cursorStyle;
     }
   }
 

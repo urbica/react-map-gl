@@ -81,17 +81,17 @@ class Cluster extends PureComponent<Props, State> {
     this._map.on('moveend', this._recalculate);
   }
 
-  componentWillReceiveProps(newProps: Props) {
+  componentDidUpdate(prevProps: Props) {
     const shouldUpdate =
-      newProps.minZoom !== this.props.minZoom ||
-      newProps.maxZoom !== this.props.maxZoom ||
-      newProps.radius !== this.props.radius ||
-      newProps.extent !== this.props.extent ||
-      newProps.nodeSize !== this.props.nodeSize ||
-      !shallowCompareChildren(this.props.children, newProps.children);
+      prevProps.minZoom !== this.props.minZoom ||
+      prevProps.maxZoom !== this.props.maxZoom ||
+      prevProps.radius !== this.props.radius ||
+      prevProps.extent !== this.props.extent ||
+      prevProps.nodeSize !== this.props.nodeSize ||
+      !shallowCompareChildren(prevProps.children, this.props.children);
 
     if (shouldUpdate) {
-      this._createCluster(newProps);
+      this._createCluster(this.props);
       this._recalculate();
     }
   }

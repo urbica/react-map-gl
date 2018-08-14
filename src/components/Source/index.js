@@ -23,9 +23,9 @@ class Source extends PureComponent<Props> {
     this._map.addSource(id, source.toJS());
   }
 
-  componentWillReceiveProps(newProps: Props) {
-    const newSource = newProps.source;
-    const prevSource = this.props.source;
+  componentDidUpdate(prevProps: Props) {
+    const newSource = this.props.source;
+    const prevSource = prevProps.source;
 
     if (!newSource.equals(prevSource)) {
       const { id } = this.props;
