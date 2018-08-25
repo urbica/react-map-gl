@@ -73,7 +73,7 @@
     "commitizen": "^2.10.1",
     "cz-conventional-changelog": "^2.1.0",
     "documentation": "^8.1.0",
-    "enzyme": "^3.4.1",
+    "enzyme": "^3.4.4",
     "enzyme-adapter-react-16": "^1.2.0",
     "eslint": "^5.3.0",
     "eslint-config-airbnb": "^17.1.0",
