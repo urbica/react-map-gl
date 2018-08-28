@@ -1,8 +1,14 @@
 // @flow
 
 import Immutable from 'immutable';
-import type Map from 'mapbox-gl/src/ui/map';
-import type { MapMouseEvent, MapTouchEvent } from 'mapbox-gl/src/ui/events';
+import type {
+  Map,
+  StyleSpecification,
+  SourceSpecification,
+  LayerSpecification,
+  MapMouseEvent,
+  MapTouchEvent
+} from 'mapbox-gl';
 
 declare type MapboxMap = Map;
 
