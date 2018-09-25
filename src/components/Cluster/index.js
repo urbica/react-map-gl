@@ -97,6 +97,14 @@ class Cluster extends PureComponent<Props, State> {
     }
   }
 
+  componentWillUnmount() {
+    if (!this._map || !this._map.getStyle()) {
+      return;
+    }
+
+    this._map.off('moveend', this._recalculate);
+  }
+
   _createCluster(props: Props) {
     const { minZoom, maxZoom, radius, extent, nodeSize, children, innerRef } = props;
 
