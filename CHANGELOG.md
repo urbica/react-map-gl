@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.6.0-beta.16"></a>
+# [0.6.0-beta.16](https://github.com/urbica/react-map-gl/compare/v0.6.0-beta.15...v0.6.0-beta.16) (2018-09-25)
+
+
+### Bug Fixes
+
+* fix mapbox-gl flow types import ([7b40115](https://github.com/urbica/react-map-gl/commit/7b40115))
+* **Cluster:** remove moveend handler on componentWillUnmount ([230bac5](https://github.com/urbica/react-map-gl/commit/230bac5))
+* **Marker:** unmount Marker container on componentWillUnmount ([d57852a](https://github.com/urbica/react-map-gl/commit/d57852a))
+
+
+
 <a name="0.6.0-beta.15"></a>
 # [0.6.0-beta.15](https://github.com/urbica/react-map-gl/compare/v0.6.0-beta.14...v0.6.0-beta.15) (2018-08-14)
 
