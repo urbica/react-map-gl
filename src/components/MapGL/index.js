@@ -305,7 +305,7 @@ class MapGL extends PureComponent<Props, State> {
       map.on('boxzoomend', this._onViewportChange);
     }
 
-    events.forEach(event => {
+    events.forEach((event) => {
       const propName = `on${capitalizeFirstLetter(event)}`;
       if (this.props[propName]) {
         map.on(event, this.props[propName]);

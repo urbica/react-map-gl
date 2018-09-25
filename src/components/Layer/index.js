@@ -201,7 +201,7 @@ class Layer extends PureComponent<Props> {
   }
 
   render() {
-    return createElement(MapContext.Consumer, {}, map => {
+    return createElement(MapContext.Consumer, {}, (map) => {
       if (map) {
         this._map = map;
       }

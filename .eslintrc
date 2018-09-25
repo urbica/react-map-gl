@@ -1,12 +1,24 @@
 {
   "parser": "babel-eslint",
-  "extends": ["airbnb", "plugin:flowtype/recommended", "prettier", "prettier/flowtype"],
+  "extends": [
+    "airbnb",
+    "plugin:flowtype/recommended",
+    "prettier",
+    "prettier/flowtype"
+  ],
   "plugins": ["flowtype", "import", "react"],
   "env": {
     "browser": true,
     "jest": true
   },
   "rules": {
+    "arrow-parens": [
+      "warn",
+      "as-needed",
+      {
+        "requireForBlockBody": true
+      }
+    ],
     "comma-dangle": ["error", "never"],
     "max-len": ["error", { "code": 100, "ignoreUrls": true }],
     "no-return-assign": 0,
@@ -16,7 +28,13 @@
     "react/sort-comp": [
       1,
       {
-        "order": ["type-annotations", "static-methods", "lifecycle", "everything-else", "render"]
+        "order": [
+          "type-annotations",
+          "static-methods",
+          "lifecycle",
+          "everything-else",
+          "render"
+        ]
       }
     ],
     "react/jsx-filename-extension": [1, { "extensions": [".js"] }],

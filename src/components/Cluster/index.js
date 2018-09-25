@@ -127,12 +127,12 @@ class Cluster extends PureComponent<Props, State> {
   }
 
   render() {
-    return createElement(MapContext.Consumer, {}, map => {
+    return createElement(MapContext.Consumer, {}, (map) => {
       if (map) {
         this._map = map;
       }
 
-      const clusters = this.state.clusters.map(cluster => {
+      const clusters = this.state.clusters.map((cluster) => {
         if (cluster.properties.cluster) {
           const [longitude, latitude] = cluster.geometry.coordinates;
           return createElement(Marker, {
