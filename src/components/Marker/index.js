@@ -1,6 +1,6 @@
 // @flow
 
-import { render } from 'react-dom';
+import { render, unmountComponentAtNode } from 'react-dom';
 import { PureComponent, createElement } from 'react';
 import type { Element } from 'react';
 
@@ -27,6 +27,8 @@ type Props = {
 class Marker extends PureComponent<Props> {
   _map: MapboxMap;
 
+  _container: HTMLDivElement;
+
   _marker: mapboxgl.Marker;
 
   static displayName = 'Marker';
@@ -38,10 +40,10 @@ class Marker extends PureComponent<Props> {
   componentDidMount() {
     const { element, longitude, latitude, offset } = this.props;
 
-    const div = document.createElement('div');
-    render(element, div);
+    this._container = document.createElement('div');
+    render(element, this._container);
 
-    const marker = new mapboxgl.Marker(div, { offset });
+    const marker = new mapboxgl.Marker(this._container, { offset });
     marker.setLngLat([longitude, latitude]).addTo(this._map);
     this._marker = marker;
   }
@@ -61,6 +63,7 @@ class Marker extends PureComponent<Props> {
     }
 
     this._marker.remove();
+    unmountComponentAtNode(this._container);
   }
 
   // External apps can access marker this way
