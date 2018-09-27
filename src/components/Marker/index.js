@@ -54,6 +54,7 @@ class Marker extends PureComponent<Props> {
 
     if (positionChanged) {
       this._marker.setLngLat([this.props.longitude, this.props.latitude]);
+      render(this.props.element, this._container);
     }
   }
 
