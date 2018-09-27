@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.6.0-beta.17"></a>
+# [0.6.0-beta.17](https://github.com/urbica/react-map-gl/compare/v0.6.0-beta.16...v0.6.0-beta.17) (2018-09-27)
+
+
+
 <a name="0.6.0-beta.16"></a>
 # [0.6.0-beta.16](https://github.com/urbica/react-map-gl/compare/v0.6.0-beta.15...v0.6.0-beta.16) (2018-09-25)
 
