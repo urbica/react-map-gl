@@ -49,20 +49,25 @@
 -   [layer][45]
 -   [before][46]
 -   [onClick][47]
--   [onHover][48]
--   [onEnter][49]
--   [onLeave][50]
--   [radius][51]
--   [radius][52]
--   [source][53]
--   [element][54]
--   [element][55]
--   [element][56]
--   [offset][57]
--   [offset][58]
--   [extent][59]
--   [nodeSize][60]
--   [innerRef][61]
+    -   [Parameters][48]
+-   [onHover][49]
+    -   [Parameters][50]
+-   [onEnter][51]
+    -   [Parameters][52]
+-   [onLeave][53]
+    -   [Parameters][54]
+-   [radius][55]
+-   [radius][56]
+-   [source][57]
+-   [element][58]
+-   [element][59]
+-   [element][60]
+-   [onClose][61]
+-   [offset][62]
+-   [offset][63]
+-   [extent][64]
+-   [nodeSize][65]
+-   [innerRef][66]
 
 ## className
 
@@ -146,7 +151,7 @@ Maximum zoom level at which clusters are generated
 If `true`, the map's position (zoom, center latitude,
 center longitude, bearing, and pitch) will be synced
 with the hash fragment of the page's URL. For example,
-[http://path/to/my/page.html#2.59/39.26/53.07/-24.1/60][62].
+[http://path/to/my/page.html#2.59/39.26/53.07/-24.1/60][67].
 
 ## bearingSnap
 
@@ -233,7 +238,7 @@ generation of glyphs in the 'CJK Unified Ideographs' and
 map's style will be ignored, except for font-weight keywords
 (light/regular/medium/bold). The purpose of this option is to avoid
 bandwidth-intensive glyph server requests.
-(see [https://www.mapbox.com/mapbox-gl-js/example/local-ideographs][63] )
+(see [https://www.mapbox.com/mapbox-gl-js/example/local-ideographs][68] )
 
 ## transformRequest
 
@@ -284,62 +289,61 @@ The id of an existing layer to insert the new layer before.
 
 Called when the layer is clicked.
 
-Type: [Function][64]
+Type: [Function][69]
 
-**Parameters**
+### Parameters
 
--   `event` **[Object][65]** The mouse event.
-    -   `event.lngLat` **\[[Number][66], [Number][66]]** The coordinates of the pointer
-    -   `event.features` **[Array][67]** The features under the pointer,
+-   `event` **[Object][70]** The mouse event.
+    -   `event.lngLat` **\[[Number][71], [Number][71]]** The coordinates of the pointer
+    -   `event.features` **[Array][72]** The features under the pointer,
         using Mapbox's queryRenderedFeatures API:
-        [https://www.mapbox.com/mapbox-gl-js/api/#Map#queryRenderedFeatures][68]
+        [https://www.mapbox.com/mapbox-gl-js/api/#Map#queryRenderedFeatures][73]
 
 ## onHover
 
 Called when the layer is hovered over.
 
-Type: [Function][64]
+Type: [Function][69]
 
-**Parameters**
+### Parameters
 
--   `event` **[Object][65]** The mouse event.
-    -   `event.lngLat` **\[[Number][66], [Number][66]]** The coordinates of the pointer
-    -   `event.features` **[Array][67]** The features under the pointer,
+-   `event` **[Object][70]** The mouse event.
+    -   `event.lngLat` **\[[Number][71], [Number][71]]** The coordinates of the pointer
+    -   `event.features` **[Array][72]** The features under the pointer,
         using Mapbox's queryRenderedFeatures API:
-        [https://www.mapbox.com/mapbox-gl-js/api/#Map#queryRenderedFeatures][68]
+        [https://www.mapbox.com/mapbox-gl-js/api/#Map#queryRenderedFeatures][73]
 
 ## onEnter
 
 Called when the layer feature is entered.
 
-Type: [Function][64]
+Type: [Function][69]
 
-**Parameters**
+### Parameters
 
--   `event` **[Object][65]** The mouse event.
-    -   `event.lngLat` **\[[Number][66], [Number][66]]** The coordinates of the pointer
-    -   `event.features` **[Array][67]** The features under the pointer,
+-   `event` **[Object][70]** The mouse event.
+    -   `event.lngLat` **\[[Number][71], [Number][71]]** The coordinates of the pointer
+    -   `event.features` **[Array][72]** The features under the pointer,
         using Mapbox's queryRenderedFeatures API:
-        [https://www.mapbox.com/mapbox-gl-js/api/#Map#queryRenderedFeatures][68]
+        [https://www.mapbox.com/mapbox-gl-js/api/#Map#queryRenderedFeatures][73]
 
 ## onLeave
 
 Called when the layer feature is leaved.
 
-Type: [Function][64]
+Type: [Function][69]
 
-**Parameters**
+### Parameters
 
--   `event` **[Object][65]** The mouse event.
-    -   `event.lngLat` **\[[Number][66], [Number][66]]** The coordinates of the pointer
-    -   `event.features` **[Array][67]** The features under the pointer,
+-   `event` **[Object][70]** The mouse event.
+    -   `event.lngLat` **\[[Number][71], [Number][71]]** The coordinates of the pointer
+    -   `event.features` **[Array][72]** The features under the pointer,
         using Mapbox's queryRenderedFeatures API:
-        [https://www.mapbox.com/mapbox-gl-js/api/#Map#queryRenderedFeatures][68]
+        [https://www.mapbox.com/mapbox-gl-js/api/#Map#queryRenderedFeatures][73]
 
 ## radius
 
 Radius to detect features around a clicked/hovered point
-(defaults to 0)
 
 ## radius
 
@@ -360,6 +364,10 @@ ReactDOM element to use as a marker
 ## element
 
 ReactDOM element to use as a marker
+
+## onClose
+
+The onClose callback is fired when the popup closed
 
 ## offset
 
@@ -478,44 +486,54 @@ after componentDidMount
 
 [47]: #onclick
 
-[48]: #onhover
+[48]: #parameters
 
-[49]: #onenter
+[49]: #onhover
 
-[50]: #onleave
+[50]: #parameters-1
 
-[51]: #radius
+[51]: #onenter
 
-[52]: #radius-1
+[52]: #parameters-2
 
-[53]: #source
+[53]: #onleave
 
-[54]: #element
+[54]: #parameters-3
 
-[55]: #element-1
+[55]: #radius
 
-[56]: #element-2
+[56]: #radius-1
 
-[57]: #offset
+[57]: #source
 
-[58]: #offset-1
+[58]: #element
 
-[59]: #extent
+[59]: #element-1
 
-[60]: #nodesize
+[60]: #element-2
 
-[61]: #innerref
+[61]: #onclose
 
-[62]: http://path/to/my/page.html#2.59/39.26/53.07/-24.1/60
+[62]: #offset
 
-[63]: https://www.mapbox.com/mapbox-gl-js/example/local-ideographs
+[63]: #offset-1
 
-[64]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function
+[64]: #extent
 
-[65]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
+[65]: #nodesize
 
-[66]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
+[66]: #innerref
 
-[67]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
+[67]: http://path/to/my/page.html#2.59/39.26/53.07/-24.1/60
 
-[68]: https://www.mapbox.com/mapbox-gl-js/api/#Map#queryRenderedFeatures
+[68]: https://www.mapbox.com/mapbox-gl-js/example/local-ideographs
+
+[69]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function
+
+[70]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
+
+[71]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
+
+[72]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
+
+[73]: https://www.mapbox.com/mapbox-gl-js/api/#Map#queryRenderedFeatures
