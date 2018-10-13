@@ -20,7 +20,7 @@ const onButtonClick = () => {
   });
 }
 
-<div>
+<React.Fragment>
   <button onClick={onButtonClick}>Change Map style</button>
   <MapGL
     style={{ width: "100%", height: "400px" }}
@@ -28,5 +28,5 @@ const onButtonClick = () => {
     accessToken={MAPBOX_ACCESS_TOKEN}
     {...state.viewport}
   />
-</div>
+</React.Fragment>
 ```
