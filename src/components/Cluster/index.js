@@ -1,7 +1,6 @@
 // @flow
-
 import supercluster from 'supercluster';
-import { Children, PureComponent, createElement } from 'react';
+import React, { Children, PureComponent, createElement } from 'react';
 import type { Node, Component } from 'react';
 
 import Marker from '../Marker';
@@ -44,6 +43,8 @@ type Props = {
 type State = {
   clusters: Array<Object>
 };
+
+const reactVersion = parseInt(React.version, 10);
 
 class Cluster extends PureComponent<Props, State> {
   _map: MapboxMap;
@@ -154,7 +155,11 @@ class Cluster extends PureComponent<Props, State> {
         return createElement(type, { key, ...props });
       });
 
-      return clusters;
+      if (!clusters.length) {
+        return null;
+      }
+
+      return reactVersion < 16 ? createElement('div', {}, ...clusters) : clusters;
     });
   }
 }
