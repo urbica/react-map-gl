@@ -1,6 +1,6 @@
 // @flow
 import supercluster from 'supercluster';
-import React, { Children, PureComponent, createElement } from 'react';
+import { Children, PureComponent, createElement, version } from 'react';
 import type { Node, Component } from 'react';
 
 import Marker from '../Marker';
@@ -8,6 +8,8 @@ import MapContext from '../MapContext';
 
 import point from '../../utils/point';
 import shallowCompareChildren from '../../utils/shallowCompareChildren';
+
+const reactVersion = parseInt(version, 10);
 
 type Props = {
   /** Minimum zoom level at which clusters are generated */
@@ -43,8 +45,6 @@ type Props = {
 type State = {
   clusters: Array<Object>
 };
-
-const reactVersion = parseInt(React.version, 10);
 
 class Cluster extends PureComponent<Props, State> {
   _map: MapboxMap;
@@ -141,6 +141,10 @@ class Cluster extends PureComponent<Props, State> {
         this._map = map;
       }
 
+      if (this.state.clusters.length === 0) {
+        return null;
+      }
+
       const clusters = this.state.clusters.map((cluster) => {
         if (cluster.properties.cluster) {
           const [longitude, latitude] = cluster.geometry.coordinates;
@@ -154,10 +158,6 @@ class Cluster extends PureComponent<Props, State> {
         const { type, key, props } = cluster.properties;
         return createElement(type, { key, ...props });
       });
-
-      if (!clusters.length) {
-        return null;
-      }
 
       return reactVersion < 16 ? createElement('div', {}, ...clusters) : clusters;
     });
