@@ -89,11 +89,6 @@ class Layer extends PureComponent<Props> {
   constructor(props: Props) {
     super(props);
     this._id = props.id || props.layer.get('id', '');
-
-    this._onClick = this._onClick.bind(this);
-    this._onHover = this._onHover.bind(this);
-    this._onEnter = this._onEnter.bind(this);
-    this._onLeave = this._onLeave.bind(this);
   }
 
   componentDidMount() {
@@ -164,41 +159,41 @@ class Layer extends PureComponent<Props> {
     }
   }
 
-  _onClick(event: MapMouseEvent): void {
+  _onClick = (event: MapMouseEvent): void => {
     if (this.props.onClick) {
       const { onClick } = this.props;
       const position = [event.point.x, event.point.y];
       const features = queryRenderedFeatures(this._map, this._id, position, this.props.radius);
       onClick({ ...event, features });
     }
-  }
+  };
 
-  _onHover(event: MapMouseEvent): void {
+  _onHover = (event: MapMouseEvent): void => {
     if (this.props.onHover) {
       const { onHover } = this.props;
       const position = [event.point.x, event.point.y];
       const features = queryRenderedFeatures(this._map, this._id, position, this.props.radius);
       onHover({ ...event, features });
     }
-  }
+  };
 
-  _onEnter(event: MapMouseEvent): void {
+  _onEnter = (event: MapMouseEvent): void => {
     if (this.props.onEnter) {
       const { onEnter } = this.props;
       const position = [event.point.x, event.point.y];
       const features = queryRenderedFeatures(this._map, this._id, position, this.props.radius);
       onEnter({ ...event, features });
     }
-  }
+  };
 
-  _onLeave(event: MapMouseEvent) {
+  _onLeave = (event: MapMouseEvent) => {
     if (this.props.onLeave) {
       const { onLeave } = this.props;
       const position: [number, number] = [event.point.x, event.point.y];
       const features = queryRenderedFeatures(this._map, this._id, position, this.props.radius);
       onLeave({ ...event, features });
     }
-  }
+  };
 
   render() {
     return createElement(MapContext.Consumer, {}, (map) => {

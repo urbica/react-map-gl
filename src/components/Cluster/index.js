@@ -71,9 +71,6 @@ class Cluster extends PureComponent<Props, State> {
     this.state = {
       clusters: []
     };
-
-    this._recalculate = this._recalculate.bind(this);
-    this._createCluster = this._createCluster.bind(this);
   }
 
   componentDidMount() {
@@ -106,7 +103,7 @@ class Cluster extends PureComponent<Props, State> {
     this._map.off('moveend', this._recalculate);
   }
 
-  _createCluster(props: Props) {
+  _createCluster = (props: Props) => {
     const { minZoom, maxZoom, radius, extent, nodeSize, children, innerRef } = props;
 
     const cluster = supercluster({
@@ -124,16 +121,16 @@ class Cluster extends PureComponent<Props, State> {
     cluster.load(points);
     this._cluster = cluster;
     if (innerRef) innerRef(this._cluster);
-  }
+  };
 
-  _recalculate() {
+  _recalculate = () => {
     const zoom = this._map.getZoom();
     const bounds = this._map.getBounds().toArray();
     const bbox = bounds[0].concat(bounds[1]);
 
     const clusters = this._cluster.getClusters(bbox, Math.floor(zoom));
     this.setState(() => ({ clusters }));
-  }
+  };
 
   render() {
     return createElement(MapContext.Consumer, {}, (map) => {

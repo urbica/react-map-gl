@@ -241,8 +241,6 @@ class MapGL extends PureComponent<Props, State> {
     if (mapboxgl) {
       mapboxgl.accessToken = props.accessToken;
     }
-
-    this._onViewportChange = this._onViewportChange.bind(this);
   }
 
   state = {
@@ -393,7 +391,7 @@ class MapGL extends PureComponent<Props, State> {
    * @private
    * @param {ViewportChangeEvent} event
    */
-  _onViewportChange(event: ViewportChangeEvent): void {
+  _onViewportChange = (event: ViewportChangeEvent): void => {
     if (!event.originalEvent) return;
     const map = this._map;
 
@@ -412,7 +410,7 @@ class MapGL extends PureComponent<Props, State> {
 
     // $FlowFixMe
     this.props.onViewportChange(viewport);
-  }
+  };
 
   render() {
     const { loaded } = this.state;
