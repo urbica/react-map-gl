@@ -109,6 +109,7 @@
     "rollup-plugin-node-resolve": "^3.4.0",
     "rollup-plugin-terser": "^1.0.1",
     "standard-version": "^4.4.0",
-    "webpack": "^4.20.2"
+    "webpack": "^4.20.2",
+    "create-react-context": "^0.2.3"
   }
 }
