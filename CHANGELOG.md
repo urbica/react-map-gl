@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.6.0-beta.18"></a>
+# [0.6.0-beta.18](https://github.com/urbica/react-map-gl/compare/v0.6.0-beta.17...v0.6.0-beta.18) (2018-10-15)
+
+
+### Bug Fixes
+
+* switch to class properties ([d31a2f9](https://github.com/urbica/react-map-gl/commit/d31a2f9))
+
+
+### Features
+
+* add React v15 support ([@boyur](https://github.com/boyur) [#105](https://github.com/urbica/react-map-gl/issues/105)) ([f5defa6](https://github.com/urbica/react-map-gl/commit/f5defa6))
+
+
+
 <a name="0.6.0-beta.17"></a>
 # [0.6.0-beta.17](https://github.com/urbica/react-map-gl/compare/v0.6.0-beta.16...v0.6.0-beta.17) (2018-09-27)
 
