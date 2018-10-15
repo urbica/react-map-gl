@@ -1,20 +1,30 @@
 {
   "presets": [
     [
-      "env",
+      "@babel/preset-env",
       {
         "modules": false,
         "loose": true
       }
     ],
-    "react",
-    "flow"
+    "@babel/preset-react",
+    "@babel/preset-flow"
   ],
-  "plugins": ["transform-object-rest-spread", "transform-class-properties"],
+  "plugins": [
+    "@babel/plugin-transform-spread",
+    "@babel/plugin-proposal-class-properties"
+  ],
   "env": {
     "test": {
-      "presets": ["env", "react", "flow"],
-      "plugins": ["transform-object-rest-spread", "transform-class-properties"]
+      "presets": [
+        "@babel/preset-env",
+        "@babel/preset-react",
+        "@babel/preset-flow"
+      ],
+      "plugins": [
+        "@babel/plugin-transform-spread",
+        "@babel/plugin-proposal-class-properties"
+      ]
     }
   }
 }
