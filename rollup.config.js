@@ -1,5 +1,6 @@
 import babel from 'rollup-plugin-babel';
 import commonjs from 'rollup-plugin-commonjs';
+import resolve from 'rollup-plugin-node-resolve';
 import { terser } from 'rollup-plugin-terser';
 import pkg from './package.json';
 
@@ -14,10 +15,10 @@ export default {
     'react-dom',
     'mapbox-gl',
     'immutable',
-    'supercluster',
-    'create-react-context'
+    'supercluster'
   ],
   plugins: [
+    resolve(),
     babel({
       exclude: 'node_modules/**',
       plugins: ['external-helpers']
