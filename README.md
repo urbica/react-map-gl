@@ -22,8 +22,6 @@ This package is heavily inspired by [uber/react-map-gl](https://github.com/uber/
 
 You may also want to install `supercluster` package for `Cluster` component.
 
-**Note**: if you want to use `@urbica/react-map-gl` with React v15, you have to install `create-react-context` package.
-
 ## List of React components
 
 `@urbica/react-map-gl` provides a set of components:
