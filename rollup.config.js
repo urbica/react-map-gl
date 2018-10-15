@@ -9,7 +9,14 @@ export default {
     { file: pkg.main, exports: 'named', sourcemap: true, format: 'cjs' },
     { file: pkg.module, sourcemap: true, format: 'esm' }
   ],
-  external: ['react', 'react-dom', 'mapbox-gl', 'immutable', 'supercluster'],
+  external: [
+    'react',
+    'react-dom',
+    'mapbox-gl',
+    'immutable',
+    'supercluster',
+    'create-react-context'
+  ],
   plugins: [
     babel({
       exclude: 'node_modules/**',
