@@ -61,6 +61,9 @@
     "react-dom": "^16.4.2",
     "supercluster": "^4.1.1"
   },
+  "dependencies": {
+    "create-react-context": "^0.2.3"
+  },
   "devDependencies": {
     "@turf/random": "^6.0.2",
     "babel-core": "^6.26.3",

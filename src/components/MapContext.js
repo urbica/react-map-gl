@@ -1,8 +1,7 @@
 // @flow
+import createContext from 'create-react-context';
+import type { Context } from 'create-react-context';
 
-import React from 'react';
-import type { Context } from 'react';
-
-const MapContext: Context<?MapboxMap> = React.createContext(null);
+const MapContext: Context<?MapboxMap> = createContext(null);
 
 export default MapContext;
