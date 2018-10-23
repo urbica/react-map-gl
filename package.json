@@ -78,7 +78,7 @@
     "babel-loader": "^8.0.4",
     "babel-preset-es2015-rollup": "^3.0.0",
     "codecov": "^3.1.0",
-    "commitizen": "^3.0.2",
+    "commitizen": "^3.0.4",
     "cz-conventional-changelog": "^2.1.0",
     "documentation": "^8.1.2",
     "enzyme": "^3.7.0",
@@ -104,7 +104,7 @@
     "react": "^16.5.2",
     "react-docgen": "^2.21.0",
     "react-dom": "^16.5.2",
-    "react-styleguidist": "^7.3.10",
+    "react-styleguidist": "^8.0.0",
     "react-test-renderer": "^16.5.2",
     "rollup": "^0.66.6",
     "rollup-plugin-babel": "^4.0.3",
@@ -112,6 +112,6 @@
     "rollup-plugin-node-resolve": "^3.4.0",
     "rollup-plugin-terser": "^1.0.1",
     "standard-version": "^4.4.0",
-    "webpack": "^4.20.2"
+    "webpack": "^4.22.0"
   }
 }
