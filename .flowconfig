@@ -1,9 +1,6 @@
 [ignore]
-.*/node_modules/documentation/.*
 .*/node_modules/findup/.*
 .*/node_modules/@mapbox/jsonlint-lines-primitives/.*
-.*/node_modules/jss/.*
-.*/node_modules/unflowify/.*
 
 [include]
 
