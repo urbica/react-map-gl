@@ -17,8 +17,8 @@
   "scripts": {
     "start": "npm run styleguide",
     "lint": "eslint src test",
-    "typecheck": "flow check src",
-    "typecheck:coverage": "flow-coverage-report -i 'src/**/*.js' -t html",
+    "flow": "flow check",
+    "flow:coverage": "flow-coverage-report -i 'src/**/*.js' -t html",
     "test": "jest",
     "test:coverage": "jest --coverage && codecov",
     "build": "rollup -c",

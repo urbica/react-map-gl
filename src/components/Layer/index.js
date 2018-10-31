@@ -92,10 +92,10 @@ class Layer extends PureComponent<Props> {
   }
 
   componentDidMount() {
-    const map = this._map;
+    const map: MapboxMap = this._map;
     const { layer, before } = this.props;
 
-    const mapboxLayer: MapboxLayer = layer.toJS();
+    const mapboxLayer: MapboxLayerSpecification = layer.toJS();
     if (before && map.getLayer(before)) {
       map.addLayer(mapboxLayer, before);
     } else {

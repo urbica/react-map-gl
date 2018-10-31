@@ -1,9 +1,7 @@
 // @flow
 
-import mapboxgl from './mapbox-gl';
-
 const queryRenderedFeatures = (
-  map: mapboxgl.Map,
+  map: MapboxMap,
   layerId: string,
   position: [number, number],
   radius: number

@@ -3,6 +3,7 @@
 import { Children, PureComponent, createElement, cloneElement } from 'react';
 import { isImmutable } from 'immutable';
 import type { Node } from 'react';
+
 import type { EventProps } from './eventProps';
 
 import Layer from '../Layer';
@@ -102,7 +103,7 @@ type Props = EventProps & {
   refreshExpiredTiles?: boolean,
 
   /** If set, the map will be constrained to the given bounds. */
-  maxBounds?: mapboxgl.LngLatBoundsLike,
+  maxBounds?: MapboxLngLatBoundsLike,
 
   /** If `true`, the "scroll to zoom" interaction is enabled. */
   scrollZoom?: boolean | Object,
@@ -365,8 +366,8 @@ class MapGL extends PureComponent<Props, State> {
    * @param {Props} newProps
    */
   _updateMapViewport(newProps: Props): void {
-    const map: mapboxgl.Map = this._map;
-    const center: mapboxgl.LngLat = map.getCenter();
+    const map: MapboxMap = this._map;
+    const center = map.getCenter();
 
     const viewportChanged =
       newProps.latitude !== center.lat ||

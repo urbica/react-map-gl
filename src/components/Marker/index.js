@@ -3,6 +3,7 @@
 import { render, unmountComponentAtNode } from 'react-dom';
 import { PureComponent, createElement } from 'react';
 import type { Element } from 'react';
+import type { PointLike } from '@mapbox/point-geometry';
 
 import MapContext from '../MapContext';
 import mapboxgl from '../../utils/mapbox-gl';
@@ -21,7 +22,7 @@ type Props = {
    * The offset in pixels as a `PointLike` object to apply
    * relative to the element's center. Negatives indicate left and up.
    */
-  offset?: mapboxgl.PointLike
+  offset?: PointLike
 };
 
 class Marker extends PureComponent<Props> {
@@ -29,7 +30,7 @@ class Marker extends PureComponent<Props> {
 
   _container: HTMLDivElement;
 
-  _marker: mapboxgl.Marker;
+  _marker: MapboxMarker;
 
   static displayName = 'Marker';
 
@@ -43,6 +44,7 @@ class Marker extends PureComponent<Props> {
     this._container = document.createElement('div');
     render(element, this._container);
 
+    // $FlowFixMe
     const marker = new mapboxgl.Marker(this._container, { offset });
     marker.setLngLat([longitude, latitude]).addTo(this._map);
     this._marker = marker;

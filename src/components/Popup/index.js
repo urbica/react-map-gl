@@ -43,13 +43,13 @@ type Props = {
    * The offset in pixels as a `PointLike` object to apply
    * relative to the element's center. Negatives indicate left and up.
    */
-  offset?: mapboxgl.LngLatLike
+  offset?: MapboxLngLatBoundsLike
 };
 
 class Popup extends PureComponent<Props> {
   _map: MapboxMap;
 
-  _popup: mapboxgl.Popup;
+  _popup: MapboxPopup;
 
   static displayName = 'Popup';
 
@@ -76,6 +76,7 @@ class Popup extends PureComponent<Props> {
     const div = document.createElement('div');
     render(element, div);
 
+    // $FlowFixMe
     const popup = new mapboxgl.Popup({ offset, closeButton, closeOnClick, anchor });
     popup.setLngLat([longitude, latitude]).addTo(this._map);
     popup.setDOMContent(div);

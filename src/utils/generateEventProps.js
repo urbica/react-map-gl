@@ -1,3 +1,5 @@
+// @flow
+
 const fs = require('fs');
 const path = require('path');
 const events = require('../components/MapGL/events');

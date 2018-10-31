@@ -7,6 +7,7 @@
 [libs]
 ./flow-typed
 ./node_modules/mapbox-gl/flow-typed
+./node_modules/mapbox-gl/dist/mapbox-gl.js.flow
 
 [options]
 esproposal.class_static_fields=enable
