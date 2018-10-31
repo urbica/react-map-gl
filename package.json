@@ -94,7 +94,7 @@
     "flow-coverage-report": "^0.6.0",
     "gh-pages": "^2.0.1",
     "husky": "^1.1.2",
-    "immutable": "^4.0.0-rc.11",
+    "immutable": "^4.0.0-rc.12",
     "jest": "^23.6.0",
     "lint-staged": "^8.0.3",
     "mapbox-gl": "^0.50.0",
