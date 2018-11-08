@@ -76,8 +76,7 @@ class Popup extends PureComponent<Props> {
     const div = document.createElement('div');
     render(element, div);
 
-    // $FlowFixMe
-    const popup = new mapboxgl.Popup({ offset, closeButton, closeOnClick, anchor });
+    const popup: MapboxPopup = new mapboxgl.Popup({ offset, closeButton, closeOnClick, anchor });
     popup.setLngLat([longitude, latitude]).addTo(this._map);
     popup.setDOMContent(div);
 

@@ -257,7 +257,7 @@ class MapGL extends PureComponent<Props, State> {
       ? this.props.mapStyle.toJS()
       : this.props.mapStyle;
 
-    const map = new mapboxgl.Map({
+    const map: MapboxMap = new mapboxgl.Map({
       container: this._container,
       style: mapStyle,
       interactive: !!this.props.onViewportChange,

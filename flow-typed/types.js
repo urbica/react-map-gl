@@ -28,6 +28,12 @@ declare type MapboxStyleSpecification = StyleSpecification;
 
 declare type MapboxSourceSpecification = SourceSpecification;
 
+declare type MapboxGL = {
+  Map: MapboxMap,
+  Popup: MapboxPopup,
+  Marker: MapboxMarker
+};
+
 declare type MapStyle = {
   toJS: () => StyleSpecification
 } & ImmutableMap<string, any>;

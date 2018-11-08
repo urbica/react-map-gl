@@ -44,8 +44,7 @@ class Marker extends PureComponent<Props> {
     this._container = document.createElement('div');
     render(element, this._container);
 
-    // $FlowFixMe
-    const marker = new mapboxgl.Marker(this._container, { offset });
+    const marker: MapboxMarker = new mapboxgl.Marker(this._container, { offset });
     marker.setLngLat([longitude, latitude]).addTo(this._map);
     this._marker = marker;
   }
