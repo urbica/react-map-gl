@@ -93,7 +93,7 @@
     "flow-bin": "^0.86.0",
     "flow-coverage-report": "^0.6.0",
     "gh-pages": "^2.0.1",
-    "husky": "^1.1.4",
+    "husky": "^1.2.0",
     "immutable": "^4.0.0-rc.12",
     "jest": "^23.6.0",
     "lint-staged": "^8.0.5",
@@ -112,6 +112,6 @@
     "rollup-plugin-node-resolve": "^3.4.0",
     "rollup-plugin-terser": "^1.0.1",
     "standard-version": "^4.4.0",
-    "webpack": "^4.25.1"
+    "webpack": "^4.26.0"
   }
 }
