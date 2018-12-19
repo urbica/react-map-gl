@@ -97,7 +97,7 @@
     "immutable": "^4.0.0-rc.12",
     "jest": "^23.6.0",
     "lint-staged": "^8.1.0",
-    "mapbox-gl": "^0.51.0",
+    "mapbox-gl": "^0.52.0",
     "prettier": "^1.15.3",
     "prettier-eslint": "^8.8.2",
     "prettier-eslint-cli": "^4.7.1",
