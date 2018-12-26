@@ -80,7 +80,7 @@
     "codecov": "^3.1.0",
     "commitizen": "^3.0.5",
     "cz-conventional-changelog": "^2.1.0",
-    "documentation": "^9.1.0",
+    "documentation": "^9.1.1",
     "enzyme": "^3.8.0",
     "enzyme-adapter-react-16": "^1.7.1",
     "eslint": "^5.10.0",
@@ -106,12 +106,12 @@
     "react-dom": "^16.7.0",
     "react-styleguidist": "^8.0.6",
     "react-test-renderer": "^16.7.0",
-    "rollup": "^0.68.1",
+    "rollup": "^0.68.2",
     "rollup-plugin-babel": "^4.1.0",
     "rollup-plugin-commonjs": "^9.2.0",
     "rollup-plugin-node-resolve": "^3.4.0",
     "rollup-plugin-terser": "^1.0.1",
     "standard-version": "^4.4.0",
-    "webpack": "^4.28.1"
+    "webpack": "^4.28.2"
   }
 }
