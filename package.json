@@ -110,7 +110,7 @@
     "rollup-plugin-babel": "^4.2.0",
     "rollup-plugin-commonjs": "^9.2.0",
     "rollup-plugin-node-resolve": "^3.4.0",
-    "rollup-plugin-terser": "^1.0.1",
+    "rollup-plugin-terser": "^4.0.2",
     "standard-version": "^4.4.0",
     "webpack": "^4.28.3"
   }
