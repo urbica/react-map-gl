@@ -1,5 +1,5 @@
 // @flow
-import supercluster from 'supercluster';
+import Supercluster from 'supercluster';
 import { Children, PureComponent, createElement, version } from 'react';
 import type { Node, Component } from 'react';
 
@@ -35,7 +35,7 @@ type Props = {
    * after componentDidMount
    */
   /* eslint-disable react/no-unused-prop-types */
-  innerRef: (cluster: supercluster.Supercluster) => void,
+  innerRef: (cluster: Supercluster.Supercluster) => void,
   /* eslint-enable react/no-unused-prop-types */
 
   /** Markers as children */
@@ -106,7 +106,7 @@ class Cluster extends PureComponent<Props, State> {
   _createCluster = (props: Props) => {
     const { minZoom, maxZoom, radius, extent, nodeSize, children, innerRef } = props;
 
-    const cluster = supercluster({
+    const cluster = new Supercluster({
       minZoom,
       maxZoom,
       radius,
