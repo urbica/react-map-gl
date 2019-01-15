@@ -2,6 +2,33 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.6.0-beta.19"></a>
+# [0.6.0-beta.19](https://github.com/urbica/react-map-gl/compare/v0.6.0-beta.18...v0.6.0-beta.19) (2019-01-15)
+
+
+### Bug Fixes
+
+* improve flow typings ([d81a82b](https://github.com/urbica/react-map-gl/commit/d81a82b))
+* improve flow typings ([ca1a3e8](https://github.com/urbica/react-map-gl/commit/ca1a3e8))
+* **Layer:** make radius prop optional ([ab79712](https://github.com/urbica/react-map-gl/commit/ab79712))
+
+
+### Chores
+
+* update dependencies ([920666e](https://github.com/urbica/react-map-gl/commit/920666e))
+
+
+### Features
+
+* **NavigationControl:** add NavigationControl [#116](https://github.com/urbica/react-map-gl/issues/116) ([34ae92f](https://github.com/urbica/react-map-gl/commit/34ae92f))
+
+
+### BREAKING CHANGES
+
+* supercluster peer dependency is updated to 5.0.0
+
+
+
 <a name="0.6.0-beta.18"></a>
 # [0.6.0-beta.18](https://github.com/urbica/react-map-gl/compare/v0.6.0-beta.17...v0.6.0-beta.18) (2018-10-15)
 
