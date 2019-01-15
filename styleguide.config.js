@@ -23,7 +23,8 @@ module.exports = {
         'src/components/Layer/index.js',
         'src/components/Popup/index.js',
         'src/components/Marker/index.js',
-        'src/components/Cluster/index.js'
+        'src/components/Cluster/index.js',
+        'src/components/NavigationControl/index.js'
       ]
     },
     {
@@ -80,6 +81,10 @@ module.exports = {
         {
           name: 'Change Map style',
           content: 'docs/change-map-style.md'
+        },
+        {
+          name: 'Navigation Control',
+          content: 'docs/navigation-control.md'
         }
       ]
     }
