@@ -64,7 +64,7 @@ type Props = {
   /**
    * Radius to detect features around a clicked/hovered point
    */
-  radius?: number
+  radius: number
 };
 
 class Layer extends PureComponent<Props> {

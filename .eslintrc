@@ -23,6 +23,12 @@
     "max-len": ["error", { "code": 100, "ignoreUrls": true }],
     "no-return-assign": 0,
     "no-underscore-dangle": ["error", { "allowAfterThis": true }],
+    "react/default-props-match-prop-types": [
+      "error",
+      {
+        "allowRequiredDefaults": true
+      }
+    ],
     "react/destructuring-assignment": 0,
     "react/prop-types": [1, { "skipUndeclared": true }],
     "react/sort-comp": [
