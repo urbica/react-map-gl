@@ -11691,6 +11691,13 @@ supercluster@^5.0.0:
   dependencies:
     kdbush "^3.0.0"
 
+supercluster@^6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/supercluster/-/supercluster-6.0.0.tgz#7058b45545f8bacafb917a66ff2d4d36f74fd2ba"
+  integrity sha512-Jw0KG1zheUvNWYyl1NPb3yUURq6j6Q8rm+maY18+DDrJKmhkz0oxXoWQLf2usXVFJ0urQ8h0gh24yYV8y74WEg==
+  dependencies:
+    kdbush "^3.0.0"
+
 supports-color@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/supports-color/-/supports-color-2.0.0.tgz#535d045ce6b6363fa40117084629995e9df324c7"
