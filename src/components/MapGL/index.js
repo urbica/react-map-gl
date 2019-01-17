@@ -316,11 +316,10 @@ class MapGL extends PureComponent<Props, State> {
     }
 
     this._map = map;
-    this._updateMapViewport(this.props);
   }
 
   componentDidUpdate(prevProps: Props) {
-    this._updateMapViewport(this.props);
+    this._updateMapViewport(prevProps, this.props);
     this._updateMapStyle(prevProps, this.props);
 
     if (!prevProps.cursorStyle !== this.props.cursorStyle) {
@@ -365,25 +364,27 @@ class MapGL extends PureComponent<Props, State> {
    * @private
    * @param {Props} newProps
    */
-  _updateMapViewport(newProps: Props): void {
+  _updateMapViewport(prevProps: Props, newProps: Props): void {
     const map: MapboxMap = this._map;
     const center = map.getCenter();
 
     const viewportChanged =
-      newProps.latitude !== center.lat ||
-      newProps.longitude !== center.lng ||
-      newProps.zoom !== map.getZoom() ||
-      newProps.pitch !== map.getPitch() ||
-      newProps.bearing !== map.getBearing();
+      (newProps.latitude !== prevProps.latitude && newProps.latitude !== center.lat) ||
+      (newProps.longitude !== prevProps.longitude && newProps.longitude !== center.lng) ||
+      (newProps.zoom !== prevProps.zoom && newProps.zoom !== map.getZoom()) ||
+      (newProps.pitch !== prevProps.pitch && newProps.pitch !== map.getPitch()) ||
+      (newProps.bearing !== prevProps.bearing && newProps.bearing !== map.getBearing());
 
-    if (viewportChanged) {
-      map.flyTo({
-        center: [newProps.longitude, newProps.latitude],
-        zoom: newProps.zoom,
-        pitch: newProps.pitch,
-        bearing: newProps.bearing
-      });
+    if (!viewportChanged) {
+      return;
     }
+
+    map.flyTo({
+      center: [newProps.longitude, newProps.latitude],
+      zoom: newProps.zoom,
+      pitch: newProps.pitch,
+      bearing: newProps.bearing
+    });
   }
 
   /**
