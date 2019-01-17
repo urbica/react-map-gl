@@ -18,7 +18,9 @@ This package is heavily inspired by [uber/react-map-gl](https://github.com/uber/
 
 ## Installation
 
-    npm install --save mapbox-gl immutable@4.0.0-rc.11 @urbica/react-map-gl
+```shell
+npm install --save mapbox-gl immutable@4.0.0-rc.12 @urbica/react-map-gl
+```
 
 You may also want to install `supercluster` package for `Cluster` component.
 
@@ -32,6 +34,7 @@ You may also want to install `supercluster` package for `Cluster` component.
 - [Cluster](https://urbica.github.io/react-map-gl/#cluster)
 - [Popup](https://urbica.github.io/react-map-gl/#popup)
 - [Marker](https://urbica.github.io/react-map-gl/#marker)
+- [NavigationControl](https://urbica.github.io/react-map-gl/#navigation-control)
 
 ## Examples
 
