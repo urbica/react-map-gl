@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.6.0"></a>
+# [0.6.0](https://github.com/urbica/react-map-gl/compare/v0.6.0-beta.19...v0.6.0) (2019-01-17)
+
+
+### Bug Fixes
+
+* **MapGL:** handle previous props in _updateMapViewport ([643c38d](https://github.com/urbica/react-map-gl/commit/643c38d))
+* throw an error if layer or source props is not an Immutable objects ([a43b320](https://github.com/urbica/react-map-gl/commit/a43b320))
+
+
+### Features
+
+* **Marker:** add drag support ([10c41f6](https://github.com/urbica/react-map-gl/commit/10c41f6))
+
+
+
 <a name="0.6.0-beta.19"></a>
 # [0.6.0-beta.19](https://github.com/urbica/react-map-gl/compare/v0.6.0-beta.18...v0.6.0-beta.19) (2019-01-15)
 
