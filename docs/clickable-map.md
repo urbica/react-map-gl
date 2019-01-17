@@ -42,7 +42,7 @@ initialState = {
   }
 };
 
-const onClick = (event) => {
+const onClick = event => {
   const feature = event.features[0];
   if (!feature) return;
 
@@ -55,13 +55,13 @@ const onClick = (event) => {
 };
 
 <MapGL
-  style={{ width: "100%", height: "400px" }}
-  mapStyle="mapbox://styles/mapbox/light-v9"
+  style={{ width: '100%', height: '400px' }}
+  mapStyle='mapbox://styles/mapbox/light-v9'
   accessToken={MAPBOX_ACCESS_TOKEN}
   {...state.viewport}
 >
   <Source id='markers' source={state.sources.get('markers')} />
   <Layer layer={state.layers.get('markers')} onClick={onClick} />
   <Layer layer={state.layers.get('highlighted-marker')} />
-</MapGL>
+</MapGL>;
 ```

@@ -88,6 +88,11 @@ class Layer extends PureComponent<Props> {
 
   constructor(props: Props) {
     super(props);
+
+    if (!isImmutable(props.layer)) {
+      throw new Error('Provided layer prop is not an Immutable object');
+    }
+
     this._id = props.id || props.layer.get('id', '');
   }
 

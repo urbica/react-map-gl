@@ -18,6 +18,14 @@ class Source extends PureComponent<Props> {
 
   static displayName = 'Source';
 
+  constructor(props: Props) {
+    super(props);
+
+    if (!isImmutable(props.source)) {
+      throw new Error('Provided source prop is not an Immutable object');
+    }
+  }
+
   componentDidMount() {
     const { id, source } = this.props;
     this._map.addSource(id, source.toJS());
