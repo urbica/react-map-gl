@@ -22,7 +22,16 @@ type Props = {
    * The offset in pixels as a `PointLike` object to apply
    * relative to the element's center. Negatives indicate left and up.
    */
-  offset?: PointLike
+  offset?: PointLike,
+
+  /**
+   * Boolean indicating whether or not a marker is able to be dragged
+   * to a new position on the map.
+   */
+  draggable?: boolean,
+
+  /** Fired when the marker is finished being dragged */
+  onDragEnd?: (lngLat: LngLat) => any
 };
 
 class Marker extends PureComponent<Props> {
@@ -32,20 +41,28 @@ class Marker extends PureComponent<Props> {
 
   _marker: MapboxMarker;
 
+  _onDragEnd: () => void;
+
   static displayName = 'Marker';
 
   static defaultProps = {
-    offset: null
+    offset: null,
+    draggable: false
   };
 
   componentDidMount() {
-    const { element, longitude, latitude, offset } = this.props;
+    const { element, longitude, latitude, offset, draggable, onDragEnd } = this.props;
 
     this._container = document.createElement('div');
     render(element, this._container);
 
-    const marker: MapboxMarker = new mapboxgl.Marker(this._container, { offset });
+    const marker: MapboxMarker = new mapboxgl.Marker(this._container, { draggable, offset });
     marker.setLngLat([longitude, latitude]).addTo(this._map);
+
+    if (onDragEnd) {
+      marker.on('dragend', this._onDragEnd);
+    }
+
     this._marker = marker;
   }
 
@@ -72,6 +89,11 @@ class Marker extends PureComponent<Props> {
   getMarker() {
     return this._marker;
   }
+
+  _onDragEnd = (): void => {
+    // $FlowFixMe
+    this.props.onDragEnd(this._marker.getLngLat());
+  };
 
   render() {
     return createElement(MapContext.Consumer, {}, (map) => {

@@ -65,10 +65,12 @@
 -   [onClose][61]
 -   [offset][62]
 -   [offset][63]
--   [extent][64]
--   [nodeSize][65]
--   [innerRef][66]
--   [NavigationControl][67]
+-   [draggable][64]
+-   [onDragEnd][65]
+-   [extent][66]
+-   [nodeSize][67]
+-   [innerRef][68]
+-   [NavigationControl][69]
 
 ## className
 
@@ -152,7 +154,7 @@ Maximum zoom level at which clusters are generated
 If `true`, the map's position (zoom, center latitude,
 center longitude, bearing, and pitch) will be synced
 with the hash fragment of the page's URL. For example,
-[http://path/to/my/page.html#2.59/39.26/53.07/-24.1/60][68].
+[http://path/to/my/page.html#2.59/39.26/53.07/-24.1/60][70].
 
 ## bearingSnap
 
@@ -239,7 +241,7 @@ generation of glyphs in the 'CJK Unified Ideographs' and
 map's style will be ignored, except for font-weight keywords
 (light/regular/medium/bold). The purpose of this option is to avoid
 bandwidth-intensive glyph server requests.
-(see [https://www.mapbox.com/mapbox-gl-js/example/local-ideographs][69] )
+(see [https://www.mapbox.com/mapbox-gl-js/example/local-ideographs][71] )
 
 ## transformRequest
 
@@ -290,57 +292,57 @@ The id of an existing layer to insert the new layer before.
 
 Called when the layer is clicked.
 
-Type: [Function][70]
+Type: [Function][72]
 
 ### Parameters
 
--   `event` **[Object][71]** The mouse event.
-    -   `event.lngLat` **\[[Number][72], [Number][72]]** The coordinates of the pointer
-    -   `event.features` **[Array][73]** The features under the pointer,
+-   `event` **[Object][73]** The mouse event.
+    -   `event.lngLat` **\[[Number][74], [Number][74]]** The coordinates of the pointer
+    -   `event.features` **[Array][75]** The features under the pointer,
         using Mapbox's queryRenderedFeatures API:
-        [https://www.mapbox.com/mapbox-gl-js/api/#Map#queryRenderedFeatures][74]
+        [https://www.mapbox.com/mapbox-gl-js/api/#Map#queryRenderedFeatures][76]
 
 ## onHover
 
 Called when the layer is hovered over.
 
-Type: [Function][70]
+Type: [Function][72]
 
 ### Parameters
 
--   `event` **[Object][71]** The mouse event.
-    -   `event.lngLat` **\[[Number][72], [Number][72]]** The coordinates of the pointer
-    -   `event.features` **[Array][73]** The features under the pointer,
+-   `event` **[Object][73]** The mouse event.
+    -   `event.lngLat` **\[[Number][74], [Number][74]]** The coordinates of the pointer
+    -   `event.features` **[Array][75]** The features under the pointer,
         using Mapbox's queryRenderedFeatures API:
-        [https://www.mapbox.com/mapbox-gl-js/api/#Map#queryRenderedFeatures][74]
+        [https://www.mapbox.com/mapbox-gl-js/api/#Map#queryRenderedFeatures][76]
 
 ## onEnter
 
 Called when the layer feature is entered.
 
-Type: [Function][70]
+Type: [Function][72]
 
 ### Parameters
 
--   `event` **[Object][71]** The mouse event.
-    -   `event.lngLat` **\[[Number][72], [Number][72]]** The coordinates of the pointer
-    -   `event.features` **[Array][73]** The features under the pointer,
+-   `event` **[Object][73]** The mouse event.
+    -   `event.lngLat` **\[[Number][74], [Number][74]]** The coordinates of the pointer
+    -   `event.features` **[Array][75]** The features under the pointer,
         using Mapbox's queryRenderedFeatures API:
-        [https://www.mapbox.com/mapbox-gl-js/api/#Map#queryRenderedFeatures][74]
+        [https://www.mapbox.com/mapbox-gl-js/api/#Map#queryRenderedFeatures][76]
 
 ## onLeave
 
 Called when the layer feature is leaved.
 
-Type: [Function][70]
+Type: [Function][72]
 
 ### Parameters
 
--   `event` **[Object][71]** The mouse event.
-    -   `event.lngLat` **\[[Number][72], [Number][72]]** The coordinates of the pointer
-    -   `event.features` **[Array][73]** The features under the pointer,
+-   `event` **[Object][73]** The mouse event.
+    -   `event.lngLat` **\[[Number][74], [Number][74]]** The coordinates of the pointer
+    -   `event.features` **[Array][75]** The features under the pointer,
         using Mapbox's queryRenderedFeatures API:
-        [https://www.mapbox.com/mapbox-gl-js/api/#Map#queryRenderedFeatures][74]
+        [https://www.mapbox.com/mapbox-gl-js/api/#Map#queryRenderedFeatures][76]
 
 ## radius
 
@@ -379,6 +381,15 @@ relative to the element's center. Negatives indicate left and up.
 
 The offset in pixels as a `PointLike` object to apply
 relative to the element's center. Negatives indicate left and up.
+
+## draggable
+
+Boolean indicating whether or not a marker is able to be dragged
+to a new position on the map.
+
+## onDragEnd
+
+Fired when the marker is finished being dragged
 
 ## extent
 
@@ -525,24 +536,28 @@ A `NavigationControl` control contains zoom buttons and a compass.
 
 [63]: #offset-1
 
-[64]: #extent
+[64]: #draggable
 
-[65]: #nodesize
+[65]: #ondragend
 
-[66]: #innerref
+[66]: #extent
 
-[67]: #navigationcontrol
+[67]: #nodesize
 
-[68]: http://path/to/my/page.html#2.59/39.26/53.07/-24.1/60
+[68]: #innerref
 
-[69]: https://www.mapbox.com/mapbox-gl-js/example/local-ideographs
+[69]: #navigationcontrol
 
-[70]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function
+[70]: http://path/to/my/page.html#2.59/39.26/53.07/-24.1/60
 
-[71]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
+[71]: https://www.mapbox.com/mapbox-gl-js/example/local-ideographs
 
-[72]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
+[72]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function
 
-[73]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
+[73]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
 
-[74]: https://www.mapbox.com/mapbox-gl-js/api/#Map#queryRenderedFeatures
+[74]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
+
+[75]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
+
+[76]: https://www.mapbox.com/mapbox-gl-js/api/#Map#queryRenderedFeatures

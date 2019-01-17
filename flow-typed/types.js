@@ -13,6 +13,7 @@ import type {
   SourceSpecification
 } from 'mapbox-gl/src/style-spec/types';
 
+import type { LngLat } from 'mapbox-gl/src/geo/lng_lat';
 import type { LngLatBoundsLike } from 'mapbox-gl/src/geo/lng_lat_bounds';
 
 declare type MapboxMap = Map;
@@ -22,6 +23,8 @@ declare type MapboxPopup = Popup;
 declare type MapboxMarker = Marker;
 
 declare type MapboxNavigationControl = NavigationControl;
+
+declare type MapboxLngLat = LngLat;
 
 declare type MapboxLngLatBoundsLike = LngLatBoundsLike;
 
