@@ -113,7 +113,7 @@
     "rollup-plugin-node-resolve": "^4.0.0",
     "rollup-plugin-terser": "^4.0.2",
     "standard-version": "^4.4.0",
-    "supercluster": "^5.0.0",
+    "supercluster": "^6.0.0",
     "webpack": "^4.28.4"
   }
 }
