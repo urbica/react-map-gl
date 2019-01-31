@@ -3,6 +3,7 @@
 import type Map from 'mapbox-gl/src/ui/map';
 import type Popup from 'mapbox-gl/src/ui/popup';
 import type Marker from 'mapbox-gl/src/ui/marker';
+import type AttributionControl from 'mapbox-gl/src/ui/control/attribution_control';
 import type GeolocateControl from 'mapbox-gl/src/ui/control/geolocate_control';
 import type NavigationControl from 'mapbox-gl/src/ui/control/navigation_control';
 import type { Map as ImmutableMap } from 'immutable';
@@ -22,6 +23,8 @@ declare type MapboxMap = Map;
 declare type MapboxPopup = Popup;
 
 declare type MapboxMarker = Marker;
+
+declare type MapboxAttributionControl = AttributionControl;
 
 declare type MapboxGeolocateControl = GeolocateControl;
 

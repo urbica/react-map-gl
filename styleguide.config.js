@@ -24,6 +24,7 @@ module.exports = {
         'src/components/Popup/index.js',
         'src/components/Marker/index.js',
         'src/components/Cluster/index.js',
+        'src/components/AttributionControl/index.js',
         'src/components/GeolocateControl/index.js',
         'src/components/NavigationControl/index.js'
       ]
@@ -82,6 +83,10 @@ module.exports = {
         {
           name: 'Change Map style',
           content: 'docs/change-map-style.md'
+        },
+        {
+          name: 'Attribution Control',
+          content: 'docs/attribution-control.md'
         },
         {
           name: 'Geolocate Control',
