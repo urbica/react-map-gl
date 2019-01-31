@@ -31,6 +31,7 @@ You may also want to install `supercluster` package for `Cluster` component.
 - [MapGL](https://urbica.github.io/react-map-gl/#mapgl)
 - [Source](https://urbica.github.io/react-map-gl/#source)
 - [Layer](https://urbica.github.io/react-map-gl/#layer)
+- [CustomLayer](https://urbica.github.io/react-map-gl/#custom-layers)
 - [Cluster](https://urbica.github.io/react-map-gl/#cluster)
 - [Popup](https://urbica.github.io/react-map-gl/#popup)
 - [Marker](https://urbica.github.io/react-map-gl/#marker)
