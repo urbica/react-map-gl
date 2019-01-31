@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.7.0-beta.0"></a>
+# [0.7.0-beta.0](https://github.com/urbica/react-map-gl/compare/v0.6.0...v0.7.0-beta.0) (2019-01-31)
+
+
+### Features
+
+* **AttributionControl:** add AttributionControl ([71418d4](https://github.com/urbica/react-map-gl/commit/71418d4))
+* **CustomLayer:** add CustomLayer support ([c26e56c](https://github.com/urbica/react-map-gl/commit/c26e56c))
+* **FullscreenControl:** add FullscreenControl ([4776dd8](https://github.com/urbica/react-map-gl/commit/4776dd8))
+* **GeolocateControl:** add GeolocateControl ([8fdda19](https://github.com/urbica/react-map-gl/commit/8fdda19))
+* **ScaleControl:** add ScaleControl ([b434cac](https://github.com/urbica/react-map-gl/commit/b434cac))
+
+
+
 <a name="0.6.0"></a>
 # [0.6.0](https://github.com/urbica/react-map-gl/compare/v0.6.0-beta.19...v0.6.0) (2019-01-17)
 
