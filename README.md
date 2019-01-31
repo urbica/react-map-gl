@@ -37,6 +37,7 @@ You may also want to install `supercluster` package for `Cluster` component.
 - [AttributionControl](https://urbica.github.io/react-map-gl/#attribution-control)
 - [GeolocateControl](https://urbica.github.io/react-map-gl/#geolocate-control)
 - [NavigationControl](https://urbica.github.io/react-map-gl/#navigation-control)
+- [ScaleControl](https://urbica.github.io/react-map-gl/#scale-control)
 
 ## Examples
 

@@ -26,7 +26,8 @@ module.exports = {
         'src/components/Cluster/index.js',
         'src/components/AttributionControl/index.js',
         'src/components/GeolocateControl/index.js',
-        'src/components/NavigationControl/index.js'
+        'src/components/NavigationControl/index.js',
+        'src/components/ScaleControl/index.js'
       ]
     },
     {
@@ -96,6 +97,10 @@ module.exports = {
           name: 'Navigation Control',
           content: 'docs/navigation-control.md'
         }
+        // {
+        //   name: 'Scale Control',
+        //   content: 'docs/scale-control.md'
+        // }
       ]
     }
   ],
