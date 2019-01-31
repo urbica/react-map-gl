@@ -16,6 +16,16 @@ This package is heavily inspired by [uber/react-map-gl](https://github.com/uber/
 
 ![Gallery](https://raw.githubusercontent.com/urbica/react-map-gl/master/gallery.jpg)
 
+- [Urbica React Mapbox GL JS](#urbica-react-mapbox-gl-js)
+  - [Installation](#installation)
+  - [List of React components](#list-of-react-components)
+  - [Examples](#examples)
+    - [Static map](#static-map)
+    - [Interactive map](#interactive-map)
+    - [Map with `Source` and `Layer` components](#map-with-source-and-layer-components)
+    - [Custom Layers support](#custom-layers-support)
+  - [Development](#development)
+
 ## Installation
 
 ```shell

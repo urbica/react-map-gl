@@ -47,30 +47,43 @@
 -   [id][43]
 -   [id][44]
 -   [layer][45]
--   [before][46]
--   [onClick][47]
-    -   [Parameters][48]
--   [onHover][49]
+-   [layer][46]
+-   [before][47]
+-   [before][48]
+-   [onClick][49]
     -   [Parameters][50]
--   [onEnter][51]
+-   [onHover][51]
     -   [Parameters][52]
--   [onLeave][53]
+-   [onEnter][53]
     -   [Parameters][54]
--   [radius][55]
--   [radius][56]
--   [source][57]
--   [element][58]
--   [element][59]
--   [element][60]
--   [onClose][61]
--   [offset][62]
--   [offset][63]
--   [draggable][64]
--   [onDragEnd][65]
--   [extent][66]
--   [nodeSize][67]
--   [innerRef][68]
--   [NavigationControl][69]
+-   [onLeave][55]
+    -   [Parameters][56]
+-   [radius][57]
+-   [radius][58]
+-   [CustomLayer][59]
+    -   [getLayer][60]
+-   [source][61]
+-   [element][62]
+-   [element][63]
+-   [element][64]
+-   [onClose][65]
+-   [offset][66]
+-   [offset][67]
+-   [draggable][68]
+-   [onDragEnd][69]
+-   [extent][70]
+-   [nodeSize][71]
+-   [innerRef][72]
+-   [compact][73]
+-   [AttributionControl][74]
+-   [container][75]
+-   [FullscreenControl][76]
+-   [fitBoundsOptions][77]
+-   [trackUserLocation][78]
+-   [showUserLocation][79]
+-   [GeolocateControl][80]
+-   [NavigationControl][81]
+-   [ScaleControl][82]
 
 ## className
 
@@ -154,7 +167,7 @@ Maximum zoom level at which clusters are generated
 If `true`, the map's position (zoom, center latitude,
 center longitude, bearing, and pitch) will be synced
 with the hash fragment of the page's URL. For example,
-[http://path/to/my/page.html#2.59/39.26/53.07/-24.1/60][70].
+[http://path/to/my/page.html#2.59/39.26/53.07/-24.1/60][83].
 
 ## bearingSnap
 
@@ -241,7 +254,7 @@ generation of glyphs in the 'CJK Unified Ideographs' and
 map's style will be ignored, except for font-weight keywords
 (light/regular/medium/bold). The purpose of this option is to avoid
 bandwidth-intensive glyph server requests.
-(see [https://www.mapbox.com/mapbox-gl-js/example/local-ideographs][71] )
+(see [https://www.mapbox.com/mapbox-gl-js/example/local-ideographs][84] )
 
 ## transformRequest
 
@@ -284,6 +297,14 @@ Mapbox GL Source id
 
 Mapbox GL Layer as Immutable object
 
+## layer
+
+Mapbox GL Custom Layer instance
+
+## before
+
+The id of an existing layer to insert the new layer before.
+
 ## before
 
 The id of an existing layer to insert the new layer before.
@@ -292,57 +313,57 @@ The id of an existing layer to insert the new layer before.
 
 Called when the layer is clicked.
 
-Type: [Function][72]
+Type: [Function][85]
 
 ### Parameters
 
--   `event` **[Object][73]** The mouse event.
-    -   `event.lngLat` **\[[Number][74], [Number][74]]** The coordinates of the pointer
-    -   `event.features` **[Array][75]** The features under the pointer,
+-   `event` **[Object][86]** The mouse event.
+    -   `event.lngLat` **\[[Number][87], [Number][87]]** The coordinates of the pointer
+    -   `event.features` **[Array][88]** The features under the pointer,
         using Mapbox's queryRenderedFeatures API:
-        [https://www.mapbox.com/mapbox-gl-js/api/#Map#queryRenderedFeatures][76]
+        [https://www.mapbox.com/mapbox-gl-js/api/#Map#queryRenderedFeatures][89]
 
 ## onHover
 
 Called when the layer is hovered over.
 
-Type: [Function][72]
+Type: [Function][85]
 
 ### Parameters
 
--   `event` **[Object][73]** The mouse event.
-    -   `event.lngLat` **\[[Number][74], [Number][74]]** The coordinates of the pointer
-    -   `event.features` **[Array][75]** The features under the pointer,
+-   `event` **[Object][86]** The mouse event.
+    -   `event.lngLat` **\[[Number][87], [Number][87]]** The coordinates of the pointer
+    -   `event.features` **[Array][88]** The features under the pointer,
         using Mapbox's queryRenderedFeatures API:
-        [https://www.mapbox.com/mapbox-gl-js/api/#Map#queryRenderedFeatures][76]
+        [https://www.mapbox.com/mapbox-gl-js/api/#Map#queryRenderedFeatures][89]
 
 ## onEnter
 
 Called when the layer feature is entered.
 
-Type: [Function][72]
+Type: [Function][85]
 
 ### Parameters
 
--   `event` **[Object][73]** The mouse event.
-    -   `event.lngLat` **\[[Number][74], [Number][74]]** The coordinates of the pointer
-    -   `event.features` **[Array][75]** The features under the pointer,
+-   `event` **[Object][86]** The mouse event.
+    -   `event.lngLat` **\[[Number][87], [Number][87]]** The coordinates of the pointer
+    -   `event.features` **[Array][88]** The features under the pointer,
         using Mapbox's queryRenderedFeatures API:
-        [https://www.mapbox.com/mapbox-gl-js/api/#Map#queryRenderedFeatures][76]
+        [https://www.mapbox.com/mapbox-gl-js/api/#Map#queryRenderedFeatures][89]
 
 ## onLeave
 
 Called when the layer feature is leaved.
 
-Type: [Function][72]
+Type: [Function][85]
 
 ### Parameters
 
--   `event` **[Object][73]** The mouse event.
-    -   `event.lngLat` **\[[Number][74], [Number][74]]** The coordinates of the pointer
-    -   `event.features` **[Array][75]** The features under the pointer,
+-   `event` **[Object][86]** The mouse event.
+    -   `event.lngLat` **\[[Number][87], [Number][87]]** The coordinates of the pointer
+    -   `event.features` **[Array][88]** The features under the pointer,
         using Mapbox's queryRenderedFeatures API:
-        [https://www.mapbox.com/mapbox-gl-js/api/#Map#queryRenderedFeatures][76]
+        [https://www.mapbox.com/mapbox-gl-js/api/#Map#queryRenderedFeatures][89]
 
 ## radius
 
@@ -351,6 +372,17 @@ Radius to detect features around a clicked/hovered point
 ## radius
 
 Cluster radius, in pixels
+
+## CustomLayer
+
+**Extends PureComponent**
+
+Custom layers allow a user to render directly into the map's GL context
+using the map's camera.
+
+### getLayer
+
+External apps can access layer this way
 
 ## source
 
@@ -404,11 +436,66 @@ Size of the KD-tree leaf node. Affects performance
 Callback that is called with the supercluster instance as an argument
 after componentDidMount
 
+## compact
+
+If `true` force a compact attribution that shows the full
+attribution on mouse hover, or if  false force the full attribution
+control. The default is a responsive attribution that collapses when
+the map is less than 640 pixels wide.
+
+## AttributionControl
+
+**Extends PureComponent**
+
+An `AttributionControl` control presents the map's attribution information.
+
+## container
+
+container is the compatible DOM element which should be
+made full screen. By default, the map container element
+will be made full screen.
+
+## FullscreenControl
+
+**Extends PureComponent**
+
+A `FullscreenControl` control contains a button for toggling the map in
+and out of fullscreen mode.
+
+## fitBoundsOptions
+
+A `fitBounds` options object to use when the map is
+panned and zoomed to the user's location.
+
+## trackUserLocation
+
+If `true` the Geolocate Control becomes a toggle button
+and when active the map will receive updates to the user's location as it changes.
+
+## showUserLocation
+
+By default a dot will be shown on the map at the user's location.
+Set to `false` to disable.
+
+## GeolocateControl
+
+**Extends PureComponent**
+
+A `GeolocateControl` control provides a button that uses the browser's
+geolocation API to locate the user on the map.
+
 ## NavigationControl
 
 **Extends PureComponent**
 
 A `NavigationControl` control contains zoom buttons and a compass.
+
+## ScaleControl
+
+**Extends PureComponent**
+
+A `ScaleControl` control displays the ratio of a distance on the map
+to the corresponding distance on the ground.
 
 [1]: #classname
 
@@ -500,64 +587,90 @@ A `NavigationControl` control contains zoom buttons and a compass.
 
 [45]: #layer
 
-[46]: #before
+[46]: #layer-1
 
-[47]: #onclick
+[47]: #before
 
-[48]: #parameters
+[48]: #before-1
 
-[49]: #onhover
+[49]: #onclick
 
-[50]: #parameters-1
+[50]: #parameters
 
-[51]: #onenter
+[51]: #onhover
 
-[52]: #parameters-2
+[52]: #parameters-1
 
-[53]: #onleave
+[53]: #onenter
 
-[54]: #parameters-3
+[54]: #parameters-2
 
-[55]: #radius
+[55]: #onleave
 
-[56]: #radius-1
+[56]: #parameters-3
 
-[57]: #source
+[57]: #radius
 
-[58]: #element
+[58]: #radius-1
 
-[59]: #element-1
+[59]: #customlayer
 
-[60]: #element-2
+[60]: #getlayer
 
-[61]: #onclose
+[61]: #source
 
-[62]: #offset
+[62]: #element
 
-[63]: #offset-1
+[63]: #element-1
 
-[64]: #draggable
+[64]: #element-2
 
-[65]: #ondragend
+[65]: #onclose
 
-[66]: #extent
+[66]: #offset
 
-[67]: #nodesize
+[67]: #offset-1
 
-[68]: #innerref
+[68]: #draggable
 
-[69]: #navigationcontrol
+[69]: #ondragend
 
-[70]: http://path/to/my/page.html#2.59/39.26/53.07/-24.1/60
+[70]: #extent
 
-[71]: https://www.mapbox.com/mapbox-gl-js/example/local-ideographs
+[71]: #nodesize
 
-[72]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function
+[72]: #innerref
 
-[73]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
+[73]: #compact
 
-[74]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
+[74]: #attributioncontrol-1
 
-[75]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
+[75]: #container
 
-[76]: https://www.mapbox.com/mapbox-gl-js/api/#Map#queryRenderedFeatures
+[76]: #fullscreencontrol
+
+[77]: #fitboundsoptions
+
+[78]: #trackuserlocation
+
+[79]: #showuserlocation
+
+[80]: #geolocatecontrol
+
+[81]: #navigationcontrol
+
+[82]: #scalecontrol
+
+[83]: http://path/to/my/page.html#2.59/39.26/53.07/-24.1/60
+
+[84]: https://www.mapbox.com/mapbox-gl-js/example/local-ideographs
+
+[85]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function
+
+[86]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
+
+[87]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
+
+[88]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
+
+[89]: https://www.mapbox.com/mapbox-gl-js/api/#Map#queryRenderedFeatures
