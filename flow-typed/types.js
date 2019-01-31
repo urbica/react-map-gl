@@ -3,6 +3,7 @@
 import type Map from 'mapbox-gl/src/ui/map';
 import type Popup from 'mapbox-gl/src/ui/popup';
 import type Marker from 'mapbox-gl/src/ui/marker';
+import type CustomStyleLayer from 'mapbox-gl/src/style/style_layer/custom_style_layer';
 import type AttributionControl from 'mapbox-gl/src/ui/control/attribution_control';
 import type FullscreenControl from 'mapbox-gl/src/ui/control/fullscreen_control';
 import type GeolocateControl from 'mapbox-gl/src/ui/control/geolocate_control';
@@ -63,6 +64,8 @@ declare type MapSource = {
 declare type MapLayer = {
   toJS: () => LayerSpecification
 } & ImmutableMap<string, any>;
+
+declare type MapCustomLayer = CustomStyleLayer;
 
 declare type Viewport = {
   latitude: number,

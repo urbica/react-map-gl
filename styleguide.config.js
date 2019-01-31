@@ -21,6 +21,7 @@ module.exports = {
         'src/components/MapGL/index.js',
         'src/components/Source/index.js',
         'src/components/Layer/index.js',
+        'src/components/CustomLayer/index.js',
         'src/components/Popup/index.js',
         'src/components/Marker/index.js',
         'src/components/Cluster/index.js',
@@ -55,6 +56,10 @@ module.exports = {
           content: 'docs/map-instance.md'
         },
         {
+          name: 'Custom Layers',
+          content: 'docs/custom-layers.md'
+        },
+        {
           name: 'Popups',
           content: 'docs/popup.md'
         },
@@ -86,26 +91,6 @@ module.exports = {
           name: 'Change Map style',
           content: 'docs/change-map-style.md'
         },
-        // {
-        //   name: 'Attribution Control',
-        //   content: 'docs/attribution-control.md'
-        // },
-        // {
-        //   name: 'Fullscreen Control',
-        //   content: 'docs/fullscreen-control.md'
-        // },
-        // {
-        //   name: 'Geolocate Control',
-        //   content: 'docs/geolocate-control.md'
-        // },
-        // {
-        //   name: 'Navigation Control',
-        //   content: 'docs/navigation-control.md'
-        // }
-        // {
-        //   name: 'Scale Control',
-        //   content: 'docs/scale-control.md'
-        // },
         {
           name: 'Controls',
           content: 'docs/controls.md'

@@ -2,6 +2,7 @@
 
 export { default } from './components/MapGL';
 export { default as Layer } from './components/Layer';
+export { default as CustomLayer } from './components/CustomLayer';
 export { default as Source } from './components/Source';
 export { default as Popup } from './components/Popup';
 export { default as Marker } from './components/Marker';
