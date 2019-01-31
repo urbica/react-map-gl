@@ -1,4 +1,4 @@
-A `ScaleControl` control displays the ratio of a distance on the map to the corresponding distance on the ground.
+A `FullscreenControl` control contains a button for toggling the map in and out of fullscreen mode.
 
 ```jsx
 <MapGL
@@ -9,6 +9,6 @@ A `ScaleControl` control displays the ratio of a distance on the map to the corr
   longitude={-122.41}
   zoom={11}
 >
-  <ScaleControl unit='metric' position='top-right' />
+  <FullscreenControl position='top-left' />
 </MapGL>
 ```

@@ -25,6 +25,7 @@ module.exports = {
         'src/components/Marker/index.js',
         'src/components/Cluster/index.js',
         'src/components/AttributionControl/index.js',
+        'src/components/FullscreenControl/index.js',
         'src/components/GeolocateControl/index.js',
         'src/components/NavigationControl/index.js',
         'src/components/ScaleControl/index.js'
@@ -85,22 +86,30 @@ module.exports = {
           name: 'Change Map style',
           content: 'docs/change-map-style.md'
         },
-        {
-          name: 'Attribution Control',
-          content: 'docs/attribution-control.md'
-        },
-        {
-          name: 'Geolocate Control',
-          content: 'docs/geolocate-control.md'
-        },
-        {
-          name: 'Navigation Control',
-          content: 'docs/navigation-control.md'
-        }
+        // {
+        //   name: 'Attribution Control',
+        //   content: 'docs/attribution-control.md'
+        // },
+        // {
+        //   name: 'Fullscreen Control',
+        //   content: 'docs/fullscreen-control.md'
+        // },
+        // {
+        //   name: 'Geolocate Control',
+        //   content: 'docs/geolocate-control.md'
+        // },
+        // {
+        //   name: 'Navigation Control',
+        //   content: 'docs/navigation-control.md'
+        // }
         // {
         //   name: 'Scale Control',
         //   content: 'docs/scale-control.md'
-        // }
+        // },
+        {
+          name: 'Controls',
+          content: 'docs/controls.md'
+        }
       ]
     }
   ],
