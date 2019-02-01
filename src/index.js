@@ -1,6 +1,7 @@
 // @flow
 
 export { default } from './components/MapGL';
+export { default as MapContext } from './components/MapContext';
 export { default as Layer } from './components/Layer';
 export { default as CustomLayer } from './components/CustomLayer';
 export { default as Source } from './components/Source';
