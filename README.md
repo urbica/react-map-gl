@@ -139,8 +139,10 @@ const layer = Immutable.fromJS({
 Here is an Uber [deck.gl](https://github.com/uber/deck.gl) usage example.
 
 ```jsx
+import MapGL, { CustomLayer } from '@urbica/react-map-gl';
 import { MapboxLayer } from '@deck.gl/mapbox';
 import { ScatterplotLayer } from '@deck.gl/layers';
+import 'mapbox-gl/dist/mapbox-gl.css';
 
 const myDeckLayer = new MapboxLayer({
   id: 'my-scatterplot',
