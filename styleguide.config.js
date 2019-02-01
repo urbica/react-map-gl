@@ -19,6 +19,7 @@ module.exports = {
       name: 'Props',
       components: () => [
         'src/components/MapGL/index.js',
+        'src/components/MapContext.js',
         'src/components/Source/index.js',
         'src/components/Layer/index.js',
         'src/components/CustomLayer/index.js',
