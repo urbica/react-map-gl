@@ -39,7 +39,7 @@ You can also use `MapContext.Consumer` to obtain map instance.
 >
   <MapContext.Consumer>
     {map => {
-      map.setPaintProperty('water', 'fill-color', '#faafee');
+      map.setPaintProperty('water', 'fill-color', '#fdbdba');
       return;
     }}
   </MapContext.Consumer>
