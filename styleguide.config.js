@@ -45,10 +45,6 @@ module.exports = {
           content: 'docs/interactive-map.md'
         },
         {
-          name: 'Events',
-          content: 'docs/events.md'
-        },
-        {
           name: 'Using with Immutable.js',
           content: 'docs/immutable-map.md'
         },
@@ -59,10 +55,6 @@ module.exports = {
         {
           name: 'Custom Layers',
           content: 'docs/custom-layers.md'
-        },
-        {
-          name: 'Popups',
-          content: 'docs/popup.md'
         },
         {
           name: 'Markers',
@@ -77,6 +69,23 @@ module.exports = {
           content: 'docs/cluster-instance.md'
         },
         {
+          name: 'Change Map style',
+          content: 'docs/change-map-style.md'
+        },
+        {
+          name: 'Controls',
+          content: 'docs/controls.md'
+        }
+      ]
+    },
+    {
+      name: 'Events',
+      sections: [
+        {
+          name: 'Map events',
+          content: 'docs/events.md'
+        },
+        {
           name: 'onClick',
           content: 'docs/clickable-map.md'
         },
@@ -87,14 +96,6 @@ module.exports = {
         {
           name: 'onEnter and onLeave',
           content: 'docs/another-hoverable-map.md'
-        },
-        {
-          name: 'Change Map style',
-          content: 'docs/change-map-style.md'
-        },
-        {
-          name: 'Controls',
-          content: 'docs/controls.md'
         }
       ]
     }

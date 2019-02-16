@@ -1,15 +1,14 @@
 // @flow
 
-import { render } from 'react-dom';
+import { createPortal } from 'react-dom';
 import { PureComponent, createElement } from 'react';
-import type { Element } from 'react';
 
 import MapContext from '../MapContext';
 import mapboxgl from '../../utils/mapbox-gl';
 
 type Props = {
-  /** ReactDOM element to use as a popup */
-  element: Element<any>,
+  /** Popup content */
+  children: React$Node,
 
   /** The longitude of the center of the popup. */
   longitude: number,
@@ -17,10 +16,10 @@ type Props = {
   /** The latitude of the center of the popup. */
   latitude: number,
 
-  /* If true, a close button will appear in the top right corner of the popup. */
+  /** If true, a close button will appear in the top right corner of the popup. */
   closeButton?: boolean,
 
-  /* If true, the popup will closed when the map is clicked. */
+  /** If true, the popup will closed when the map is clicked. */
   closeOnClick?: boolean,
 
   /** The onClose callback is fired when the popup closed */
@@ -49,6 +48,8 @@ type Props = {
 class Popup extends PureComponent<Props> {
   _map: MapboxMap;
 
+  _el: HTMLDivElement;
+
   _popup: MapboxPopup;
 
   static displayName = 'Popup';
@@ -61,24 +62,18 @@ class Popup extends PureComponent<Props> {
     offset: null
   };
 
-  componentDidMount() {
-    const {
-      element,
-      longitude,
-      latitude,
-      offset,
-      closeButton,
-      closeOnClick,
-      onClose,
-      anchor
-    } = this.props;
+  constructor(props: Props) {
+    super(props);
+    this._el = document.createElement('div');
+  }
 
-    const div = document.createElement('div');
-    render(element, div);
+  componentDidMount() {
+    const { longitude, latitude, offset, closeButton, closeOnClick, onClose, anchor } = this.props;
 
     const popup: MapboxPopup = new mapboxgl.Popup({ offset, closeButton, closeOnClick, anchor });
+
+    popup.setDOMContent(this._el);
     popup.setLngLat([longitude, latitude]).addTo(this._map);
-    popup.setDOMContent(div);
 
     if (onClose) {
       popup.on('close', onClose);
@@ -104,7 +99,6 @@ class Popup extends PureComponent<Props> {
     this._popup.remove();
   }
 
-  // External apps can access popup this way
   getPopup() {
     return this._popup;
   }
@@ -114,7 +108,8 @@ class Popup extends PureComponent<Props> {
       if (map) {
         this._map = map;
       }
-      return null;
+
+      return createPortal(this.props.children, this._el);
     });
   }
 }
