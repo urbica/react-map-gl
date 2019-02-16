@@ -5,7 +5,7 @@ npm -i supercluster
 ```
 
 ```jsx
-const random = require("@turf/random");
+const random = require('@turf/random');
 
 const bbox = [-160, -70, 160, 70];
 const points = random.randomPoint(50, { bbox }).features;
@@ -20,25 +20,23 @@ initialState = {
 };
 
 const style = {
-  width: "20px",
-  height: "20px",
-  color: "#fff",
-  background: "#1978c8",
-  borderRadius: "20px",
-  textAlign: "center"
+  width: '20px',
+  height: '20px',
+  color: '#fff',
+  background: '#1978c8',
+  borderRadius: '20px',
+  textAlign: 'center'
 };
 
-const Element = <div style={style} />;
-
 const ClusterElement = ({ properties: { point_count_abbreviated } }) => (
-  <div style={{ ...style, background: "#f28a25" }}>
+  <div style={{ ...style, background: '#f28a25' }}>
     {point_count_abbreviated}
   </div>
 );
 
 <MapGL
-  style={{ width: "100%", height: "400px" }}
-  mapStyle="mapbox://styles/mapbox/light-v9"
+  style={{ width: '100%', height: '400px' }}
+  mapStyle='mapbox://styles/mapbox/light-v9'
   accessToken={MAPBOX_ACCESS_TOKEN}
   onViewportChange={viewport => setState({ viewport })}
   {...state.viewport}
@@ -49,9 +47,10 @@ const ClusterElement = ({ properties: { point_count_abbreviated } }) => (
         key={point.id}
         longitude={point.geometry.coordinates[0]}
         latitude={point.geometry.coordinates[1]}
-        element={Element}
-      />
+      >
+        <div style={style} />
+      </Marker>
     ))}
   </Cluster>
-</MapGL>
+</MapGL>;
 ```

@@ -1,16 +1,15 @@
 // @flow
 
-import { render, unmountComponentAtNode } from 'react-dom';
+import { createPortal } from 'react-dom';
 import { PureComponent, createElement } from 'react';
-import type { Element } from 'react';
 import type { PointLike } from '@mapbox/point-geometry';
 
 import MapContext from '../MapContext';
 import mapboxgl from '../../utils/mapbox-gl';
 
 type Props = {
-  /** ReactDOM element to use as a marker */
-  element: Element<any>,
+  /** Marker content */
+  children: React$Node,
 
   /** The longitude of the center of the marker. */
   longitude: number,
@@ -37,11 +36,9 @@ type Props = {
 class Marker extends PureComponent<Props> {
   _map: MapboxMap;
 
-  _container: HTMLDivElement;
+  _el: HTMLDivElement;
 
   _marker: MapboxMarker;
-
-  _onDragEnd: () => void;
 
   static displayName = 'Marker';
 
@@ -50,13 +47,15 @@ class Marker extends PureComponent<Props> {
     draggable: false
   };
 
+  constructor(props: Props) {
+    super(props);
+    this._el = document.createElement('div');
+  }
+
   componentDidMount() {
-    const { element, longitude, latitude, offset, draggable, onDragEnd } = this.props;
+    const { longitude, latitude, offset, draggable, onDragEnd } = this.props;
 
-    this._container = document.createElement('div');
-    render(element, this._container);
-
-    const marker: MapboxMarker = new mapboxgl.Marker(this._container, { draggable, offset });
+    const marker: MapboxMarker = new mapboxgl.Marker(this._el, { draggable, offset });
     marker.setLngLat([longitude, latitude]).addTo(this._map);
 
     if (onDragEnd) {
@@ -72,7 +71,6 @@ class Marker extends PureComponent<Props> {
 
     if (positionChanged) {
       this._marker.setLngLat([this.props.longitude, this.props.latitude]);
-      render(this.props.element, this._container);
     }
   }
 
@@ -82,10 +80,8 @@ class Marker extends PureComponent<Props> {
     }
 
     this._marker.remove();
-    unmountComponentAtNode(this._container);
   }
 
-  // External apps can access marker this way
   getMarker() {
     return this._marker;
   }
@@ -100,7 +96,8 @@ class Marker extends PureComponent<Props> {
       if (map) {
         this._map = map;
       }
-      return null;
+
+      return createPortal(this.props.children, this._el);
     });
   }
 }

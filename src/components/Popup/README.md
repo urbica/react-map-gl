@@ -1,4 +1,4 @@
-React Component for Mapbox GL JS [Popup](https://docs.mapbox.com/mapbox-gl-js/api/#popup).
+React Component for [Mapbox GL JS Popup](https://docs.mapbox.com/mapbox-gl-js/api/#popup).
 
 ```jsx
 <MapGL
