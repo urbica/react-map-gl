@@ -1,4 +1,4 @@
-Note: You have to install `supercluster` package to use `Cluster` component:
+Note: You have to install `supercluster` package to use the `Cluster` component:
 
 ```shell
 npm -i supercluster
@@ -28,12 +28,6 @@ const style = {
   textAlign: 'center'
 };
 
-const ClusterElement = ({ properties: { point_count_abbreviated } }) => (
-  <div style={{ ...style, background: '#f28a25' }}>
-    {point_count_abbreviated}
-  </div>
-);
-
 <MapGL
   style={{ width: '100%', height: '400px' }}
   mapStyle='mapbox://styles/mapbox/light-v9'
@@ -41,7 +35,16 @@ const ClusterElement = ({ properties: { point_count_abbreviated } }) => (
   onViewportChange={viewport => setState({ viewport })}
   {...state.viewport}
 >
-  <Cluster radius={40} extent={512} nodeSize={64} element={ClusterElement}>
+  <Cluster
+    radius={40}
+    extent={512}
+    nodeSize={64}
+    component={({ longitude, latitude, pointCount }) => (
+      <Marker longitude={longitude} latitude={latitude}>
+        <div style={{ ...style, background: '#f28a25' }}>{pointCount}</div>
+      </Marker>
+    )}
+  >
     {points.map(point => (
       <Marker
         key={point.id}

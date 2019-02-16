@@ -34,7 +34,7 @@ module.exports = {
       ]
     },
     {
-      name: 'Examples',
+      name: 'More examples',
       sections: [
         {
           name: 'Static Map',
@@ -55,18 +55,6 @@ module.exports = {
         {
           name: 'Custom Layers',
           content: 'docs/custom-layers.md'
-        },
-        {
-          name: 'Markers',
-          content: 'docs/marker.md'
-        },
-        {
-          name: 'Marker Clustering',
-          content: 'docs/cluster.md'
-        },
-        {
-          name: 'Cluster Instance',
-          content: 'docs/cluster-instance.md'
         },
         {
           name: 'Change Map style',
