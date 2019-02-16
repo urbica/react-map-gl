@@ -1,15 +1,38 @@
 // @flow
 import Supercluster from 'supercluster';
 import { Children, PureComponent, createElement, version } from 'react';
-import type { Node, Component } from 'react';
 
-import Marker from '../Marker';
 import MapContext from '../MapContext';
 
 import point from '../../utils/point';
 import shallowCompareChildren from '../../utils/shallowCompareChildren';
 
 const reactVersion = parseInt(version, 10);
+
+export type SuperclusterFeature = {
+  type: 'Feature',
+  id: number,
+  properties: {
+    cluster: true,
+    cluster_id: number,
+    point_count: number,
+    point_count_abbreviated: string | number
+  },
+  geometry: {
+    type: 'Point',
+    coordinates: [number, number]
+  }
+};
+
+export type ClusterComponentProps = {
+  longitude: number,
+  latitude: number,
+  clusterId: number,
+  pointCount: number,
+  pointCountAbbreviated: string | number
+};
+
+export type ClusterComponent = React$Component<ClusterComponentProps, any>;
 
 type Props = {
   /** Minimum zoom level at which clusters are generated */
@@ -27,19 +50,11 @@ type Props = {
   /** Size of the KD-tree leaf node. Affects performance */
   nodeSize?: number,
 
-  /** ReactDOM element to use as a marker */
-  element: Class<Component<any, any>>,
+  /** React Component for rendering Cluster */
+  component: Class<ClusterComponent>,
 
-  /**
-   * Callback that is called with the supercluster instance as an argument
-   * after componentDidMount
-   */
-  /* eslint-disable react/no-unused-prop-types */
-  innerRef: (cluster: Supercluster.Supercluster) => void,
-  /* eslint-enable react/no-unused-prop-types */
-
-  /** Markers as children */
-  children: Node
+  /** List of Markers */
+  children: React$Node
 };
 
 type State = {
@@ -50,10 +65,6 @@ class Cluster extends PureComponent<Props, State> {
   _map: MapboxMap;
 
   _cluster: Object;
-
-  _recalculate: () => void;
-
-  _createCluster: (props: Props) => void;
 
   static displayName = 'Cluster';
 
@@ -103,8 +114,12 @@ class Cluster extends PureComponent<Props, State> {
     this._map.off('moveend', this._recalculate);
   }
 
+  getCluster() {
+    return this._cluster;
+  }
+
   _createCluster = (props: Props) => {
-    const { minZoom, maxZoom, radius, extent, nodeSize, children, innerRef } = props;
+    const { minZoom, maxZoom, radius, extent, nodeSize, children } = props;
 
     const cluster = new Supercluster({
       minZoom,
@@ -120,7 +135,6 @@ class Cluster extends PureComponent<Props, State> {
 
     cluster.load(points);
     this._cluster = cluster;
-    if (innerRef) innerRef(this._cluster);
   };
 
   _recalculate = () => {
@@ -128,8 +142,26 @@ class Cluster extends PureComponent<Props, State> {
     const bounds = this._map.getBounds().toArray();
     const bbox = bounds[0].concat(bounds[1]);
 
-    const clusters = this._cluster.getClusters(bbox, Math.floor(zoom));
+    const clusters = this._cluster.getClusters(bbox, Math.round(zoom));
     this.setState(() => ({ clusters }));
+  };
+
+  _renderCluster = (cluster: SuperclusterFeature) => {
+    const [longitude, latitude] = cluster.geometry.coordinates;
+    const {
+      cluster_id: clusterId,
+      point_count: pointCount,
+      point_count_abbreviated: pointCountAbbreviated
+    } = cluster.properties;
+
+    return createElement(this.props.component, {
+      longitude,
+      latitude,
+      clusterId,
+      pointCount,
+      pointCountAbbreviated,
+      key: `cluster-${cluster.properties.cluster_id}`
+    });
   };
 
   render() {
@@ -144,13 +176,7 @@ class Cluster extends PureComponent<Props, State> {
 
       const clusters = this.state.clusters.map((cluster) => {
         if (cluster.properties.cluster) {
-          const [longitude, latitude] = cluster.geometry.coordinates;
-          return createElement(Marker, {
-            longitude,
-            latitude,
-            children: createElement(this.props.element, cluster),
-            key: `cluster-${cluster.properties.cluster_id}`
-          });
+          return this._renderCluster(cluster);
         }
         const { type, key, props } = cluster.properties;
         return createElement(type, { key, ...props });
