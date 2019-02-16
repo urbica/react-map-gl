@@ -148,7 +148,7 @@ class Cluster extends PureComponent<Props, State> {
           return createElement(Marker, {
             longitude,
             latitude,
-            element: createElement(this.props.element, cluster),
+            children: createElement(this.props.element, cluster),
             key: `cluster-${cluster.properties.cluster_id}`
           });
         }
