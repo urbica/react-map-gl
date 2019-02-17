@@ -66,14 +66,14 @@
     "create-react-context": "^0.2.3"
   },
   "devDependencies": {
-    "@babel/core": "^7.2.2",
-    "@babel/plugin-proposal-class-properties": "^7.3.0",
+    "@babel/core": "^7.3.3",
+    "@babel/plugin-proposal-class-properties": "^7.3.3",
     "@babel/plugin-transform-spread": "^7.2.2",
     "@babel/preset-env": "^7.3.1",
     "@babel/preset-flow": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
-    "@deck.gl/layers": "^6.4.1",
-    "@deck.gl/mapbox": "^6.4.0",
+    "@deck.gl/layers": "^6.4.2",
+    "@deck.gl/mapbox": "^6.4.2",
     "@turf/random": "^6.0.2",
     "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",
@@ -84,9 +84,9 @@
     "commitizen": "^3.0.5",
     "cz-conventional-changelog": "^2.1.0",
     "documentation": "^9.1.1",
-    "enzyme": "^3.8.0",
+    "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.9.1",
-    "eslint": "^5.13.0",
+    "eslint": "^5.14.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-prettier": "^4.0.0",
     "eslint-plugin-flowtype": "^3.4.2",
@@ -109,13 +109,13 @@
     "react-dom": "^16.8.2",
     "react-styleguidist": "^8.0.6",
     "react-test-renderer": "^16.8.2",
-    "rollup": "^1.1.2",
+    "rollup": "^1.2.0",
     "rollup-plugin-babel": "^4.3.2",
     "rollup-plugin-commonjs": "^9.2.0",
     "rollup-plugin-node-resolve": "^4.0.0",
     "rollup-plugin-terser": "^4.0.4",
     "standard-version": "^5.0.0",
     "supercluster": "^6.0.1",
-    "webpack": "^4.29.3"
+    "webpack": "^4.29.4"
   }
 }
