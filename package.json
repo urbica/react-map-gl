@@ -116,6 +116,6 @@
     "rollup-plugin-terser": "^4.0.4",
     "standard-version": "^5.0.0",
     "supercluster": "^6.0.1",
-    "webpack": "^4.29.4"
+    "webpack": "^4.29.5"
   }
 }
