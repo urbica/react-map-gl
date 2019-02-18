@@ -1261,10 +1261,10 @@
     seer "^0.2.4"
     viewport-mercator-project "^6.1.0"
 
-"@deck.gl/layers@^6.4.2":
-  version "6.4.2"
-  resolved "https://registry.yarnpkg.com/@deck.gl/layers/-/layers-6.4.2.tgz#7b1e3b37da03a6498ec480f7b5f117d4ab951510"
-  integrity sha512-1KF7QljJSVp01n66/CQpnt7W7vqqY5PpLrJBhG/GnDWFy6r88La6u10CELX9Rb6m1IKLQR+9c3dz0jIXYRTxmQ==
+"@deck.gl/layers@^6.4.3":
+  version "6.4.3"
+  resolved "https://registry.yarnpkg.com/@deck.gl/layers/-/layers-6.4.3.tgz#d4f7607106f6b1a9f003fe30fd0a8a6285f99761"
+  integrity sha512-nQrAw9AETHcfAcKX1tOGsGCKBPqTLypBe1q5YEwJ/XaRrwNUfPoY2vXU+QTrDT+6ckCJIIMAjnG/3Tup4KM7Sg==
   dependencies:
     "@deck.gl/core" "^6.4.2"
     "@mapbox/tiny-sdf" "^1.1.0"
@@ -11115,10 +11115,10 @@ rollup-pluginutils@^2.3.0, rollup-pluginutils@^2.3.3:
     estree-walker "^0.5.2"
     micromatch "^2.3.11"
 
-rollup@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/rollup/-/rollup-1.2.0.tgz#4d487f542b16984955409585ff19585fe3cfd6cc"
-  integrity sha512-oHNv2NSX5y/rY6W8MuKW8BVQwpIfwfTNp4PJiQYR7cLcBYeR5wP0LsPqKNw3Heji6hYci5Nd53q/fVfTuNe3GA==
+rollup@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/rollup/-/rollup-1.2.1.tgz#996a8c63920ab056b39507d93195222e59d2807f"
+  integrity sha512-rFf7m2MHwjSYjSCFdA7ckGluMcQRcC3dKn6uAWYrk/6wnUrdQhJJruumkk5IV/3KMdmuc9qORmTu1VPBa2Ii8w==
   dependencies:
     "@types/estree" "0.0.39"
     "@types/node" "*"
