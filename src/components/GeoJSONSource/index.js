@@ -9,9 +9,10 @@ import type {
 
 import MapContext from '../MapContext';
 
-type Props = GeoJSONSourceSpecification & {
-  id: string
-};
+type Props = {|
+  id: string,
+  ...GeoJSONSourceSpecification
+|};
 
 class GeoJSONSource extends PureComponent<Props> {
   _map: MapboxMap;
