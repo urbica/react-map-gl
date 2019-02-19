@@ -1,7 +1,6 @@
 // @flow
 
 import { Children, PureComponent, createElement, cloneElement } from 'react';
-import { isImmutable } from 'immutable';
 import type { Node } from 'react';
 
 import type { EventProps } from './eventProps';
@@ -253,13 +252,9 @@ class MapGL extends PureComponent<Props, State> {
       return;
     }
 
-    const mapStyle = isImmutable(this.props.mapStyle)
-      ? this.props.mapStyle.toJS()
-      : this.props.mapStyle;
-
     const map: MapboxMap = new mapboxgl.Map({
       container: this._container,
-      style: mapStyle,
+      style: this.props.mapStyle,
       interactive: !!this.props.onViewportChange,
       center: [this.props.longitude, this.props.latitude],
       zoom: this.props.zoom,
@@ -349,11 +344,7 @@ class MapGL extends PureComponent<Props, State> {
     const newMapStyle = newProps.mapStyle;
     const prevMapStyle = prevProps.mapStyle;
 
-    if (isImmutable(newMapStyle)) {
-      if (!newMapStyle.equals(prevMapStyle)) {
-        this._map.setStyle(newMapStyle.toJS());
-      }
-    } else if (newMapStyle !== prevMapStyle) {
+    if (newMapStyle !== prevMapStyle) {
       this.setState({ loaded: false }, () => this._map.setStyle(newMapStyle));
     }
   }
