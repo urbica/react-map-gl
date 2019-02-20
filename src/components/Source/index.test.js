@@ -1,12 +1,11 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import Immutable from 'immutable';
 import MapGL, { Source } from '../..';
 
-const source = Immutable.fromJS({
+const source = {
   type: 'geojson',
   data: { type: 'FeatureCollection', features: [] }
-});
+};
 
 test('Source#render', () => {
   const wrapper = mount(
