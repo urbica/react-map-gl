@@ -20,12 +20,14 @@ class GeoJSONSource extends PureComponent<Props> {
   static displayName = 'GeoJSONSource';
 
   componentDidMount() {
-    const { id, ...source } = this.props;
+    const { id, ...geojsonSource } = this.props;
+    const source = { type: 'geojson', ...geojsonSource };
     this._map.addSource(id, source);
   }
 
   componentDidUpdate(prevProps: Props) {
-    const { id, ...source } = this.props;
+    const { id, ...geojsonSource } = this.props;
+    const source = { type: 'geojson', ...geojsonSource };
 
     if (id !== prevProps.id) {
       this._map.removeSource(prevProps.id);
