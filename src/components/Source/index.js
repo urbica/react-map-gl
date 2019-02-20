@@ -1,16 +1,18 @@
 // @flow
 
 import { PureComponent, createElement } from 'react';
-import { isImmutable } from 'immutable';
+import type MapboxMap from 'mapbox-gl/src/ui/map';
+import type { SourceSpecification } from 'mapbox-gl/src/style-spec/types';
 
-import MapContext from '../MapContext';
+import GeoJSONSource from '../GeoJSONSource';
+import VectorSource from '../VectorSource';
 
 type Props = {
   /** Mapbox GL Source id */
   id: string,
 
-  /** Mapbox GL Source as Immutable object */
-  source: MapSource
+  /** Mapbox GL Source */
+  source: SourceSpecification
 };
 
 class Source extends PureComponent<Props> {
@@ -18,71 +20,17 @@ class Source extends PureComponent<Props> {
 
   static displayName = 'Source';
 
-  constructor(props: Props) {
-    super(props);
-
-    if (!isImmutable(props.source)) {
-      throw new Error('Provided source prop is not an Immutable object');
-    }
-  }
-
-  componentDidMount() {
-    const { id, source } = this.props;
-    this._map.addSource(id, source.toJS());
-  }
-
-  componentDidUpdate(prevProps: Props) {
-    const newSource = this.props.source;
-    const prevSource = prevProps.source;
-
-    if (!newSource.equals(prevSource)) {
-      const { id } = this.props;
-      const type = newSource.get('type');
-
-      if (type === 'geojson') {
-        const newData = newSource.get('data');
-        if (isImmutable(newData) && !newData.equals(prevSource.get('data'))) {
-          this._map.getSource(id).setData(newData.toJS());
-        }
-      } else if (type === 'vector') {
-        const newStyle = this._map.getStyle();
-        const tiles = newSource.get('tiles');
-        if (isImmutable(tiles) && !tiles.equals(prevSource.get('tiles'))) {
-          newStyle.sources[id].tiles = tiles.toJS();
-          this._map.setStyle(newStyle);
-        }
-      } else {
-        this._map.removeSource(id);
-        this._map.addSource(id, newSource.toJS());
-      }
-    }
-  }
-
-  componentWillUnmount() {
-    const { id } = this.props;
-    if (!this._map || !this._map.getStyle()) {
-      return;
-    }
-
-    if (this._map.getSource(id)) {
-      const { layers } = this._map.getStyle();
-      if (layers) {
-        layers
-          .filter(layer => layer.source === id)
-          .forEach(layer => this._map.removeLayer(layer.id));
-      }
-
-      this._map.removeSource(id);
-    }
-  }
-
   render() {
-    return createElement(MapContext.Consumer, {}, (map) => {
-      if (map) {
-        this._map = map;
-      }
-      return null;
-    });
+    const { id, source } = this.props;
+
+    switch (source.type) {
+      case 'geojson':
+        return createElement(GeoJSONSource, { id, ...source });
+      case 'vector':
+        return createElement(VectorSource, { id, ...source });
+      default:
+        throw new Error(`Unknown Source type '${source.type}'`);
+    }
   }
 }
 
