@@ -107,7 +107,7 @@
     "react": "^16.8.2",
     "react-docgen": "^4.0.0",
     "react-dom": "^16.8.2",
-    "react-styleguidist": "^8.0.6",
+    "react-styleguidist": "^9.0.0",
     "react-test-renderer": "^16.8.2",
     "rollup": "^1.2.2",
     "rollup-plugin-babel": "^4.3.2",
