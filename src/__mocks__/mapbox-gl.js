@@ -36,12 +36,13 @@ Map.prototype.removeSource = function removeSource(name) {
   delete this._sources[name];
 };
 
-Map.prototype.remove = function remove() {};
-Map.prototype.addLayer = function addLayer() {};
-Map.prototype.getLayer = function addLayer() {};
-Map.prototype.removeLayer = function removeLayer() {};
-Map.prototype.addControl = function addControl() {};
-Map.prototype.removeControl = function removeControl() {};
+Map.prototype.remove = jest.fn();
+Map.prototype.addLayer = jest.fn();
+Map.prototype.getLayer = jest.fn();
+Map.prototype.removeLayer = jest.fn();
+Map.prototype.addControl = jest.fn();
+Map.prototype.removeControl = jest.fn();
+Map.prototype.fire = jest.fn();
 
 Map.prototype.getBounds = () => new LngLatBounds();
 
