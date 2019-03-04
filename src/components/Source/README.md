@@ -4,6 +4,7 @@
 import React from 'react';
 import { randomPoint } from '@turf/random';
 import MapGL, { Source, Layer } from '@urbica/react-map-gl';
+import 'mapbox-gl/dist/mapbox-gl.css';
 
 initialState = {
   points: randomPoint(100),

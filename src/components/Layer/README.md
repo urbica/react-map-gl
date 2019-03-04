@@ -5,6 +5,7 @@ Except for layers of the `background` type, each layer needs to refer to a sourc
 ```jsx
 import React from 'react';
 import MapGL, { VectorSource, Layer } from '@urbica/react-map-gl';
+import 'mapbox-gl/dist/mapbox-gl.css';
 
 initialState = {
   viewport: {

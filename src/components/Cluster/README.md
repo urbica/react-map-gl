@@ -7,6 +7,7 @@ npm -i supercluster
 ```jsx
 import { randomPoint } from '@turf/random';
 import MapGL, { Cluster, Marker } from '@urbica/react-map-gl';
+import 'mapbox-gl/dist/mapbox-gl.css';
 
 const bbox = [-160, -70, 160, 70];
 const points = randomPoint(50, { bbox }).features;

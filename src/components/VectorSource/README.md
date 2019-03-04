@@ -3,6 +3,7 @@ Add a [vector source](https://docs.mapbox.com/mapbox-gl-js/style-spec/#sources-v
 ```jsx
 import React from 'react';
 import MapGL, { VectorSource, Layer } from '@urbica/react-map-gl';
+import 'mapbox-gl/dist/mapbox-gl.css';
 
 initialState = {
   viewport: {

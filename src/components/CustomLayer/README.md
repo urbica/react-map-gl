@@ -6,6 +6,7 @@ Here is an Uber [deck.gl](https://github.com/uber/deck.gl) usage example.
 import { MapboxLayer } from '@deck.gl/mapbox';
 import { ScatterplotLayer } from '@deck.gl/layers';
 import MapGL, { CustomLayer } from '@urbica/react-map-gl';
+import 'mapbox-gl/dist/mapbox-gl.css';
 
 const myDeckLayer = new MapboxLayer({
   id: 'my-scatterplot',
