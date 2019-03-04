@@ -28,7 +28,7 @@ This package is heavily inspired by [uber/react-map-gl](https://github.com/uber/
 ## Installation
 
 ```shell
-npm install --save mapbox-gl immutable@4.0.0-rc.12 @urbica/react-map-gl
+npm install --save mapbox-gl @urbica/react-map-gl
 ```
 
 You may also want to install `supercluster` package for `Cluster` component.
@@ -97,7 +97,6 @@ const accessToken = <TOKEN> // Mapbox access token
 
 ```jsx
 import MapGL, { Source, Layer } from '@urbica/react-map-gl';
-import Immutable from "immutable";
 import random from "@turf/random";
 import "mapbox-gl/dist/mapbox-gl.css";
 
