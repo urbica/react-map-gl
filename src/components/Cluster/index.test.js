@@ -25,4 +25,8 @@ test('Cluster#render', () => {
   expect(wrapper.find('Cluster').exists()).toBe(true);
   expect(wrapper.find('ClusterComponent').exists()).toBe(true);
   expect(wrapper.find('ClusterComponent')).toHaveLength(1);
+
+  wrapper.unmount();
+  expect(wrapper.find('Cluster').exists()).toBe(false);
+  expect(wrapper.find('ClusterComponent').exists()).toBe(false);
 });

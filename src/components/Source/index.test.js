@@ -15,4 +15,7 @@ test('Source#render', () => {
   );
 
   expect(wrapper.find('Source').exists()).toBe(true);
+
+  wrapper.unmount();
+  expect(wrapper.find('Source').exists()).toBe(false);
 });

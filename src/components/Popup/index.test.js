@@ -12,4 +12,7 @@ test('Popup#render', () => {
   );
 
   expect(wrapper.find('Popup').exists()).toBe(true);
+
+  wrapper.unmount();
+  expect(wrapper.find('Popup').exists()).toBe(false);
 });
