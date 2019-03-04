@@ -5,6 +5,9 @@ import MapGL from '../..';
 test('MapGL#render', () => {
   const wrapper = mount(<MapGL latitude={0} longitude={0} zoom={0} />);
   expect(wrapper.exists()).toBe(true);
+
+  wrapper.unmount();
+  expect(wrapper.exists()).toBe(false);
 });
 
 test('MapGL#onLoad', () => {

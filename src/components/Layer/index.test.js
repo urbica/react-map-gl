@@ -22,4 +22,7 @@ test('Layer#render', () => {
   );
 
   expect(wrapper.find('Layer').exists()).toBe(true);
+
+  wrapper.unmount();
+  expect(wrapper.find('Layer').exists()).toBe(false);
 });

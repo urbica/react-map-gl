@@ -36,13 +36,15 @@ Map.prototype.removeSource = function removeSource(name) {
   delete this._sources[name];
 };
 
+Map.prototype.remove = function remove() {};
 Map.prototype.addLayer = function addLayer() {};
 Map.prototype.getLayer = function addLayer() {};
 Map.prototype.removeLayer = function removeLayer() {};
+Map.prototype.addControl = function addControl() {};
+Map.prototype.removeControl = function removeControl() {};
 
 Map.prototype.getBounds = () => new LngLatBounds();
 
-// Popup
 function Popup() {
   this.setLngLat = jest.fn(() => this);
   this.addTo = jest.fn(() => this);
@@ -50,10 +52,29 @@ function Popup() {
   return this;
 }
 
-// Marker
 function Marker() {
   this.setLngLat = jest.fn(() => this);
   this.addTo = jest.fn(() => this);
+  return this;
+}
+
+function AttributionControl() {
+  return this;
+}
+
+function FullscreenControl() {
+  return this;
+}
+
+function GeolocateControl() {
+  return this;
+}
+
+function NavigationControl() {
+  return this;
+}
+
+function ScaleControl() {
   return this;
 }
 
@@ -61,5 +82,10 @@ module.exports = {
   Map,
   Popup,
   Marker,
+  AttributionControl,
+  FullscreenControl,
+  GeolocateControl,
+  NavigationControl,
+  ScaleControl,
   supported: () => true
 };

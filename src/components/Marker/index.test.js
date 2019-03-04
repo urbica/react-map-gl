@@ -3,11 +3,7 @@ import { mount } from 'enzyme';
 import MapGL, { Marker } from '../..';
 
 test('Marker#render', () => {
-  const Element = (
-    <div>
-ok
-    </div>
-);
+  const Element = <div>ok</div>;
 
   const wrapper = mount(
     <MapGL latitude={0} longitude={0} zoom={0}>
@@ -16,4 +12,7 @@ ok
   );
 
   expect(wrapper.find('Marker').exists()).toBe(true);
+
+  wrapper.unmount();
+  expect(wrapper.find('Marker').exists()).toBe(false);
 });
