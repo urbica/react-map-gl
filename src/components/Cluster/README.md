@@ -5,10 +5,11 @@ npm -i supercluster
 ```
 
 ```jsx
-const random = require('@turf/random');
+import { randomPoint } from '@turf/random';
+import MapGL, { Cluster, Marker } from '@urbica/react-map-gl';
 
 const bbox = [-160, -70, 160, 70];
-const points = random.randomPoint(50, { bbox }).features;
+const points = randomPoint(50, { bbox }).features;
 points.forEach((point, index) => (point.id = index));
 
 initialState = {

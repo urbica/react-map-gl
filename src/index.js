@@ -5,6 +5,8 @@ export { default as MapContext } from './components/MapContext';
 export { default as Layer } from './components/Layer';
 export { default as CustomLayer } from './components/CustomLayer';
 export { default as Source } from './components/Source';
+export { default as GeoJSONSource } from './components/GeoJSONSource';
+export { default as VectorSource } from './components/VectorSource';
 export { default as Popup } from './components/Popup';
 export { default as Marker } from './components/Marker';
 export { default as Cluster } from './components/Cluster';

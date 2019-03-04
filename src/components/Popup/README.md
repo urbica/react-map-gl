@@ -1,6 +1,9 @@
 React Component for [Mapbox GL JS Popup](https://docs.mapbox.com/mapbox-gl-js/api/#popup).
 
 ```jsx
+import React from 'react';
+import MapGL, { Popup } from '@urbica/react-map-gl';
+
 <MapGL
   style={{ width: '100%', height: '400px' }}
   mapStyle='mapbox://styles/mapbox/light-v9'

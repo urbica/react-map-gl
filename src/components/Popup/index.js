@@ -2,12 +2,15 @@
 
 import { createPortal } from 'react-dom';
 import { PureComponent, createElement } from 'react';
+import type MapboxMap from 'mapbox-gl/src/ui/map';
+import type MapboxPopup from 'mapbox-gl/src/ui/popup';
+import type MapboxLngLatBoundsLike from 'mapbox-gl/src/geo/lng_lat_bounds';
 
 import MapContext from '../MapContext';
 import mapboxgl from '../../utils/mapbox-gl';
 
 type Props = {
-  /** Popup content */
+  /** Popup content. */
   children: React$Node,
 
   /** The longitude of the center of the popup. */
@@ -16,17 +19,21 @@ type Props = {
   /** The latitude of the center of the popup. */
   latitude: number,
 
-  /** If true, a close button will appear in the top right corner of the popup. */
+  /*
+   * If true, a close button will appear
+   * in the top right corner of the popup.
+   */
   closeButton?: boolean,
 
   /** If true, the popup will closed when the map is clicked. */
   closeOnClick?: boolean,
 
-  /** The onClose callback is fired when the popup closed */
+  /** The onClose callback is fired when the popup closed. */
   onClose?: Function,
 
   /*
-   * A string indicating the part of the Popup that should be positioned closest to the coordinate
+   * A string indicating the part of the Popup
+   * that should be positioned closest to the coordinate.
    * */
   anchor?:
     | 'top'
@@ -68,9 +75,22 @@ class Popup extends PureComponent<Props> {
   }
 
   componentDidMount() {
-    const { longitude, latitude, offset, closeButton, closeOnClick, onClose, anchor } = this.props;
+    const {
+      longitude,
+      latitude,
+      offset,
+      closeButton,
+      closeOnClick,
+      onClose,
+      anchor
+    } = this.props;
 
-    const popup: MapboxPopup = new mapboxgl.Popup({ offset, closeButton, closeOnClick, anchor });
+    const popup: MapboxPopup = new mapboxgl.Popup({
+      offset,
+      closeButton,
+      closeOnClick,
+      anchor
+    });
 
     popup.setDOMContent(this._el);
     popup.setLngLat([longitude, latitude]).addTo(this._map);
@@ -84,7 +104,8 @@ class Popup extends PureComponent<Props> {
 
   componentDidUpdate(prevProps: Props) {
     const positionChanged =
-      prevProps.latitude !== this.props.latitude || prevProps.longitude !== this.props.longitude;
+      prevProps.latitude !== this.props.latitude ||
+      prevProps.longitude !== this.props.longitude;
 
     if (positionChanged) {
       this._popup.setLngLat([this.props.longitude, this.props.latitude]);

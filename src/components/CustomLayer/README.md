@@ -3,8 +3,9 @@
 Here is an Uber [deck.gl](https://github.com/uber/deck.gl) usage example.
 
 ```jsx
-const { MapboxLayer } = require('@deck.gl/mapbox');
-const { ScatterplotLayer } = require('@deck.gl/layers');
+import { MapboxLayer } from '@deck.gl/mapbox';
+import { ScatterplotLayer } from '@deck.gl/layers';
+import MapGL, { CustomLayer } from '@urbica/react-map-gl';
 
 const myDeckLayer = new MapboxLayer({
   id: 'my-scatterplot',

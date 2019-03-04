@@ -8,11 +8,11 @@ import GeoJSONSource from '../GeoJSONSource';
 import VectorSource from '../VectorSource';
 
 type Props = {
-  /** Mapbox GL Source id */
-  id: string,
-
   /** Mapbox GL Source */
-  source: SourceSpecification
+  ...SourceSpecification,
+
+  /** Mapbox GL Source id */
+  id: string
 };
 
 class Source extends PureComponent<Props> {
@@ -21,7 +21,7 @@ class Source extends PureComponent<Props> {
   static displayName = 'Source';
 
   render() {
-    const { id, source } = this.props;
+    const { id, ...source } = this.props;
 
     switch (source.type) {
       case 'geojson':
@@ -29,7 +29,7 @@ class Source extends PureComponent<Props> {
       case 'vector':
         return createElement(VectorSource, { id, ...source });
       default:
-        throw new Error(`Unknown Source type '${source.type}'`);
+        throw new Error(`Unknown type for '${id}' Source`);
     }
   }
 }

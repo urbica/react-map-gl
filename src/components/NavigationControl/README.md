@@ -1,6 +1,9 @@
 A `NavigationControl` control contains zoom buttons and a compass.
 
 ```jsx
+import React from 'react';
+import MapGL, { NavigationControl } from '@urbica/react-map-gl';
+
 <MapGL
   style={{ width: '100%', height: '400px' }}
   mapStyle='mapbox://styles/mapbox/light-v9'
@@ -9,6 +12,6 @@ A `NavigationControl` control contains zoom buttons and a compass.
   longitude={-122.41}
   zoom={11}
 >
-  <NavigationControl showCompass showZoom position='top-left' />
-</MapGL>
+  <NavigationControl showCompass showZoom position='top-right' />
+</MapGL>;
 ```

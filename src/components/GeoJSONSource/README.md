@@ -1,7 +1,8 @@
 A [GeoJSON source](https://docs.mapbox.com/mapbox-gl-js/style-spec/#sources-geojson). Data must be provided via a `data` property, whose value can be a URL or inline GeoJSON.
 
 ```jsx
-const Immutable = require('immutable');
+import React from 'react';
+import MapGL, { GeoJSONSource, Layer } from '@urbica/react-map-gl';
 
 initialState = {
   viewport: {
@@ -42,7 +43,7 @@ const data = {
   }
 };
 
-const layer = Immutable.fromJS({
+const layer = {
   id: 'maine',
   type: 'fill',
   source: 'maine',
@@ -51,7 +52,7 @@ const layer = Immutable.fromJS({
     'fill-color': '#088',
     'fill-opacity': 0.8
   }
-});
+};
 
 <MapGL
   style={{ width: '100%', height: '400px' }}
@@ -61,6 +62,6 @@ const layer = Immutable.fromJS({
   {...state.viewport}
 >
   <GeoJSONSource id='maine' data={data} />
-  <Layer layer={layer} />
+  <Layer {...layer} />
 </MapGL>;
 ```

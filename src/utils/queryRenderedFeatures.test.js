@@ -1,10 +1,16 @@
 import mapboxgl from 'mapbox-gl';
-import queryRenderedFeatures from '../../src/utils/queryRenderedFeatures';
+import queryRenderedFeatures from './queryRenderedFeatures';
 
 const createMap = () => {
   const container = window.document.createElement('div');
-  Object.defineProperty(container, 'offsetWidth', { value: 200, configurable: true });
-  Object.defineProperty(container, 'offsetHeight', { value: 200, configurable: true });
+  Object.defineProperty(container, 'offsetWidth', {
+    value: 200,
+    configurable: true
+  });
+  Object.defineProperty(container, 'offsetHeight', {
+    value: 200,
+    configurable: true
+  });
 
   const map = new mapboxgl.Map({
     container,

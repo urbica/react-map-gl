@@ -6,10 +6,11 @@ import pkg from './package.json';
 
 export default {
   input: 'src/index.js',
+  treeshake: true,
   output: [
     { file: pkg.main, exports: 'named', sourcemap: true, format: 'cjs' },
     { file: pkg.module, sourcemap: true, format: 'esm' }
   ],
-  external: ['react', 'react-dom', 'mapbox-gl', 'immutable', 'supercluster'],
-  plugins: [resolve(), babel({ exclude: 'node_modules/**' }), commonjs(), terser()]
+  external: ['react', 'react-dom', 'mapbox-gl', 'supercluster'],
+  plugins: [resolve(), babel(), commonjs(), terser()]
 };

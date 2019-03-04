@@ -1,6 +1,8 @@
 // @flow
 
 import { PureComponent, createElement } from 'react';
+import type MapboxMap from 'mapbox-gl/src/ui/map';
+import type MapboxGeolocateControl from 'mapbox-gl/src/ui/control/geolocate_control';
 
 import MapContext from '../MapContext';
 import mapboxgl from '../../utils/mapbox-gl';
@@ -16,8 +18,8 @@ type Props = {
   fitBoundsOptions: Object,
 
   /**
-   * If `true` the Geolocate Control becomes a toggle button
-   * and when active the map will receive updates to the user's location as it changes.
+   * If `true` the Geolocate Control becomes a toggle button and when active
+   * the map will receive updates to the user's location as it changes.
    */
   trackUserLocation: boolean,
 

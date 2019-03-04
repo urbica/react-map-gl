@@ -1,6 +1,9 @@
 An `AttributionControl` control presents the map's attribution information.
 
 ```jsx
+import React from 'react';
+import MapGL, { AttributionControl } from '@urbica/react-map-gl';
+
 <MapGL
   style={{ width: '100%', height: '400px' }}
   mapStyle='mapbox://styles/mapbox/light-v9'
@@ -11,8 +14,9 @@ An `AttributionControl` control presents the map's attribution information.
   attributionControl={false}
 >
   <AttributionControl
+    compact={false}
     position='bottom-right'
     customAttribution='Custom attribution'
   />
-</MapGL>
+</MapGL>;
 ```

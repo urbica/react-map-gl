@@ -1,4 +1,5 @@
 // @flow
+import type MapboxMap from 'mapbox-gl/src/ui/map';
 
 const queryRenderedFeatures = (
   map: MapboxMap,

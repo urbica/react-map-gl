@@ -1,6 +1,9 @@
 A `ScaleControl` control displays the ratio of a distance on the map to the corresponding distance on the ground.
 
 ```jsx
+import React from 'react';
+import MapGL, { ScaleControl } from '@urbica/react-map-gl';
+
 <MapGL
   style={{ width: '100%', height: '400px' }}
   mapStyle='mapbox://styles/mapbox/light-v9'
@@ -9,6 +12,6 @@ A `ScaleControl` control displays the ratio of a distance on the map to the corr
   longitude={-122.41}
   zoom={11}
 >
-  <ScaleControl unit='metric' position='top-right' />
-</MapGL>
+  <ScaleControl unit='metric' position='bottom-right' />
+</MapGL>;
 ```

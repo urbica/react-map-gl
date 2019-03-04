@@ -1,6 +1,8 @@
 // @flow
 
 import { PureComponent, createElement } from 'react';
+import type MapboxMap from 'mapbox-gl/src/ui/map';
+import type MapboxFullscreenControl from 'mapbox-gl/src/ui/control/fullscreen_control';
 
 import MapContext from '../MapContext';
 import mapboxgl from '../../utils/mapbox-gl';

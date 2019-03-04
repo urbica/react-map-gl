@@ -1,5 +1,11 @@
-`@urbica/react-map-gl` expects `mapbox-gl` and `immutable` as peer dependencies.
+`@urbica/react-map-gl` requires `mapbox-gl` as peer dependency:
 
 ```shell
-npm install --save mapbox-gl immutable@4.0.0-rc.11 @urbica/react-map-gl
+npm install --save mapbox-gl @urbica/react-map-gl
+```
+
+...or if you are using yarn:
+
+```shell
+yarn add mapbox-gl @urbica/react-map-gl
 ```

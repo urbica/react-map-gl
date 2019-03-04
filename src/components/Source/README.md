@@ -1,11 +1,12 @@
 [Sources](https://docs.mapbox.com/mapbox-gl-js/api/#sources) specify the geographic features to be rendered on the map.
 
 ```jsx
-const Immutable = require('immutable');
-const random = require('@turf/random');
+import React from 'react';
+import { randomPoint } from '@turf/random';
+import MapGL, { Source, Layer } from '@urbica/react-map-gl';
 
 initialState = {
-  points: random.randomPoint(100),
+  points: randomPoint(100),
   viewport: {
     latitude: 0,
     longitude: 0,
@@ -15,7 +16,7 @@ initialState = {
 
 const source = { type: 'geojson', data: state.points };
 
-const layer = Immutable.fromJS({
+const layer = {
   id: 'points',
   type: 'circle',
   source: 'points',
@@ -23,16 +24,16 @@ const layer = Immutable.fromJS({
     'circle-radius': 6,
     'circle-color': '#1978c8'
   }
-});
+};
 
 const addPoints = () => {
-  const randomPoints = random.randomPoint(100);
+  const randomPoints = randomPoint(100);
   const newFeatures = state.points.features.concat(randomPoints.features);
   const newPoints = { ...state.points, features: newFeatures };
   setState({ points: newPoints });
 };
 
-<div>
+<React.Fragment>
   <button onClick={addPoints}>+100 points</button>
   <MapGL
     style={{ width: '100%', height: '400px' }}
@@ -41,8 +42,8 @@ const addPoints = () => {
     onViewportChange={viewport => setState({ viewport })}
     {...state.viewport}
   >
-    <Source id='points' source={source} />
-    <Layer layer={layer} />
+    <Source id='points' {...source} />
+    <Layer {...layer} />
   </MapGL>
-</div>;
+</React.Fragment>;
 ```

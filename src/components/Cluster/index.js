@@ -1,13 +1,12 @@
 // @flow
+
 import Supercluster from 'supercluster';
-import { Children, PureComponent, createElement, version } from 'react';
+import { Children, PureComponent, createElement } from 'react';
+import type MapboxMap from 'mapbox-gl/src/ui/map';
 
 import MapContext from '../MapContext';
-
 import point from '../../utils/point';
 import shallowCompareChildren from '../../utils/shallowCompareChildren';
-
-const reactVersion = parseInt(version, 10);
 
 export type SuperclusterFeature = {
   type: 'Feature',
@@ -182,7 +181,7 @@ class Cluster extends PureComponent<Props, State> {
         return createElement(type, { key, ...props });
       });
 
-      return reactVersion < 16 ? createElement('div', {}, ...clusters) : clusters;
+      return clusters;
     });
   }
 }

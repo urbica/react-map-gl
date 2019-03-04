@@ -1,6 +1,9 @@
 React Component for [Mapbox GL JS Marker](https://docs.mapbox.com/mapbox-gl-js/api/#marker).
 
 ```jsx
+import React from 'react';
+import MapGL, { Marker } from '@urbica/react-map-gl';
+
 initialState = {
   longitude: 0,
   latitude: 0

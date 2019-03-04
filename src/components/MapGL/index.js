@@ -2,14 +2,27 @@
 
 import { Children, PureComponent, createElement, cloneElement } from 'react';
 import type { Node } from 'react';
-
-import type { EventProps } from './eventProps';
+import type MapboxMap from 'mapbox-gl/src/ui/map';
+import type { StyleSpecification } from 'mapbox-gl/src/style-spec/types';
+import type MapboxLngLatBoundsLike from 'mapbox-gl/src/geo/lng_lat_bounds';
+import type { MapMouseEvent, MapTouchEvent } from 'mapbox-gl/src/ui/events';
 
 import Layer from '../Layer';
 import MapContext from '../MapContext';
 import mapboxgl from '../../utils/mapbox-gl';
 import events from './events';
 import capitalizeFirstLetter from '../../utils/capitalizeFirstLetter';
+import type { EventProps } from './eventProps';
+
+export type Viewport = {|
+  latitude: number,
+  longitude: number,
+  zoom: number,
+  pitch?: number,
+  bearing?: number
+|};
+
+export type ViewportChangeEvent = MapMouseEvent | MapTouchEvent;
 
 type Props = EventProps & {
   /** container className */
@@ -19,9 +32,9 @@ type Props = EventProps & {
   style?: Object,
 
   /**
-   * The Mapbox style. A string url or a MapboxGL style Immutable.Map object.
+   * The Mapbox style. A string url or a Mapbox GL style object.
    */
-  mapStyle: string | MapStyle,
+  mapStyle: string | StyleSpecification,
 
   /** Sources and Layers */
   children?: Node,
@@ -360,11 +373,15 @@ class MapGL extends PureComponent<Props, State> {
     const center = map.getCenter();
 
     const viewportChanged =
-      (newProps.latitude !== prevProps.latitude && newProps.latitude !== center.lat) ||
-      (newProps.longitude !== prevProps.longitude && newProps.longitude !== center.lng) ||
+      (newProps.latitude !== prevProps.latitude &&
+        newProps.latitude !== center.lat) ||
+      (newProps.longitude !== prevProps.longitude &&
+        newProps.longitude !== center.lng) ||
       (newProps.zoom !== prevProps.zoom && newProps.zoom !== map.getZoom()) ||
-      (newProps.pitch !== prevProps.pitch && newProps.pitch !== map.getPitch()) ||
-      (newProps.bearing !== prevProps.bearing && newProps.bearing !== map.getBearing());
+      (newProps.pitch !== prevProps.pitch &&
+        newProps.pitch !== map.getPitch()) ||
+      (newProps.bearing !== prevProps.bearing &&
+        newProps.bearing !== map.getBearing());
 
     if (!viewportChanged) {
       return;
@@ -409,7 +426,9 @@ class MapGL extends PureComponent<Props, State> {
     const { loaded } = this.state;
     const { className, style } = this.props;
 
-    const { layerChildren, otherChildren } = Children.toArray(this.props.children)
+    const { layerChildren, otherChildren } = Children.toArray(
+      this.props.children
+    )
       .filter(Boolean)
       .reduce(
         (acc, child) => {
@@ -434,7 +453,9 @@ class MapGL extends PureComponent<Props, State> {
     const layerChildrenWithBefore = layerChildren
       .reverse()
       .map((child, index) =>
-        cloneElement(child, { before: child.props.before || nextLayerIds[index - 1] })
+        cloneElement(child, {
+          before: child.props.before || nextLayerIds[index - 1]
+        })
       );
 
     // TODO: preserve children order
@@ -451,7 +472,9 @@ class MapGL extends PureComponent<Props, State> {
           className
         },
         loaded &&
-          Children.map(children, ({ key, type, props }) => createElement(type, { ...props, key }))
+          Children.map(children, ({ key, type, props }) =>
+            createElement(type, { ...props, key })
+          )
       )
     );
   }
