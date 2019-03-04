@@ -3,6 +3,7 @@ A [GeoJSON source](https://docs.mapbox.com/mapbox-gl-js/style-spec/#sources-geoj
 ```jsx
 import React from 'react';
 import MapGL, { GeoJSONSource, Layer } from '@urbica/react-map-gl';
+import 'mapbox-gl/dist/mapbox-gl.css';
 
 initialState = {
   viewport: {

@@ -3,6 +3,7 @@ A `FullscreenControl` control contains a button for toggling the map in and out 
 ```jsx
 import React from 'react';
 import MapGL, { FullscreenControl } from '@urbica/react-map-gl';
+import 'mapbox-gl/dist/mapbox-gl.css';
 
 <MapGL
   style={{ width: '100%', height: '400px' }}

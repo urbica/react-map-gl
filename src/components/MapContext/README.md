@@ -3,6 +3,10 @@
 You can also use `MapContext.Consumer` to obtain Mapbox GL JS Map instance.
 
 ```jsx
+import React from 'react';
+import MapGL, { MapContext } from '@urbica/react-map-gl';
+import 'mapbox-gl/dist/mapbox-gl.css';
+
 <MapGL
   style={{ width: '100%', height: '400px' }}
   mapStyle='mapbox://styles/mapbox/light-v9'
@@ -17,5 +21,5 @@ You can also use `MapContext.Consumer` to obtain Mapbox GL JS Map instance.
       return;
     }}
   </MapContext.Consumer>
-</MapGL>
+</MapGL>;
 ```

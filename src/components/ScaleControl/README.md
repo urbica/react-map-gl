@@ -3,6 +3,7 @@ A `ScaleControl` control displays the ratio of a distance on the map to the corr
 ```jsx
 import React from 'react';
 import MapGL, { ScaleControl } from '@urbica/react-map-gl';
+import 'mapbox-gl/dist/mapbox-gl.css';
 
 <MapGL
   style={{ width: '100%', height: '400px' }}

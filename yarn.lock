@@ -2138,10 +2138,10 @@ cli-width@^2.0.0:
   resolved "https://registry.yarnpkg.com/cli-width/-/cli-width-2.2.0.tgz#ff19ede8a9a5e579324147b0c11f0fbcbabed639"
   integrity sha1-/xnt6Kml5XkyQUewwR8PvLq+1jk=
 
-clipboard-copy@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/clipboard-copy/-/clipboard-copy-2.0.1.tgz#25214db3aabc282109cfa3429ffd885b014fc8b3"
-  integrity sha512-/JBr7ryeWwl2w33SRMYGfOZU5SWPVNtpB9oTxUzFp7olKKd2HM+cnhSMeETblJMnjgqtL581ncI/pcZX7o7Big==
+clipboard-copy@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/clipboard-copy/-/clipboard-copy-3.0.0.tgz#01ab812f4b5828b763e029172fd23ff92641eefb"
+  integrity sha512-1wgoaIRbRGTuv82jTpUgUkUFUQDF8H9hDa8IlkQfdETDHGk0CuisNPvFWNnPT/s3drikxhN33tvv54190c9lYA==
 
 clipboard@^2.0.0:
   version "2.0.4"
@@ -8194,10 +8194,10 @@ react-simple-code-editor@^0.9.3:
   resolved "https://registry.yarnpkg.com/react-simple-code-editor/-/react-simple-code-editor-0.9.3.tgz#12af0f85455eb1be1a86f15e325ec7861bc0db75"
   integrity sha512-JexTKcpcOjArsXUDCWNoXgIdshoacJVSuf3LbdKG0tHw5ISREoh7wvNZlRRk2gncFRSixkkTI5E18svC966rYQ==
 
-react-styleguidist@^9.0.1:
-  version "9.0.1"
-  resolved "https://registry.yarnpkg.com/react-styleguidist/-/react-styleguidist-9.0.1.tgz#ffb074664b510c5a3f36c7754506b0e3743f7abb"
-  integrity sha512-ex4HVXu5RW3KLN2rgjR0oWw32xpFt63d9x3dN/GD2YFbNzbna7ebhQ+2xt80ARHHqk/ihY8bFxhHURpdx6+KiA==
+react-styleguidist@^9.0.2:
+  version "9.0.2"
+  resolved "https://registry.yarnpkg.com/react-styleguidist/-/react-styleguidist-9.0.2.tgz#d68cf121185cf93997018da835c42c3ff4e9560d"
+  integrity sha512-trSAB8KQMQPnfpG7rN0oRiYeuv5TRzd4C0DKKQi/wsGd1ESal5NUI5masvKOSI8TCWcFCQQukKCZgzZqeYBh6g==
   dependencies:
     "@vxna/mini-html-webpack-template" "^0.1.7"
     acorn "^6.1.0"
@@ -8205,7 +8205,7 @@ react-styleguidist@^9.0.1:
     ast-types "^0.12.2"
     buble "0.19.4"
     clean-webpack-plugin "^1.0.1"
-    clipboard-copy "^2.0.1"
+    clipboard-copy "^3.0.0"
     clsx "^1.0.3"
     common-dir "^2.0.2"
     copy-webpack-plugin "^4.6.0"

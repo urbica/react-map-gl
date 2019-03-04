@@ -3,6 +3,7 @@ Geolocate the user and then track their current location on the map using the `G
 ```jsx
 import React from 'react';
 import MapGL, { GeolocateControl } from '@urbica/react-map-gl';
+import 'mapbox-gl/dist/mapbox-gl.css';
 
 <MapGL
   style={{ width: '100%', height: '400px' }}

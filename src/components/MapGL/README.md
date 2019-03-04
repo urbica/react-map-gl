@@ -3,6 +3,7 @@
 ```jsx
 import React from 'react';
 import MapGL from '@urbica/react-map-gl';
+import 'mapbox-gl/dist/mapbox-gl.css';
 
 <MapGL
   style={{ width: '100%', height: '400px' }}
@@ -19,6 +20,7 @@ import MapGL from '@urbica/react-map-gl';
 ```jsx
 import React from 'react';
 import MapGL from '@urbica/react-map-gl';
+import 'mapbox-gl/dist/mapbox-gl.css';
 
 initialState = {
   viewport: {
@@ -42,6 +44,7 @@ initialState = {
 ```jsx
 import React from 'react';
 import MapGL from '@urbica/react-map-gl';
+import 'mapbox-gl/dist/mapbox-gl.css';
 
 initialState = {
   mapStyle: null,
@@ -80,6 +83,7 @@ Here is an example for `onClick` prop.
 ```jsx
 import React from 'react';
 import MapGL from '@urbica/react-map-gl';
+import 'mapbox-gl/dist/mapbox-gl.css';
 
 initialState = {
   viewport: {
@@ -120,6 +124,7 @@ To access Mapbox GL JS Map instance you can use `MapContext.Consumer` component.
 ```jsx
 import React from 'react';
 import MapGL, { MapContext } from '@urbica/react-map-gl';
+import 'mapbox-gl/dist/mapbox-gl.css';
 
 <MapGL
   style={{ width: '100%', height: '400px' }}
@@ -145,6 +150,7 @@ You can also call `getMap()` method on the `MapGL` [ref](https://reactjs.org/doc
 ```jsx
 import React from 'react';
 import MapGL from '@urbica/react-map-gl';
+import 'mapbox-gl/dist/mapbox-gl.css';
 
 class MyMapGL extends React.PureComponent {
   constructor(props) {

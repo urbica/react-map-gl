@@ -57,33 +57,35 @@ You can see more examples [here](https://urbica.github.io/react-map-gl/).
 ### Static map
 
 ```jsx
+import React from 'react';
 import MapGL from '@urbica/react-map-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
 const accessToken = <TOKEN> // Mapbox access token
 
 <MapGL
-  style={{ width: "400px", height: "400px" }}
-  mapStyle="mapbox://styles/mapbox/light-v9"
-  accessToken={accessToken}
+  style={{ width: '100%', height: '400px' }}
+  mapStyle='mapbox://styles/mapbox/light-v9'
+  accessToken={MAPBOX_ACCESS_TOKEN}
   latitude={37.78}
   longitude={-122.41}
   zoom={11}
-/>
+/>;
 ```
 
 ### Interactive map
 
 ```jsx
+import React from 'react';
 import MapGL from '@urbica/react-map-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
 const accessToken = <TOKEN> // Mapbox access token
 
 <MapGL
-  style={{ width: '400px', height: '400px' }}
-  accessToken={accessToken}
-  mapStyle="mapbox://styles/mapbox/streets-v9"
+  style={{ width: '100%', height: '400px' }}
+  mapStyle='mapbox://styles/mapbox/light-v9'
+  accessToken={MAPBOX_ACCESS_TOKEN}
   latitude={37.7577}
   longitude={-122.4376}
   zoom={8}
@@ -96,15 +98,16 @@ const accessToken = <TOKEN> // Mapbox access token
 ### Map with `Source` and `Layer` components
 
 ```jsx
+import React from 'react';
 import MapGL, { Source, Layer } from '@urbica/react-map-gl';
-import random from "@turf/random";
+import { randomPoint } from "@turf/random";
 import "mapbox-gl/dist/mapbox-gl.css";
 
 const accessToken = <TOKEN> // Mapbox access token
 
 const source = {
   type: "geojson",
-  data: random.randomPoint(10)
+  data: randomPoint(10)
 };
 
 const layer = {
@@ -137,10 +140,13 @@ const layer = {
 Here is an Uber [deck.gl](https://github.com/uber/deck.gl) usage example.
 
 ```jsx
+import React from 'react';
 import MapGL, { CustomLayer } from '@urbica/react-map-gl';
 import { MapboxLayer } from '@deck.gl/mapbox';
 import { ScatterplotLayer } from '@deck.gl/layers';
 import 'mapbox-gl/dist/mapbox-gl.css';
+
+const accessToken = <TOKEN> // Mapbox access token
 
 const myDeckLayer = new MapboxLayer({
   id: 'my-scatterplot',

@@ -3,6 +3,7 @@ React Component for [Mapbox GL JS Popup](https://docs.mapbox.com/mapbox-gl-js/ap
 ```jsx
 import React from 'react';
 import MapGL, { Popup } from '@urbica/react-map-gl';
+import 'mapbox-gl/dist/mapbox-gl.css';
 
 <MapGL
   style={{ width: '100%', height: '400px' }}
@@ -15,5 +16,5 @@ import MapGL, { Popup } from '@urbica/react-map-gl';
   <Popup longitude={0} latitude={0} closeButton={false} closeOnClick={false}>
     Hi there! 👋
   </Popup>
-</MapGL>
+</MapGL>;
 ```
