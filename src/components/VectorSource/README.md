@@ -1,7 +1,8 @@
 Add a [vector source](https://docs.mapbox.com/mapbox-gl-js/style-spec/#sources-vector) to a map.
 
 ```jsx
-const Immutable = require('immutable');
+import React from 'react';
+import MapGL, { VectorSource, Layer } from '@urbica/react-map-gl';
 
 initialState = {
   viewport: {
@@ -11,7 +12,7 @@ initialState = {
   }
 };
 
-const layer = Immutable.fromJS({
+const layer = {
   id: 'terrain-data',
   type: 'line',
   source: 'contour',
@@ -24,7 +25,7 @@ const layer = Immutable.fromJS({
     'line-color': '#ff69b4',
     'line-width': 1
   }
-});
+};
 
 <MapGL
   style={{ width: '100%', height: '400px' }}
@@ -34,6 +35,6 @@ const layer = Immutable.fromJS({
   {...state.viewport}
 >
   <VectorSource id='contour' url='mapbox://mapbox.mapbox-terrain-v2' />
-  <Layer layer={layer} />
+  <Layer {...layer} />
 </MapGL>;
 ```

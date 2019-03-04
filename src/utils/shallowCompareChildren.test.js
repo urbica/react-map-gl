@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import shallowCompareChildren from '../../src/utils/shallowCompareChildren';
+import shallowCompareChildren from './shallowCompareChildren';
 
 test('shallowCompareChildren#undefined', () => {
   const prevChildren = shallow(<ul />)

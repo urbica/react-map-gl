@@ -1,7 +1,9 @@
 // @flow
+import type MapboxGL from 'mapbox-gl/src/index';
 
 const isBrowser = !(
-  Object.prototype.toString.call(global.process) === '[object process]' && !global.process.browser
+  Object.prototype.toString.call(global.process) === '[object process]' &&
+  !global.process.browser
 );
 
 // $FlowFixMe

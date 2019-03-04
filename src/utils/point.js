@@ -1,6 +1,9 @@
 // @flow
 
-const point = (coordinates: [number, number], properties: { [string]: any } = {}) => ({
+const point = (
+  coordinates: [number, number],
+  properties: { [string]: any } = {}
+) => ({
   type: 'Feature',
   properties,
   geometry: {

@@ -103,12 +103,12 @@ import "mapbox-gl/dist/mapbox-gl.css";
 
 const accessToken = <TOKEN> // Mapbox access token
 
-const source = Immutable.fromJS({
+const source = {
   type: "geojson",
   data: random.randomPoint(10)
-});
+};
 
-const layer = Immutable.fromJS({
+const layer = {
   id: "markers",
   type: "circle",
   source: "markers",
@@ -116,7 +116,7 @@ const layer = Immutable.fromJS({
     "circle-radius": 16,
     "circle-color": "#1978c8"
   }
-});
+};
 
 <MapGL
   style={{ width: "400px", height: "400px" }}
@@ -126,8 +126,8 @@ const layer = Immutable.fromJS({
   longitude={0}
   zoom={0}
 >
-  <Source id="markers" source={source} />
-  <Layer layer={layer} />
+  <Source id="markers" {...source} />
+  <Layer {...layer} />
 </MapGL>
 ```
 
@@ -172,11 +172,15 @@ See [Examples](https://urbica.github.io/react-map-gl/) for more info.
 
 Install project dependencies and check that the tests run
 
-    npm install
-    npm test
+```shell
+npm install
+npm test
+```
 
 Then start `react-styleguidist` by running
 
-    MAPBOX_ACCESS_TOKEN=<TOKEN> npm start
+```shell
+MAPBOX_ACCESS_TOKEN=<TOKEN> npm start
+```
 
 where `<TOKEN>` is a valid Mapbox [access token](https://www.mapbox.com/help/define-access-token/).

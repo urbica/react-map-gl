@@ -2,6 +2,9 @@
 
 import { createPortal } from 'react-dom';
 import { PureComponent, createElement } from 'react';
+import type MapboxMap from 'mapbox-gl/src/ui/map';
+import type MapboxMarker from 'mapbox-gl/src/ui/marker';
+import type LngLat from 'mapbox-gl/src/geo/lng_lat';
 import type { PointLike } from '@mapbox/point-geometry';
 
 import MapContext from '../MapContext';
@@ -55,7 +58,10 @@ class Marker extends PureComponent<Props> {
   componentDidMount() {
     const { longitude, latitude, offset, draggable, onDragEnd } = this.props;
 
-    const marker: MapboxMarker = new mapboxgl.Marker(this._el, { draggable, offset });
+    const marker: MapboxMarker = new mapboxgl.Marker(this._el, {
+      draggable,
+      offset
+    });
     marker.setLngLat([longitude, latitude]).addTo(this._map);
 
     if (onDragEnd) {
@@ -67,7 +73,8 @@ class Marker extends PureComponent<Props> {
 
   componentDidUpdate(prevProps: Props) {
     const positionChanged =
-      prevProps.latitude !== this.props.latitude || prevProps.longitude !== this.props.longitude;
+      prevProps.latitude !== this.props.latitude ||
+      prevProps.longitude !== this.props.longitude;
 
     if (positionChanged) {
       this._marker.setLngLat([this.props.longitude, this.props.latitude]);

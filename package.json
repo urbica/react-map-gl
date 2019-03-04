@@ -2,7 +2,7 @@
   "name": "@urbica/react-map-gl",
   "version": "0.7.0-beta.1",
   "description": "React Component for Mapbox GL JS",
-  "author": "Stepan Kuzmin <to.stepan.kuzmin@gmail.com> (stepankuzmin.ru)",
+  "author": "Stepan Kuzmin <to.stepan.kuzmin@gmail.com> (stepankuzmin.com)",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -11,111 +11,95 @@
   "main": "dist/react-map-gl.cjs.js",
   "module": "dist/react-map-gl.esm.js",
   "files": [
-    "dist",
-    "flow-typed"
+    "dist"
   ],
   "scripts": {
-    "start": "npm run styleguide",
-    "lint": "eslint src test",
+    "start": "styleguidist server",
+    "lint": "eslint src",
+    "test": "jest test",
+    "test:coverage": "jest test --coverage && codecov",
     "flow": "flow check",
-    "flow:coverage": "flow-coverage-report -i 'src/**/*.js' -t html",
-    "test": "jest",
-    "test:coverage": "jest --coverage && codecov",
+    "flow:coverage": "flow-coverage-report -i 'src/**/*.js' -x 'src/setupTests.js' -x 'src/__mocks__/*' -x 'src/**/*.test.js' -t html",
     "build": "rollup -c",
     "build:watch": "rollup -c -w",
-    "docs": "documentation build src/index.js -f md -o docs/props.md",
-    "styleguide": "styleguidist server",
-    "styleguide:build": "styleguidist build",
-    "styleguide:deploy": "gh-pages -m 'auto commit [ci skip]' -d styleguide",
-    "format": "prettier-eslint --write \"src/**/*.js\"",
     "cz": "git-cz",
     "release": "npm run build && standard-version",
     "prepublishOnly": "npm run build",
-    "postpublish": "npm run docs && npm run styleguide:build && npm run styleguide:deploy"
+    "styleguide:build": "styleguidist build",
+    "styleguide:deploy": "gh-pages -m 'auto commit [ci skip]' -d styleguide",
+    "postpublish": "npm run styleguide:build && npm run styleguide:deploy"
   },
-  "jest": {
-    "setupFiles": [
-      "<rootDir>/test/setup.js"
-    ]
+  "peerDependencies": {
+    "mapbox-gl": ">= 0.40.0 < 1",
+    "react": "^16.x",
+    "react-dom": "^16.x"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.js": [
-      "jest --findRelatedTests",
-      "prettier-eslint --write",
-      "git add"
-    ]
+  "devDependencies": {
+    "@babel/core": "^7.3.4",
+    "@babel/plugin-proposal-class-properties": "^7.3.4",
+    "@babel/plugin-transform-spread": "^7.2.2",
+    "@babel/preset-env": "^7.3.4",
+    "@babel/preset-flow": "^7.0.0",
+    "@babel/preset-react": "^7.0.0",
+    "@deck.gl/layers": "^6.4.5",
+    "@deck.gl/mapbox": "^6.4.5",
+    "@turf/random": "^6.0.2",
+    "babel-eslint": "^10.0.1",
+    "babel-loader": "^8.0.5",
+    "codecov": "^3.2.0",
+    "commitizen": "^3.0.7",
+    "css-loader": "^2.1.0",
+    "cz-conventional-changelog": "^2.1.0",
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.10.0",
+    "eslint": "^5.15.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-prettier": "^4.1.0",
+    "eslint-plugin-flowtype": "^3.4.2",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-react": "^7.12.4",
+    "flow-bin": "^0.94.0",
+    "flow-coverage-report": "^0.6.1",
+    "flow-remove-types": "^1.2.3",
+    "gh-pages": "^2.0.1",
+    "husky": "^1.3.1",
+    "jest": "^24.1.0",
+    "lint-staged": "^8.1.5",
+    "mapbox-gl": "^0.53.1",
+    "prettier": "^1.16.4",
+    "react": "^16.8.3",
+    "react-dom": "^16.8.3",
+    "react-styleguidist": "^9.0.1",
+    "rollup": "^1.4.1",
+    "rollup-plugin-babel": "^4.3.2",
+    "rollup-plugin-commonjs": "^9.2.1",
+    "rollup-plugin-node-resolve": "^4.0.1",
+    "rollup-plugin-terser": "^4.0.4",
+    "standard-version": "^5.0.1",
+    "style-loader": "^0.23.1",
+    "supercluster": "^6.0.1",
+    "webpack": "^4.29.6"
   },
   "config": {
     "commitizen": {
       "path": "cz-conventional-changelog"
     }
   },
-  "peerDependencies": {
-    "immutable": "4.x",
-    "mapbox-gl": ">= 0.40.0 < 1",
-    "react": "^16.4.2",
-    "react-dom": "^16.4.2",
-    "supercluster": "^5.0.0"
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   },
-  "dependencies": {
-    "create-react-context": "^0.2.3"
+  "jest": {
+    "setupFiles": [
+      "<rootDir>/src/setupTests.js"
+    ]
   },
-  "devDependencies": {
-    "@babel/core": "^7.3.3",
-    "@babel/plugin-proposal-class-properties": "^7.3.3",
-    "@babel/plugin-transform-spread": "^7.2.2",
-    "@babel/preset-env": "^7.3.1",
-    "@babel/preset-flow": "^7.0.0",
-    "@babel/preset-react": "^7.0.0",
-    "@deck.gl/layers": "^6.4.3",
-    "@deck.gl/mapbox": "^6.4.2",
-    "@turf/random": "^6.0.2",
-    "babel-core": "^7.0.0-bridge.0",
-    "babel-eslint": "^10.0.1",
-    "babel-jest": "^24.1.0",
-    "babel-loader": "^8.0.5",
-    "babel-preset-es2015-rollup": "^3.0.0",
-    "codecov": "^3.2.0",
-    "commitizen": "^3.0.5",
-    "cz-conventional-changelog": "^2.1.0",
-    "documentation": "^9.1.1",
-    "enzyme": "^3.9.0",
-    "enzyme-adapter-react-16": "^1.9.1",
-    "eslint": "^5.14.1",
-    "eslint-config-airbnb": "^17.1.0",
-    "eslint-config-prettier": "^4.0.0",
-    "eslint-plugin-flowtype": "^3.4.2",
-    "eslint-plugin-import": "^2.16.0",
-    "eslint-plugin-jsx-a11y": "^6.2.1",
-    "eslint-plugin-react": "^7.12.4",
-    "flow-bin": "^0.93.0",
-    "flow-coverage-report": "^0.6.1",
-    "gh-pages": "^2.0.1",
-    "husky": "^1.3.1",
-    "immutable": "^4.0.0-rc.12",
-    "jest": "^24.1.0",
-    "lint-staged": "^8.1.4",
-    "mapbox-gl": "^0.53.0",
-    "prettier": "^1.16.4",
-    "prettier-eslint": "^8.8.2",
-    "prettier-eslint-cli": "^4.7.1",
-    "react": "^16.8.2",
-    "react-docgen": "^4.0.0",
-    "react-dom": "^16.8.2",
-    "react-styleguidist": "^8.0.6",
-    "react-test-renderer": "^16.8.2",
-    "rollup": "^1.2.2",
-    "rollup-plugin-babel": "^4.3.2",
-    "rollup-plugin-commonjs": "^9.2.0",
-    "rollup-plugin-node-resolve": "^4.0.0",
-    "rollup-plugin-terser": "^4.0.4",
-    "standard-version": "^5.0.0",
-    "supercluster": "^6.0.1",
-    "webpack": "^4.29.5"
+  "lint-staged": {
+    "*.js": [
+      "jest --findRelatedTests",
+      "git add"
+    ]
   }
 }

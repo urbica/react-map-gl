@@ -6,7 +6,10 @@ import type { Node } from 'react';
 const childrenKeys = (children: Node): string[] =>
   Children.toArray(children).map(child => child.key);
 
-const shallowCompareChildren = (prevChildren: Node, newChildren: Node): boolean => {
+const shallowCompareChildren = (
+  prevChildren: Node,
+  newChildren: Node
+): boolean => {
   if (Children.count(prevChildren) !== Children.count(newChildren)) {
     return false;
   }

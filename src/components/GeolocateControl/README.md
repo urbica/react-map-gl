@@ -1,6 +1,9 @@
 Geolocate the user and then track their current location on the map using the `GeolocateControl`.
 
 ```jsx
+import React from 'react';
+import MapGL, { GeolocateControl } from '@urbica/react-map-gl';
+
 <MapGL
   style={{ width: '100%', height: '400px' }}
   mapStyle='mapbox://styles/mapbox/light-v9'
@@ -9,6 +12,6 @@ Geolocate the user and then track their current location on the map using the `G
   longitude={-122.41}
   zoom={11}
 >
-  <GeolocateControl position='top-left' />
-</MapGL>
+  <GeolocateControl position='top-right' />
+</MapGL>;
 ```

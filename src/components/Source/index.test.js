@@ -10,7 +10,7 @@ const source = {
 test('Source#render', () => {
   const wrapper = mount(
     <MapGL latitude={0} longitude={0} zoom={0}>
-      <Source id="test" source={source} />
+      <Source id="test" {...source} />
     </MapGL>
   );
 

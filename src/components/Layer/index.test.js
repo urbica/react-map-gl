@@ -1,24 +1,23 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import Immutable from 'immutable';
 import MapGL, { Source, Layer } from '../..';
 
-const source = Immutable.fromJS({
+const source = {
   type: 'geojson',
   data: { type: 'FeatureCollection', features: [] }
-});
+};
 
-const layer = Immutable.fromJS({
+const layer = {
   id: 'test',
   type: 'circle',
   source: 'test'
-});
+};
 
 test('Layer#render', () => {
   const wrapper = mount(
     <MapGL latitude={0} longitude={0} zoom={0}>
-      <Source id="test" source={source} />
-      <Layer layer={layer} />
+      <Source id="test" {...source} />
+      <Layer {...layer} />
     </MapGL>
   );
 

@@ -1,6 +1,9 @@
 // @flow
 
 import { PureComponent, createElement } from 'react';
+import type MapboxMap from 'mapbox-gl/src/ui/map';
+import type { CustomLayerInterface } from 'mapbox-gl/src/style/style_layer/custom_style_layer';
+
 import MapContext from '../MapContext';
 
 type Props = {
@@ -8,7 +11,7 @@ type Props = {
   before?: string,
 
   /** Mapbox GL Custom Layer instance */
-  layer: MapCustomLayer
+  layer: CustomLayerInterface
 };
 
 /**
@@ -20,7 +23,7 @@ class CustomLayer extends PureComponent<Props> {
 
   _map: MapboxMap;
 
-  _layer: MapCustomLayer;
+  _layer: CustomLayerInterface;
 
   static displayName = 'CustomLayer';
 
