@@ -2,6 +2,36 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [1.0.0-alpha.0](https://github.com/urbica/react-map-gl/compare/v0.7.0-beta.1...v1.0.0-alpha.0) (2019-03-04)
+
+
+### Bug Fixes
+
+* **GeoJSONSource:** fix flow typings ([43ee25d](https://github.com/urbica/react-map-gl/commit/43ee25d))
+* **GeoJSONSource:** fix GeoJSONSource type ([e503e2e](https://github.com/urbica/react-map-gl/commit/e503e2e))
+
+
+### Code Refactoring
+
+* **Cluster:** do not wrap user provided component in Marker by default ([9dbbdf1](https://github.com/urbica/react-map-gl/commit/9dbbdf1))
+* **Marker:** switch to portal for rendering Marker content ([a3611d4](https://github.com/urbica/react-map-gl/commit/a3611d4))
+* **Popup:** switch to portal for rendering popup content ([3030747](https://github.com/urbica/react-map-gl/commit/3030747))
+
+
+### Features
+
+* **GeoJSONSource:** add GeoJSONSource ([0c7c1b4](https://github.com/urbica/react-map-gl/commit/0c7c1b4))
+* **VectorSource:** add VectorSource ([cf1f028](https://github.com/urbica/react-map-gl/commit/cf1f028))
+
+
+### BREAKING CHANGES
+
+* **Cluster:** rename `element` prop to `component` and no longer wrap it in Marker
+* **Marker:** element prop was removed, use children instead
+* **Popup:** element prop was removed, use children instead
+
+
+
 <a name="0.7.0-beta.1"></a>
 # [0.7.0-beta.1](https://github.com/urbica/react-map-gl/compare/v0.7.0-beta.0...v0.7.0-beta.1) (2019-02-01)
 
