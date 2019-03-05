@@ -457,7 +457,7 @@ class MapGL extends PureComponent<Props, State> {
 
     const nextLayerIds = layerChildren
       .slice(1)
-      .map(child => child.props.layer.id)
+      .map(child => child.props.id)
       .reverse();
 
     const layerChildrenWithBefore = layerChildren
