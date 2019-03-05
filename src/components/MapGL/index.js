@@ -1,6 +1,12 @@
 // @flow
 
-import { Children, PureComponent, createElement, cloneElement } from 'react';
+import {
+  Children,
+  PureComponent,
+  createElement,
+  createRef,
+  cloneElement
+} from 'react';
 import type { Node } from 'react';
 import type MapboxMap from 'mapbox-gl/src/ui/map';
 import type { StyleSpecification } from 'mapbox-gl/src/style-spec/types';
@@ -206,7 +212,7 @@ type State = {
 class MapGL extends PureComponent<Props, State> {
   _map: MapboxMap;
 
-  _container: ?HTMLElement;
+  _container: React.Ref<HTMLElement>;
 
   _onViewportChange: (event: ViewportChangeEvent) => void;
 
@@ -254,6 +260,8 @@ class MapGL extends PureComponent<Props, State> {
     if (mapboxgl) {
       mapboxgl.accessToken = props.accessToken;
     }
+
+    this._container = createRef();
   }
 
   state = {
@@ -265,8 +273,10 @@ class MapGL extends PureComponent<Props, State> {
       return;
     }
 
+    const container = this._container.current;
+
     const map: MapboxMap = new mapboxgl.Map({
-      container: this._container,
+      container,
       style: this.props.mapStyle,
       interactive: !!this.props.onViewportChange,
       center: [this.props.longitude, this.props.latitude],
@@ -467,14 +477,11 @@ class MapGL extends PureComponent<Props, State> {
       createElement(
         'div',
         {
-          ref: ref => (this._container = ref),
+          ref: this._container,
           style,
           className
         },
-        loaded &&
-          Children.map(children, ({ key, type, props }) =>
-            createElement(type, { ...props, key })
-          )
+        loaded && children
       )
     );
   }
