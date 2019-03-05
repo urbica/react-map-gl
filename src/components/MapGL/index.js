@@ -7,7 +7,7 @@ import {
   createRef,
   cloneElement
 } from 'react';
-import type { Node } from 'react';
+import type { Node, ElementRef } from 'react';
 import type MapboxMap from 'mapbox-gl/src/ui/map';
 import type { StyleSpecification } from 'mapbox-gl/src/style-spec/types';
 import type MapboxLngLatBoundsLike from 'mapbox-gl/src/geo/lng_lat_bounds';
@@ -212,7 +212,7 @@ type State = {
 class MapGL extends PureComponent<Props, State> {
   _map: MapboxMap;
 
-  _container: React.Ref<HTMLElement>;
+  _container: { current: null | ElementRef<'div'> };
 
   _onViewportChange: (event: ViewportChangeEvent) => void;
 
