@@ -1,7 +1,24 @@
 import React from 'react';
 import { mount } from 'enzyme';
 
-import MapGL from '../..';
+import MapGL, { Layer, Source } from '../..';
+
+const source = {
+  type: 'geojson',
+  data: { type: 'FeatureCollection', features: [] }
+};
+
+const layer1 = {
+  id: 'test1',
+  type: 'circle',
+  source: 'test'
+};
+
+const layer2 = {
+  id: 'test2',
+  type: 'circle',
+  source: 'test'
+};
 
 test('MapGL#render', () => {
   const wrapper = mount(<MapGL latitude={0} longitude={0} zoom={0} />);
@@ -29,4 +46,19 @@ test('MapGL#viewport', () => {
   expect(wrapper.props().latitude).toBe(1);
   expect(wrapper.props().longitude).toBe(2);
   expect(wrapper.props().zoom).toBe(3);
+});
+
+test('MapGL#multiLayersRender', () => {
+  const wrapper = mount(
+    <MapGL latitude={0} longitude={0} zoom={0}>
+      <Source id="test" {...source} />
+      <Layer {...layer1} />
+      <Layer {...layer2} />
+    </MapGL>
+  );
+
+  expect(wrapper.find('Layer').exists()).toBe(true);
+
+  wrapper.unmount();
+  expect(wrapper.find('Layer').exists()).toBe(false);
 });
