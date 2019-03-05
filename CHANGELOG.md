@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [1.0.0-alpha.1](https://github.com/urbica/react-map-gl/compare/v1.0.0-alpha.0...v1.0.0-alpha.1) (2019-03-05)
+
+
+### Bug Fixes
+
+* **MapGL:** fix map container flow type ([84896f6](https://github.com/urbica/react-map-gl/commit/84896f6))
+* **MapGL:** fix refs in children render ([f038200](https://github.com/urbica/react-map-gl/commit/f038200))
+
+
+
 # [1.0.0-alpha.0](https://github.com/urbica/react-map-gl/compare/v0.7.0-beta.1...v1.0.0-alpha.0) (2019-03-04)
 
 
