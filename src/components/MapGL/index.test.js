@@ -1,24 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 
-import MapGL, { Layer, Source } from '../..';
-
-const source = {
-  type: 'geojson',
-  data: { type: 'FeatureCollection', features: [] }
-};
-
-const layer1 = {
-  id: 'test1',
-  type: 'circle',
-  source: 'test'
-};
-
-const layer2 = {
-  id: 'test2',
-  type: 'circle',
-  source: 'test'
-};
+import MapGL, { Layer, GeoJSONSource } from '../..';
 
 test('MapGL#render', () => {
   const wrapper = mount(<MapGL latitude={0} longitude={0} zoom={0} />);
@@ -48,16 +31,19 @@ test('MapGL#viewport', () => {
   expect(wrapper.props().zoom).toBe(3);
 });
 
-test('MapGL#multiLayersRender', () => {
+test('MapGL#multipleLayers', () => {
+  const data = { type: 'FeatureCollection', features: [] };
+
   const wrapper = mount(
     <MapGL latitude={0} longitude={0} zoom={0}>
-      <Source id="test" {...source} />
-      <Layer {...layer1} />
-      <Layer {...layer2} />
+      <GeoJSONSource id="test" data={data} />
+      <Layer id="test1" type="circle" source="test" />
+      <Layer id="test2" type="circle" source="test" />
     </MapGL>
   );
 
   expect(wrapper.find('Layer').exists()).toBe(true);
+  expect(wrapper.find('Layer')).toHaveLength(2);
 
   wrapper.unmount();
   expect(wrapper.find('Layer').exists()).toBe(false);
