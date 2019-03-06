@@ -72,6 +72,61 @@ if (!state.mapStyle && setState) {
 />;
 ```
 
+### Vewport Change Methods
+
+There are two props `viewportChangeMethod` and `viewportChangeOptions` that controls how `MapGL` component reacts to the new viewport props.
+
+You can find list of available `viewportChangeOptions` [here](https://docs.mapbox.com/mapbox-gl-js/api/#animationoptions).
+
+```jsx
+import React from 'react';
+import MapGL from '@urbica/react-map-gl';
+import 'mapbox-gl/dist/mapbox-gl.css';
+
+initialState = {
+  viewportChangeMethod: 'flyTo',
+  viewport: {
+    latitude: 37.78,
+    longitude: -122.41,
+    zoom: 11
+  }
+};
+
+const onChange = () => {
+  setState({ viewportChangeMethod: event.target.value });
+};
+
+const onClick = event => {
+  const { lngLat } = event;
+
+  const newVewport = {
+    ...state.viewport,
+    latitude: lngLat.lat,
+    longitude: lngLat.lng
+  };
+
+  setState({ viewport: newVewport });
+};
+
+<React.Fragment>
+  Select viewportChangeMethod and click on the map
+  <select value={state.viewportChangeMethod} onChange={onChange}>
+    <option value='flyTo'>flyTo</option>
+    <option value='jumpTo'>jumpTo</option>
+    <option value='easeTo'>easeTo</option>
+  </select>
+  <MapGL
+    style={{ width: '100%', height: '400px' }}
+    mapStyle='mapbox://styles/mapbox/light-v9'
+    accessToken={MAPBOX_ACCESS_TOKEN}
+    onClick={onClick}
+    onViewportChange={viewport => setState({ viewport })}
+    viewportChangeMethod={state.viewportChangeMethod}
+    {...state.viewport}
+  />
+</React.Fragment>;
+```
+
 ### Events
 
 `mapbox-gl` emit [events](https://www.mapbox.com/mapbox-gl-js/api/#events) in response to user interactions or changes in state.
