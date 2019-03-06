@@ -7,10 +7,12 @@ import {
   createRef,
   cloneElement
 } from 'react';
+
 import type { Node, ElementRef } from 'react';
 import type MapboxMap from 'mapbox-gl/src/ui/map';
-import type { StyleSpecification } from 'mapbox-gl/src/style-spec/types';
 import type MapboxLngLatBoundsLike from 'mapbox-gl/src/geo/lng_lat_bounds';
+import type { AnimationOptions } from 'mapbox-gl/src/ui/camera';
+import type { StyleSpecification } from 'mapbox-gl/src/style-spec/types';
 import type { MapMouseEvent, MapTouchEvent } from 'mapbox-gl/src/ui/events';
 
 import Layer from '../Layer';
@@ -28,6 +30,11 @@ export type Viewport = {|
   bearing?: number
 |};
 
+export const jumpTo = 'jumpTo';
+export const easeTo = 'easeTo';
+export const flyTo = 'flyTo';
+
+export type ViewportChangeMethod = 'jumpTo' | 'easeTo' | 'flyTo';
 export type ViewportChangeEvent = MapMouseEvent | MapTouchEvent;
 
 type Props = EventProps & {
@@ -198,6 +205,19 @@ type Props = EventProps & {
    */
   onViewportChange?: (viewport: Viewport) => void,
 
+  /**
+   * Map method that will be called after new viewport props are received.
+   */
+  viewportChangeMethod?: ViewportChangeMethod,
+
+  /**
+   * Options common to map movement methods that involve animation,
+   * controlling the duration and easing function of the animation.
+   * This options will be passed to the `viewportChangeMethod` call.
+   * (see https://docs.mapbox.com/mapbox-gl-js/api/#animationoptions)
+   */
+  viewportChangeOptions?: AnimationOptions,
+
   /** The onLoad callback for the map */
   onLoad?: Function,
 
@@ -251,7 +271,9 @@ class MapGL extends PureComponent<Props, State> {
     localIdeographFontFamily: null,
     transformRequest: null,
     collectResourceTiming: false,
-    cursorStyle: null
+    cursorStyle: null,
+    viewportChangeMethod: jumpTo,
+    viewportChangeOptions: null
   };
 
   constructor(props: Props) {
@@ -397,12 +419,29 @@ class MapGL extends PureComponent<Props, State> {
       return;
     }
 
-    map.flyTo({
+    const viewport = {
       center: [newProps.longitude, newProps.latitude],
       zoom: newProps.zoom,
       pitch: newProps.pitch,
       bearing: newProps.bearing
-    });
+    };
+
+    const { viewportChangeMethod, viewportChangeOptions } = this.props;
+    const options = { ...viewportChangeOptions, ...viewport };
+
+    switch (viewportChangeMethod) {
+      case flyTo:
+        map.flyTo(options);
+        break;
+      case jumpTo:
+        map.jumpTo(options);
+        break;
+      case easeTo:
+        map.easeTo(options);
+        break;
+      default:
+        throw new Error('Unknown viewport change method');
+    }
   }
 
   /**
@@ -412,7 +451,10 @@ class MapGL extends PureComponent<Props, State> {
    * @param {ViewportChangeEvent} event
    */
   _onViewportChange = (event: ViewportChangeEvent): void => {
-    if (!event.originalEvent) return;
+    if (!event.originalEvent) {
+      return;
+    }
+
     const map = this._map;
 
     const { lng, lat } = map.getCenter();
