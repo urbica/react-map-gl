@@ -2,12 +2,15 @@
 
 import { PureComponent, createElement } from 'react';
 import type MapboxMap from 'mapbox-gl/src/ui/map';
-import type { SourceSpecification } from 'mapbox-gl/src/style-spec/types';
+import type {
+  StyleSpecification,
+  SourceSpecification
+} from 'mapbox-gl/src/style-spec/types';
 
-import GeoJSONSource from '../GeoJSONSource';
-import VectorSource from '../VectorSource';
+import MapContext from '../MapContext';
+import validateSource from '../../utils/validateSource';
 
-type Props = {
+export type Props = {
   /** Mapbox GL Source */
   ...SourceSpecification,
 
@@ -20,17 +23,60 @@ class Source extends PureComponent<Props> {
 
   static displayName = 'Source';
 
-  render() {
-    const { id, ...source } = this.props;
+  componentDidMount() {
+    const { id, ...source } = validateSource(this.props);
+    this._map.addSource(id, source);
+  }
 
-    switch (source.type) {
-      case 'geojson':
-        return createElement(GeoJSONSource, { id, ...source });
-      case 'vector':
-        return createElement(VectorSource, { id, ...source });
-      default:
-        throw new Error(`Unknown type for '${id}' Source`);
+  componentDidUpdate(prevProps: Props) {
+    const { id: prevId, ...prevSource } = validateSource(prevProps);
+    const { id, ...source } = validateSource(this.props);
+
+    if (id !== prevId || source.type !== prevSource.type) {
+      this._map.removeSource(prevId);
+      this._map.addSource(id, source);
+      return;
     }
+
+    if (
+      source.type === 'geojson' &&
+      prevSource.type === 'geojson' &&
+      source.data !== prevSource.data
+    ) {
+      this._map.getSource(id).setData(source.data);
+      return;
+    }
+
+    if (
+      source.type === 'vector' &&
+      prevSource.type === 'vector' &&
+      source.tiles !== prevSource.tiles
+    ) {
+      const style: StyleSpecification = this._map.getStyle();
+      // $FlowFixMe
+      style.sources[id].tiles = style.tiles;
+      this._map.setStyle(style);
+    }
+  }
+
+  componentWillUnmount() {
+    if (!this._map || !this._map.getStyle()) {
+      return;
+    }
+
+    if (this._map.getSource(this.props.id)) {
+      this._map.removeSource(this.props.id);
+    }
+  }
+
+  render() {
+    return createElement(MapContext.Consumer, {}, (map: ?MapboxMap) => {
+      if (map) {
+        this._map = map;
+      }
+
+      return null;
+    });
   }
 }
 

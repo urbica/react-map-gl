@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 
-import MapGL, { Layer, GeoJSONSource } from '../..';
+import MapGL, { Layer, Source } from '../..';
 
 test('MapGL#render', () => {
   const wrapper = mount(<MapGL latitude={0} longitude={0} zoom={0} />);
@@ -36,7 +36,7 @@ test('MapGL#multipleLayers', () => {
 
   const wrapper = mount(
     <MapGL latitude={0} longitude={0} zoom={0}>
-      <GeoJSONSource id="test" data={data} />
+      <Source id="test" type="geojson" data={data} />
       <Layer id="test1" type="circle" source="test" />
       <Layer id="test2" type="circle" source="test" />
     </MapGL>
@@ -47,4 +47,25 @@ test('MapGL#multipleLayers', () => {
 
   wrapper.unmount();
   expect(wrapper.find('Layer').exists()).toBe(false);
+});
+
+test('MapGL#multipleSources', () => {
+  const data = { type: 'FeatureCollection', features: [] };
+
+  const wrapper = mount(
+    <MapGL latitude={0} longitude={0} zoom={0}>
+      <Source
+        id="test1"
+        type="vector"
+        url="mapbox://mapbox.mapbox-terrain-v2"
+      />
+      <Source id="test2" type="geojson" data={data} />
+    </MapGL>
+  );
+
+  expect(wrapper.find('Source').exists()).toBe(true);
+  expect(wrapper.find('Source')).toHaveLength(2);
+
+  wrapper.unmount();
+  expect(wrapper.find('Source').exists()).toBe(false);
 });
