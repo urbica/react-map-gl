@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [1.0.0-alpha.4](https://github.com/urbica/react-map-gl/compare/v1.0.0-alpha.3...v1.0.0-alpha.4) (2019-03-06)
+
+
+### Features
+
+* **MapGL:** add viewportChangeMethod and viewportChangeOptions props ([85a04b7](https://github.com/urbica/react-map-gl/commit/85a04b7))
+* **Source:** drop separate source components ([012f030](https://github.com/urbica/react-map-gl/commit/012f030))
+
+
+### BREAKING CHANGES
+
+* **MapGL:** default map viewportChangeMethod changed to jumpTo
+* **Source:** remove GeoJSONSource and VectorSource, use Source with type prop instead
+
+
+
 # [1.0.0-alpha.3](https://github.com/urbica/react-map-gl/compare/v1.0.0-alpha.2...v1.0.0-alpha.3) (2019-03-05)
 
 
