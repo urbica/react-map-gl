@@ -105,11 +105,6 @@ import "mapbox-gl/dist/mapbox-gl.css";
 
 const accessToken = <TOKEN> // Mapbox access token
 
-const source = {
-  type: "geojson",
-  data: randomPoint(10)
-};
-
 const layer = {
   id: "markers",
   type: "circle",
@@ -128,8 +123,20 @@ const layer = {
   longitude={0}
   zoom={0}
 >
-  <Source id="markers" {...source} />
-  <Layer {...layer} />
+  <Source
+    id="markers"
+    type="geojson"
+    data={randomPoint(10)}
+  />
+  <Layer
+    id="markers"
+    type="circle"
+    source="markers"
+    paint={{
+      "circle-radius": 16,
+      "circle-color": "#1978c8"
+    }}
+   />
 </MapGL>
 ```
 
@@ -166,7 +173,7 @@ const myDeckLayer = new MapboxLayer({
   zoom={9}
 >
   <CustomLayer layer={myDeckLayer} />
-</MapGL>;
+</MapGL>
 ```
 
 See [Examples](https://urbica.github.io/react-map-gl/) for more info.
