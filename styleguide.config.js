@@ -20,31 +20,13 @@ module.exports = {
       content: 'docs/installation.md'
     },
     {
-      name: 'MapGL',
-      sectionDepth: 1,
-      components: 'src/components/MapGL/index.js'
-    },
-    {
-      name: 'Sources',
-      sectionDepth: 1,
-      components: [
-        'src/components/Source/index.js',
-        'src/components/GeoJSONSource/index.js',
-        'src/components/VectorSource/index.js'
-      ]
-    },
-    {
-      name: 'Layers',
-      sectionDepth: 1,
-      components: [
-        'src/components/Layer/index.js',
-        'src/components/CustomLayer/index.js'
-      ]
-    },
-    {
       name: 'Components',
       sectionDepth: 1,
       components: [
+        'src/components/MapGL/index.js',
+        'src/components/Source/index.js',
+        'src/components/Layer/index.js',
+        'src/components/CustomLayer/index.js',
         'src/components/Popup/index.js',
         'src/components/Marker/index.js',
         'src/components/Cluster/index.js'
