@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [1.0.0-beta.0](https://github.com/urbica/react-map-gl/compare/v1.0.0-alpha.4...v1.0.0-beta.0) (2019-03-11)
+
+
+### Features
+
+* **Cluster:** move Cluster component to separate package ([6b09f97](https://github.com/urbica/react-map-gl/commit/6b09f97))
+* **FeatureState:** add FeatureState component ([91b9fc8](https://github.com/urbica/react-map-gl/commit/91b9fc8))
+
+
+### BREAKING CHANGES
+
+* **Cluster:** Cluster component was moved to separate package @urbica/react-map-gl-cluster
+
+
+
 # [1.0.0-alpha.4](https://github.com/urbica/react-map-gl/compare/v1.0.0-alpha.3...v1.0.0-alpha.4) (2019-03-06)
 
 
