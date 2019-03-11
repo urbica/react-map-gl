@@ -1,4 +1,4 @@
-A `FeatureState` component sets the state of a feature.
+A `FeatureState` component sets the state of a feature. For example, you can use events and feature states to create a per feature hover effect.
 
 ```jsx
 import React from 'react';
@@ -17,7 +17,9 @@ initialState = {
 const onHover = event => {
   if (event.features.length > 0) {
     const hoveredStateId = event.features[0].id;
-    setState({ hoveredStateId });
+    if (hoveredStateId !== state.hoveredStateId) {
+      setState({ hoveredStateId });
+    }
   }
 };
 
