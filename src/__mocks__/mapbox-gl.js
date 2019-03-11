@@ -17,6 +17,8 @@ function Map() {
   this.getZoom = jest.fn(() => 0);
   this.getStyle = jest.fn(() => {});
   this.queryRenderedFeatures = jest.fn(() => []);
+  this.setFeatureState = jest.fn();
+  this.removeFeatureState = jest.fn();
 
   return this;
 }
