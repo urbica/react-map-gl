@@ -29,7 +29,6 @@ module.exports = {
         'src/components/CustomLayer/index.js',
         'src/components/Popup/index.js',
         'src/components/Marker/index.js',
-        'src/components/Cluster/index.js',
         'src/components/FeatureState/index.js'
       ]
     },

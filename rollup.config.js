@@ -11,6 +11,6 @@ export default {
     { file: pkg.main, exports: 'named', sourcemap: true, format: 'cjs' },
     { file: pkg.module, sourcemap: true, format: 'esm' }
   ],
-  external: ['react', 'react-dom', 'mapbox-gl', 'supercluster'],
+  external: ['react', 'react-dom', 'mapbox-gl'],
   plugins: [resolve(), babel(), commonjs(), terser()]
 };

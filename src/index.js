@@ -7,7 +7,6 @@ export { default as CustomLayer } from './components/CustomLayer';
 export { default as Source } from './components/Source';
 export { default as Popup } from './components/Popup';
 export { default as Marker } from './components/Marker';
-export { default as Cluster } from './components/Cluster';
 export { default as FeatureState } from './components/FeatureState';
 export { default as AttributionControl } from './components/AttributionControl';
 export { default as FullscreenControl } from './components/FullscreenControl';
