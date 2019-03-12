@@ -57,6 +57,8 @@ See [Documentation](https://urbica.github.io/react-map-gl/) for more examples.
 
 ### Static Map
 
+By default, `MapGL` component renders in a static mode. That means that the user cannot interact with the map.
+
 ```jsx
 import React from 'react';
 import MapGL from '@urbica/react-map-gl';
@@ -73,6 +75,8 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 ```
 
 ### Interactive Map
+
+In most cases, you will want the user to interact with the map. To do this, you need to provide `onViewportChange` handler, that will update map viewport state.
 
 ```jsx
 import React from 'react';

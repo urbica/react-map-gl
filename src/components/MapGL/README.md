@@ -1,6 +1,8 @@
-The `MapGL` component represents the map on your page.
+The `MapGL` component represents map on the page.
 
 ### Static map
+
+By default, `MapGL` component renders in a static mode. That means that the user cannot interact with the map.
 
 ```jsx
 import React from 'react';
@@ -19,6 +21,8 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 
 ### Interactive map
 
+In most cases, you will want the user to interact with the map. To do this, you need to provide `onViewportChange` handler, that will update map viewport state.
+
 ```jsx
 import React from 'react';
 import MapGL from '@urbica/react-map-gl';
@@ -36,8 +40,10 @@ initialState = {
   style={{ width: '100%', height: '400px' }}
   mapStyle='mapbox://styles/mapbox/light-v9'
   accessToken={MAPBOX_ACCESS_TOKEN}
+  latitude={state.viewport.latitude}
+  longitude={state.viewport.longitude}
+  zoom={state.viewport.zoom}
   onViewportChange={viewport => setState({ viewport })}
-  {...state.viewport}
 />;
 ```
 
