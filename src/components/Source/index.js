@@ -4,7 +4,9 @@ import { PureComponent, createElement } from 'react';
 import type MapboxMap from 'mapbox-gl/src/ui/map';
 import type {
   StyleSpecification,
-  SourceSpecification
+  SourceSpecification,
+  VectorSourceSpecification,
+  GeoJSONSourceSpecification
 } from 'mapbox-gl/src/style-spec/types';
 
 import MapContext from '../MapContext';
@@ -38,24 +40,13 @@ class Source extends PureComponent<Props> {
       return;
     }
 
-    if (
-      source.type === 'geojson' &&
-      prevSource.type === 'geojson' &&
-      source.data !== prevSource.data
-    ) {
-      this._map.getSource(id).setData(source.data);
+    if (source.type === 'geojson' && prevSource.type === 'geojson') {
+      this._updateGeoJSONSource(id, prevSource, source);
       return;
     }
 
-    if (
-      source.type === 'vector' &&
-      prevSource.type === 'vector' &&
-      source.tiles !== prevSource.tiles
-    ) {
-      const style: StyleSpecification = this._map.getStyle();
-      // $FlowFixMe
-      style.sources[id].tiles = style.tiles;
-      this._map.setStyle(style);
+    if (source.type === 'vector' && prevSource.type === 'vector') {
+      this._updateVectorSource(id, prevSource, source);
     }
   }
 
@@ -68,6 +59,35 @@ class Source extends PureComponent<Props> {
       this._map.removeSource(this.props.id);
     }
   }
+
+  _updateGeoJSONSource = (
+    id: string,
+    prevSource: GeoJSONSourceSpecification,
+    newSource: GeoJSONSourceSpecification
+  ) => {
+    if (newSource.data !== prevSource.data) {
+      this._map.getSource(id).setData(newSource.data);
+    }
+  };
+
+  _updateVectorSource = (
+    id: string,
+    prevSource: VectorSourceSpecification,
+    newSource: VectorSourceSpecification
+  ) => {
+    if (newSource.url !== prevSource.url) {
+      this._map.removeSource(id);
+      this._map.addSource(id, newSource);
+      return;
+    }
+
+    if (newSource.tiles !== prevSource.tiles) {
+      const style: StyleSpecification = this._map.getStyle();
+      // $FlowFixMe
+      style.sources[id].tiles = newSource.tiles;
+      this._map.setStyle(style);
+    }
+  };
 
   render() {
     return createElement(MapContext.Consumer, {}, (map: ?MapboxMap) => {

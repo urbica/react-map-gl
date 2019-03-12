@@ -16,7 +16,6 @@ function Map() {
   this.getBearing = jest.fn(() => 0);
   this.getPitch = jest.fn(() => 0);
   this.getZoom = jest.fn(() => 0);
-  this.getStyle = jest.fn(() => {});
   this.queryRenderedFeatures = jest.fn(() => []);
   this.setFeatureState = jest.fn();
   this.removeFeatureState = jest.fn();
@@ -36,8 +35,25 @@ Map.prototype.on = function on(_, listener, fn) {
   handler({ target: this, point });
 };
 
+Map.prototype.getStyle = function getStyle() {
+  return {
+    sources: this._sources,
+    layers: this._layers
+  };
+};
+
+Map.prototype.setStyle = jest.fn();
+
 Map.prototype.addSource = function addSource(name, source) {
   this._sources[name] = source;
+};
+
+Map.prototype.getSource = function getSource(name) {
+  if (!this._sources[name]) {
+    return undefined;
+  }
+
+  return { ...this._sources[name], setData: jest.fn() };
 };
 
 Map.prototype.removeSource = function removeSource(name) {
@@ -83,12 +99,16 @@ function Popup() {
   this.setLngLat = jest.fn(() => this);
   this.addTo = jest.fn(() => this);
   this.setDOMContent = jest.fn(() => this);
+  this.remove = jest.fn();
+
   return this;
 }
 
 function Marker() {
   this.setLngLat = jest.fn(() => this);
   this.addTo = jest.fn(() => this);
+  this.remove = jest.fn();
+
   return this;
 }
 
