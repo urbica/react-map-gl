@@ -30,9 +30,7 @@ Map.prototype.once = function once(_, listener, fn) {
 
 Map.prototype.on = function on(_, listener, fn) {
   const handler = typeof listener === 'function' ? listener : fn;
-
-  const point = { x: 0, y: 0 };
-  handler({ target: this, point });
+  handler({ target: this, originalEvent: true, point: { x: 0, y: 0 } });
 };
 
 Map.prototype.getStyle = function getStyle() {

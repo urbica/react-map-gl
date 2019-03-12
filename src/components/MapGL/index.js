@@ -330,6 +330,8 @@ class MapGL extends PureComponent<Props, State> {
       collectResourceTiming: this.props.collectResourceTiming
     });
 
+    this._map = map;
+
     map.on('styledata', () => this.setState({ loaded: true }));
 
     map.once('load', () => {
@@ -354,8 +356,6 @@ class MapGL extends PureComponent<Props, State> {
     if (this.props.cursorStyle) {
       map.getCanvas().style.cursor = this.props.cursorStyle;
     }
-
-    this._map = map;
   }
 
   componentDidUpdate(prevProps: Props) {

@@ -3,8 +3,10 @@ import { mount } from 'enzyme';
 
 import MapGL, { Layer, Source } from '../..';
 
-test('MapGL#render', () => {
-  const wrapper = mount(<MapGL latitude={0} longitude={0} zoom={0} />);
+test('render', () => {
+  const wrapper = mount(
+    <MapGL latitude={0} longitude={0} zoom={0} cursorStyle="pointer" />
+  );
   const map = wrapper.instance().getMap();
 
   expect(wrapper.exists()).toBe(true);
@@ -14,24 +16,79 @@ test('MapGL#render', () => {
   expect(map.remove).toHaveBeenCalled();
 });
 
-test('MapGL#onLoad', () => {
+test('onLoad', () => {
   const onLoad = jest.fn();
   mount(<MapGL latitude={0} longitude={0} zoom={0} onLoad={onLoad} />);
   expect(onLoad).toHaveBeenCalled();
   // expect(onLoad).toHaveBeenCalledTimes(1);
 });
 
-test('MapGL#viewport', () => {
-  const wrapper = mount(<MapGL latitude={0} longitude={0} zoom={0} />);
+test('onViewportChange', () => {
+  const onViewportChange = jest.fn();
 
-  wrapper.setProps({ latitude: 1, longitude: 2, zoom: 3 });
+  mount(
+    <MapGL
+      latitude={0}
+      longitude={0}
+      zoom={0}
+      onViewportChange={onViewportChange}
+    />
+  );
 
-  expect(wrapper.props().latitude).toBe(1);
-  expect(wrapper.props().longitude).toBe(2);
-  expect(wrapper.props().zoom).toBe(3);
+  expect(onViewportChange).toHaveBeenCalled();
+  expect(onViewportChange).toHaveBeenCalledTimes(5);
 });
 
-test('MapGL#multipleLayers', () => {
+test('viewport update', () => {
+  const wrapper = mount(<MapGL latitude={0} longitude={0} zoom={0} />);
+
+  wrapper.setProps({ latitude: 1 });
+  expect(wrapper.props().latitude).toBe(1);
+
+  wrapper.setProps({ longitude: 2 });
+  expect(wrapper.props().longitude).toBe(2);
+
+  wrapper.setProps({ zoom: 3 });
+  expect(wrapper.props().zoom).toBe(3);
+
+  wrapper.setProps({ pitch: 4 });
+  expect(wrapper.props().pitch).toBe(4);
+
+  wrapper.setProps({ bearing: 5 });
+  expect(wrapper.props().bearing).toBe(5);
+});
+
+test('viewportChangeMethod update', () => {
+  const wrapper = mount(
+    <MapGL latitude={0} longitude={0} zoom={0} viewportChangeMethod="jumpTo" />
+  );
+
+  wrapper.setProps({ zoom: 1, viewportChangeMethod: 'flyTo' });
+  expect(wrapper.props().viewportChangeMethod).toBe('flyTo');
+
+  wrapper.setProps({ zoom: 2, viewportChangeMethod: 'easeTo' });
+  expect(wrapper.props().viewportChangeMethod).toBe('easeTo');
+
+  expect(() => {
+    wrapper.setProps({ zoom: 3, viewportChangeMethod: 'invalid' });
+  }).toThrow();
+});
+
+test('mapStyle update', () => {
+  const wrapper = mount(
+    <MapGL
+      mapStyle="mapbox://styles/mapbox/light-v9"
+      latitude={0}
+      longitude={0}
+      zoom={0}
+    />
+  );
+
+  wrapper.setProps({ mapStyle: 'mapbox://styles/mapbox/dark-v9' });
+  expect(wrapper.props().mapStyle).toBe('mapbox://styles/mapbox/dark-v9');
+});
+
+test('multiple layers', () => {
   const data = { type: 'FeatureCollection', features: [] };
 
   const wrapper = mount(
@@ -49,7 +106,7 @@ test('MapGL#multipleLayers', () => {
   expect(wrapper.find('Layer').exists()).toBe(false);
 });
 
-test('MapGL#multipleSources', () => {
+test('multiple sources', () => {
   const data = { type: 'FeatureCollection', features: [] };
 
   const wrapper = mount(
