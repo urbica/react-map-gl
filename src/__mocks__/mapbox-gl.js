@@ -97,12 +97,17 @@ Map.prototype.getBounds = () => new LngLatBounds();
 
 function Popup() {
   this.setLngLat = jest.fn(() => this);
+  this.getLngLat = jest.fn(() => this);
   this.addTo = jest.fn(() => this);
   this.setDOMContent = jest.fn(() => this);
   this.remove = jest.fn();
 
   return this;
 }
+
+Popup.prototype.on = function on(listener, fn) {
+  fn({ target: this });
+};
 
 function Marker() {
   this.setLngLat = jest.fn(() => this);
