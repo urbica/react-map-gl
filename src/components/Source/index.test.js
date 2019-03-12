@@ -45,7 +45,7 @@ test('render vector source', () => {
   expect(wrapper.find('Source').exists()).toBe(false);
 });
 
-test('update vector source', () => {
+test('update vector source url', () => {
   const wrapper = mount(
     <MapGL latitude={0} longitude={0} zoom={0}>
       <Source id="test" type="vector" url="mapbox://styles/mapbox/light-v9" />
@@ -55,6 +55,28 @@ test('update vector source', () => {
   wrapper.setProps({
     children: (
       <Source id="test" type="vector" url="mapbox://styles/mapbox/dark-v9" />
+    )
+  });
+});
+
+test('update vector source tiles', () => {
+  const wrapper = mount(
+    <MapGL latitude={0} longitude={0} zoom={0}>
+      <Source
+        id="test"
+        type="vector"
+        tiles={['https://d25uarhxywzl1j.cloudfront.net/v0.1/{z}/{x}/{y}.mvt']}
+      />
+    </MapGL>
+  );
+
+  wrapper.setProps({
+    children: (
+      <Source
+        id="test"
+        type="vector"
+        tiles={['https://d25uarhxywzl1j.cloudfront.net/v0.1/{z}/{x}/{y}.mvt?']}
+      />
     )
   });
 });
