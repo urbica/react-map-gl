@@ -1,3 +1,5 @@
+`MapContext` provides [React Context API](https://reactjs.org/docs/context.html) for the Mapbox GL JS map instance.
+
 ### Using `MapContext`
 
 You can also use `MapContext.Consumer` to obtain Mapbox GL JS Map instance.

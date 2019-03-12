@@ -1,3 +1,5 @@
+The `MapGL` component represents the map on your page.
+
 ### Static map
 
 ```jsx
