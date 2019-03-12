@@ -58,17 +58,16 @@ class Marker extends PureComponent<Props> {
   componentDidMount() {
     const { longitude, latitude, offset, draggable, onDragEnd } = this.props;
 
-    const marker: MapboxMarker = new mapboxgl.Marker(this._el, {
+    this._marker = new mapboxgl.Marker(this._el, {
       draggable,
       offset
     });
-    marker.setLngLat([longitude, latitude]).addTo(this._map);
+
+    this._marker.setLngLat([longitude, latitude]).addTo(this._map);
 
     if (onDragEnd) {
-      marker.on('dragend', this._onDragEnd);
+      this._marker.on('dragend', this._onDragEnd);
     }
-
-    this._marker = marker;
   }
 
   componentDidUpdate(prevProps: Props) {

@@ -106,11 +106,16 @@ function Popup() {
 
 function Marker() {
   this.setLngLat = jest.fn(() => this);
+  this.getLngLat = jest.fn(() => this);
   this.addTo = jest.fn(() => this);
   this.remove = jest.fn();
 
   return this;
 }
+
+Marker.prototype.on = function on(listener, fn) {
+  fn({ target: this });
+};
 
 function AttributionControl() {
   return this;
