@@ -1,6 +1,7 @@
 # Urbica React Mapbox GL JS
 
 [![Build Status](https://img.shields.io/circleci/project/github/urbica/react-map-gl.svg?style=popout)](https://circleci.com/gh/urbica/react-map-gl)
+[![codecov](https://codecov.io/gh/urbica/react-map-gl/branch/master/graph/badge.svg)](https://codecov.io/gh/urbica/react-map-gl)
 ![npm](https://img.shields.io/npm/dt/@urbica/react-map-gl.svg)
 ![npm](https://img.shields.io/npm/v/@urbica/react-map-gl.svg)
 
