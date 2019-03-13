@@ -1,8 +1,10 @@
+/* eslint-disable no-console */
+
 import React from 'react';
 import { mount } from 'enzyme';
 import MapGL, { Source, FeatureState } from '../..';
 
-test('FeatureState#render', () => {
+test('render', () => {
   const data = { type: 'FeatureCollection', features: [] };
 
   const wrapper = mount(
@@ -18,7 +20,7 @@ test('FeatureState#render', () => {
   expect(wrapper.find('FeatureState').exists()).toBe(false);
 });
 
-test('FeatureState#update', () => {
+test('update', () => {
   const data = { type: 'FeatureCollection', features: [] };
 
   const wrapper = mount(
@@ -34,4 +36,14 @@ test('FeatureState#update', () => {
       <FeatureState id="test" source="test" state={{ hover: true }} />
     ]
   });
+});
+
+test('throws', () => {
+  console.error = jest.fn();
+
+  expect(() =>
+    mount(<FeatureState id="test" source="test" state={{}} />)
+  ).toThrow();
+
+  expect(console.error).toHaveBeenCalled();
 });

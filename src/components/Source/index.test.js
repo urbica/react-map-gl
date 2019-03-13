@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+
 import React from 'react';
 import { mount } from 'enzyme';
 import MapGL, { Source } from '../..';
@@ -95,4 +97,13 @@ test('remove and add new source', () => {
       <Source id="test" type="vector" url="mapbox://mapbox.mapbox-terrain-v2" />
     )
   });
+});
+
+test('throws', () => {
+  console.error = jest.fn();
+  const data = { type: 'FeatureCollection', features: [] };
+  expect(() =>
+    mount(<Source id="test" type="geojson" data={data} />)
+  ).toThrow();
+  expect(console.error).toHaveBeenCalled();
 });

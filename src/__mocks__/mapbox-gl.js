@@ -33,6 +33,8 @@ Map.prototype.on = function on(_, listener, fn) {
   handler({ target: this, originalEvent: true, point: { x: 0, y: 0 } });
 };
 
+Map.prototype.off = jest.fn();
+
 Map.prototype.getStyle = function getStyle() {
   return {
     sources: this._sources,

@@ -1,8 +1,10 @@
+/* eslint-disable no-console */
+
 import React from 'react';
 import { mount } from 'enzyme';
 import MapGL, { Popup } from '../..';
 
-test('Popup#render', () => {
+test('render', () => {
   const onClose = jest.fn();
 
   const wrapper = mount(
@@ -13,13 +15,16 @@ test('Popup#render', () => {
     </MapGL>
   );
 
-  expect(wrapper.find('Popup').exists()).toBe(true);
+  const PopupWrapper = wrapper.find('Popup');
+  expect(PopupWrapper.exists()).toBe(true);
+  const popup = PopupWrapper.instance().getPopup();
+  expect(popup).toBeTruthy();
 
   wrapper.unmount();
   expect(wrapper.find('Popup').exists()).toBe(false);
 });
 
-test('Popup#update', () => {
+test('update', () => {
   const wrapper = mount(
     <MapGL latitude={0} longitude={0} zoom={0}>
       <Popup longitude={0} latitude={0}>
@@ -43,4 +48,18 @@ test('Popup#update', () => {
       </Popup>
     )
   });
+});
+
+test.skip('throws', () => {
+  console.error = jest.fn();
+
+  expect(() =>
+    mount(
+      <Popup longitude={0} latitude={0}>
+        Content
+      </Popup>
+    )
+  ).toThrow();
+
+  expect(console.error).toHaveBeenCalled();
 });
