@@ -31,8 +31,17 @@ test('render', () => {
 test('before', () => {
   const data = { type: 'FeatureCollection', features: [] };
 
-  const myDeckLayer = new MapboxLayer({
-    id: 'my-scatterplot',
+  const DeckLayer1 = new MapboxLayer({
+    id: 'my-scatterplot-1',
+    type: ScatterplotLayer,
+    data: [{ position: [-74.5, 40], size: 1000 }],
+    getPosition: d => d.position,
+    getRadius: d => d.size,
+    getColor: [255, 0, 0]
+  });
+
+  const DeckLayer2 = new MapboxLayer({
+    id: 'my-scatterplot-2',
     type: ScatterplotLayer,
     data: [{ position: [-74.5, 40], size: 1000 }],
     getPosition: d => d.position,
@@ -43,12 +52,18 @@ test('before', () => {
   const wrapper = mount(
     <MapGL latitude={0} longitude={0} zoom={0}>
       <Source id="test" type="geojson" data={data} />
-      <CustomLayer layer={myDeckLayer} before="test" />
+      <CustomLayer layer={DeckLayer1} />
       <Layer id="test" type="circle" source="test" />
+      <CustomLayer layer={DeckLayer2} before="test" />
     </MapGL>
   );
 
-  expect(wrapper.find('CustomLayer').props().before).toBe('test');
+  const CustomLayerWrapper = wrapper.find('CustomLayer');
+  const CustomLayerWrapper1 = CustomLayerWrapper.find({ layer: DeckLayer1 });
+  expect(CustomLayerWrapper1.props().before).toBe('test');
+
+  const CustomLayerWrapper2 = CustomLayerWrapper.find({ layer: DeckLayer2 });
+  expect(CustomLayerWrapper2.props().before).toBe('test');
 });
 
 test('throws', () => {

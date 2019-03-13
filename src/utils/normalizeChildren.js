@@ -8,7 +8,7 @@ import CustomLayer from '../components/CustomLayer';
 
 const getLayerId = (child: Element<typeof Layer | typeof CustomLayer>) => {
   // $FlowFixMe
-  return child.type === CustomLayer ? child.layer.id : child.props.id;
+  return child.type === CustomLayer ? child.props.layer.id : child.props.id;
 };
 
 const normalizeChildren = (children: Node) => {
