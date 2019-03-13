@@ -1,13 +1,6 @@
 // @flow
 
-import {
-  Children,
-  PureComponent,
-  createElement,
-  createRef,
-  cloneElement
-} from 'react';
-
+import { PureComponent, createElement, createRef } from 'react';
 import type { Node, ElementRef } from 'react';
 import type MapboxMap from 'mapbox-gl/src/ui/map';
 import type MapboxLngLatBoundsLike from 'mapbox-gl/src/geo/lng_lat_bounds';
@@ -15,10 +8,10 @@ import type { AnimationOptions } from 'mapbox-gl/src/ui/camera';
 import type { StyleSpecification } from 'mapbox-gl/src/style-spec/types';
 import type { MapMouseEvent, MapTouchEvent } from 'mapbox-gl/src/ui/events';
 
-import Layer from '../Layer';
 import MapContext from '../MapContext';
 import mapboxgl from '../../utils/mapbox-gl';
 import events from './events';
+import normalizeChildren from '../../utils/normalizeChildren';
 import capitalizeFirstLetter from '../../utils/capitalizeFirstLetter';
 import type { EventProps } from './eventProps';
 
@@ -478,40 +471,9 @@ class MapGL extends PureComponent<Props, State> {
     const { loaded } = this.state;
     const { className, style } = this.props;
 
-    const { layerChildren, otherChildren } = Children.toArray(
-      this.props.children
-    )
-      .filter(Boolean)
-      .reduce(
-        (acc, child) => {
-          if (child.type === Layer) {
-            acc.layerChildren.push(child);
-          } else {
-            acc.otherChildren.push(child);
-          }
-          return acc;
-        },
-        {
-          layerChildren: [],
-          otherChildren: []
-        }
-      );
-
-    const nextLayerIds = layerChildren
-      .slice(1)
-      .map(child => child.props.id)
-      .reverse();
-
-    const layerChildrenWithBefore = layerChildren
-      .reverse()
-      .map((child, index) =>
-        cloneElement(child, {
-          before: child.props.before || nextLayerIds[index - 1]
-        })
-      );
-
-    // TODO: preserve children order
-    const children = otherChildren.concat(layerChildrenWithBefore);
+    const children = this.props.children
+      ? normalizeChildren(this.props.children)
+      : null;
 
     return createElement(
       MapContext.Provider,
