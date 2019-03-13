@@ -23,39 +23,26 @@ class CustomLayer extends PureComponent<Props> {
 
   _map: MapboxMap;
 
-  _layer: CustomLayerInterface;
-
   static displayName = 'CustomLayer';
 
   componentDidMount() {
-    const map: MapboxMap = this._map;
     const { layer, before } = this.props;
 
-    if (before && map.getLayer(before)) {
-      map.addLayer(layer, before);
+    if (before && this._map.getLayer(before)) {
+      this._map.addLayer(layer, before);
     } else {
-      map.addLayer(layer);
+      this._map.addLayer(layer);
     }
 
     this._id = layer.id;
-    this._layer = layer;
   }
 
   componentWillUnmount() {
-    if (!this._map || !this._map.getStyle()) {
+    if (!this._map || !this._map.getStyle() || !this._map.getLayer(this._id)) {
       return;
     }
 
-    if (this._map.getLayer(this._id)) {
-      this._map.removeLayer(this._id);
-    }
-  }
-
-  /**
-   * External apps can access layer this way
-   */
-  getLayer() {
-    return this._layer;
+    this._map.removeLayer(this._id);
   }
 
   render() {
@@ -63,6 +50,7 @@ class CustomLayer extends PureComponent<Props> {
       if (map) {
         this._map = map;
       }
+
       return null;
     });
   }
