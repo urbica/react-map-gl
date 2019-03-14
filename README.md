@@ -2,8 +2,8 @@
 
 [![Build Status](https://img.shields.io/circleci/project/github/urbica/react-map-gl.svg?style=popout)](https://circleci.com/gh/urbica/react-map-gl)
 [![codecov](https://codecov.io/gh/urbica/react-map-gl/branch/master/graph/badge.svg)](https://codecov.io/gh/urbica/react-map-gl)
-![npm](https://img.shields.io/npm/dt/@urbica/react-map-gl.svg)
-![npm](https://img.shields.io/npm/v/@urbica/react-map-gl.svg)
+[![npm](https://img.shields.io/npm/dt/@urbica/react-map-gl.svg?style=popout)](https://www.npmjs.com/package/@urbica/react-map-gl)
+[![npm](https://img.shields.io/npm/v/@urbica/react-map-gl.svg?style=popout)](https://www.npmjs.com/package/@urbica/react-map-gl)
 
 React Component Library for [Mapbox GL JS](https://github.com/mapbox/mapbox-gl-js). Mapbox GL JS is a JavaScript library that renders interactive maps from vector tiles and Mapbox styles using WebGL. This project is intended to be as close as possible to the [Mapbox GL JS API](https://docs.mapbox.com/mapbox-gl-js/api/).
 
@@ -59,7 +59,7 @@ yarn add mapbox-gl @urbica/react-map-gl
 
 To use any of Mapbox’s tools, APIs, or SDKs, you’ll need a Mapbox [access token](https://www.mapbox.com/help/define-access-token/). Mapbox uses access tokens to associate requests to API resources with your account. You can find all your access tokens, create new ones, or delete existing ones on your [API access tokens page](https://www.mapbox.com/studio/account/tokens/).
 
-See [Documentation](https://urbica.github.io/react-map-gl/) for more examples.
+See [**Documentation**](https://urbica.github.io/react-map-gl/) for more examples.
 
 ### Static Map
 
