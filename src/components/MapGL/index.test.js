@@ -182,3 +182,17 @@ test('multiple sources', () => {
   wrapper.unmount();
   expect(wrapper.find('Source').exists()).toBe(false);
 });
+
+test('renders without mapbox-gl', () => {
+  jest.resetModules();
+  jest.doMock('mapbox-gl', () => null);
+
+  /* eslint-disable no-shadow, global-require */
+  const MapGL = require('../MapGL').default;
+
+  const wrapper = mount(<MapGL latitude={0} longitude={0} zoom={0} />);
+
+  expect(wrapper.exists()).toBe(true);
+  const map = wrapper.instance().getMap();
+  expect(map).toBeFalsy();
+});
