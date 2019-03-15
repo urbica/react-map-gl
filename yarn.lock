@@ -715,10 +715,10 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
-"@deck.gl/core@^6.4.5":
-  version "6.4.5"
-  resolved "https://registry.yarnpkg.com/@deck.gl/core/-/core-6.4.5.tgz#b64e3371c75b9dd55fd6664e4dd890d373067c09"
-  integrity sha512-7VKzlpxEfk62yl/WGsVCq6H2oYpiHGf+lWA22d2nRv2EWdU4Q0k6pDiorDGl785Hzo5fqax0Bpl/fBv/BCQxCQ==
+"@deck.gl/core@^6.4.7":
+  version "6.4.7"
+  resolved "https://registry.yarnpkg.com/@deck.gl/core/-/core-6.4.7.tgz#cb494a6511e517b74e5988a4b2725af2d40971f1"
+  integrity sha512-qW2ema0IFXi0jlbS33CkzW6DrsvzWX9ygvh5q2k6YYZGKYuGUuczCPk4mOiWTF68NYoLP31+NEeiudX4vzU84A==
   dependencies:
     gl-matrix "^3.0.0"
     luma.gl "^6.4.2"
@@ -728,22 +728,22 @@
     seer "^0.2.4"
     viewport-mercator-project "^6.1.0"
 
-"@deck.gl/layers@^6.4.5":
-  version "6.4.5"
-  resolved "https://registry.yarnpkg.com/@deck.gl/layers/-/layers-6.4.5.tgz#d027254e1e24f0445b424c71682c8059326d11f0"
-  integrity sha512-UX7F2Fr2DUjxsX4/rv0aIdjEmTr7Y7FgDst8eo0Ly6IcOcdFjr8JmZtkEGNEic8V0A1DJciAwjeZ2LitxOOxrg==
+"@deck.gl/layers@^6.4.7":
+  version "6.4.7"
+  resolved "https://registry.yarnpkg.com/@deck.gl/layers/-/layers-6.4.7.tgz#87c60aad938cb9fa13565acc6dbbdbbfb5c3851a"
+  integrity sha512-0PI+5stZVxSxkF6m+ioFEnoe9Wx1UJJquVAzhxkXhgpVNYz/0oZHd2Jfzg99tD+e6oXwhvkj2Zj3L9999BuJTw==
   dependencies:
-    "@deck.gl/core" "^6.4.5"
+    "@deck.gl/core" "^6.4.7"
     "@mapbox/tiny-sdf" "^1.1.0"
     d3-hexbin "^0.2.1"
     earcut "^2.0.6"
 
-"@deck.gl/mapbox@^6.4.5":
-  version "6.4.5"
-  resolved "https://registry.yarnpkg.com/@deck.gl/mapbox/-/mapbox-6.4.5.tgz#aec00103e37695136cecc4e0d3e3a6e58895b60d"
-  integrity sha512-QOGyydAHJGXUNmPSBXu5+rUwk/xerpKrg8gcWSok4u/5Akeqlei7Dpp2DMiCl+CUbqF9ueRwoUKF4f0+zTo7HA==
+"@deck.gl/mapbox@^6.4.7":
+  version "6.4.7"
+  resolved "https://registry.yarnpkg.com/@deck.gl/mapbox/-/mapbox-6.4.7.tgz#79189a9c4170c3ab20354164b412761642c36fe8"
+  integrity sha512-ai7WCaJ5jEv+S2tm82hPwYWVc6hE98rUtlzgzhyRbUkqF/evigPZ/FNKKKF0fdNgYYR3SKjjiYN8wuUOoWL1tg==
   dependencies:
-    "@deck.gl/core" "^6.4.5"
+    "@deck.gl/core" "^6.4.7"
 
 "@jest/console@^24.3.0":
   version "24.3.0"
