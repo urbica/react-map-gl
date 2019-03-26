@@ -30,7 +30,27 @@ type Props = {
   showUserLocation: boolean,
 
   /* A string representing the position of the control on the map. */
-  position?: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right'
+  position?: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right',
+
+  /**
+   * Fired when the Geolocate Control changes to the background state.
+   */
+  onTrackUserLocationEnd?: Function,
+
+  /**
+   * Fired when the Geolocate Control changes to the active lock state,
+   */
+  onTrackUserLocationStart?: Function,
+
+  /**
+   * Fired on each Geolocation API position update which returned as an error.
+   */
+  onError?: Function,
+
+  /**
+   * Fired on each Geolocation API position update which returned as success.
+   */
+  onGeolocate?: Function
 };
 
 /**
@@ -56,7 +76,11 @@ class GeolocateControl extends PureComponent<Props> {
       fitBoundsOptions,
       trackUserLocation,
       showUserLocation,
-      position
+      position,
+      onTrackUserLocationEnd,
+      onTrackUserLocationStart,
+      onError,
+      onGeolocate
     } = this.props;
 
     const control: MapboxGeolocateControl = new mapboxgl.GeolocateControl({
@@ -65,6 +89,22 @@ class GeolocateControl extends PureComponent<Props> {
       trackUserLocation,
       showUserLocation
     });
+
+    if (onTrackUserLocationEnd) {
+      control.on('trackuserlocationend', onTrackUserLocationEnd);
+    }
+
+    if (onTrackUserLocationStart) {
+      control.on('trackuserlocationstart', onTrackUserLocationStart);
+    }
+
+    if (onError) {
+      control.on('error', onError);
+    }
+
+    if (onGeolocate) {
+      control.on('geolocate', onGeolocate);
+    }
 
     map.addControl(control, position);
     this._control = control;
