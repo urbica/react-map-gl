@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [1.1.0](https://github.com/urbica/react-map-gl/compare/v1.0.0...v1.1.0) (2019-03-27)
+
+
+### Features
+
+* **Geolocate Control:** Add events ([b9fe204](https://github.com/urbica/react-map-gl/commit/b9fe204))
+
+
+
 # [1.0.0](https://github.com/urbica/react-map-gl/compare/v1.0.0-beta.0...v1.0.0) (2019-03-14)
 
 
