@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [1.2.0](https://github.com/urbica/react-map-gl/compare/v1.1.0...v1.2.0) (2019-03-27)
+
+
+### Bug Fixes
+
+* check for map style on components unmounting ([7634b7b](https://github.com/urbica/react-map-gl/commit/7634b7b))
+
+
+### Features
+
+* **Controls:** Add getControl() ([a8883f9](https://github.com/urbica/react-map-gl/commit/a8883f9))
+
+
+
 # [1.1.0](https://github.com/urbica/react-map-gl/compare/v1.0.0...v1.1.0) (2019-03-27)
 
 ### Features
