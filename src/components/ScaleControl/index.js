@@ -46,7 +46,7 @@ class ScaleControl extends PureComponent<Props> {
   }
 
   componentWillUnmount() {
-    if (!this._map) {
+    if (!this._map || !this._map.getStyle()) {
       return;
     }
 

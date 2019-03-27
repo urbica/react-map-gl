@@ -73,7 +73,7 @@
     "prettier-eslint-cli": "^4.7.1",
     "react": "^16.8.5",
     "react-dom": "^16.8.5",
-    "react-styleguidist": "^9.0.4",
+    "react-styleguidist": "^9.0.5",
     "rollup": "^1.7.3",
     "rollup-plugin-babel": "^4.3.2",
     "rollup-plugin-commonjs": "^9.2.2",

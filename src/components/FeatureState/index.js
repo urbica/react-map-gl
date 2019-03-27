@@ -52,13 +52,12 @@ class FeatureState extends PureComponent<Props> {
   }
 
   componentWillUnmount() {
-    const map = this._map;
-    if (!map) {
+    if (!this._map || !this._map.getStyle()) {
       return;
     }
 
     const { id, source, sourceLayer } = this.props;
-    map.removeFeatureState({ id, source, sourceLayer });
+    this._map.removeFeatureState({ id, source, sourceLayer });
   }
 
   render() {
