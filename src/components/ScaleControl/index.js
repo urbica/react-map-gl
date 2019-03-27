@@ -32,10 +32,6 @@ class ScaleControl extends PureComponent<Props> {
     unit: 'metric'
   };
 
-  getControl() {
-    return this._control;
-  }
-
   componentDidMount() {
     const map: MapboxMap = this._map;
     const { maxWidth, unit, position } = this.props;
@@ -55,6 +51,10 @@ class ScaleControl extends PureComponent<Props> {
     }
 
     this._map.removeControl(this._control);
+  }
+
+  getControl() {
+    return this._control;
   }
 
   render() {
