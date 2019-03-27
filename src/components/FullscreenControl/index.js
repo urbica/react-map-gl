@@ -32,6 +32,10 @@ class FullscreenControl extends PureComponent<Props> {
     position: 'top-right'
   };
 
+  getControl() {
+    return this._control;
+  }
+
   componentDidMount() {
     const map: MapboxMap = this._map;
     const { container, position } = this.props;
