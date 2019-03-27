@@ -35,6 +35,10 @@ class AttributionControl extends PureComponent<Props> {
     position: 'bottom-right'
   };
 
+  getControl() {
+    return this._control;
+  }
+
   componentDidMount() {
     const map: MapboxMap = this._map;
     const { compact, customAttribution, position } = this.props;
