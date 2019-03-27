@@ -69,10 +69,6 @@ class GeolocateControl extends PureComponent<Props> {
     showUserLocation: true
   };
 
-  getControl() {
-    return this._control;
-  }
-
   componentDidMount() {
     const map: MapboxMap = this._map;
     const {
@@ -120,6 +116,10 @@ class GeolocateControl extends PureComponent<Props> {
     }
 
     this._map.removeControl(this._control);
+  }
+
+  getControl() {
+    return this._control;
   }
 
   render() {
