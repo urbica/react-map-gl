@@ -12,7 +12,7 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### Features
 
-* **Controls:** Add getControl() ([a8883f9](https://github.com/urbica/react-map-gl/commit/a8883f9))
+* **Controls:** Add getControl() ([a8883f9](https://github.com/urbica/react-map-gl/commit/a8883f9)) (h/t [Tuizi](https://github.com/Tuizi))
 
 
 
