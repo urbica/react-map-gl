@@ -1,0 +1,74 @@
+// @flow
+
+import { PureComponent, createElement } from 'react';
+import type MapboxMap from 'mapbox-gl/src/ui/map';
+import type MapboxLanguageControl from '@mapbox/mapbox-gl-language/index';
+
+import MapboxLanguage from '@mapbox/mapbox-gl-language';
+import MapContext from '../MapContext';
+
+type Props = {
+  /* Options to configure the plugin. */
+  options?: {
+    /* List of supported languages */
+    supportedLanguages?: string[],
+    /* Custom style transformation to apply */
+    languageTransform?: Function,
+    /**
+     * RegExp to match if a text-field is a language field
+     * (optional, default /^\{name/)
+     */
+    languageField?: RegExp,
+    /* Given a language choose the field in the vector tiles */
+    getLanguageField?: Function,
+    /* Name of the source that contains the different languages. */
+    languageSource?: string,
+    /* Name of the default language to initialize style after loading. */
+    defaultLanguage?: string
+  }
+};
+
+/**
+ * Adds support for switching the language of your map style.
+ */
+class LanguageControl extends PureComponent<Props> {
+  _map: MapboxMap;
+
+  _control: MapboxLanguageControl;
+
+  static defaultProps = {};
+
+  componentDidMount() {
+    const map: MapboxMap = this._map;
+
+    const control: MapboxLanguageControl = new MapboxLanguage(
+      this.props.options
+    );
+
+    map.addControl(control);
+    this._control = control;
+  }
+
+  componentWillUnmount() {
+    if (!this._map || !this._control) {
+      return;
+    }
+
+    this._map.removeControl(this._control);
+  }
+
+  getControl() {
+    return this._control;
+  }
+
+  render() {
+    return createElement(MapContext.Consumer, {}, (map) => {
+      if (map) {
+        this._map = map;
+      }
+      return null;
+    });
+  }
+}
+
+export default LanguageControl;
