@@ -16,6 +16,7 @@
   "scripts": {
     "start": "styleguidist server",
     "lint": "eslint src",
+    "lint:fix": "eslint src --fix",
     "test": "jest test",
     "test:coverage": "jest test --coverage && codecov",
     "flow": "flow check",
@@ -105,5 +106,8 @@
       "jest --findRelatedTests",
       "git add"
     ]
+  },
+  "optionalDependencies": {
+    "@mapbox/mapbox-gl-language": "^0.10.0"
   }
 }
