@@ -33,7 +33,13 @@ type Props = {
   draggable?: boolean,
 
   /** Fired when the marker is finished being dragged */
-  onDragEnd?: (lngLat: LngLat) => any
+  onDragEnd?: (lngLat: LngLat) => any,
+
+  /** Fired when the marker is finished being dragged */
+  onDragStart?: (lngLat: LngLat) => any,
+
+  /** Fired when the marker is dragged */
+  onDrag?: (lngLat: LngLat) => any
 };
 
 class Marker extends PureComponent<Props> {
@@ -56,7 +62,15 @@ class Marker extends PureComponent<Props> {
   }
 
   componentDidMount() {
-    const { longitude, latitude, offset, draggable, onDragEnd } = this.props;
+    const {
+      longitude,
+      latitude,
+      offset,
+      draggable,
+      onDragEnd,
+      onDragStart,
+      onDrag
+    } = this.props;
 
     this._marker = new mapboxgl.Marker(this._el, {
       draggable,
@@ -67,6 +81,14 @@ class Marker extends PureComponent<Props> {
 
     if (onDragEnd) {
       this._marker.on('dragend', this._onDragEnd);
+    }
+
+    if (onDragStart) {
+      this._marker.on('dragstart', this._onDragStart);
+    }
+
+    if (onDrag) {
+      this._marker.on('drag', this._onDrag);
     }
   }
 
@@ -95,6 +117,16 @@ class Marker extends PureComponent<Props> {
   _onDragEnd = (): void => {
     // $FlowFixMe
     this.props.onDragEnd(this._marker.getLngLat());
+  };
+
+  _onDragStart = (): void => {
+    // $FlowFixMe
+    this.props.onDragStart(this._marker.getLngLat());
+  };
+
+  _onDrag = (): void => {
+    // $FlowFixMe
+    this.props.onDrag(this._marker.getLngLat());
   };
 
   render() {
