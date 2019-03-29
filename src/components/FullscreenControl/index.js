@@ -45,11 +45,15 @@ class FullscreenControl extends PureComponent<Props> {
   }
 
   componentWillUnmount() {
-    if (!this._map) {
+    if (!this._map || !this._map.getStyle()) {
       return;
     }
 
     this._map.removeControl(this._control);
+  }
+
+  getControl() {
+    return this._control;
   }
 
   render() {

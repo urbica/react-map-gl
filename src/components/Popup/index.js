@@ -85,21 +85,19 @@ class Popup extends PureComponent<Props> {
       anchor
     } = this.props;
 
-    const popup: MapboxPopup = new mapboxgl.Popup({
+    this._popup = new mapboxgl.Popup({
       offset,
       closeButton,
       closeOnClick,
       anchor
     });
 
-    popup.setDOMContent(this._el);
-    popup.setLngLat([longitude, latitude]).addTo(this._map);
+    this._popup.setDOMContent(this._el);
+    this._popup.setLngLat([longitude, latitude]).addTo(this._map);
 
     if (onClose) {
-      popup.on('close', onClose);
+      this._popup.on('close', onClose);
     }
-
-    this._popup = popup;
   }
 
   componentDidUpdate(prevProps: Props) {
