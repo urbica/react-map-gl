@@ -7,6 +7,8 @@ import MapGL, { Marker } from '../..';
 const Element = <div>ok</div>;
 test('render', () => {
   const onDragEnd = jest.fn();
+  const onDragStart = jest.fn();
+  const onDrag = jest.fn();
 
   const wrapper = mount(
     <MapGL latitude={0} longitude={0} zoom={0}>
@@ -15,6 +17,8 @@ test('render', () => {
         latitude={0}
         element={Element}
         onDragEnd={onDragEnd}
+        onDragStart={onDragStart}
+        onDrag={onDrag}
       />
     </MapGL>
   );
