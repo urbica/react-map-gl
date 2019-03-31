@@ -1,5 +1,16 @@
-A `LanguageControl` that modifies the layers of the map style to use the 'text-field' that matches the browser language.
-⚠️ Require the package `@mapbox/mapbox-gl-language` (`npm install --save @mapbox/mapbox-gl-language`)
+A `LanguageControl` adds support for switching the language of your map style.
+
+⚠️ Requires the `@mapbox/mapbox-gl-language` package to be installed:
+
+```shell
+npm install --save @mapbox/mapbox-gl-language
+```
+
+...or
+
+```shell
+yarn add @mapbox/mapbox-gl-language
+```
 
 ```jsx
 import React from 'react';
@@ -14,6 +25,6 @@ import 'mapbox-gl/dist/mapbox-gl.css';
   longitude={-122.41}
   zoom={11}
 >
-  <LanguageControl options={{ defaultLanguage: 'fr' }} />
+  <LanguageControl defaultLanguage='fr' />
 </MapGL>;
 ```

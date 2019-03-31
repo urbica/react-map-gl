@@ -38,9 +38,9 @@ npm install --save mapbox-gl @urbica/react-map-gl
 yarn add mapbox-gl @urbica/react-map-gl
 ```
 
-### Optional Dependency
+### Optional Dependencies
 
-If you use the `LanguageControl`:
+If you want to use the `LanguageControl`:
 
 ```shell
 npm install --save @mapbox/mapbox-gl-language
@@ -65,7 +65,7 @@ yarn add @mapbox/mapbox-gl-language
 | [Marker](src/components/Marker)                           | React Component for [Mapbox GL JS Marker](https://docs.mapbox.com/mapbox-gl-js/api/#marker)                            |
 | [FeatureState](src/components/FeatureState)               | Sets the state of a geographic feature rendered on the map                                                             |
 | [AttributionControl](src/components/AttributionControl)   | Represents the map's attribution information                                                                           |
-| [LanguageControl](src/components/LanguageControl)         | Change the language of the map                                                                                         |
+| [LanguageControl](src/components/LanguageControl)         | Adds support for switching the language of the map style                                                               |
 | [FullscreenControl](src/components/FullscreenControl)     | Contains a button for toggling the map in and out of fullscreen mode                                                   |
 | [GeolocateControl](src/components/GeolocateControl)       | Geolocate the user and then track their current location on the map                                                    |
 | [NavigationControl](src/components/NavigationControl)     | Contains zoom buttons and a compass                                                                                    |
