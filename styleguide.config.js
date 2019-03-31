@@ -40,7 +40,8 @@ module.exports = {
         'src/components/FullscreenControl/index.js',
         'src/components/GeolocateControl/index.js',
         'src/components/NavigationControl/index.js',
-        'src/components/ScaleControl/index.js'
+        'src/components/ScaleControl/index.js',
+        'src/components/LanguageControl/index.js'
       ]
     }
   ],

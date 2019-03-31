@@ -13,3 +13,4 @@ export { default as FullscreenControl } from './components/FullscreenControl';
 export { default as GeolocateControl } from './components/GeolocateControl';
 export { default as NavigationControl } from './components/NavigationControl';
 export { default as ScaleControl } from './components/ScaleControl';
+export { default as LanguageControl } from './components/LanguageControl';
