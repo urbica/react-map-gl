@@ -4,27 +4,20 @@ All notable changes to this project will be documented in this file. See [standa
 
 # [1.3.0](https://github.com/urbica/react-map-gl/compare/v1.2.0...v1.3.0) (2019-03-31)
 
-
 ### Features
 
-* **Control:** Add LanguageControl ([e207dd6](https://github.com/urbica/react-map-gl/commit/e207dd6))
-* **Marker:** add drag and dragstart events ([#173](https://github.com/urbica/react-map-gl/issues/173)) ([87313ed](https://github.com/urbica/react-map-gl/commit/87313ed))
-
-
+- **Control:** Add LanguageControl ([e207dd6](https://github.com/urbica/react-map-gl/commit/e207dd6)) (h/t [Tuizi](https://github.com/Tuizi))
+- **Marker:** add drag and dragstart events ([#173](https://github.com/urbica/react-map-gl/issues/173)) ([87313ed](https://github.com/urbica/react-map-gl/commit/87313ed)) (h/t [boyur](https://github.com/boyur))
 
 # [1.2.0](https://github.com/urbica/react-map-gl/compare/v1.1.0...v1.2.0) (2019-03-27)
 
-
 ### Bug Fixes
 
-* check for map style on components unmounting ([7634b7b](https://github.com/urbica/react-map-gl/commit/7634b7b))
-
+- check for map style on components unmounting ([7634b7b](https://github.com/urbica/react-map-gl/commit/7634b7b))
 
 ### Features
 
-* **Controls:** Add getControl() ([a8883f9](https://github.com/urbica/react-map-gl/commit/a8883f9)) (h/t [Tuizi](https://github.com/Tuizi))
-
-
+- **Controls:** Add getControl() ([a8883f9](https://github.com/urbica/react-map-gl/commit/a8883f9)) (h/t [Tuizi](https://github.com/Tuizi))
 
 # [1.1.0](https://github.com/urbica/react-map-gl/compare/v1.0.0...v1.1.0) (2019-03-27)
 
