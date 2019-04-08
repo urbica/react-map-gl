@@ -191,6 +191,8 @@ class Layer extends PureComponent<Props> {
         this._map.off(eventName, this._id, this[handlerName]);
       }
     });
+
+    this._map.removeLayer(this._id);
   }
 
   _onClick = (event: MapMouseEvent): void => {

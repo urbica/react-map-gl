@@ -56,6 +56,16 @@ class Source extends PureComponent<Props> {
     }
 
     if (this._map.getSource(this.props.id)) {
+      const { id } = this.props;
+      const { layers } = this._map.getStyle();
+      if (layers) {
+        layers.forEach((layer) => {
+          if (layer.source === id) {
+            this._map.removeLayer(layer.id);
+          }
+        });
+      }
+
       this._map.removeSource(this.props.id);
     }
   }
