@@ -121,6 +121,8 @@ test('handlers', () => {
   });
 
   expect(handler).toHaveBeenCalledTimes(4);
+
+  // wrapper.setProps({ children: [] });
 });
 
 test('throws', () => {

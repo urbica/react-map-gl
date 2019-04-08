@@ -50,7 +50,7 @@ test('update', () => {
   });
 });
 
-test.skip('throws', () => {
+test('throws', () => {
   console.error = jest.fn();
 
   expect(() =>

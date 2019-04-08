@@ -102,8 +102,10 @@ test('remove and add new source', () => {
 test('throws', () => {
   console.error = jest.fn();
   const data = { type: 'FeatureCollection', features: [] };
+
   expect(() =>
     mount(<Source id="test" type="geojson" data={data} />)
   ).toThrow();
+
   expect(console.error).toHaveBeenCalled();
 });

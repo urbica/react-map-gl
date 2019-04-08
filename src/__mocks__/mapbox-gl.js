@@ -49,6 +49,9 @@ Map.prototype.setStyle = jest.fn();
 
 Map.prototype.addSource = function addSource(name, source) {
   this._sources[name] = source;
+  this.style.sourceCaches[name] = {
+    clearTiles: jest.fn()
+  };
 };
 
 Map.prototype.getSource = function getSource(name) {
@@ -56,7 +59,16 @@ Map.prototype.getSource = function getSource(name) {
     return undefined;
   }
 
-  return { ...this._sources[name], setData: jest.fn(), load: jest.fn() };
+  const source = {
+    setData: jest.fn(),
+    load: jest.fn(),
+    _tileJSONRequest: {
+      cancel: jest.fn()
+    },
+    ...this._sources[name]
+  };
+
+  return source;
 };
 
 Map.prototype.removeSource = function removeSource(name) {
@@ -101,7 +113,15 @@ Map.prototype.getBounds = () => new LngLatBounds();
 function Popup() {
   this.setLngLat = jest.fn(() => this);
   this.getLngLat = jest.fn(() => this);
-  this.addTo = jest.fn(() => this);
+
+  this.addTo = jest.fn((map) => {
+    if (!map) {
+      throw new Error();
+    }
+
+    return this;
+  });
+
   this.setDOMContent = jest.fn(() => this);
   this.remove = jest.fn();
 
@@ -115,7 +135,15 @@ Popup.prototype.on = function on(listener, fn) {
 function Marker() {
   this.setLngLat = jest.fn(() => this);
   this.getLngLat = jest.fn(() => this);
-  this.addTo = jest.fn(() => this);
+
+  this.addTo = jest.fn((map) => {
+    if (!map) {
+      throw new Error();
+    }
+
+    return this;
+  });
+
   this.remove = jest.fn();
 
   return this;
