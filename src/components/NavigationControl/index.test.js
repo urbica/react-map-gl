@@ -11,7 +11,9 @@ test('render', () => {
     </MapGL>
   );
 
-  expect(wrapper.find('NavigationControl').exists()).toBe(true);
+  const control = wrapper.find('NavigationControl');
+  expect(control.exists()).toBe(true);
+  expect(control.instance().getControl()).toBeTruthy();
 
   wrapper.unmount();
   expect(wrapper.find('NavigationControl').exists()).toBe(false);

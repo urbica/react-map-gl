@@ -11,7 +11,9 @@ test('render', () => {
     </MapGL>
   );
 
-  expect(wrapper.find('ScaleControl').exists()).toBe(true);
+  const control = wrapper.find('ScaleControl');
+  expect(control.exists()).toBe(true);
+  expect(control.instance().getControl()).toBeTruthy();
 
   wrapper.unmount();
   expect(wrapper.find('ScaleControl').exists()).toBe(false);

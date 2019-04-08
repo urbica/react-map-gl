@@ -7,11 +7,19 @@ import MapGL, { GeolocateControl } from '../..';
 test('render', () => {
   const wrapper = mount(
     <MapGL latitude={0} longitude={0} zoom={0}>
-      <GeolocateControl position="top-right" />
+      <GeolocateControl
+        position="top-right"
+        onError={jest.fn()}
+        onGeolocate={jest.fn()}
+        onTrackUserLocationEnd={jest.fn()}
+        onTrackUserLocationStart={jest.fn()}
+      />
     </MapGL>
   );
 
-  expect(wrapper.find('GeolocateControl').exists()).toBe(true);
+  const control = wrapper.find('GeolocateControl');
+  expect(control.exists()).toBe(true);
+  expect(control.instance().getControl()).toBeTruthy();
 
   wrapper.unmount();
   expect(wrapper.find('GeolocateControl').exists()).toBe(false);

@@ -15,7 +15,9 @@ test('AttributionControl#render', () => {
     </MapGL>
   );
 
-  expect(wrapper.find('AttributionControl').exists()).toBe(true);
+  const control = wrapper.find('AttributionControl');
+  expect(control.exists()).toBe(true);
+  expect(control.instance().getControl()).toBeTruthy();
 
   wrapper.unmount();
   expect(wrapper.find('AttributionControl').exists()).toBe(false);

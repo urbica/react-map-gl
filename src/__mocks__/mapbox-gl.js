@@ -137,6 +137,10 @@ function GeolocateControl() {
   return this;
 }
 
+GeolocateControl.prototype.on = function on(listener, fn) {
+  fn({ target: this });
+};
+
 function NavigationControl() {
   return this;
 }
