@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [1.4.0](https://github.com/urbica/react-map-gl/compare/v1.3.0...v1.4.0) (2019-04-08)
+
+
+### Bug Fixes
+
+* **Source:** remove dependent layers on componentWillUnmount ([3f228af](https://github.com/urbica/react-map-gl/commit/3f228af))
+
+
+### Features
+
+* **Source:** add dynamic update for vector sources mapbox/mapbox-gl-js[#8048](https://github.com/urbica/react-map-gl/issues/8048) ([7bcd8d7](https://github.com/urbica/react-map-gl/commit/7bcd8d7))
+
+
+
 # [1.3.0](https://github.com/urbica/react-map-gl/compare/v1.2.0...v1.3.0) (2019-03-31)
 
 ### Features
