@@ -3,7 +3,6 @@
 import { PureComponent, createElement } from 'react';
 import type MapboxMap from 'mapbox-gl/src/ui/map';
 import type {
-  StyleSpecification,
   SourceSpecification,
   VectorSourceSpecification,
   GeoJSONSourceSpecification
@@ -55,19 +54,7 @@ class Source extends PureComponent<Props> {
       return;
     }
 
-    if (this._map.getSource(this.props.id)) {
-      const { id } = this.props;
-      const { layers } = this._map.getStyle();
-      if (layers) {
-        layers.forEach((layer) => {
-          if (layer.source === id) {
-            this._map.removeLayer(layer.id);
-          }
-        });
-      }
-
-      this._map.removeSource(this.props.id);
-    }
+    this._removeSource();
   }
 
   _updateGeoJSONSource = (
@@ -80,22 +67,45 @@ class Source extends PureComponent<Props> {
     }
   };
 
+  // https://github.com/mapbox/mapbox-gl-js/pull/8048
   _updateVectorSource = (
     id: string,
     prevSource: VectorSourceSpecification,
     newSource: VectorSourceSpecification
   ) => {
-    if (newSource.url !== prevSource.url) {
-      this._map.removeSource(id);
-      this._map.addSource(id, newSource);
-      return;
+    const source = this._map.getSource(id);
+
+    /* eslint-disable no-underscore-dangle */
+    if (source._tileJSONRequest) {
+      source._tileJSONRequest.cancel();
     }
 
-    if (newSource.tiles !== prevSource.tiles) {
-      const style: StyleSpecification = this._map.getStyle();
-      // $FlowFixMe
-      style.sources[id].tiles = newSource.tiles;
-      this._map.setStyle(style);
+    source.url = newSource.url;
+    source.scheme = newSource.scheme;
+    source._options = { ...source._options, ...newSource };
+    /* eslint-enable no-underscore-dangle */
+
+    const sourceCache = this._map.style.sourceCaches[id];
+    if (sourceCache) {
+      sourceCache.clearTiles();
+    }
+
+    source.load();
+  };
+
+  _removeSource = () => {
+    const { id } = this.props;
+    if (this._map.getSource(id)) {
+      const { layers } = this._map.getStyle();
+      if (layers) {
+        layers.forEach((layer) => {
+          if (layer.source === id) {
+            this._map.removeLayer(layer.id);
+          }
+        });
+      }
+
+      this._map.removeSource(id);
     }
   };
 

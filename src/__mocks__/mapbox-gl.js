@@ -7,6 +7,12 @@ function Map() {
   this._sources = {};
   this._layers = [];
 
+  this.style = {
+    sources: this._sources,
+    layers: this._layers,
+    sourceCaches: {}
+  };
+
   this.flyTo = jest.fn();
   this.easeTo = jest.fn();
   this.jumpTo = jest.fn();
@@ -36,10 +42,7 @@ Map.prototype.on = function on(_, listener, fn) {
 Map.prototype.off = jest.fn();
 
 Map.prototype.getStyle = function getStyle() {
-  return {
-    sources: this._sources,
-    layers: this._layers
-  };
+  return this.style;
 };
 
 Map.prototype.setStyle = jest.fn();
@@ -53,7 +56,7 @@ Map.prototype.getSource = function getSource(name) {
     return undefined;
   }
 
-  return { ...this._sources[name], setData: jest.fn() };
+  return { ...this._sources[name], setData: jest.fn(), load: jest.fn() };
 };
 
 Map.prototype.removeSource = function removeSource(name) {
