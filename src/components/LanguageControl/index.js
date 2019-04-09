@@ -27,7 +27,10 @@ type Props = {
   languageSource?: string,
 
   /** Name of the default language to initialize style after loading. */
-  defaultLanguage?: string
+  defaultLanguage?: string,
+
+  /** Name of the language to set */
+  language?: string
 };
 
 /**
@@ -64,6 +67,12 @@ class LanguageControl extends PureComponent<Props> {
     this._control = control;
   }
 
+  componentDidUpdate(prevProps: Props) {
+    if (prevProps.language !== this.props.language) {
+      this._setLanguage();
+    }
+  }
+
   componentWillUnmount() {
     if (!this._map || !this._map.getStyle()) {
       return;
@@ -71,6 +80,16 @@ class LanguageControl extends PureComponent<Props> {
 
     this._map.removeControl(this._control);
   }
+
+  _setLanguage = () => {
+    const { language } = this.props;
+    const map = this._map;
+    const control = this._control;
+
+    if (language) {
+      map.setStyle(control.setLanguage(map.getStyle(), language));
+    }
+  };
 
   getControl() {
     return this._control;

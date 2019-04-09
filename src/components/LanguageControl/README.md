@@ -17,6 +17,13 @@ import React from 'react';
 import MapGL, { LanguageControl } from '@urbica/react-map-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
+initialState = {
+  language: 'fr'
+};
+
+<>
+<button onClick={() => setState({language: 'ru'})}>set ru</button>
+<button onClick={() => setState({language: 'fr'})}>set fr</button>
 <MapGL
   style={{ width: '100%', height: '400px' }}
   mapStyle='mapbox://styles/mapbox/light-v9'
@@ -25,6 +32,10 @@ import 'mapbox-gl/dist/mapbox-gl.css';
   longitude={-122.41}
   zoom={11}
 >
-  <LanguageControl defaultLanguage='fr' />
-</MapGL>;
+  <LanguageControl
+    language={state.language}
+    defaultLanguage='fr'
+  />
+</MapGL>
+</>;
 ```
