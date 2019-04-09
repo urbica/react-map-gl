@@ -12,9 +12,9 @@ npm install --save @mapbox/mapbox-gl-language
 yarn add @mapbox/mapbox-gl-language
 ```
 
-```jsx
+```js
 import React from 'react';
-import MapGL, { LangugageControl } from '@urbica/react-map-gl';
+import MapGL, { LanguageControl } from '@urbica/react-map-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
 <MapGL
