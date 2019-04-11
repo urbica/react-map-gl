@@ -12,6 +12,7 @@ import type {
 import MapContext from '../MapContext';
 import Layer from '../Layer';
 import validateSource from '../../utils/validateSource';
+import normalizeChildren from '../../utils/normalizeChildren';
 
 export type Props = {
   /** Mapbox GL Source */
@@ -138,9 +139,12 @@ class Source extends PureComponent<Props, State> {
 
   render() {
     const { loaded } = this.state;
-    const { children } = this.props;
 
-    // $FlowFixMe
+    const children = this.props.children
+      ? // $FlowFixMe
+        normalizeChildren(this.props.children)
+      : null;
+
     return createElement(MapContext.Consumer, {}, (map: ?MapboxMap) => {
       if (map) {
         this._map = map;
