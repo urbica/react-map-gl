@@ -2,6 +2,7 @@
 
 import { PureComponent, createElement } from 'react';
 import type MapboxMap from 'mapbox-gl/src/ui/map';
+import type { ChildrenArray, Element } from 'react';
 import type {
   SourceSpecification,
   VectorSourceSpecification,
@@ -9,6 +10,7 @@ import type {
 } from 'mapbox-gl/src/style-spec/types';
 
 import MapContext from '../MapContext';
+import Layer from '../Layer';
 import validateSource from '../../utils/validateSource';
 
 export type Props = {
@@ -16,22 +18,38 @@ export type Props = {
   ...SourceSpecification,
 
   /** Mapbox GL Source id */
-  id: string
+  id: string,
+
+  /** Layers */
+  children?: ChildrenArray<Element<typeof Layer>>
 };
 
-class Source extends PureComponent<Props> {
+type State = {
+  loaded: boolean
+};
+
+class Source extends PureComponent<Props, State> {
   _map: MapboxMap;
 
   static displayName = 'Source';
 
+  state = {
+    loaded: false
+  };
+
   componentDidMount() {
-    const { id, ...source } = validateSource(this.props);
+    const { id, children, ...source } = validateSource(this.props);
     this._map.addSource(id, source);
+    this._map.on('sourcedata', this._onSourceData);
   }
 
   componentDidUpdate(prevProps: Props) {
-    const { id: prevId, ...prevSource } = validateSource(prevProps);
-    const { id, ...source } = validateSource(this.props);
+    const {
+      id: prevId,
+      children: prevChildren,
+      ...prevSource
+    } = validateSource(prevProps);
+    const { id, children, ...source } = validateSource(this.props);
 
     if (id !== prevId || source.type !== prevSource.type) {
       this._map.removeSource(prevId);
@@ -56,6 +74,15 @@ class Source extends PureComponent<Props> {
 
     this._removeSource();
   }
+
+  _onSourceData = () => {
+    if (!this._map.isSourceLoaded(this.props.id)) {
+      return;
+    }
+
+    this._map.off('sourcedata', this._onSourceData);
+    this.setState({ loaded: true });
+  };
 
   _updateGeoJSONSource = (
     id: string,
@@ -110,12 +137,16 @@ class Source extends PureComponent<Props> {
   };
 
   render() {
+    const { loaded } = this.state;
+    const { children } = this.props;
+
+    // $FlowFixMe
     return createElement(MapContext.Consumer, {}, (map: ?MapboxMap) => {
       if (map) {
         this._map = map;
       }
 
-      return null;
+      return loaded && children;
     });
   }
 }

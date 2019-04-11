@@ -71,6 +71,10 @@ Map.prototype.getSource = function getSource(name) {
   return source;
 };
 
+Map.prototype.isSourceLoaded = function isSourceLoaded(name) {
+  return !!this._sources[name];
+};
+
 Map.prototype.removeSource = function removeSource(name) {
   delete this._sources[name];
 };
