@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [1.5.0](https://github.com/urbica/react-map-gl/compare/v1.4.0...v1.5.0) (2019-04-11)
+
+
+### Features
+
+* **Source:** allow add Layers as children components in Source ([73e2d45](https://github.com/urbica/react-map-gl/commit/73e2d45))
+
+
+
 # [1.4.0](https://github.com/urbica/react-map-gl/compare/v1.3.0...v1.4.0) (2019-04-08)
 
 
