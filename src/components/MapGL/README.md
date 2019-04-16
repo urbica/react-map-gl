@@ -100,7 +100,7 @@ initialState = {
   }
 };
 
-const onChange = () => {
+const onChange = (event) => {
   setState({ viewportChangeMethod: event.target.value });
 };
 
