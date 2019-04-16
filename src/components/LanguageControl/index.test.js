@@ -7,13 +7,16 @@ import MapGL, { LanguageControl } from '../..';
 test('render', () => {
   const wrapper = mount(
     <MapGL latitude={0} longitude={0} zoom={0}>
-      <LanguageControl />
+      <LanguageControl language="ru" />
     </MapGL>
   );
 
   const control = wrapper.find('LanguageControl');
   expect(control.exists()).toBe(true);
   expect(control.instance().getControl()).toBeTruthy();
+  wrapper.setProps({
+    children: [<LanguageControl language="en" />]
+  });
 
   wrapper.unmount();
   expect(wrapper.find('LanguageControl').exists()).toBe(false);
