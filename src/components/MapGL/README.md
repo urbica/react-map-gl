@@ -80,7 +80,7 @@ if (!state.mapStyle && setState) {
 />;
 ```
 
-### Vewport Change Methods
+### Viewport Change Methods
 
 There are two props `viewportChangeMethod` and `viewportChangeOptions` that controls how `MapGL` component reacts to the new viewport props.
 
