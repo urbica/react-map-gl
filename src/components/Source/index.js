@@ -1,5 +1,6 @@
 // @flow
 
+/* eslint-disable import/no-cycle */
 import { PureComponent, createElement } from 'react';
 import type MapboxMap from 'mapbox-gl/src/ui/map';
 import type { ChildrenArray, Element } from 'react';
