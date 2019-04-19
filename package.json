@@ -36,6 +36,9 @@
     "react": "^16.x",
     "react-dom": "^16.x"
   },
+  "optionalDependencies": {
+    "@mapbox/mapbox-gl-language": "^0.10.0"
+  },
   "devDependencies": {
     "@babel/core": "^7.4.3",
     "@babel/plugin-proposal-class-properties": "^7.4.0",
@@ -54,6 +57,7 @@
     "cz-conventional-changelog": "^2.1.0",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.12.1",
+    "enzyme-to-json": "^3.3.5",
     "eslint": "^5.16.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-prettier": "^4.1.0",
@@ -97,6 +101,9 @@
   "jest": {
     "setupFiles": [
       "<rootDir>/src/setupTests.js"
+    ],
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
     ]
   },
   "lint-staged": {
@@ -106,8 +113,5 @@
       "jest --findRelatedTests",
       "git add"
     ]
-  },
-  "optionalDependencies": {
-    "@mapbox/mapbox-gl-language": "^0.10.0"
   }
 }
