@@ -898,12 +898,10 @@
     d3-hexbin "^0.2.1"
     earcut "^2.0.6"
 
-"@deck.gl/mapbox@^6.4.9":
-  version "6.4.9"
-  resolved "https://registry.yarnpkg.com/@deck.gl/mapbox/-/mapbox-6.4.9.tgz#a7e8a55733d69e1e34e1544710b85d837ba31cae"
-  integrity sha512-JSPxJ7lTvI9hl0ZnjjdGxT1C8uPCkUY9UmB3Dj/VFu0FWzS8yGgVad4HQoSp8sdRasfufFQ397GlGzdrOCbUKQ==
-  dependencies:
-    "@deck.gl/core" "^6.4.9"
+"@deck.gl/mapbox@^7.0.0":
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/@deck.gl/mapbox/-/mapbox-7.0.0.tgz#416c71fbab37c10782b032b607751dfb7172debb"
+  integrity sha512-N9XJZ7jvOh/sWg29U3ChkCD4o18W0VbYvRKIW9O5743r2SEHJekmSl2hof7zeutjxgBGXhec76IhsHDUSOU0DA==
 
 "@jest/console@^24.7.1":
   version "24.7.1"
