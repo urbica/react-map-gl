@@ -70,6 +70,7 @@ yarn add @mapbox/mapbox-gl-language
 | [GeolocateControl](src/components/GeolocateControl)       | Geolocate the user and then track their current location on the map                                                    |
 | [NavigationControl](src/components/NavigationControl)     | Contains zoom buttons and a compass                                                                                    |
 | [ScaleControl](src/components/ScaleControl)               | Displays the ratio of a distance on the map to the corresponding distance on the ground                                |
+| [Image](src/components/Image)                             | Adds image to the map style                                                                                            |
 | [Cluster](https://github.com/urbica/react-map-gl-cluster) | Cluster [Markers](src/components/Marker) with [supercluster](https://github.com/mapbox/supercluster)                   |
 | [Draw](https://github.com/urbica/react-map-gl-draw)       | Support for drawing and editing features                                                                               |
 
