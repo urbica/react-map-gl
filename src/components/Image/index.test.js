@@ -8,10 +8,12 @@ test('render', () => {
   const wrapper = mount(
     <MapGL latitude={0} longitude={0} zoom={0}>
       <Image id="test" image="test" />
+      <Image id="test1" image={{}} />
     </MapGL>
   );
 
   expect(wrapper.find('Image').exists()).toBe(true);
+  expect(wrapper.find('Image')).toHaveLength(2);
 
   wrapper.unmount();
   expect(wrapper.find('Image').exists()).toBe(false);
@@ -21,15 +23,22 @@ test('update', () => {
   const wrapper = mount(
     <MapGL latitude={0} longitude={0} zoom={0}>
       <Image id="test" image="test" />
+      <Image id="test1" image={{}} />
     </MapGL>
   );
 
   wrapper.setProps({
-    children: [<Image id="test" image="test1" />]
+    children: [
+      <Image id="test" image="test1" />,
+      <Image id="test1" image={{}} />
+    ]
   });
 
   wrapper.setProps({
-    children: [<Image id="test" image="test" />]
+    children: [
+      <Image id="test" image="test" />,
+      <Image id="test1" image={{}} />
+    ]
   });
 });
 
