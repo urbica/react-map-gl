@@ -25,6 +25,8 @@ function Map() {
   this.queryRenderedFeatures = jest.fn(() => []);
   this.setFeatureState = jest.fn();
   this.removeFeatureState = jest.fn();
+  this.loadImage = jest.fn();
+  this.hasImage = jest.fn();
 
   return this;
 }
