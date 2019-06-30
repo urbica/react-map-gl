@@ -22,15 +22,11 @@ type Props = {|
     | StyleImageInterface
     | string,
 
-  /**
-   * options.pixelRatio The ratio of pixels in the image to physical pixels on
-   * the screen
-   * options.sdf Whether the image should be interpreted as an SDF image
-   */
-  options?: {
-    pixelRatio?: number,
-    sdf?: boolean
-  }
+  /** The ratio of pixels in the image to physical pixels on the screen */
+  pixelRatio?: number,
+
+  /** Whether the image should be interpreted as an SDF image */
+  sdf?: boolean
 |};
 
 class Image extends PureComponent<Props> {
@@ -39,7 +35,8 @@ class Image extends PureComponent<Props> {
   _id: string;
 
   static defaultProps = {
-    options: {}
+    pixelRatio: 1,
+    sdf: false
   };
 
   constructor(props: Props) {
@@ -49,7 +46,8 @@ class Image extends PureComponent<Props> {
 
   componentDidMount() {
     const map = this._map;
-    const { id, image, options } = this.props;
+    const { id, image, pixelRatio, sdf } = this.props;
+    const options = { pixelRatio, sdf };
 
     if (typeof image === 'string') {
       map.loadImage(image, (error, img) => {
@@ -66,7 +64,8 @@ class Image extends PureComponent<Props> {
 
   componentDidUpdate(prevProps: Props) {
     const map = this._map;
-    const { image } = this.props;
+    const { image, pixelRatio, sdf } = this.props;
+    const options = { pixelRatio, sdf };
 
     if (image !== prevProps.image) {
       if (typeof image === 'string') {
@@ -79,6 +78,21 @@ class Image extends PureComponent<Props> {
         });
       } else {
         map.updateImage(this._id, image);
+      }
+    }
+
+    if (pixelRatio !== prevProps.pixelRatio || sdf !== prevProps.sdf) {
+      this._map.removeImage(this._id);
+      if (typeof image === 'string') {
+        map.loadImage(image, (error, img) => {
+          if (error) {
+            throw error;
+          }
+
+          map.addImage(this._id, img, options);
+        });
+      } else {
+        map.addImage(this._id, image, options);
       }
     }
   }

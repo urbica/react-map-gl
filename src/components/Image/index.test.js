@@ -22,21 +22,21 @@ test('render', () => {
 test('update', () => {
   const wrapper = mount(
     <MapGL latitude={0} longitude={0} zoom={0}>
-      <Image id="test" image="test" />
+      <Image id="test" image="test" pixelRatio={1} sdf={false} />
       <Image id="test1" image={{}} />
     </MapGL>
   );
 
   wrapper.setProps({
     children: [
-      <Image id="test" image="test1" />,
+      <Image id="test" image="test1" pixelRatio={3} sdf />,
       <Image id="test1" image={{}} />
     ]
   });
 
   wrapper.setProps({
     children: [
-      <Image id="test" image="test" />,
+      <Image id="test" image="test" pixelRatio={1} sdf={false} />,
       <Image id="test1" image={{}} />
     ]
   });
