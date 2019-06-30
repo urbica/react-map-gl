@@ -57,43 +57,36 @@ class Image extends PureComponent<Props> {
 
         map.addImage(id, img, options);
       });
-    } else {
-      map.addImage(id, image, options);
+
+      return;
     }
+
+    map.addImage(id, image, options);
   }
 
   componentDidUpdate(prevProps: Props) {
     const map = this._map;
     const { image, pixelRatio, sdf } = this.props;
-    const options = { pixelRatio, sdf };
 
     if (image !== prevProps.image) {
       if (typeof image === 'string') {
-        map.loadImage(image, (err, img) => {
-          if (err) {
-            throw err;
-          }
+        this._loadImage(image);
 
-          map.updateImage(this._id, img);
-        });
-      } else {
-        map.updateImage(this._id, image);
+        return;
       }
+
+      map.updateImage(this._id, image);
     }
 
     if (pixelRatio !== prevProps.pixelRatio || sdf !== prevProps.sdf) {
       this._map.removeImage(this._id);
       if (typeof image === 'string') {
-        map.loadImage(image, (error, img) => {
-          if (error) {
-            throw error;
-          }
+        this._loadImage(image);
 
-          map.addImage(this._id, img, options);
-        });
-      } else {
-        map.addImage(this._id, image, options);
+        return;
       }
+
+      this._addImage(image);
     }
   }
 
@@ -104,6 +97,23 @@ class Image extends PureComponent<Props> {
 
     this._map.removeImage(this._id);
   }
+
+  _loadImage = (url) => {
+    this._map.loadImage(url, (error, img) => {
+      if (error) {
+        throw error;
+      }
+
+      this._addImage(img);
+    });
+  };
+
+  _addImage = (image) => {
+    const { pixelRatio, sdf } = this.props;
+    const options = { pixelRatio, sdf };
+
+    this._map.addImage(this._id, image, options);
+  };
 
   render() {
     return createElement(MapContext.Consumer, {}, (map) => {
