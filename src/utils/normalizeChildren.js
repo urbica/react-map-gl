@@ -3,11 +3,11 @@
 import { Children, cloneElement } from 'react';
 import type { Node, Element } from 'react';
 
-import { Layer, CustomLayer } from '..';
+import Layer from '../components/Layer';
+import CustomLayer from '../components/CustomLayer';
 
-const isLayer = (child: Element<any>) => {
-  return child.type === Layer || child.type === CustomLayer;
-};
+const isLayer = (child: Element<any>) =>
+  child.type === Layer || child.type === CustomLayer;
 
 const getLayerId = (child: Element<typeof Layer | typeof CustomLayer>) => {
   // $FlowFixMe
@@ -33,7 +33,8 @@ const getLayerIds = (children: Node) => {
 };
 
 const normalizeChildren = (children: Node) => {
-  const layerIds = getLayerIds(children);
+  const nonEmptyChildren = Children.toArray(children).filter(Boolean);
+  const layerIds = getLayerIds(nonEmptyChildren);
   layerIds.shift();
 
   const traverse = _children =>
@@ -52,7 +53,7 @@ const normalizeChildren = (children: Node) => {
       return child;
     });
 
-  return traverse(children);
+  return traverse(nonEmptyChildren);
 };
 
 export default normalizeChildren;
