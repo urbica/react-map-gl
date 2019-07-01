@@ -92,7 +92,17 @@ Map.prototype.getLayer = function getLayer(id) {
   return this._layers[index];
 };
 
-Map.prototype.moveLayer = jest.fn();
+Map.prototype.moveLayer = function moveLayer(id, before) {
+  const index = this._layers.findIndex(layer => id === layer.id);
+  const beforeIndex = this._layers.findIndex(layer => before === layer.id);
+  if (!this._layers[index] || !this._layers[beforeIndex]) {
+    throw new Error();
+  }
+
+  const layer = this._layers[index];
+  this._layers.splice(index, 1);
+  this._layers.splice(beforeIndex, 0, layer);
+};
 
 Map.prototype.removeLayer = function removeLayer(id) {
   const index = this._layers.findIndex(layer => id === layer.id);

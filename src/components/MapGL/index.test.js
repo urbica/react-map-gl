@@ -209,6 +209,45 @@ test('multiple sources', () => {
   expect(wrapper.find('Source').exists()).toBe(false);
 });
 
+test('circular add/remove layers', () => {
+  const data = { type: 'FeatureCollection', features: [] };
+
+  class Wrapper extends React.PureComponent {
+    state = {
+      test1: true,
+      test2: false
+    };
+
+    render() {
+      return (
+        <MapGL latitude={0} longitude={0} zoom={0}>
+          {this.state.test1 && (
+            <React.Fragment>
+              <Source id="test1" type="geojson" data={data} />
+              <Layer id="test1" type="circle" source="test1" />
+            </React.Fragment>
+          )}
+          {this.state.test2 && (
+            <React.Fragment>
+              <Source id="test2" type="geojson" data={data} />
+              <Layer id="test2" type="circle" source="test2" />
+            </React.Fragment>
+          )}
+        </MapGL>
+      );
+    }
+  }
+
+  const wrapper = mount(<Wrapper />);
+
+  expect(() => {
+    wrapper.setState({ test2: true });
+    wrapper.setState({ test1: false });
+    wrapper.setState({ test1: true });
+    wrapper.setState({ test2: false });
+  }).not.toThrow();
+});
+
 test('renders without mapbox-gl', () => {
   jest.resetModules();
   jest.doMock('mapbox-gl', () => null);

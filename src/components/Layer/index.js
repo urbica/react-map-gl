@@ -142,7 +142,7 @@ class Layer extends PureComponent<Props> {
     const map = this._map;
     const { before, onClick, ...layer } = this.props;
 
-    if (before !== prevProps.before) {
+    if (before !== prevProps.before && (before && map.getLayer(before))) {
       map.moveLayer(layer.id, before);
     }
 
