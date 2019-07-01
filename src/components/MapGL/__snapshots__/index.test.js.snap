@@ -47,24 +47,24 @@ exports[`normalizeChildren 1`] = `
     <Layer
       before="layer2"
       id="layer1"
-      key=".0"
+      key=".$.0"
       radius={0}
     />
     <Layer
       before="layer3"
       id="layer2"
-      key=".1"
+      key=".$.1"
       radius={0}
     />
     <Layer
       before="layer4"
       id="layer3"
-      key=".2"
+      key=".$.2"
       radius={0}
     />
     <Source
       id="source1"
-      key=".3"
+      key=".$.3"
       type="vector"
     >
       <Layer
@@ -82,7 +82,7 @@ exports[`normalizeChildren 1`] = `
     </Source>
     <CustomLayer
       before="layer7"
-      key=".4"
+      key=".$.4"
       layer={
         Object {
           "id": "layer6",
@@ -104,12 +104,12 @@ exports[`normalizeChildren 1`] = `
     <Layer
       before="layer1"
       id="layer0"
-      key=".6"
+      key=".$.6"
       radius={0}
     />
     <Source
       id="source2"
-      key=".7"
+      key=".$.7"
       type="vector"
     >
       <Layer

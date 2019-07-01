@@ -186,9 +186,6 @@ test('normalizeChildren', () => {
   );
 
   expect(component).toMatchSnapshot();
-
-  const children = component.find('div');
-  console.log(children.debug());
 });
 
 test('multiple sources', () => {
