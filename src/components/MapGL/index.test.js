@@ -3,7 +3,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 
-import MapGL, { Layer, Source } from '../..';
+import MapGL, { CustomLayer, Layer, Source } from '../..';
 
 test('render', () => {
   const wrapper = mount(
@@ -160,6 +160,32 @@ test('layers ordering', () => {
   expect(layersWrapper.find({ id: 'test1' }).props().before).toBe('test2');
   expect(layersWrapper.find({ id: 'test2' }).props().before).toBe('test3');
   expect(layersWrapper.find({ id: 'test3' }).props().before).toBe(undefined);
+});
+
+test('normalizeChildren', () => {
+  const component = mount(
+    <MapGL latitude={0} longitude={0} zoom={0}>
+      <Layer id="layer1" />
+      <Layer id="layer2" />
+      <Layer id="layer3" />
+      <Source id="source1" type="vector">
+        <Layer id="layer4" />
+        <Layer id="layer5" />
+      </Source>
+      <CustomLayer layer={{ id: 'layer6' }} />
+      <React.Fragment>
+        <Layer id="layer7" />
+        <Layer id="layer8" />
+      </React.Fragment>
+      <Layer id="layer0" before="layer1" />
+      <Source id="source2" type="vector">
+        <Layer id="layer9" />
+        <Layer id="layer10" />
+      </Source>
+    </MapGL>
+  );
+
+  expect(component).toMatchSnapshot();
 });
 
 test('multiple sources', () => {

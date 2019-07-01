@@ -1,6 +1,5 @@
 // @flow
 
-/* eslint-disable import/no-cycle */
 import { PureComponent, createElement } from 'react';
 import type MapboxMap from 'mapbox-gl/src/ui/map';
 import type { ChildrenArray, Element } from 'react';
@@ -12,8 +11,9 @@ import type {
 
 import MapContext from '../MapContext';
 import Layer from '../Layer';
+
+/* eslint-disable import/no-cycle */
 import validateSource from '../../utils/validateSource';
-import normalizeChildren from '../../utils/normalizeChildren';
 
 export type Props = {
   /** Mapbox GL Source */
@@ -140,17 +140,14 @@ class Source extends PureComponent<Props, State> {
 
   render() {
     const { loaded } = this.state;
-
-    const children = this.props.children
-      ? // $FlowFixMe
-        normalizeChildren(this.props.children)
-      : null;
+    const { children } = this.props;
 
     return createElement(MapContext.Consumer, {}, (map: ?MapboxMap) => {
       if (map) {
         this._map = map;
       }
 
+      // $FlowFixMe
       return loaded && children;
     });
   }
