@@ -10,7 +10,9 @@
 ./node_modules/mapbox-gl/dist/mapbox-gl.js.flow
 
 [options]
+server.max_workers=4
 esproposal.class_static_fields=enable
 esproposal.class_instance_fields=enable
 
 [lints]
+all=warn
