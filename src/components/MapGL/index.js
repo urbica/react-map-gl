@@ -1,7 +1,7 @@
 // @flow
 
 import { PureComponent, createElement, createRef } from 'react';
-import type { Node, ElementRef } from 'react';
+import type { ChildrenArray, Element, ElementRef } from 'react';
 import type MapboxMap from 'mapbox-gl/src/ui/map';
 import type MapboxLngLatBoundsLike from 'mapbox-gl/src/geo/lng_lat_bounds';
 import type { AnimationOptions } from 'mapbox-gl/src/ui/camera';
@@ -11,8 +11,11 @@ import type { MapMouseEvent, MapTouchEvent } from 'mapbox-gl/src/ui/events';
 import MapContext from '../MapContext';
 import mapboxgl from '../../utils/mapbox-gl';
 import events from './events';
-import normalizeChildren from '../../utils/normalizeChildren';
 import capitalizeFirstLetter from '../../utils/capitalizeFirstLetter';
+
+/* eslint-disable import/no-cycle */
+import normalizeChildren from '../../utils/normalizeChildren';
+
 import type { EventProps } from './eventProps';
 
 export type Viewport = {|
@@ -30,6 +33,8 @@ export const flyTo = 'flyTo';
 export type ViewportChangeMethod = 'jumpTo' | 'easeTo' | 'flyTo';
 export type ViewportChangeEvent = MapMouseEvent | MapTouchEvent;
 
+export type Children = ChildrenArray<Element<any>>;
+
 type Props = EventProps & {
   /** container className */
   className?: string,
@@ -42,8 +47,8 @@ type Props = EventProps & {
    */
   mapStyle: string | StyleSpecification,
 
-  /** Sources and Layers */
-  children?: Node,
+  /** MapGL children as Sources, Layers, Controls, and custom Components */
+  children?: Children,
 
   /**
    * Mapbox API access token for mapbox-gl-js.
