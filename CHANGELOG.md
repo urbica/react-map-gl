@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.7.0](https://github.com/urbica/react-map-gl/compare/v1.6.1...v1.7.0) (2019-07-03)
+
+
+### Bug Fixes
+
+* **normalizeChildren:** keep function children and handle empty children ([61bdca9](https://github.com/urbica/react-map-gl/commit/61bdca9))
+
+
+### Features
+
+* **Image:** allow to add images to the style ([#229](https://github.com/urbica/react-map-gl/issues/229)) ([8816df4](https://github.com/urbica/react-map-gl/commit/8816df4))
+
+
+
 ### [1.6.1](https://github.com/urbica/react-map-gl/compare/v1.6.0...v1.6.1) (2019-07-01)
 
 
