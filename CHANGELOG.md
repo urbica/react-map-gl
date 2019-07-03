@@ -4,64 +4,46 @@ All notable changes to this project will be documented in this file. See [standa
 
 ## [1.7.0](https://github.com/urbica/react-map-gl/compare/v1.6.1...v1.7.0) (2019-07-03)
 
-
 ### Bug Fixes
 
-* **normalizeChildren:** keep function children and handle empty children ([61bdca9](https://github.com/urbica/react-map-gl/commit/61bdca9))
-
+- **normalizeChildren:** keep function children and handle empty children ([61bdca9](https://github.com/urbica/react-map-gl/commit/61bdca9))
 
 ### Features
 
-* **Image:** allow to add images to the style ([#229](https://github.com/urbica/react-map-gl/issues/229)) ([8816df4](https://github.com/urbica/react-map-gl/commit/8816df4))
-
-
+- **Image:** allow to add images to the style ([#229](https://github.com/urbica/react-map-gl/issues/229)) ([8816df4](https://github.com/urbica/react-map-gl/commit/8816df4)) (h/t [device25](https://github.com/device25))
 
 ### [1.6.1](https://github.com/urbica/react-map-gl/compare/v1.6.0...v1.6.1) (2019-07-01)
 
-
 ### Bug Fixes
 
-* **Layer:** fix layer `before` prop updates [#196](https://github.com/urbica/react-map-gl/issues/196) ([adde8da](https://github.com/urbica/react-map-gl/commit/adde8da))
-* **MapGL:** fix neted Layers ordering ([#231](https://github.com/urbica/react-map-gl/issues/231)) ([b6e12ab](https://github.com/urbica/react-map-gl/commit/b6e12ab))
-
-
+- **Layer:** fix layer `before` prop updates [#196](https://github.com/urbica/react-map-gl/issues/196) ([adde8da](https://github.com/urbica/react-map-gl/commit/adde8da))
+- **MapGL:** fix neted Layers ordering ([#231](https://github.com/urbica/react-map-gl/issues/231)) ([b6e12ab](https://github.com/urbica/react-map-gl/commit/b6e12ab))
 
 # [1.6.0](https://github.com/urbica/react-map-gl/compare/v1.5.0...v1.6.0) (2019-04-16)
 
-
 ### Bug Fixes
 
-* **Source:** normalize Source children ([a53a840](https://github.com/urbica/react-map-gl/commit/a53a840))
-
+- **Source:** normalize Source children ([a53a840](https://github.com/urbica/react-map-gl/commit/a53a840))
 
 ### Features
 
-* **LanguageControl:** add possibility to set language ([8a0eca3](https://github.com/urbica/react-map-gl/commit/8a0eca3))
-
-
+- **LanguageControl:** add possibility to set language ([8a0eca3](https://github.com/urbica/react-map-gl/commit/8a0eca3))
 
 # [1.5.0](https://github.com/urbica/react-map-gl/compare/v1.4.0...v1.5.0) (2019-04-11)
 
-
 ### Features
 
-* **Source:** allow add Layers as children components in Source ([73e2d45](https://github.com/urbica/react-map-gl/commit/73e2d45))
-
-
+- **Source:** allow add Layers as children components in Source ([73e2d45](https://github.com/urbica/react-map-gl/commit/73e2d45))
 
 # [1.4.0](https://github.com/urbica/react-map-gl/compare/v1.3.0...v1.4.0) (2019-04-08)
 
-
 ### Bug Fixes
 
-* **Source:** remove dependent layers on componentWillUnmount ([3f228af](https://github.com/urbica/react-map-gl/commit/3f228af))
-
+- **Source:** remove dependent layers on componentWillUnmount ([3f228af](https://github.com/urbica/react-map-gl/commit/3f228af))
 
 ### Features
 
-* **Source:** add dynamic update for vector sources mapbox/mapbox-gl-js[#8048](https://github.com/urbica/react-map-gl/issues/8048) ([7bcd8d7](https://github.com/urbica/react-map-gl/commit/7bcd8d7))
-
-
+- **Source:** add dynamic update for vector sources mapbox/mapbox-gl-js[#8048](https://github.com/urbica/react-map-gl/issues/8048) ([7bcd8d7](https://github.com/urbica/react-map-gl/commit/7bcd8d7))
 
 # [1.3.0](https://github.com/urbica/react-map-gl/compare/v1.2.0...v1.3.0) (2019-03-31)
 

@@ -61,7 +61,7 @@ yarn add @mapbox/mapbox-gl-language
 | [Source](src/components/Source)                           | [Sources](https://docs.mapbox.com/mapbox-gl-js/api/#sources) specify the geographic features to be rendered on the map |
 | [Layer](src/components/Layer)                             | [Layers](https://docs.mapbox.com/mapbox-gl-js/style-spec/#layers) specify the `Sources` style                          |
 | [CustomLayer](src/components/CustomLayer)                 | Allow a user to render directly into the map's GL context                                                              |
-| [Image](src/components/Image)                             | Adds image to the map style                                                                                            |
+| [Image](src/components/Image)                             | Adds an image to the map style                                                                                         |
 | [Popup](src/components/Popup)                             | React Component for [Mapbox GL JS Popup](https://docs.mapbox.com/mapbox-gl-js/api/#popup)                              |
 | [Marker](src/components/Marker)                           | React Component for [Mapbox GL JS Marker](https://docs.mapbox.com/mapbox-gl-js/api/#marker)                            |
 | [FeatureState](src/components/FeatureState)               | Sets the state of a geographic feature rendered on the map                                                             |

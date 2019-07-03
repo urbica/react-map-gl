@@ -1,7 +1,5 @@
 Add an image to the style. This image can be used in `icon-image`,
-`background-pattern`, `fill-pattern`, and `line-pattern`. An
-{@link Map#error} event will be fired if there is not enough space in the
-sprite to add this image.
+`background-pattern`, `fill-pattern`, and `line-pattern`.
 
 Mapbox examples:
 
