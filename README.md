@@ -61,6 +61,7 @@ yarn add @mapbox/mapbox-gl-language
 | [Source](src/components/Source)                           | [Sources](https://docs.mapbox.com/mapbox-gl-js/api/#sources) specify the geographic features to be rendered on the map |
 | [Layer](src/components/Layer)                             | [Layers](https://docs.mapbox.com/mapbox-gl-js/style-spec/#layers) specify the `Sources` style                          |
 | [CustomLayer](src/components/CustomLayer)                 | Allow a user to render directly into the map's GL context                                                              |
+| [Image](src/components/Image)                             | Adds image to the map style                                                                                            |
 | [Popup](src/components/Popup)                             | React Component for [Mapbox GL JS Popup](https://docs.mapbox.com/mapbox-gl-js/api/#popup)                              |
 | [Marker](src/components/Marker)                           | React Component for [Mapbox GL JS Marker](https://docs.mapbox.com/mapbox-gl-js/api/#marker)                            |
 | [FeatureState](src/components/FeatureState)               | Sets the state of a geographic feature rendered on the map                                                             |
@@ -122,7 +123,7 @@ initialState = {
   latitude={state.viewport.latitude}
   longitude={state.viewport.longitude}
   zoom={state.viewport.zoom}
-  onViewportChange={viewport => setState({ viewport })}
+  onViewportChange={(viewport) => setState({ viewport })}
 />;
 ```
 
@@ -209,7 +210,7 @@ const data = {
   style={{ width: '100%', height: '400px' }}
   mapStyle='mapbox://styles/mapbox/light-v9'
   accessToken={MAPBOX_ACCESS_TOKEN}
-  onViewportChange={viewport => setState({ viewport })}
+  onViewportChange={(viewport) => setState({ viewport })}
   {...state.viewport}
 >
   <Source id='route' type='geojson' data={data} />
@@ -246,8 +247,8 @@ const myDeckLayer = new MapboxLayer({
   id: 'my-scatterplot',
   type: ScatterplotLayer,
   data: [{ position: [-74.5, 40], size: 1000 }],
-  getPosition: d => d.position,
-  getRadius: d => d.size,
+  getPosition: (d) => d.position,
+  getRadius: (d) => d.size,
   getColor: [255, 0, 0]
 });
 

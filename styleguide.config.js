@@ -27,6 +27,7 @@ module.exports = {
         'src/components/Source/index.js',
         'src/components/Layer/index.js',
         'src/components/CustomLayer/index.js',
+        'src/components/Image/index.js',
         'src/components/Popup/index.js',
         'src/components/Marker/index.js',
         'src/components/FeatureState/index.js'
