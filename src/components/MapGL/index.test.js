@@ -163,21 +163,26 @@ test('layers ordering', () => {
 });
 
 test('normalizeChildren', () => {
-  const component = mount(
+  const wrapper = mount(
     <MapGL latitude={0} longitude={0} zoom={0}>
       <Layer id="layer1" />
       <Layer id="layer2" />
       <Layer id="layer3" />
+      {null}
       <Source id="source1" type="vector">
         <Layer id="layer4" />
+        {null}
         <Layer id="layer5" />
       </Source>
+      {null}
       <CustomLayer layer={{ id: 'layer6' }} />
       <React.Fragment>
         <Layer id="layer7" />
+        {null}
         <Layer id="layer8" />
       </React.Fragment>
       <Layer id="layer0" before="layer1" />
+      {null}
       <Source id="source2" type="vector">
         <Layer id="layer9" />
         <Layer id="layer10" />
@@ -185,7 +190,22 @@ test('normalizeChildren', () => {
     </MapGL>
   );
 
-  expect(component).toMatchSnapshot();
+  const layersWrapper = wrapper.find('Layer');
+  expect(layersWrapper.find({ id: 'layer1' }).props().before).toBe('layer2');
+  expect(layersWrapper.find({ id: 'layer2' }).props().before).toBe('layer3');
+  expect(layersWrapper.find({ id: 'layer3' }).props().before).toBe('layer4');
+  expect(layersWrapper.find({ id: 'layer4' }).props().before).toBe('layer5');
+  expect(layersWrapper.find({ id: 'layer5' }).props().before).toBe('layer6');
+  expect(
+    wrapper
+      .find('CustomLayer')
+      .find({ layer: { id: 'layer6' } })
+      .props().before
+  ).toBe('layer7');
+  expect(layersWrapper.find({ id: 'layer7' }).props().before).toBe('layer8');
+  expect(layersWrapper.find({ id: 'layer8' }).props().before).toBe('layer9');
+  expect(layersWrapper.find({ id: 'layer9' }).props().before).toBe('layer10');
+  expect(layersWrapper.find({ id: 'layer10' }).props().before).toBe(undefined);
 });
 
 test('multiple sources', () => {

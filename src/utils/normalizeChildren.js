@@ -28,6 +28,7 @@ const getLayerId = (child: LayerLike): string => {
 
 const forEachLayer = (fn, children: MapChildren) => {
   Children.forEach(children, (child) => {
+    if (!child) return;
     if (isLayerLike(child)) fn(child);
     if (child.props && child.props.children)
       forEachLayer(fn, child.props.children);
@@ -45,12 +46,19 @@ const getLayerIds = (children: MapChildren): Array<string> => {
 };
 
 const normalizeChildren = (children: MapChildren) => {
-  const nonEmptyChildren = Children.toArray(children).filter(Boolean);
-  const layerIds = getLayerIds(nonEmptyChildren);
+  const layerIds = getLayerIds(children);
   layerIds.shift();
 
-  const traverse = (_children: MapChildren) =>
-    Children.map(_children, (child: Element<any>) => {
+  const traverse = (_children: MapChildren) => {
+    if (typeof _children === 'function') {
+      return _children;
+    }
+
+    return Children.map(_children, (child: Element<any>) => {
+      if (!child) {
+        return child;
+      }
+
       if (isLayerLike(child)) {
         const before: string = child.props.before || layerIds.shift();
         return cloneElement(child, { before });
@@ -64,8 +72,10 @@ const normalizeChildren = (children: MapChildren) => {
 
       return child;
     });
+  };
 
-  return traverse(nonEmptyChildren);
+  const normalizedChildren = traverse(children);
+  return normalizedChildren;
 };
 
 export default normalizeChildren;
