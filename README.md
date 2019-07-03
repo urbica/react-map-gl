@@ -24,7 +24,7 @@ This project is heavily inspired by [uber/react-map-gl](https://github.com/uber/
 - [Contributing](#contributing)
 - [Team](#team)
 
-![Gallery](https://raw.githubusercontent.com/urbica/react-map-gl/master/gallery.jpg)
+![Gallery](https://raw.githubusercontent.com/urbica/react-map-gl/master/docs/gallery.jpg)
 
 ## Installation
 
@@ -276,8 +276,6 @@ Check out [CHANGELOG.md](CHANGELOG.md) and [releases](https://github.com/urbica/
 This project is licensed under the terms of the [MIT license](LICENSE).
 
 ## Contributing
-
-[![Greenkeeper badge](https://badges.greenkeeper.io/urbica/react-map-gl.svg)](https://greenkeeper.io/)
 
 Clone and install dependencies
 
