@@ -6,21 +6,22 @@ import type { StyleImageInterface } from 'mapbox-gl/src/style/style_image';
 
 import MapContext from '../MapContext';
 
+type MapboxImage =
+  | HTMLImageElement
+  | ImageData
+  | { width: number, height: number, data: Uint8Array | Uint8ClampedArray }
+  | StyleImageInterface;
+
 type Props = {|
   /** The ID of the image. */
   id: string,
 
   /**
    * The image as an `HTMLImageElement`, `ImageData`, object with `width`,
-   * `height`, and `data`
-   * properties with the same format as `ImageData` or string with image url
+   * `height`, and `data` properties with the same format as `ImageData`
+   * or image url string
    * */
-  image:
-    | window.HTMLImageElement
-    | window.ImageData
-    | { width: number, height: number, data: Uint8Array | Uint8ClampedArray }
-    | StyleImageInterface
-    | string,
+  image: MapboxImage | string,
 
   /** The ratio of pixels in the image to physical pixels on the screen */
   pixelRatio?: number,
@@ -45,48 +46,31 @@ class Image extends PureComponent<Props> {
   }
 
   componentDidMount() {
-    const map = this._map;
+    const { image, pixelRatio, sdf } = this.props;
+    this._loadImage(image, data =>
+      this._map.addImage(this._id, data, { pixelRatio, sdf })
+    );
+  }
+
+  componentDidUpdate(prevProps: Props) {
     const { id, image, pixelRatio, sdf } = this.props;
-    const options = { pixelRatio, sdf };
 
-    if (typeof image === 'string') {
-      map.loadImage(image, (error, img) => {
-        if (error) {
-          throw error;
-        }
-
-        map.addImage(id, img, options);
-      });
+    if (
+      id !== prevProps.id ||
+      sdf !== prevProps.sdf ||
+      pixelRatio !== prevProps.pixelRatio
+    ) {
+      this._id = id;
+      this._map.removeImage(prevProps.id);
+      this._loadImage(image, data =>
+        this._map.addImage(this._id, data, { pixelRatio, sdf })
+      );
 
       return;
     }
 
-    map.addImage(id, image, options);
-  }
-
-  componentDidUpdate(prevProps: Props) {
-    const map = this._map;
-    const { image, pixelRatio, sdf } = this.props;
-
     if (image !== prevProps.image) {
-      if (typeof image === 'string') {
-        this._loadImage(image);
-
-        return;
-      }
-
-      map.updateImage(this._id, image);
-    }
-
-    if (pixelRatio !== prevProps.pixelRatio || sdf !== prevProps.sdf) {
-      this._map.removeImage(this._id);
-      if (typeof image === 'string') {
-        this._loadImage(image);
-
-        return;
-      }
-
-      this._addImage(image);
+      this._loadImage(image, data => this._map.updateImage(this._id, data));
     }
   }
 
@@ -98,21 +82,17 @@ class Image extends PureComponent<Props> {
     this._map.removeImage(this._id);
   }
 
-  _loadImage = (url) => {
-    this._map.loadImage(url, (error, img) => {
-      if (error) {
-        throw error;
-      }
+  _loadImage = (image: MapboxImage | string, callback: MapboxImage => void) => {
+    if (typeof image === 'string') {
+      this._map.loadImage(image, (error, data) => {
+        if (error) throw error;
+        callback(data);
+      });
 
-      this._addImage(img);
-    });
-  };
+      return;
+    }
 
-  _addImage = (image) => {
-    const { pixelRatio, sdf } = this.props;
-    const options = { pixelRatio, sdf };
-
-    this._map.addImage(this._id, image, options);
+    callback(image);
   };
 
   render() {

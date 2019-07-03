@@ -5,6 +5,7 @@ LngLatBounds.prototype.toArray = () => [[-180, -90], [180, 90]];
 // Map
 function Map() {
   this._sources = {};
+  this._images = {};
   this._layers = [];
 
   this.style = {
@@ -25,11 +26,6 @@ function Map() {
   this.queryRenderedFeatures = jest.fn(() => []);
   this.setFeatureState = jest.fn();
   this.removeFeatureState = jest.fn();
-  this.loadImage = jest.fn((url, callback) => callback());
-  this.addImage = jest.fn();
-  this.updateImage = jest.fn();
-  this.hasImage = jest.fn();
-  this.removeImage = jest.fn();
 
   return this;
 }
@@ -106,6 +102,27 @@ Map.prototype.removeLayer = function removeLayer(id) {
   }
 
   this._layers.splice(index, 1);
+};
+
+Map.prototype.loadImage = function loadImage(url, callback) {
+  const data = new Uint8Array([]);
+  callback(null, data);
+};
+
+Map.prototype.addImage = function addImage(id, image) {
+  this._images[id] = image;
+};
+
+Map.prototype.updateImage = function updateImage(id, image) {
+  this._images[id] = image;
+};
+
+Map.prototype.hasImage = function hasImage(id) {
+  return !!this._images[id];
+};
+
+Map.prototype.removeImage = function removeImage(id) {
+  delete this._images[id];
 };
 
 Map.prototype.remove = jest.fn();

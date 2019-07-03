@@ -61,6 +61,7 @@ yarn add @mapbox/mapbox-gl-language
 | [Source](src/components/Source)                           | [Sources](https://docs.mapbox.com/mapbox-gl-js/api/#sources) specify the geographic features to be rendered on the map |
 | [Layer](src/components/Layer)                             | [Layers](https://docs.mapbox.com/mapbox-gl-js/style-spec/#layers) specify the `Sources` style                          |
 | [CustomLayer](src/components/CustomLayer)                 | Allow a user to render directly into the map's GL context                                                              |
+| [Image](src/components/Image)                             | Adds image to the map style                                                                                            |
 | [Popup](src/components/Popup)                             | React Component for [Mapbox GL JS Popup](https://docs.mapbox.com/mapbox-gl-js/api/#popup)                              |
 | [Marker](src/components/Marker)                           | React Component for [Mapbox GL JS Marker](https://docs.mapbox.com/mapbox-gl-js/api/#marker)                            |
 | [FeatureState](src/components/FeatureState)               | Sets the state of a geographic feature rendered on the map                                                             |
@@ -70,7 +71,6 @@ yarn add @mapbox/mapbox-gl-language
 | [GeolocateControl](src/components/GeolocateControl)       | Geolocate the user and then track their current location on the map                                                    |
 | [NavigationControl](src/components/NavigationControl)     | Contains zoom buttons and a compass                                                                                    |
 | [ScaleControl](src/components/ScaleControl)               | Displays the ratio of a distance on the map to the corresponding distance on the ground                                |
-| [Image](src/components/Image)                             | Adds image to the map style                                                                                            |
 | [Cluster](https://github.com/urbica/react-map-gl-cluster) | Cluster [Markers](src/components/Marker) with [supercluster](https://github.com/mapbox/supercluster)                   |
 | [Draw](https://github.com/urbica/react-map-gl-draw)       | Support for drawing and editing features                                                                               |
 
@@ -123,7 +123,7 @@ initialState = {
   latitude={state.viewport.latitude}
   longitude={state.viewport.longitude}
   zoom={state.viewport.zoom}
-  onViewportChange={viewport => setState({ viewport })}
+  onViewportChange={(viewport) => setState({ viewport })}
 />;
 ```
 
@@ -210,7 +210,7 @@ const data = {
   style={{ width: '100%', height: '400px' }}
   mapStyle='mapbox://styles/mapbox/light-v9'
   accessToken={MAPBOX_ACCESS_TOKEN}
-  onViewportChange={viewport => setState({ viewport })}
+  onViewportChange={(viewport) => setState({ viewport })}
   {...state.viewport}
 >
   <Source id='route' type='geojson' data={data} />
@@ -247,8 +247,8 @@ const myDeckLayer = new MapboxLayer({
   id: 'my-scatterplot',
   type: ScatterplotLayer,
   data: [{ position: [-74.5, 40], size: 1000 }],
-  getPosition: d => d.position,
-  getRadius: d => d.size,
+  getPosition: (d) => d.position,
+  getRadius: (d) => d.size,
   getColor: [255, 0, 0]
 });
 

@@ -42,6 +42,28 @@ test('update', () => {
   });
 });
 
+test('throws on loadImage', () => {
+  console.error = jest.fn();
+
+  /* eslint-disable global-require */
+  const mapboxgl = require('../../__mocks__/mapbox-gl');
+  mapboxgl.Map.prototype.loadImage = function loadImage(url, callback) {
+    callback(new Error());
+  };
+
+  jest.setMock('mapbox-gl', mapboxgl);
+
+  expect(() =>
+    mount(
+      <MapGL latitude={0} longitude={0} zoom={0}>
+        <Image id="test" image="will-fail" />
+      </MapGL>
+    )
+  ).toThrow();
+
+  expect(console.error).toHaveBeenCalled();
+});
+
 test('throws', () => {
   console.error = jest.fn();
 
