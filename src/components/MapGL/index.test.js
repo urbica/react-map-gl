@@ -3,7 +3,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 
-import MapGL, { Layer, Source } from '../..';
+import MapGL, { CustomLayer, Layer, Source } from '../..';
 
 test('render', () => {
   const wrapper = mount(
@@ -162,6 +162,52 @@ test('layers ordering', () => {
   expect(layersWrapper.find({ id: 'test3' }).props().before).toBe(undefined);
 });
 
+test('normalizeChildren', () => {
+  const wrapper = mount(
+    <MapGL latitude={0} longitude={0} zoom={0}>
+      <Layer id="layer1" />
+      <Layer id="layer2" />
+      <Layer id="layer3" />
+      {null}
+      <Source id="source1" type="vector">
+        <Layer id="layer4" />
+        {null}
+        <Layer id="layer5" />
+      </Source>
+      {null}
+      <CustomLayer layer={{ id: 'layer6' }} />
+      <React.Fragment>
+        <Layer id="layer7" />
+        {null}
+        <Layer id="layer8" />
+      </React.Fragment>
+      <Layer id="layer0" before="layer1" />
+      {null}
+      <Source id="source2" type="vector">
+        <Layer id="layer9" />
+        <Layer id="layer10" />
+      </Source>
+    </MapGL>
+  );
+
+  const layersWrapper = wrapper.find('Layer');
+  expect(layersWrapper.find({ id: 'layer1' }).props().before).toBe('layer2');
+  expect(layersWrapper.find({ id: 'layer2' }).props().before).toBe('layer3');
+  expect(layersWrapper.find({ id: 'layer3' }).props().before).toBe('layer4');
+  expect(layersWrapper.find({ id: 'layer4' }).props().before).toBe('layer5');
+  expect(layersWrapper.find({ id: 'layer5' }).props().before).toBe('layer6');
+  expect(
+    wrapper
+      .find('CustomLayer')
+      .find({ layer: { id: 'layer6' } })
+      .props().before
+  ).toBe('layer7');
+  expect(layersWrapper.find({ id: 'layer7' }).props().before).toBe('layer8');
+  expect(layersWrapper.find({ id: 'layer8' }).props().before).toBe('layer9');
+  expect(layersWrapper.find({ id: 'layer9' }).props().before).toBe('layer10');
+  expect(layersWrapper.find({ id: 'layer10' }).props().before).toBe(undefined);
+});
+
 test('multiple sources', () => {
   const data = { type: 'FeatureCollection', features: [] };
 
@@ -181,6 +227,45 @@ test('multiple sources', () => {
 
   wrapper.unmount();
   expect(wrapper.find('Source').exists()).toBe(false);
+});
+
+test('circular add/remove layers', () => {
+  const data = { type: 'FeatureCollection', features: [] };
+
+  class Wrapper extends React.PureComponent {
+    state = {
+      test1: true,
+      test2: false
+    };
+
+    render() {
+      return (
+        <MapGL latitude={0} longitude={0} zoom={0}>
+          {this.state.test1 && (
+            <React.Fragment>
+              <Source id="test1" type="geojson" data={data} />
+              <Layer id="test1" type="circle" source="test1" />
+            </React.Fragment>
+          )}
+          {this.state.test2 && (
+            <React.Fragment>
+              <Source id="test2" type="geojson" data={data} />
+              <Layer id="test2" type="circle" source="test2" />
+            </React.Fragment>
+          )}
+        </MapGL>
+      );
+    }
+  }
+
+  const wrapper = mount(<Wrapper />);
+
+  expect(() => {
+    wrapper.setState({ test2: true });
+    wrapper.setState({ test1: false });
+    wrapper.setState({ test1: true });
+    wrapper.setState({ test2: false });
+  }).not.toThrow();
 });
 
 test('renders without mapbox-gl', () => {

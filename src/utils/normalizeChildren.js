@@ -1,45 +1,81 @@
 // @flow
 
 import { Children, cloneElement } from 'react';
-import type { Node, Element } from 'react';
+import type { Element } from 'react';
 
 import Layer from '../components/Layer';
 import CustomLayer from '../components/CustomLayer';
+import type { Children as MapChildren } from '../components/MapGL';
 
-const getLayerId = (child: Element<typeof Layer | typeof CustomLayer>) => {
-  // $FlowFixMe
-  return child.type === CustomLayer ? child.props.layer.id : child.props.id;
+type LayerLike = Element<typeof Layer> | Element<typeof CustomLayer>;
+const LayerLikeElements = [Layer, CustomLayer];
+
+const isLayerLike = (child: Element<any>) =>
+  LayerLikeElements.includes(child.type);
+
+const getLayerId = (child: LayerLike): string => {
+  switch (child.type) {
+    case Layer:
+      // $FlowFixMe
+      return child.props.id;
+    case CustomLayer:
+      // $FlowFixMe
+      return child.props.layer.id;
+    default:
+      throw new Error(`Unknown layer type: ${child.type.name}`);
+  }
 };
 
-const normalizeChildren = (children: Node) => {
-  const results = Children.toArray(children)
-    .filter(Boolean)
-    .reduce(
-      (acc, child, index) => {
-        const { previousLayerIndex } = acc;
+const forEachLayer = (fn, children: MapChildren) => {
+  Children.forEach(children, (child) => {
+    if (!child) return;
+    if (isLayerLike(child)) fn(child);
+    if (child.props && child.props.children)
+      forEachLayer(fn, child.props.children);
+  });
+};
 
-        if (child.type === Layer || child.type === CustomLayer) {
-          if (previousLayerIndex) {
-            const currentLayerId = getLayerId(child);
-            const previousLayer = acc.children[previousLayerIndex];
-            const before = previousLayer.props.before || currentLayerId;
-            const previousLayerWithBefore = cloneElement(previousLayer, {
-              before
-            });
+const getLayerIds = (children: MapChildren): Array<string> => {
+  const layerIds = [];
+  forEachLayer((child) => {
+    if (!child.props.before) {
+      layerIds.push(getLayerId(child));
+    }
+  }, children);
+  return layerIds;
+};
 
-            acc.children[previousLayerIndex] = previousLayerWithBefore;
-          }
+const normalizeChildren = (children: MapChildren) => {
+  const layerIds = getLayerIds(children);
+  layerIds.shift();
 
-          acc.previousLayerIndex = index;
-        }
+  const traverse = (_children: MapChildren) => {
+    if (typeof _children === 'function') {
+      return _children;
+    }
 
-        acc.children.push(child);
-        return acc;
-      },
-      { children: [], previousLayerIndex: undefined }
-    );
+    return Children.map(_children, (child: Element<any>) => {
+      if (!child) {
+        return child;
+      }
 
-  return results.children;
+      if (isLayerLike(child)) {
+        const before: string = child.props.before || layerIds.shift();
+        return cloneElement(child, { before });
+      }
+
+      if (child.props && child.props.children) {
+        return cloneElement(child, {
+          children: traverse(child.props.children)
+        });
+      }
+
+      return child;
+    });
+  };
+
+  const normalizedChildren = traverse(children);
+  return normalizedChildren;
 };
 
 export default normalizeChildren;

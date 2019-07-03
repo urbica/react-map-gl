@@ -1,6 +1,9 @@
 // @flow
 
+/* eslint-disable import/no-cycle */
 export { default } from './components/MapGL';
+/* eslint-enable import/no-cycle */
+
 export { default as MapContext } from './components/MapContext';
 export { default as Layer } from './components/Layer';
 export { default as CustomLayer } from './components/CustomLayer';
