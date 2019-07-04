@@ -281,3 +281,13 @@ test('renders without mapbox-gl', () => {
   const map = wrapper.instance().getMap();
   expect(map).toBeFalsy();
 });
+
+test('renders with tileBoundaries', () => {
+  const wrapper = mount(
+    <MapGL latitude={0} longitude={0} zoom={0} showTileBoundaries />
+  );
+
+  expect(wrapper.exists()).toBe(true);
+  const map = wrapper.instance().getMap();
+  expect(map).toBeTruthy();
+});
