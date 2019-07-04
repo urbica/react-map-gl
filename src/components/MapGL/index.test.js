@@ -287,7 +287,10 @@ test('renders with tileBoundaries', () => {
     <MapGL latitude={0} longitude={0} zoom={0} showTileBoundaries />
   );
 
-  expect(wrapper.exists()).toBe(true);
   const map = wrapper.instance().getMap();
-  expect(map).toBeTruthy();
+
+  expect(map.showTileBoundaries).toBe(true);
+
+  wrapper.setProps({ showTileBoundaries: false });
+  expect(map.showTileBoundaries).toBe(false);
 });
