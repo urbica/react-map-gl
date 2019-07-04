@@ -375,7 +375,7 @@ class MapGL extends PureComponent<Props, State> {
     }
 
     if (prevProps.showTileBoundaries !== this.props.showTileBoundaries) {
-      this._map.showTileBoundaries = this.props.showTileBoundaries;
+      this._map.showTileBoundaries = !!this.props.showTileBoundaries;
     }
   }
 
