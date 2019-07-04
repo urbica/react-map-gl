@@ -268,6 +268,41 @@ test('circular add/remove layers', () => {
   }).not.toThrow();
 });
 
+test('renders with tileBoundaries', () => {
+  const wrapper = mount(
+    <MapGL latitude={0} longitude={0} zoom={0} showTileBoundaries />
+  );
+
+  const map = wrapper.instance().getMap();
+  expect(map.showTileBoundaries).toBe(true);
+
+  wrapper.setProps({ showTileBoundaries: false });
+  expect(map.showTileBoundaries).toBe(false);
+});
+
+test('do not call onViewportChange if originalEvent is not present', () => {
+  /* eslint-disable global-require */
+  const mapboxgl = require('../../__mocks__/mapbox-gl');
+  mapboxgl.Map.prototype.on = function on(_, listener, fn) {
+    const handler = typeof listener === 'function' ? listener : fn;
+    handler({ target: this, originalEvent: false, point: { x: 0, y: 0 } });
+  };
+  jest.setMock('mapbox-gl', mapboxgl);
+
+  const onViewportChange = jest.fn();
+
+  mount(
+    <MapGL
+      latitude={0}
+      longitude={0}
+      zoom={0}
+      onViewportChange={onViewportChange}
+    />
+  );
+
+  expect(onViewportChange).not.toHaveBeenCalled();
+});
+
 test('renders without mapbox-gl', () => {
   jest.resetModules();
   jest.doMock('mapbox-gl', () => null);
@@ -280,17 +315,4 @@ test('renders without mapbox-gl', () => {
   expect(wrapper.exists()).toBe(true);
   const map = wrapper.instance().getMap();
   expect(map).toBeFalsy();
-});
-
-test('renders with tileBoundaries', () => {
-  const wrapper = mount(
-    <MapGL latitude={0} longitude={0} zoom={0} showTileBoundaries />
-  );
-
-  const map = wrapper.instance().getMap();
-
-  expect(map.showTileBoundaries).toBe(true);
-
-  wrapper.setProps({ showTileBoundaries: false });
-  expect(map.showTileBoundaries).toBe(false);
 });
