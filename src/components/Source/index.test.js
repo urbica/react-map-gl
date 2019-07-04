@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { mount } from 'enzyme';
-import MapGL, { Source } from '../..';
+import MapGL, { Source, Layer } from '../..';
 
 test('render geojson source', () => {
   const data = { type: 'FeatureCollection', features: [] };
@@ -108,4 +108,25 @@ test('throws', () => {
   ).toThrow();
 
   expect(console.error).toHaveBeenCalled();
+});
+
+test('do not render children until loaded', () => {
+  /* eslint-disable global-require */
+  const mapboxgl = require('../../__mocks__/mapbox-gl');
+  mapboxgl.Map.prototype.isSourceLoaded = () => false;
+  jest.setMock('mapbox-gl', mapboxgl);
+
+  const data = { type: 'FeatureCollection', features: [] };
+  const wrapper = mount(
+    <MapGL latitude={0} longitude={0} zoom={0}>
+      <Source id="test" type="geojson" data={data}>
+        <Layer id="test" type="circle" source="test" />
+      </Source>
+    </MapGL>
+  );
+
+  expect(wrapper.find('Layer').exists()).toBe(false);
+
+  wrapper.find('Source').setState({ loaded: true });
+  expect(wrapper.find('Layer').exists()).toBe(true);
 });
