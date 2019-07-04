@@ -4,7 +4,7 @@ import React from 'react';
 import { mount } from 'enzyme';
 import MapGL, { Source, Layer } from '../..';
 
-test('render', () => {
+test('Layer#render', () => {
   const handler = jest.fn();
   const data = { type: 'FeatureCollection', features: [] };
 
@@ -28,6 +28,35 @@ test('render', () => {
 
   wrapper.unmount();
   expect(wrapper.find('Layer').exists()).toBe(false);
+});
+
+test('Layer#unmount', () => {
+  const handler = jest.fn();
+  const data = { type: 'FeatureCollection', features: [] };
+
+  const wrapper = mount(
+    <MapGL latitude={0} longitude={0} zoom={0}>
+      <Source id="test" type="geojson" data={data} />
+      <Layer
+        id="test"
+        type="circle"
+        source="test"
+        onClick={handler}
+        onHover={handler}
+        onEnter={handler}
+        onLeave={handler}
+      />
+    </MapGL>
+  );
+
+  const map = wrapper.instance().getMap();
+  expect(map.getLayer('test')).toBeTruthy();
+
+  wrapper.setProps({
+    children: [<Source id="test" type="geojson" data={data} />]
+  });
+
+  expect(map.getLayer('test')).toBeFalsy();
 });
 
 test('before', () => {
