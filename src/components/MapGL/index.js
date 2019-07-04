@@ -220,7 +220,13 @@ type Props = EventProps & {
   onLoad?: Function,
 
   /** Map cursor style as CSS value */
-  cursorStyle?: string
+  cursorStyle?: string,
+
+  /**
+   * Sets a Boolean indicating whether the map will render an outline around
+   * each tile and the tile ID. These tile boundaries are useful for debugging.
+   * */
+  showTileBoundaries?: boolean
 };
 
 type State = {
@@ -354,6 +360,10 @@ class MapGL extends PureComponent<Props, State> {
     if (this.props.cursorStyle) {
       map.getCanvas().style.cursor = this.props.cursorStyle;
     }
+
+    if (this.props.showTileBoundaries) {
+      this._map.showTileBoundaries = this.props.showTileBoundaries;
+    }
   }
 
   componentDidUpdate(prevProps: Props) {
@@ -362,6 +372,10 @@ class MapGL extends PureComponent<Props, State> {
 
     if (!prevProps.cursorStyle !== this.props.cursorStyle) {
       this._map.getCanvas().style.cursor = this.props.cursorStyle;
+    }
+
+    if (prevProps.showTileBoundaries !== this.props.showTileBoundaries) {
+      this._map.showTileBoundaries = !!this.props.showTileBoundaries;
     }
   }
 
