@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.8.0](https://github.com/urbica/react-map-gl/compare/v1.7.0...v1.8.0) (2019-07-05)
+
+
+### Bug Fixes
+
+* **Layer:** support layer id updates ([4b92d58](https://github.com/urbica/react-map-gl/commit/4b92d58))
+
+
+### Features
+
+* **MapGL:** add showTileBoundaries prop ([#233](https://github.com/urbica/react-map-gl/issues/233)) ([3944438](https://github.com/urbica/react-map-gl/commit/3944438))
+
+
+### Tests
+
+* **Layer:** add Layer unmount test ([5f16e78](https://github.com/urbica/react-map-gl/commit/5f16e78))
+* **MapGL:** do not call onViewportChange if originalEvent is not present ([ca0ac1c](https://github.com/urbica/react-map-gl/commit/ca0ac1c))
+* **Source:** do not render children until loaded ([eeb9167](https://github.com/urbica/react-map-gl/commit/eeb9167))
+
+
+
 ## [1.7.0](https://github.com/urbica/react-map-gl/compare/v1.6.1...v1.7.0) (2019-07-03)
 
 ### Bug Fixes
