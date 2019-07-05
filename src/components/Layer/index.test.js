@@ -59,6 +59,30 @@ test('Layer#unmount', () => {
   expect(map.getLayer('test')).toBeFalsy();
 });
 
+test('update id', () => {
+  const data = { type: 'FeatureCollection', features: [] };
+
+  const wrapper = mount(
+    <MapGL latitude={0} longitude={0} zoom={0}>
+      <Source id="test" type="geojson" data={data} />
+      <Layer id="test1" type="circle" source="test" />
+    </MapGL>
+  );
+
+  const map = wrapper.instance().getMap();
+  expect(map.getLayer('test1')).toBeTruthy();
+
+  wrapper.setProps({
+    children: [
+      <Source id="test" type="geojson" data={data} />,
+      <Layer id="test2" type="circle" source="test" />
+    ]
+  });
+
+  expect(map.getLayer('test1')).toBeFalsy();
+  expect(map.getLayer('test2')).toBeTruthy();
+});
+
 test('before', () => {
   const data = { type: 'FeatureCollection', features: [] };
 

@@ -104,47 +104,25 @@ class Layer extends PureComponent<Props> {
   }
 
   componentDidMount() {
-    const map = this._map;
-    const {
-      before,
-      radius,
-      onClick,
-      onHover,
-      onEnter,
-      onLeave,
-      ...layer
-    } = this.props;
-
-    if (before && map.getLayer(before)) {
-      map.addLayer(layer, before);
-    } else {
-      map.addLayer(layer);
-    }
-
-    if (onClick) {
-      map.on('click', this._id, this._onClick);
-    }
-
-    if (onHover) {
-      map.on('mousemove', this._id, this._onHover);
-    }
-
-    if (onEnter) {
-      map.on('mouseenter', this._id, this._onEnter);
-    }
-
-    if (onLeave) {
-      map.on('mouseleave', this._id, this._onLeave);
-    }
+    this._addLayer(this.props);
   }
 
   componentDidUpdate(prevProps: Props) {
     const map = this._map;
-    const { before, onClick, ...layer } = this.props;
+    const { id, before, onClick, ...layer } = this.props;
 
-    if (before !== prevProps.before && (before && map.getLayer(before))) {
-      map.moveLayer(layer.id, before);
+    if (id !== prevProps.id) {
+      this._id = id;
+      this._map.removeLayer(prevProps.id);
+      this._addLayer(this.props);
+      return;
     }
+
+    // flowlint sketchy-null-string:off
+    if (before !== prevProps.before && (before && map.getLayer(before))) {
+      map.moveLayer(this._id, before);
+    }
+    // flowlint sketchy-null-string:warn
 
     if (layer.paint !== prevProps.paint) {
       diff(layer.paint, prevProps.paint).forEach(([key, value]) => {
@@ -167,17 +145,7 @@ class Layer extends PureComponent<Props> {
       }
     }
 
-    eventListeners.forEach(([propName, eventName]) => {
-      const handlerName = `_${propName}`;
-
-      if (!this.props[propName] && prevProps[propName]) {
-        map.off(eventName, this._id, this[handlerName]);
-      }
-
-      if (this.props[propName] && !prevProps[propName]) {
-        map.on(eventName, this._id, this[handlerName]);
-      }
-    });
+    this._updateEventListeners(prevProps, this.props);
   }
 
   componentWillUnmount() {
@@ -185,15 +153,64 @@ class Layer extends PureComponent<Props> {
       return;
     }
 
+    this._removeEventListeners(this.props);
+    this._map.removeLayer(this._id);
+  }
+
+  _addLayer = (props: Props) => {
+    const map = this._map;
+    const {
+      before,
+      radius,
+      onClick,
+      onHover,
+      onEnter,
+      onLeave,
+      ...layer
+    } = props;
+
+    // flowlint sketchy-null-string:off
+    if (before && map.getLayer(before)) {
+      map.addLayer(layer, before);
+    } else {
+      map.addLayer(layer);
+    }
+    // flowlint sketchy-null-string:warn
+
+    this._addEventListeners(props);
+  };
+
+  _addEventListeners = (props: Props) => {
     eventListeners.forEach(([propName, eventName]) => {
       const handlerName = `_${propName}`;
-      if (this.props[propName]) {
+      if (props[propName]) {
+        this._map.on(eventName, this._id, this[handlerName]);
+      }
+    });
+  };
+
+  _updateEventListeners = (prevProps: Props, props: Props) => {
+    eventListeners.forEach(([propName, eventName]) => {
+      const handlerName = `_${propName}`;
+
+      if (!props[propName] && prevProps[propName]) {
+        this._map.off(eventName, this._id, this[handlerName]);
+      }
+
+      if (props[propName] && !prevProps[propName]) {
+        this._map.on(eventName, this._id, this[handlerName]);
+      }
+    });
+  };
+
+  _removeEventListeners = (props: Props) => {
+    eventListeners.forEach(([propName, eventName]) => {
+      const handlerName = `_${propName}`;
+      if (props[propName]) {
         this._map.off(eventName, this._id, this[handlerName]);
       }
     });
-
-    this._map.removeLayer(this._id);
-  }
+  };
 
   _onClick = (event: MapMouseEvent): void => {
     const position = [event.point.x, event.point.y];
