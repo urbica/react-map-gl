@@ -8,22 +8,14 @@ import CustomLayer from '../components/CustomLayer';
 import type { Children as MapChildren } from '../components/MapGL';
 
 type LayerLike = Element<typeof Layer> | Element<typeof CustomLayer>;
-const LayerLikeElements = [Layer, CustomLayer];
 
+const LayerLikeTypes = [Layer, CustomLayer];
 const isLayerLike = (child: Element<any>) =>
-  LayerLikeElements.includes(child.type);
+  LayerLikeTypes.includes(child.type);
 
 const getLayerId = (child: LayerLike): string => {
-  switch (child.type) {
-    case Layer:
-      // $FlowFixMe
-      return child.props.id;
-    case CustomLayer:
-      // $FlowFixMe
-      return child.props.layer.id;
-    default:
-      throw new Error(`Unknown layer type: ${child.type.name}`);
-  }
+  // $FlowFixMe
+  return child.props.id || child.props.layer.id;
 };
 
 const forEachLayer = (fn, children: MapChildren) => {
