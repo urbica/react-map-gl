@@ -153,7 +153,7 @@ type Props = EventProps & {
   trackResize?: boolean,
 
   /**
-   * The maxiumum number of tiles stored in the tile cache for a given
+   * The maximum number of tiles stored in the tile cache for a given
    * source. If omitted, the cache will be dynamically sized based on
    * the current viewport.
    */
@@ -410,6 +410,7 @@ class MapGL extends PureComponent<Props, State> {
    * Update Map viewport from newProps
    *
    * @private
+   * @param {Props} prevProps
    * @param {Props} newProps
    */
   _updateMapViewport(prevProps: Props, newProps: Props): void {
