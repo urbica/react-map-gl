@@ -43,7 +43,8 @@ module.exports = {
         'src/components/GeolocateControl/index.js',
         'src/components/NavigationControl/index.js',
         'src/components/ScaleControl/index.js',
-        'src/components/LanguageControl/index.js'
+        'src/components/LanguageControl/index.js',
+        'src/components/TrafficControl/index.js'
       ]
     }
   ],

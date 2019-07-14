@@ -51,7 +51,8 @@
     "react-dom": "^16.x"
   },
   "optionalDependencies": {
-    "@mapbox/mapbox-gl-language": "^0.10.0"
+    "@mapbox/mapbox-gl-language": "^0.10.0",
+    "@mapbox/mapbox-gl-traffic": "^1.0.2"
   },
   "devDependencies": {
     "@babel/core": "^7.6.0",
