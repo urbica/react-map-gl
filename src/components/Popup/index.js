@@ -49,7 +49,10 @@ type Props = {
    * The offset in pixels as a `PointLike` object to apply
    * relative to the element's center. Negatives indicate left and up.
    */
-  offset?: MapboxLngLatBoundsLike
+  offset?: MapboxLngLatBoundsLike,
+
+  /** The className of the popup */
+  className?: string
 };
 
 class Popup extends PureComponent<Props> {
@@ -66,7 +69,8 @@ class Popup extends PureComponent<Props> {
     closeOnClick: true,
     onClose: null,
     anchor: null,
-    offset: null
+    offset: null,
+    className: null
   };
 
   constructor(props: Props) {
@@ -82,14 +86,16 @@ class Popup extends PureComponent<Props> {
       closeButton,
       closeOnClick,
       onClose,
-      anchor
+      anchor,
+      className
     } = this.props;
 
     this._popup = new mapboxgl.Popup({
       offset,
       closeButton,
       closeOnClick,
-      anchor
+      anchor,
+      className
     });
 
     this._popup.setDOMContent(this._el);
