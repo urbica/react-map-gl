@@ -48,6 +48,8 @@
     ],
     "react/jsx-filename-extension": [1, { "extensions": [".js"] }],
     "react/require-default-props": 0,
+    "react/static-property-placement": ["error", "static public field"],
+    "react/jsx-fragments": ["error", "element"],
     "import/no-extraneous-dependencies": [
       "error",
       { "devDependencies": true, "peerDependencies": true }
