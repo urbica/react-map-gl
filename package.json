@@ -59,15 +59,15 @@
     "enzyme-adapter-react-16": "^1.14.0",
     "enzyme-to-json": "^3.4.0",
     "eslint": "^6.1.0",
-    "eslint-config-airbnb": "^18.0.0",
+    "eslint-config-airbnb": "^18.0.1",
     "eslint-config-prettier": "^6.0.0",
     "eslint-plugin-flowtype": "^4.2.0",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.14.3",
-    "flow-bin": "^0.105.1",
+    "flow-bin": "^0.105.2",
     "flow-coverage-report": "^0.6.1",
-    "flow-remove-types": "^2.105.0",
+    "flow-remove-types": "^2.105.2",
     "gh-pages": "^2.1.1",
     "husky": "^3.0.3",
     "jest": "^24.8.0",
@@ -86,7 +86,7 @@
     "rollup-plugin-terser": "^5.1.1",
     "standard-version": "^7.0.0",
     "style-loader": "^1.0.0",
-    "webpack": "^4.39.1"
+    "webpack": "^4.39.2"
   },
   "config": {
     "commitizen": {

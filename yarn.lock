@@ -4092,10 +4092,10 @@ eslint-config-airbnb-base@^14.0.0:
     object.assign "^4.1.0"
     object.entries "^1.1.0"
 
-eslint-config-airbnb@^18.0.0:
-  version "18.0.0"
-  resolved "https://registry.yarnpkg.com/eslint-config-airbnb/-/eslint-config-airbnb-18.0.0.tgz#47a50107484b7776b7541fcac4308abbeee1c102"
-  integrity sha512-C9p7TGMuefhUWPuiObkfF9pytgAA2293bk1n0h7FdazazHNtzATTGkVv7V0gZt1/FTzdCfwWhjGSbRz/KR89og==
+eslint-config-airbnb@^18.0.1:
+  version "18.0.1"
+  resolved "https://registry.yarnpkg.com/eslint-config-airbnb/-/eslint-config-airbnb-18.0.1.tgz#a3a74cc29b46413b6096965025381df8fb908559"
+  integrity sha512-hLb/ccvW4grVhvd6CT83bECacc+s4Z3/AEyWQdIT2KeTsG9dR7nx1gs7Iw4tDmGKozCNHFn4yZmRm3Tgy+XxyQ==
   dependencies:
     eslint-config-airbnb-base "^14.0.0"
     object.assign "^4.1.0"
@@ -4890,10 +4890,10 @@ flow-annotation-check@1.8.1:
     glob "7.1.1"
     load-pkg "^3.0.1"
 
-flow-bin@^0.105.1:
-  version "0.105.1"
-  resolved "https://registry.yarnpkg.com/flow-bin/-/flow-bin-0.105.1.tgz#5ce4515b583e5fa6ea1b82bc849c354271f5b88d"
-  integrity sha512-wRI5ogu/+85fgftljAOtnDBx9+2JHToyq2XifzoMmXc5mmB9OE7osukzwi2PuOoEKtq9fu+APRD+MqbEJ8bUwQ==
+flow-bin@^0.105.2:
+  version "0.105.2"
+  resolved "https://registry.yarnpkg.com/flow-bin/-/flow-bin-0.105.2.tgz#9d03d5ae3e1d011e311f309cb8786b3b3695fec2"
+  integrity sha512-VCHt0SCjFPviv/Ze/W7AgkcE0uH4TocypSFA8wR3ZH1P7BSjny4l3uhHyOjzU3Qo1i0jO4NyaU6q3Y5IaQ6xng==
 
 flow-coverage-report@^0.6.1:
   version "0.6.1"
@@ -4915,17 +4915,17 @@ flow-coverage-report@^0.6.1:
     terminal-table "0.0.12"
     yargs "8.0.1"
 
-flow-parser@^0.105.0:
-  version "0.105.0"
-  resolved "https://registry.yarnpkg.com/flow-parser/-/flow-parser-0.105.0.tgz#14c27c5cb6be23dc7f3431e7837ab805331bbc35"
-  integrity sha512-f9lkQkr/rGQYjmxjPpgnoBaeWL/0UYjSp/eUR7cb8uRZArxtibyB+9+JYuuPJJJxSbSYfscYO/8KO7jlEhBjMA==
+flow-parser@^0.105.2:
+  version "0.105.2"
+  resolved "https://registry.yarnpkg.com/flow-parser/-/flow-parser-0.105.2.tgz#7ba3ab7718c0519979c2f061e89c7b3c3624ee96"
+  integrity sha512-AMx+UQYzJv0fXGSNYHoLxstrZO3BUCvXeJDfrYb3z1L2MmSYIlS4r7XGiYrXgu9ntD0g52zKABsjsuO3C4wzRA==
 
-flow-remove-types@^2.105.0:
-  version "2.105.0"
-  resolved "https://registry.yarnpkg.com/flow-remove-types/-/flow-remove-types-2.105.0.tgz#447f3079bc87408b8ef1ae79349982deec4f0efa"
-  integrity sha512-J60+DI4a0c3hM9oWkYcgOjhxYuZUm61ZvkYytNngl+VnevGGT7mwHvXxH60wpYT5Im2ZU2Y9mVrZqJ5U8zdwjA==
+flow-remove-types@^2.105.2:
+  version "2.105.2"
+  resolved "https://registry.yarnpkg.com/flow-remove-types/-/flow-remove-types-2.105.2.tgz#5c597ebbfd0a73ae12b4ec182cd6061759de7468"
+  integrity sha512-UDF5hxjN6Vlc2Xja48UDBNpFNJ5DCFI5fTZRudXFxmCkoofsd997jdTUwDWA/4wS9nTx1L8/3cpMcKdAOJyQmw==
   dependencies:
-    flow-parser "^0.105.0"
+    flow-parser "^0.105.2"
     pirates "^3.0.2"
     vlq "^0.2.1"
 
@@ -11607,10 +11607,10 @@ webpack-sources@^1.4.0, webpack-sources@^1.4.1:
     source-list-map "^2.0.0"
     source-map "~0.6.1"
 
-webpack@^4.39.1:
-  version "4.39.1"
-  resolved "https://registry.yarnpkg.com/webpack/-/webpack-4.39.1.tgz#60ed9fb2b72cd60f26ea526c404d2a4cc97a1bd8"
-  integrity sha512-/LAb2TJ2z+eVwisldp3dqTEoNhzp/TLCZlmZm3GGGAlnfIWDgOEE758j/9atklNLfRyhKbZTCOIoPqLJXeBLbQ==
+webpack@^4.39.2:
+  version "4.39.2"
+  resolved "https://registry.yarnpkg.com/webpack/-/webpack-4.39.2.tgz#c9aa5c1776d7c309d1b3911764f0288c8c2816aa"
+  integrity sha512-AKgTfz3xPSsEibH00JfZ9sHXGUwIQ6eZ9tLN8+VLzachk1Cw2LVmy+4R7ZiwTa9cZZ15tzySjeMui/UnSCAZhA==
   dependencies:
     "@webassemblyjs/ast" "1.8.5"
     "@webassemblyjs/helper-module-context" "1.8.5"
