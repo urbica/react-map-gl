@@ -92,7 +92,11 @@ class Source extends PureComponent<Props, State> {
     newSource: GeoJSONSourceSpecification
   ) => {
     if (newSource.data !== prevSource.data) {
-      this._map.getSource(id).setData(newSource.data);
+      const source = this._map.getSource(id);
+
+      if (source !== undefined) {
+        source.setData(newSource.data);
+      }
     }
   };
 
