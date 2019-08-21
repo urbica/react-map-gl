@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.10.0](https://github.com/urbica/react-map-gl/compare/v1.9.1...v1.10.0) (2019-08-21)
+
+
+### Features
+
+* **mapgl:** add layer-specific events support ([54d6f72](https://github.com/urbica/react-map-gl/commit/54d6f72)), closes [#244](https://github.com/urbica/react-map-gl/issues/244)
+
 ### [1.9.1](https://github.com/urbica/react-map-gl/compare/v1.9.0...v1.9.1) (2019-08-20)
 
 
