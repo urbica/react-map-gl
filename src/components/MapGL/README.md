@@ -11,7 +11,7 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 
 <MapGL
   style={{ width: '100%', height: '400px' }}
-  mapStyle='mapbox://styles/mapbox/light-v9'
+  mapStyle="mapbox://styles/mapbox/light-v9"
   accessToken={MAPBOX_ACCESS_TOKEN}
   latitude={37.78}
   longitude={-122.41}
@@ -38,12 +38,12 @@ initialState = {
 
 <MapGL
   style={{ width: '100%', height: '400px' }}
-  mapStyle='mapbox://styles/mapbox/light-v9'
+  mapStyle="mapbox://styles/mapbox/light-v9"
   accessToken={MAPBOX_ACCESS_TOKEN}
   latitude={state.viewport.latitude}
   longitude={state.viewport.longitude}
   zoom={state.viewport.zoom}
-  onViewportChange={viewport => setState({ viewport })}
+  onViewportChange={(viewport) => setState({ viewport })}
 />;
 ```
 
@@ -67,15 +67,15 @@ const mapStyleUrl = `https://api.mapbox.com/styles/v1/mapbox/light-v9?access_tok
 
 if (!state.mapStyle && setState) {
   fetch(mapStyleUrl)
-    .then(response => response.json())
-    .then(mapStyle => setState({ mapStyle }));
+    .then((response) => response.json())
+    .then((mapStyle) => setState({ mapStyle }));
 }
 
 <MapGL
   style={{ width: '100%', height: '400px' }}
   mapStyle={state.mapStyle}
   accessToken={MAPBOX_ACCESS_TOKEN}
-  onViewportChange={viewport => setState({ viewport })}
+  onViewportChange={(viewport) => setState({ viewport })}
   {...state.viewport}
 />;
 ```
@@ -104,7 +104,7 @@ const onChange = (event) => {
   setState({ viewportChangeMethod: event.target.value });
 };
 
-const onClick = event => {
+const onClick = (event) => {
   const { lngLat } = event;
 
   const newVewport = {
@@ -119,16 +119,16 @@ const onClick = event => {
 <React.Fragment>
   Select viewportChangeMethod and click on the map
   <select value={state.viewportChangeMethod} onChange={onChange}>
-    <option value='flyTo'>flyTo</option>
-    <option value='jumpTo'>jumpTo</option>
-    <option value='easeTo'>easeTo</option>
+    <option value="flyTo">flyTo</option>
+    <option value="jumpTo">jumpTo</option>
+    <option value="easeTo">easeTo</option>
   </select>
   <MapGL
     style={{ width: '100%', height: '400px' }}
-    mapStyle='mapbox://styles/mapbox/light-v9'
+    mapStyle="mapbox://styles/mapbox/light-v9"
     accessToken={MAPBOX_ACCESS_TOKEN}
     onClick={onClick}
-    onViewportChange={viewport => setState({ viewport })}
+    onViewportChange={(viewport) => setState({ viewport })}
     viewportChangeMethod={state.viewportChangeMethod}
     {...state.viewport}
   />
@@ -156,7 +156,7 @@ initialState = {
   }
 };
 
-const onClick = event => {
+const onClick = (event) => {
   const { lngLat } = event;
 
   const newVewport = {
@@ -170,12 +170,20 @@ const onClick = event => {
 
 <MapGL
   style={{ width: '100%', height: '400px' }}
-  mapStyle='mapbox://styles/mapbox/light-v9'
+  mapStyle="mapbox://styles/mapbox/light-v9"
   accessToken={MAPBOX_ACCESS_TOKEN}
   onClick={onClick}
-  onViewportChange={viewport => setState({ viewport })}
+  onViewportChange={(viewport) => setState({ viewport })}
   {...state.viewport}
 />;
+```
+
+#### Layer-specific events
+
+You can also set layer-specific event-handlers passing prop in the form of the array where the first element is a layer id and the second element is an event handler:
+
+```markup
+onClick={['national_park', onClick]}
 ```
 
 ### Getting Mapbox GL JS Map Instance
@@ -191,14 +199,14 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 
 <MapGL
   style={{ width: '100%', height: '400px' }}
-  mapStyle='mapbox://styles/mapbox/light-v9'
+  mapStyle="mapbox://styles/mapbox/light-v9"
   accessToken={MAPBOX_ACCESS_TOKEN}
   latitude={37.78}
   longitude={-122.41}
   zoom={11}
 >
   <MapContext.Consumer>
-    {map => {
+    {(map) => {
       map.setPaintProperty('water', 'fill-color', '#fdbdba');
       return;
     }}
@@ -235,7 +243,7 @@ class MyMapGL extends React.PureComponent {
 
 <MyMapGL
   style={{ width: '100%', height: '400px' }}
-  mapStyle='mapbox://styles/mapbox/light-v9'
+  mapStyle="mapbox://styles/mapbox/light-v9"
   accessToken={MAPBOX_ACCESS_TOKEN}
   latitude={37.78}
   longitude={-122.41}

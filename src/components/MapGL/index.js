@@ -352,8 +352,13 @@ class MapGL extends PureComponent<Props, State> {
 
     events.forEach((event) => {
       const propName = `on${capitalizeFirstLetter(event)}`;
-      if (this.props[propName]) {
-        map.on(event, this.props[propName]);
+      const prop = this.props[propName];
+      if (prop) {
+        if (Array.isArray(prop)) {
+          map.on(event, ...prop);
+        } else {
+          map.on(event, prop);
+        }
       }
     });
 
