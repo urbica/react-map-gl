@@ -1341,10 +1341,15 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-12.6.2.tgz#a5ccec6abb6060d5f20d256fb03ed743e9774999"
   integrity sha512-gojym4tX0FWeV2gsW4Xmzo5wxGjXGm550oVUII7f7G5o4BV6c7DBdiG1RRQd+y1bvqRyYtPfMK85UM95vsapqQ==
 
-"@types/node@^12.0.2", "@types/node@^12.6.9":
+"@types/node@^12.0.2":
   version "12.6.9"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-12.6.9.tgz#ffeee23afdc19ab16e979338e7b536fdebbbaeaf"
   integrity sha512-+YB9FtyxXGyD54p8rXwWaN1EWEyar5L58GlGWgtH2I9rGmLGBQcw63+0jw+ujqVavNuO47S1ByAjm9zdHMnskw==
+
+"@types/node@^12.7.2":
+  version "12.7.2"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-12.7.2.tgz#c4e63af5e8823ce9cc3f0b34f7b998c2171f0c44"
+  integrity sha512-dyYO+f6ihZEtNPDcWNR1fkoTDf3zAK3lAABDze3mz6POyIercH0lEUawUFXlG8xaQZmm1yEBON/4TsYv/laDYg==
 
 "@types/normalize-package-data@^2.4.0":
   version "2.4.0"
@@ -7501,10 +7506,10 @@ map-visit@^1.0.0:
   dependencies:
     object-visit "^1.0.0"
 
-mapbox-gl@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/mapbox-gl/-/mapbox-gl-1.1.0.tgz#01b907fa025e49e2000c91878de3b68245ce9770"
-  integrity sha512-ODwesguQJM7FobmSlv/qGJkmrzUTlIRe92dEBy587RV2k2QGsQDQUCk6/KE+lzVJuyk7WQappNkzhgagaxY5Eg==
+mapbox-gl@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/mapbox-gl/-/mapbox-gl-1.2.1.tgz#a91acb48e5ee57d40a09fa6b4c297e92690c5909"
+  integrity sha512-CO7uhTYtcreDokGr3W2LifIdCtHz0TO/BqnRtO5rQ4Rvm8P7ndUM5ZWwZvJJmNnlkMpVwNKSESsKYX32GXHXoQ==
   dependencies:
     "@mapbox/geojson-rewind" "^0.4.0"
     "@mapbox/geojson-types" "^1.0.2"
@@ -10026,14 +10031,14 @@ rollup-pluginutils@^2.8.1:
   dependencies:
     estree-walker "^0.6.1"
 
-rollup@^1.19.4:
-  version "1.19.4"
-  resolved "https://registry.yarnpkg.com/rollup/-/rollup-1.19.4.tgz#0cb4e4d6fa127adab59b11d0be50e8dd1c78123a"
-  integrity sha512-G24w409GNj7i/Yam2cQla6qV2k6Nug8bD2DZg9v63QX/cH/dEdbNJg8H4lUm5M1bRpPKRUC465Rm9H51JTKOfQ==
+rollup@^1.20.0:
+  version "1.20.0"
+  resolved "https://registry.yarnpkg.com/rollup/-/rollup-1.20.0.tgz#3799e4cd2f48c0a068d87af575956d8d72c9447a"
+  integrity sha512-zW80j9RSJ0VV0VOxP1i7cF279+IlAaD49Ihwqb87PDR0555Fvk10HKmh2yUtXCdBb37bELuhHWZTJc4uoCo8Vw==
   dependencies:
     "@types/estree" "0.0.39"
-    "@types/node" "^12.6.9"
-    acorn "^6.2.1"
+    "@types/node" "^12.7.2"
+    acorn "^7.0.0"
 
 rst-selector-parser@^2.2.3:
   version "2.2.3"
