@@ -50,16 +50,16 @@ const data = {
 
 <MapGL
   style={{ width: '100%', height: '400px' }}
-  mapStyle='mapbox://styles/mapbox/light-v9'
+  mapStyle="mapbox://styles/mapbox/light-v9"
   accessToken={MAPBOX_ACCESS_TOKEN}
-  onViewportChange={viewport => setState({ viewport })}
+  onViewportChange={(viewport) => setState({ viewport })}
   {...state.viewport}
 >
-  <Source id='maine' type='geojson' data={data} />
+  <Source id="maine" type="geojson" data={data} />
   <Layer
-    id='maine'
-    type='fill'
-    source='maine'
+    id="maine"
+    type="fill"
+    source="maine"
     paint={{
       'fill-color': '#088',
       'fill-opacity': 0.8
@@ -115,16 +115,16 @@ const data = {
 
 <MapGL
   style={{ width: '100%', height: '400px' }}
-  mapStyle='mapbox://styles/mapbox/light-v9'
+  mapStyle="mapbox://styles/mapbox/light-v9"
   accessToken={MAPBOX_ACCESS_TOKEN}
-  onViewportChange={viewport => setState({ viewport })}
+  onViewportChange={(viewport) => setState({ viewport })}
   {...state.viewport}
 >
-  <Source id='route' type='geojson' data={data} />
+  <Source id="route" type="geojson" data={data} />
   <Layer
-    id='route'
-    type='line'
-    source='route'
+    id="route"
+    type="line"
+    source="route"
     layout={{
       'line-join': 'round',
       'line-cap': 'round'
@@ -165,16 +165,16 @@ const addPoints = () => {
   <button onClick={addPoints}>+100 points</button>
   <MapGL
     style={{ width: '100%', height: '400px' }}
-    mapStyle='mapbox://styles/mapbox/light-v9'
+    mapStyle="mapbox://styles/mapbox/light-v9"
     accessToken={MAPBOX_ACCESS_TOKEN}
-    onViewportChange={viewport => setState({ viewport })}
+    onViewportChange={(viewport) => setState({ viewport })}
     {...state.viewport}
   >
-    <Source id='points' type='geojson' data={state.points} />
+    <Source id="points" type="geojson" data={state.points} />
     <Layer
-      id='points'
-      type='circle'
-      source='points'
+      id="points"
+      type="circle"
+      source="points"
       paint={{
         'circle-radius': 6,
         'circle-color': '#1978c8'
@@ -203,17 +203,17 @@ initialState = {
 
 <MapGL
   style={{ width: '100%', height: '400px' }}
-  mapStyle='mapbox://styles/mapbox/light-v9'
+  mapStyle="mapbox://styles/mapbox/light-v9"
   accessToken={MAPBOX_ACCESS_TOKEN}
-  onViewportChange={viewport => setState({ viewport })}
+  onViewportChange={(viewport) => setState({ viewport })}
   {...state.viewport}
 >
-  <Source id='contour' type='vector' url='mapbox://mapbox.mapbox-terrain-v2' />
+  <Source id="contour" type="vector" url="mapbox://mapbox.mapbox-terrain-v2" />
   <Layer
-    id='contour'
-    type='line'
-    source='contour'
-    source-layer='contour'
+    id="contour"
+    type="line"
+    source="contour"
+    source-layer="contour"
     paint={{
       'line-color': '#877b59',
       'line-width': 1
@@ -239,24 +239,16 @@ initialState = {
 
 <MapGL
   style={{ width: '100%', height: '400px' }}
-  mapStyle='mapbox://styles/mapbox/light-v9'
   accessToken={MAPBOX_ACCESS_TOKEN}
-  onViewportChange={viewport => setState({ viewport })}
+  onViewportChange={(viewport) => setState({ viewport })}
   {...state.viewport}
 >
   <Source
-    id='wms-test-layer'
-    type='raster'
+    id="raster"
+    type="raster"
     tileSize={256}
-    tiles={[
-      'https://geodata.state.nj.us/imagerywms/Natural2015?bbox={bbox-epsg-3857}&format=image/png&service=WMS&version=1.1.1&request=GetMap&srs=EPSG:3857&transparent=true&width=256&height=256&layers=Natural2015'
-    ]}
+    tiles={['https://stamen-tiles.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.jpg']}
   />
-  <Layer
-    id='wms-test-layer'
-    type='raster'
-    source='wms-test-layer'
-    before='aeroway-taxiway'
-  />
+  <Layer id="raster" type="raster" source="raster" />
 </MapGL>;
 ```
