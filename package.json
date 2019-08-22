@@ -3,11 +3,25 @@
   "version": "1.10.0",
   "description": "React Component for Mapbox GL JS",
   "author": "Stepan Kuzmin <to.stepan.kuzmin@gmail.com> (stepankuzmin.com)",
+  "contributors": [
+    "Andrey Bakhvalov (https://github.com/device25)",
+    "Artem Boyur (https://github.com/boyur)"
+  ],
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git://github.com/urbica/react-map-gl.git"
   },
+  "keywords": [
+    "mapbox-gl-js",
+    "mapbox-gl",
+    "mapbox",
+    "react mapbox",
+    "react component",
+    "react-mapbox-gl",
+    "react",
+    "urbica"
+  ],
   "main": "dist/react-map-gl.cjs.js",
   "module": "dist/react-map-gl.esm.js",
   "files": [
