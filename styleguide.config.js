@@ -6,6 +6,7 @@ module.exports = {
   usageMode: 'expand',
   exampleMode: 'expand',
   pagePerSection: true,
+  assetsDir: 'src/assets/',
   require: [path.resolve(__dirname, 'styleguide.setup.js')],
   moduleAliases: {
     '@urbica/react-map-gl': path.resolve(__dirname, 'src')
