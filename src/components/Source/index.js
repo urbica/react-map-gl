@@ -5,6 +5,7 @@ import type MapboxMap from 'mapbox-gl/src/ui/map';
 import type { ChildrenArray, Element } from 'react';
 import type {
   SourceSpecification,
+  RasterSourceSpecification,
   VectorSourceSpecification,
   GeoJSONSourceSpecification
 } from 'mapbox-gl/src/style-spec/types';
@@ -14,6 +15,10 @@ import Layer from '../Layer';
 
 /* eslint-disable import/no-cycle */
 import validateSource from '../../utils/validateSource';
+
+export type TileSourceSpecification =
+  | VectorSourceSpecification
+  | RasterSourceSpecification;
 
 export type Props = {
   /** Mapbox GL Source */
@@ -65,7 +70,12 @@ class Source extends PureComponent<Props, State> {
     }
 
     if (source.type === 'vector' && prevSource.type === 'vector') {
-      this._updateVectorSource(id, prevSource, source);
+      this._updateTileSource(id, prevSource, source);
+      return;
+    }
+
+    if (source.type === 'raster' && prevSource.type === 'raster') {
+      this._updateTileSource(id, prevSource, source);
     }
   }
 
@@ -101,10 +111,10 @@ class Source extends PureComponent<Props, State> {
   };
 
   // https://github.com/mapbox/mapbox-gl-js/pull/8048
-  _updateVectorSource = (
+  _updateTileSource = (
     id: string,
-    prevSource: VectorSourceSpecification,
-    newSource: VectorSourceSpecification
+    prevSource: TileSourceSpecification,
+    newSource: TileSourceSpecification
   ) => {
     const source = this._map.getSource(id);
 

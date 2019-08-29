@@ -61,6 +61,18 @@ test('update vector source url', () => {
   });
 });
 
+test('update raster source url', () => {
+  const wrapper = mount(
+    <MapGL latitude={0} longitude={0} zoom={0}>
+      <Source id="test" type="raster" url="mapbox://mapbox.satellite" />
+    </MapGL>
+  );
+
+  wrapper.setProps({
+    children: <Source id="test" type="raster" url="mapbox.landsat-live" />
+  });
+});
+
 test('update vector source tiles', () => {
   const wrapper = mount(
     <MapGL latitude={0} longitude={0} zoom={0}>
@@ -78,6 +90,28 @@ test('update vector source tiles', () => {
         id="test"
         type="vector"
         tiles={['https://d25uarhxywzl1j.cloudfront.net/v0.1/{z}/{x}/{y}.mvt?']}
+      />
+    )
+  });
+});
+
+test('update raster source tiles', () => {
+  const wrapper = mount(
+    <MapGL latitude={0} longitude={0} zoom={0}>
+      <Source
+        id="test"
+        type="raster"
+        tiles={['http://a.tile.stamen.com/toner/{z}/{x}/{y}.png']}
+      />
+    </MapGL>
+  );
+
+  wrapper.setProps({
+    children: (
+      <Source
+        id="test"
+        type="raster"
+        tiles={['http://a.tile.stamen.com/watercolor/{z}/{x}/{y}.png']}
       />
     )
   });
