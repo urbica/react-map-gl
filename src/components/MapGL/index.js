@@ -238,8 +238,6 @@ class MapGL extends PureComponent<Props, State> {
 
   _container: { current: null | ElementRef<'div'> };
 
-  _onViewportChange: (event: ViewportChangeEvent) => void;
-
   static displayName = 'MapGL';
 
   static defaultProps = {
