@@ -4219,10 +4219,10 @@ eslint-config-airbnb@^18.0.1:
     object.assign "^4.1.0"
     object.entries "^1.1.0"
 
-eslint-config-prettier@^6.1.0:
-  version "6.1.0"
-  resolved "https://registry.yarnpkg.com/eslint-config-prettier/-/eslint-config-prettier-6.1.0.tgz#e6f678ba367fbd1273998d5510f76f004e9dce7b"
-  integrity sha512-k9fny9sPjIBQ2ftFTesJV21Rg4R/7a7t7LCtZVrYQiHEp8Nnuk3EGaDmsKSAnsPj0BYcgB2zxzHa2NTkIxcOLg==
+eslint-config-prettier@^6.2.0:
+  version "6.2.0"
+  resolved "https://registry.yarnpkg.com/eslint-config-prettier/-/eslint-config-prettier-6.2.0.tgz#80e0b8714e3f6868c4ac2a25fbf39c02e73527a7"
+  integrity sha512-VLsgK/D+S/FEsda7Um1+N8FThec6LqE3vhcMyp8mlmto97y3fGf3DX7byJexGuOb1QY0Z/zz222U5t+xSfcZDQ==
   dependencies:
     get-stdin "^6.0.0"
 
@@ -4242,10 +4242,10 @@ eslint-module-utils@^2.4.0:
     debug "^2.6.8"
     pkg-dir "^2.0.0"
 
-eslint-plugin-flowtype@^4.2.0:
-  version "4.2.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-flowtype/-/eslint-plugin-flowtype-4.2.0.tgz#a89ac991eef6753226eb8871261e266645aca4b9"
-  integrity sha512-mqf6AbQCP6N8Bk+ryXYwxt6sj3RT7i3kt8JOOx7WOQNlZtsLxqvnkXRRrToFHcN52E5W9c/p3UfNxCMsfENIJA==
+eslint-plugin-flowtype@^4.3.0:
+  version "4.3.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-flowtype/-/eslint-plugin-flowtype-4.3.0.tgz#06d0837ac341caf369e7e6dbb112dd7fd21acf17"
+  integrity sha512-elvqoadMHnYqSYN1YXn02DR7SFW8Kc2CLe8na3m2GdQPQhIY+BgCd2quVJ1AbW3aO0zcyE9loVJ7Szy8A/xlMA==
   dependencies:
     lodash "^4.17.15"
 
@@ -5025,17 +5025,17 @@ flow-coverage-report@^0.6.1:
     terminal-table "0.0.12"
     yargs "8.0.1"
 
-flow-parser@^0.106.3:
-  version "0.106.3"
-  resolved "https://registry.yarnpkg.com/flow-parser/-/flow-parser-0.106.3.tgz#37dfb70254e8bde053808d00711e4a93f722b2af"
-  integrity sha512-V4K3tNmawjup+HySlIW5g3M0pywnTXvb32LeVxRHpQi4e3z2zCZIi+4JqnZWq/19JfYexEAquAbD95sORdOILQ==
+flow-parser@^0.107.0:
+  version "0.107.0"
+  resolved "https://registry.yarnpkg.com/flow-parser/-/flow-parser-0.107.0.tgz#b9b01443314253b1a58eeee5f8e5c269d49585c7"
+  integrity sha512-GtMCS8qzP0VskiE5qfN4zYiwjnClV/BxPZ4zUqMRUfyaF+gBuLHDTPqVLJ4ndGedrdv54510rsXDSbkCqUig+g==
 
-flow-remove-types@^2.106.3:
-  version "2.106.3"
-  resolved "https://registry.yarnpkg.com/flow-remove-types/-/flow-remove-types-2.106.3.tgz#766aecbe285aed584a79fc47f6bf12b22fe65bba"
-  integrity sha512-gIy/xMWWtSp3eSA8ZHIEvnxK+b9nZoTdSHPPxohgoVgGjar55uSEorwqEDIE2GCwTE7ty6s/EdO0EuXlENXd+A==
+flow-remove-types@^2.107.0:
+  version "2.107.0"
+  resolved "https://registry.yarnpkg.com/flow-remove-types/-/flow-remove-types-2.107.0.tgz#e0f7df6ab0b599db60f0bdb57303e19a82d636ab"
+  integrity sha512-PXsYEHt5gKuFxw4rSc5e0K2OxhR7JxploCQ4wQzu7wE/Fw42oOs7sdGHPZujTeBY/g3OYSoZ11YxK3KoTHIYWw==
   dependencies:
-    flow-parser "^0.106.3"
+    flow-parser "^0.107.0"
     pirates "^3.0.2"
     vlq "^0.2.1"
 
@@ -7498,10 +7498,10 @@ map-visit@^1.0.0:
   dependencies:
     object-visit "^1.0.0"
 
-mapbox-gl@^1.3.0:
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/mapbox-gl/-/mapbox-gl-1.3.0.tgz#8bd807b44f395d1830fe3a202763b28b5f1ed299"
-  integrity sha512-mhxIXNQwyqqlFImVUuFucSydxXIeKS4ul/5ES6A5zA4loLvcEXOrlH1PewjqkGoYjfdRHjqsaxpP8czbVuHg3g==
+mapbox-gl@^1.3.1:
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/mapbox-gl/-/mapbox-gl-1.3.1.tgz#6be39a207afec3cc6ea4bc241d596140a664e46b"
+  integrity sha512-IF7b0LZd/caTiknPhm8DAcv7bhvOCXO6rsW18rmFxi8Vw0syJXKK8DLLabI5oiJXtUIgLe57XRgduQzAYrb4og==
   dependencies:
     "@mapbox/geojson-rewind" "^0.4.0"
     "@mapbox/geojson-types" "^1.0.2"
