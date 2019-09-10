@@ -2,15 +2,13 @@
 
 import React from 'react';
 import { mount } from 'enzyme';
-import MapGL, { TrafficControl } from '../..';
+import MapGL, { TrafficControl, Layer } from '../..';
 
 test('render', () => {
   const wrapper = mount(
     <MapGL latitude={0} longitude={0} zoom={0}>
-      <TrafficControl
-        // showTraffic
-        showTrafficButton={false}
-      />
+      <Layer id="road" source-layer="road" />
+      <TrafficControl showTraffic showTrafficButton={false} />
     </MapGL>
   );
 
@@ -18,12 +16,7 @@ test('render', () => {
   expect(control.exists()).toBe(true);
   expect(control.instance().getControl()).toBeTruthy();
   wrapper.setProps({
-    children: [
-      <TrafficControl
-        // showTraffic={false}
-        showTrafficButton
-      />
-    ]
+    children: [<TrafficControl showTraffic={false} showTrafficButton />]
   });
 
   wrapper.unmount();
