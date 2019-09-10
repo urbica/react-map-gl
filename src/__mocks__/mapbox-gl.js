@@ -197,14 +197,20 @@ Marker.prototype.on = function on(listener, fn) {
 };
 
 function AttributionControl() {
+  this.onAdd = jest.fn();
+
   return this;
 }
 
 function FullscreenControl() {
+  this.onAdd = jest.fn();
+
   return this;
 }
 
 function GeolocateControl() {
+  this.onAdd = jest.fn();
+
   return this;
 }
 
@@ -213,10 +219,14 @@ GeolocateControl.prototype.on = function on(listener, fn) {
 };
 
 function NavigationControl() {
+  this.onAdd = jest.fn();
+
   return this;
 }
 
 function ScaleControl() {
+  this.onAdd = jest.fn();
+
   return this;
 }
 
