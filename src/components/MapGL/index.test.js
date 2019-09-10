@@ -303,6 +303,21 @@ test('do not call onViewportChange if originalEvent is not present', () => {
   expect(onViewportChange).not.toHaveBeenCalled();
 });
 
+test('supports array event handlers', () => {
+  const onClick = jest.fn();
+
+  const wrapper = mount(
+    <MapGL
+      latitude={0}
+      longitude={0}
+      zoom={0}
+      onClick={['national_park', onClick]}
+    />
+  );
+
+  expect(wrapper.exists()).toBe(true);
+});
+
 test('renders without mapbox-gl', () => {
   jest.resetModules();
   jest.doMock('mapbox-gl', () => null);

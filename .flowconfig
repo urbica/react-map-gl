@@ -1,6 +1,6 @@
 [ignore]
-.*/node_modules/findup/.*
-.*/node_modules/@mapbox/jsonlint-lines-primitives/.*
+.*/findup/test/fixture/.*
+.*/jsonlint-lines-primitives/test/fails/.*
 
 [include]
 

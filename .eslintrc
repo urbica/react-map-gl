@@ -46,6 +46,7 @@
         ]
       }
     ],
+    "react/state-in-constructor": ["error", "never"],
     "react/jsx-filename-extension": [1, { "extensions": [".js"] }],
     "react/require-default-props": 0,
     "react/static-property-placement": ["error", "static public field"],

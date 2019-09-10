@@ -2,6 +2,7 @@
 
 import { PureComponent, createElement } from 'react';
 import type MapboxMap from 'mapbox-gl/src/ui/map';
+import type GeoJSONFeature from 'mapbox-gl/src/util/vectortile_to_geojson';
 import type { LayerSpecification } from 'mapbox-gl/src/style-spec/types';
 import type { MapMouseEvent, MapTouchEvent } from 'mapbox-gl/src/ui/events';
 
@@ -15,6 +16,8 @@ const eventListeners = [
   ['onEnter', 'mouseenter'],
   ['onLeave', 'mouseleave']
 ];
+
+type InteractionEvent = { ...MapMouseEvent, features?: GeoJSONFeature[] };
 
 type Props = {|
   /** Mapbox GL Layer id */
@@ -32,7 +35,7 @@ type Props = {|
    * using Mapbox's queryRenderedFeatures API:
    * https://www.mapbox.com/mapbox-gl-js/api/#Map#queryRenderedFeatures
    */
-  onClick?: (event: { features?: [], ...MapMouseEvent }) => any,
+  onClick?: (event: InteractionEvent) => any,
 
   /**
    * Called when the layer is hovered over.
@@ -43,7 +46,7 @@ type Props = {|
    * using Mapbox's queryRenderedFeatures API:
    * https://www.mapbox.com/mapbox-gl-js/api/#Map#queryRenderedFeatures
    */
-  onHover?: (event: { features?: [], ...MapMouseEvent }) => any,
+  onHover?: (event: InteractionEvent) => any,
 
   /**
    * Called when the layer feature is entered.
@@ -54,7 +57,7 @@ type Props = {|
    * using Mapbox's queryRenderedFeatures API:
    * https://www.mapbox.com/mapbox-gl-js/api/#Map#queryRenderedFeatures
    */
-  onEnter?: (event: { features?: [], ...MapMouseEvent }) => any,
+  onEnter?: (event: InteractionEvent) => any,
 
   /**
    * Called when the layer feature is leaved.
@@ -65,7 +68,7 @@ type Props = {|
    * using Mapbox's queryRenderedFeatures API:
    * https://www.mapbox.com/mapbox-gl-js/api/#Map#queryRenderedFeatures
    */
-  onLeave?: (event: { features?: [], ...MapMouseEvent }) => any,
+  onLeave?: (event: InteractionEvent) => any,
 
   /**
    * Radius to detect features around a clicked/hovered point
