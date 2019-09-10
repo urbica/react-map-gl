@@ -33,18 +33,23 @@ class TrafficControl extends PureComponent<Props> {
   };
 
   componentDidMount() {
-    const map: MapboxMap = this._map;
+    this._addControl();
+  }
 
-    const { showTraffic, showTrafficButton, trafficSource } = this.props;
+  componentDidUpdate(prevProps: Props) {
+    if (prevProps.showTraffic !== this.props.showTraffic) {
+      this._control.toggleTraffic();
+    }
 
-    const control = new MapboxTraffic({
-      showTraffic,
-      showTrafficButton,
-      trafficSource
-    });
+    const shouldUpdate =
+      prevProps.showTrafficButton !== this.props.showTrafficButton ||
+      prevProps.trafficSource !== this.props.trafficSource;
 
-    map.addControl(control);
-    this._control = control;
+    if (shouldUpdate) {
+      this._map.removeControl(this._control);
+
+      this._addControl();
+    }
   }
 
   componentWillUnmount() {
@@ -54,6 +59,19 @@ class TrafficControl extends PureComponent<Props> {
 
     this._map.removeControl(this._control);
   }
+
+  _addControl = () => {
+    const { showTraffic, showTrafficButton, trafficSource } = this.props;
+
+    const control = new MapboxTraffic({
+      showTraffic,
+      showTrafficButton,
+      trafficSource
+    });
+
+    this._map.addControl(control);
+    this._control = control;
+  };
 
   getControl() {
     return this._control;
