@@ -122,16 +122,7 @@ class Source extends PureComponent<Props, State> {
     newSource: ImageSourceSpecification
   ) => {
     const source = this._map.getSource(id);
-
-    source.url = newSource.url;
-    source.coordinates = newSource.coordinates;
-
-    const sourceCache = this._map.style.sourceCaches[id];
-    if (sourceCache) {
-      sourceCache.clearTiles();
-    }
-
-    source.load();
+    if (source !== undefined) source.updateImage(newSource);
   };
 
   // https://github.com/mapbox/mapbox-gl-js/pull/8048
