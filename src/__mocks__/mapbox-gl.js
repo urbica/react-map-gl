@@ -63,6 +63,7 @@ Map.prototype.getSource = function getSource(name) {
   const source = {
     setData: jest.fn(),
     load: jest.fn(),
+    updateImage: jest.fn(),
     _tileJSONRequest: {
       cancel: jest.fn()
     },
