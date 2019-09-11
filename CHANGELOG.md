@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.11.0](https://github.com/urbica/react-map-gl/compare/v1.10.0...v1.11.0) (2019-09-11)
+
+
+### Bug Fixes
+
+* **source:** add dynamic raster sources support ([be3aa67](https://github.com/urbica/react-map-gl/commit/be3aa67)), closes [#247](https://github.com/urbica/react-map-gl/issues/247)
+* allow mapbox-gl >= 1.0 in peerDependencies ([f68dbbb](https://github.com/urbica/react-map-gl/commit/f68dbbb)), closes [#243](https://github.com/urbica/react-map-gl/issues/243)
+* update flow settings ([de2a766](https://github.com/urbica/react-map-gl/commit/de2a766))
+
+
+### Features
+
+* **trafficcontrol:** add possibility to toggle traffic ([eb120b8](https://github.com/urbica/react-map-gl/commit/eb120b8))
+* **TrafficControl:** Add traffic control button ([73e2326](https://github.com/urbica/react-map-gl/commit/73e2326))
+
 ## [1.10.0](https://github.com/urbica/react-map-gl/compare/v1.9.1...v1.10.0) (2019-08-21)
 
 

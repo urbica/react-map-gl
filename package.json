@@ -1,6 +1,6 @@
 {
   "name": "@urbica/react-map-gl",
-  "version": "1.10.0",
+  "version": "1.11.0",
   "description": "React Component for Mapbox GL JS",
   "author": "Stepan Kuzmin <to.stepan.kuzmin@gmail.com> (stepankuzmin.com)",
   "contributors": [
@@ -79,7 +79,7 @@
     "enzyme-to-json": "^3.4.0",
     "eslint": "^6.3.0",
     "eslint-config-airbnb": "^18.0.1",
-    "eslint-config-prettier": "^6.2.0",
+    "eslint-config-prettier": "^6.3.0",
     "eslint-plugin-flowtype": "^4.3.0",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",
@@ -98,7 +98,7 @@
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-styleguidist": "^9.1.16",
-    "rollup": "^1.20.3",
+    "rollup": "^1.21.2",
     "rollup-plugin-babel": "^4.3.3",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-node-resolve": "^5.2.0",
