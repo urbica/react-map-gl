@@ -34,6 +34,53 @@ test('update geojson source', () => {
   });
 });
 
+test('render image source', () => {
+  const data = { url: '', coordinates: [] };
+
+  const wrapper = mount(
+    <MapGL latitude={0} longitude={0} zoom={0}>
+      <Source
+        id="test"
+        type="image"
+        url={data.url}
+        coordinates={data.coordinates}
+      />
+    </MapGL>
+  );
+
+  expect(wrapper.find('Source').exists()).toBe(true);
+
+  wrapper.unmount();
+  expect(wrapper.find('Source').exists()).toBe(false);
+});
+
+test('update image source', () => {
+  const data1 = { url: '', coordinates: [] };
+  const data2 = { url: '', coordinates: [] };
+
+  const wrapper = mount(
+    <MapGL latitude={0} longitude={0} zoom={0}>
+      <Source
+        id="test"
+        type="image"
+        url={data1.url}
+        coordinates={data1.coordinates}
+      />
+    </MapGL>
+  );
+
+  wrapper.setProps({
+    children: (
+      <Source
+        id="test"
+        type="image"
+        url={data2.url}
+        coordinates={data2.coordinates}
+      />
+    )
+  });
+});
+
 test('render vector source', () => {
   const wrapper = mount(
     <MapGL latitude={0} longitude={0} zoom={0}>
