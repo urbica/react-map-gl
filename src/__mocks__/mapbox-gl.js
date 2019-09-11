@@ -1,5 +1,6 @@
 // LngLatBounds
 function LngLatBounds() {}
+
 LngLatBounds.prototype.toArray = () => [[-180, -90], [180, 90]];
 
 // Map
@@ -7,6 +8,7 @@ function Map() {
   this._sources = {};
   this._images = {};
   this._layers = [];
+  this._controls = [];
 
   this.style = {
     sources: this._sources,
@@ -137,7 +139,12 @@ Map.prototype.removeImage = function removeImage(id) {
 };
 
 Map.prototype.remove = jest.fn();
-Map.prototype.addControl = jest.fn();
+Map.prototype.addControl = function addControl(control) {
+  control.onAdd(this);
+  this._controls.push(control);
+
+  return this;
+};
 Map.prototype.removeControl = jest.fn();
 Map.prototype.fire = jest.fn();
 
@@ -191,14 +198,20 @@ Marker.prototype.on = function on(listener, fn) {
 };
 
 function AttributionControl() {
+  this.onAdd = jest.fn();
+
   return this;
 }
 
 function FullscreenControl() {
+  this.onAdd = jest.fn();
+
   return this;
 }
 
 function GeolocateControl() {
+  this.onAdd = jest.fn();
+
   return this;
 }
 
@@ -207,10 +220,18 @@ GeolocateControl.prototype.on = function on(listener, fn) {
 };
 
 function NavigationControl() {
+  this.onAdd = jest.fn();
+
   return this;
 }
 
 function ScaleControl() {
+  this.onAdd = jest.fn();
+
+  return this;
+}
+
+function TrafficControl() {
   return this;
 }
 
@@ -223,5 +244,6 @@ module.exports = {
   GeolocateControl,
   NavigationControl,
   ScaleControl,
+  TrafficControl,
   supported: () => true
 };
