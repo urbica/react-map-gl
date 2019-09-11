@@ -65,6 +65,8 @@
     "@deck.gl/layers": "^7.2.3",
     "@deck.gl/mapbox": "^7.2.3",
     "@luma.gl/core": "^7.2.0",
+    "@mapbox/mapbox-gl-language": "^0.10.0",
+    "@mapbox/mapbox-gl-traffic": "^1.0.2",
     "@turf/random": "^6.0.2",
     "babel-eslint": "^10.0.3",
     "babel-loader": "^8.0.6",
