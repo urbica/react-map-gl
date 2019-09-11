@@ -7,7 +7,8 @@ import type {
   SourceSpecification,
   RasterSourceSpecification,
   VectorSourceSpecification,
-  GeoJSONSourceSpecification
+  GeoJSONSourceSpecification,
+  ImageSourceSpecification
 } from 'mapbox-gl/src/style-spec/types';
 
 import MapContext from '../MapContext';
@@ -69,6 +70,11 @@ class Source extends PureComponent<Props, State> {
       return;
     }
 
+    if (source.type === 'image' && prevSource.type === 'image') {
+      this._updateImageSource(id, prevSource, source);
+      return;
+    }
+
     if (source.type === 'vector' && prevSource.type === 'vector') {
       this._updateTileSource(id, prevSource, source);
       return;
@@ -106,6 +112,20 @@ class Source extends PureComponent<Props, State> {
 
       if (source !== undefined) {
         source.setData(newSource.data);
+      }
+    }
+  };
+
+  _updateImageSource = (
+    id: string,
+    prevSource: ImageSourceSpecification,
+    newSource: ImageSourceSpecification
+  ) => {
+    if (newSource.data !== prevSource.data) {
+      const source = this._map.getSource(id);
+
+      if (source !== undefined) {
+        source.updateImage(newSource.data);
       }
     }
   };
