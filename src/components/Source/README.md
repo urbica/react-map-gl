@@ -252,3 +252,106 @@ initialState = {
   <Layer id="raster" type="raster" source="raster" />
 </MapGL>;
 ```
+
+## Dynamic Source URLs
+
+```jsx
+import React from 'react';
+import { randomPoint } from '@turf/random';
+import MapGL, { Source, Layer } from '@urbica/react-map-gl';
+import 'mapbox-gl/dist/mapbox-gl.css';
+
+const sourceURLs = {
+  first: 'mapbox://stepankuzmin.ck0glwxo402ld2omagmzc2gma-7pqww',
+  second: 'mapbox://stepankuzmin.ck0glym6u02ls2omawvm9vi4y-9xid1'
+};
+
+initialState = {
+  sourceURL: sourceURLs.first,
+  viewport: {
+    latitude: 37.78,
+    longitude: -122.41,
+    zoom: 9
+  }
+};
+
+const toggleSourceURL = () => {
+  setState((state) => {
+    const nextSourceURL =
+      state.sourceURL === sourceURLs.first ? sourceURLs.second : sourceURLs.first;
+
+    return { sourceURL: nextSourceURL };
+  });
+};
+
+<React.Fragment>
+  <button onClick={toggleSourceURL}>Toggle Source URL</button>
+  <MapGL
+    style={{ width: '100%', height: '400px' }}
+    mapStyle="mapbox://styles/mapbox/light-v9"
+    accessToken={MAPBOX_ACCESS_TOKEN}
+    onViewportChange={(viewport) => setState({ viewport })}
+    {...state.viewport}
+  >
+    <Source id="sf-points" type="vector" url={state.sourceURL} />
+    <Layer
+      id="sf-points"
+      type="circle"
+      source="sf-points"
+      source-layer="sf-points"
+      paint={{
+        'circle-radius': 6,
+        'circle-color': '#1978c8'
+      }}
+    />
+  </MapGL>
+</React.Fragment>;
+```
+
+## Dynamic Source Tiles
+
+```jsx
+import React from 'react';
+import { randomPoint } from '@turf/random';
+import MapGL, { Source, Layer } from '@urbica/react-map-gl';
+import 'mapbox-gl/dist/mapbox-gl.css';
+
+const sourceTiles = {
+  toner: 'http://tile.stamen.com/toner/{z}/{x}/{y}.png',
+  watercolor: 'http://tile.stamen.com/watercolor/{z}/{x}/{y}.jpg'
+};
+
+initialState = {
+  sourceTiles: sourceTiles.toner,
+  viewport: {
+    latitude: 37.78,
+    longitude: -122.41,
+    zoom: 9
+  }
+};
+
+const toggleSourceTiles = () => {
+  setState((state) => {
+    const nextSourceTiles =
+      state.sourceTiles === sourceTiles.toner
+        ? sourceTiles.watercolor
+        : sourceTiles.toner;
+
+    return { sourceTiles: nextSourceTiles };
+  });
+};
+
+<React.Fragment>
+  <button onClick={toggleSourceTiles}>Toggle Source Tiles</button>
+  <MapGL
+    style={{ width: '100%', height: '400px' }}
+    mapStyle="mapbox://styles/mapbox/light-v9"
+    accessToken={MAPBOX_ACCESS_TOKEN}
+    onViewportChange={(viewport) => setState({ viewport })}
+    {...state.viewport}
+  >
+    <Source id="raster" type="raster" tiles={[state.sourceTiles]} />
+    <Layer id="raster" type="raster" source="raster" />
+  </MapGL>
+</React.Fragment>;
+```
