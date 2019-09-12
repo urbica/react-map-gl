@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.11.1](https://github.com/urbica/react-map-gl/compare/v1.11.0...v1.11.1) (2019-09-12)
+
+
+### Bug Fixes
+
+* **source:** fix source flickering when using tiles prop ([636ea4f](https://github.com/urbica/react-map-gl/commit/636ea4f)), closes [#254](https://github.com/urbica/react-map-gl/issues/254)
+
 ## [1.11.0](https://github.com/urbica/react-map-gl/compare/v1.10.0...v1.11.0) (2019-09-11)
 
 ### Bug Fixes
