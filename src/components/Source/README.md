@@ -247,7 +247,7 @@ initialState = {
     id="raster"
     type="raster"
     tileSize={256}
-    tiles={['https://stamen-tiles.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.jpg']}
+    tiles={['https://stamen-tiles.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.png']}
   />
   <Layer id="raster" type="raster" source="raster" />
 </MapGL>;
@@ -317,8 +317,8 @@ import MapGL, { Source, Layer } from '@urbica/react-map-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
 const sourceTiles = {
-  toner: 'http://tile.stamen.com/toner/{z}/{x}/{y}.png',
-  watercolor: 'http://tile.stamen.com/watercolor/{z}/{x}/{y}.jpg'
+  toner: 'https://stamen-tiles.a.ssl.fastly.net/toner/{z}/{x}/{y}.png',
+  watercolor: 'https://stamen-tiles.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.png'
 };
 
 initialState = {
