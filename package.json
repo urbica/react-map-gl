@@ -105,7 +105,7 @@
     "rollup-plugin-terser": "^5.1.2",
     "standard-version": "^7.0.0",
     "style-loader": "^1.0.0",
-    "webpack": "^4.39.3"
+    "webpack": "^4.40.1"
   },
   "config": {
     "commitizen": {
