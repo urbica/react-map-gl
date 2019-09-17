@@ -915,13 +915,13 @@
     resolve-from "^5.0.0"
     resolve-global "^1.0.0"
 
-"@deck.gl/core@^7.2.3":
-  version "7.2.3"
-  resolved "https://registry.yarnpkg.com/@deck.gl/core/-/core-7.2.3.tgz#ebbe28334d676370e180a291e62fa12042c30966"
-  integrity sha512-ZKuijF1CibsHA2pk6Puvj9uawRAgksoTXVxBuAMASlQdNPF2P/Bi8Nhni7bhDcPiG9igGmiHArZq9rK6ldhZ7w==
+"@deck.gl/core@^7.2.4":
+  version "7.2.4"
+  resolved "https://registry.yarnpkg.com/@deck.gl/core/-/core-7.2.4.tgz#2d0a76099db44065a709d2e76275532121468d06"
+  integrity sha512-FECJ+aEM2EEsKefkxZYlvoPUvi8Qp6nWTVgzS1uPYZqQ6voib/o78ZuhOXAUQFOfaYrpKDjMxOiY3v98m7uTZQ==
   dependencies:
-    "@loaders.gl/core" "^1.2.0-beta.4"
-    "@loaders.gl/images" "^1.2.0-beta.4"
+    "@loaders.gl/core" "^1.2.2"
+    "@loaders.gl/images" "^1.2.2"
     "@luma.gl/core" "^7.2.0"
     gl-matrix "^3.0.0"
     math.gl "^2.3.0"
@@ -930,19 +930,19 @@
     seer "^0.2.4"
     viewport-mercator-project "^6.1.0"
 
-"@deck.gl/layers@^7.2.3":
-  version "7.2.3"
-  resolved "https://registry.yarnpkg.com/@deck.gl/layers/-/layers-7.2.3.tgz#129bf2af15a2dffb58abd71ca684aaa2c61a30d8"
-  integrity sha512-xYJvuQg2U/2ApeixDeWSTQSQMkNhEBO+0zkE1EmJPZl9eEdfyylBVHvyJfhBz52QQ3pExUw4WfwHjv+1+oQHrQ==
+"@deck.gl/layers@^7.2.4":
+  version "7.2.4"
+  resolved "https://registry.yarnpkg.com/@deck.gl/layers/-/layers-7.2.4.tgz#6bc3c69e98c7e4718aa94374983a4972cf16cb3d"
+  integrity sha512-rdKfEzhDu7y9YqpQTSZxbo5cNDAnsijjX5Q1qWRNXf1sQNjfpikkTiUiFJR5QSuacM3RRWHTJ9UGyqwdOE1diA==
   dependencies:
-    "@loaders.gl/images" "^1.2.0-beta.4"
+    "@loaders.gl/images" "^1.2.2"
     "@mapbox/tiny-sdf" "^1.1.0"
     earcut "^2.0.6"
 
-"@deck.gl/mapbox@^7.2.3":
-  version "7.2.3"
-  resolved "https://registry.yarnpkg.com/@deck.gl/mapbox/-/mapbox-7.2.3.tgz#3eed50d80b44305231d51bef4abf908f40fdf9d5"
-  integrity sha512-Ff7nVlJm1YWkS/1opTiUB5TDB5H61hZVyQW5ThlbAgu82mGOGJ/Mfv0jV5MLC+bvOLozhFeuggB/VL9wzRTiNA==
+"@deck.gl/mapbox@^7.2.4":
+  version "7.2.4"
+  resolved "https://registry.yarnpkg.com/@deck.gl/mapbox/-/mapbox-7.2.4.tgz#fc926cc435f32911c9bbf4ba0ff1715c2b3f6554"
+  integrity sha512-GR5CclJ2lWtwn2mbUT1lu2fxopiJ0A3MWrFmnnN1J2nz74vC/0aNu6vwFGhMfgz0xRJx47N0Stk+g1qcdBsu0Q==
 
 "@jest/console@^24.7.1":
   version "24.7.1"
@@ -1110,17 +1110,17 @@
     "@types/istanbul-reports" "^1.1.1"
     "@types/yargs" "^13.0.0"
 
-"@loaders.gl/core@^1.2.0-beta.4":
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/@loaders.gl/core/-/core-1.2.1.tgz#77c2ac33d935429dc37419754ab3ec1fd0c45fda"
-  integrity sha512-D+KdCQSKMhnReC3gNSdjNs2sQrm7SviEbu68mD93k4VqCyNg9/5AHY9FAK6P6SQkau0GAJ0zXIJ/GIxxuOLNoQ==
+"@loaders.gl/core@^1.2.2":
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/@loaders.gl/core/-/core-1.3.0.tgz#192c81d9e0b2cbc46af93e7e0e09ea7538afda93"
+  integrity sha512-kEbOJLCGNrvHIcRhTsMX/OJSNdITvNuzT5vlje/xPZ54VBqfSddBAyBj7QNtF1xFf9ykI+XgKSW52g7Eo6OgFQ==
   dependencies:
     "@babel/runtime" "^7.3.1"
 
-"@loaders.gl/images@^1.2.0-beta.4":
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/@loaders.gl/images/-/images-1.2.1.tgz#558b45fdeb55f783acf4d34b3df5fc974d8efa6d"
-  integrity sha512-Ec/UAqfsQifdQjUdW2yvLf0KyHAwv6Ej4xEKyIC6JWD6KE2Z1hfAKrwdhIsiLBPHIonvxy41jSuVEJeoVYonEA==
+"@loaders.gl/images@^1.2.2":
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/@loaders.gl/images/-/images-1.3.0.tgz#68ded62210c3fef11ddf5b59fe9a66dd4fa1bf1b"
+  integrity sha512-08aD9Q3i3pYgcrZxXgNdkKpUzY33qmrhfuRrzhi+BpHjzkEl27FoYz1wE3UTUPwqKP9ivB8cjyPrgcjrIHV+Yg==
 
 "@luma.gl/constants@7.2.0":
   version "7.2.0"
@@ -1400,7 +1400,7 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-12.6.9.tgz#ffeee23afdc19ab16e979338e7b536fdebbbaeaf"
   integrity sha512-+YB9FtyxXGyD54p8rXwWaN1EWEyar5L58GlGWgtH2I9rGmLGBQcw63+0jw+ujqVavNuO47S1ByAjm9zdHMnskw==
 
-"@types/node@^12.7.4":
+"@types/node@^12.7.5":
   version "12.7.5"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-12.7.5.tgz#e19436e7f8e9b4601005d73673b6dc4784ffcc2f"
   integrity sha512-9fq4jZVhPNW8r+UYKnxF1e2HkDWOWKM5bC2/7c9wPV835I0aOrVbS/Hw/pWPk2uKrNXQqg9Z959Kz+IYDd5p3w==
@@ -4438,10 +4438,10 @@ eslint@^5.0.0:
     table "^5.2.3"
     text-table "^0.2.0"
 
-eslint@^6.3.0:
-  version "6.3.0"
-  resolved "https://registry.yarnpkg.com/eslint/-/eslint-6.3.0.tgz#1f1a902f67bfd4c354e7288b81e40654d927eb6a"
-  integrity sha512-ZvZTKaqDue+N8Y9g0kp6UPZtS4FSY3qARxBs7p4f0H0iof381XHduqVerFWtK8DPtKmemqbqCFENWSQgPR/Gow==
+eslint@^6.4.0:
+  version "6.4.0"
+  resolved "https://registry.yarnpkg.com/eslint/-/eslint-6.4.0.tgz#5aa9227c3fbe921982b2eda94ba0d7fae858611a"
+  integrity sha512-WTVEzK3lSFoXUovDHEbkJqCVPEPwbhCq4trDktNI6ygs7aO41d4cDT0JFAT5MivzZeVLWlg7vHL+bgrQv/t3vA==
   dependencies:
     "@babel/code-frame" "^7.0.0"
     ajv "^6.10.0"
@@ -10083,13 +10083,13 @@ rollup-pluginutils@^2.8.1:
   dependencies:
     estree-walker "^0.6.1"
 
-rollup@^1.21.2:
-  version "1.21.2"
-  resolved "https://registry.yarnpkg.com/rollup/-/rollup-1.21.2.tgz#eaabd07d0bd309587ad8bebf731fca6fcb96f4d0"
-  integrity sha512-sCAHlcQ/PExU5t/kRwkEWHdhGmQrZ2IgdQzbjPVNfhWbKHMMZGYqkASVTpQqRPLtQKg15xzEscc+BnIK/TE7/Q==
+rollup@^1.21.4:
+  version "1.21.4"
+  resolved "https://registry.yarnpkg.com/rollup/-/rollup-1.21.4.tgz#00a41a30f90095db890301b226cbe2918e4cf54d"
+  integrity sha512-Pl512XVCmVzgcBz5h/3Li4oTaoDcmpuFZ+kdhS/wLreALz//WuDAMfomD3QEYl84NkDu6Z6wV9twlcREb4qQsw==
   dependencies:
     "@types/estree" "0.0.39"
-    "@types/node" "^12.7.4"
+    "@types/node" "^12.7.5"
     acorn "^7.0.0"
 
 rst-selector-parser@^2.2.3:
@@ -11778,10 +11778,10 @@ webpack-sources@^1.4.0, webpack-sources@^1.4.1:
     source-list-map "^2.0.0"
     source-map "~0.6.1"
 
-webpack@^4.40.1:
-  version "4.40.1"
-  resolved "https://registry.yarnpkg.com/webpack/-/webpack-4.40.1.tgz#26ec01fc9ee7ea5ab5ec1d4ab95cb185ac20c116"
-  integrity sha512-AAP7F9X1cVNnQl0ZsG52qF89tqCKS8lqVEnFOA0g/G25/VyH4CejwTbSD9aEDGStAIuH+l6W1yOYRZNOP0VE1g==
+webpack@^4.40.2:
+  version "4.40.2"
+  resolved "https://registry.yarnpkg.com/webpack/-/webpack-4.40.2.tgz#d21433d250f900bf0facbabe8f50d585b2dc30a7"
+  integrity sha512-5nIvteTDCUws2DVvP9Qe+JPla7kWPPIDFZv55To7IycHWZ+Z5qBdaBYPyuXWdhggTufZkQwfIK+5rKQTVovm2A==
   dependencies:
     "@webassemblyjs/ast" "1.8.5"
     "@webassemblyjs/helper-module-context" "1.8.5"
