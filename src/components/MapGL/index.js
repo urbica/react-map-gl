@@ -334,8 +334,6 @@ class MapGL extends PureComponent<Props, State> {
 
     this._map = map;
 
-    map.on('styledata', () => this.setState({ loaded: true }));
-
     map.once('load', () => {
       this.setState({ loaded: true }, this.props.onLoad);
     });
@@ -405,7 +403,10 @@ class MapGL extends PureComponent<Props, State> {
     const prevMapStyle = prevProps.mapStyle;
 
     if (newMapStyle !== prevMapStyle) {
-      this.setState({ loaded: false }, () => this._map.setStyle(newMapStyle));
+      this.setState({ loaded: false }, () => {
+        this._map.setStyle(newMapStyle);
+        this._map.once('style.load', () => this.setState({ loaded: true }));
+      });
     }
   }
 

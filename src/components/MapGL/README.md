@@ -47,6 +47,42 @@ initialState = {
 />;
 ```
 
+### Changing Map Style
+
+```jsx
+import React from 'react';
+import MapGL, { Source, Layer } from '@urbica/react-map-gl';
+import 'mapbox-gl/dist/mapbox-gl.css';
+
+const styles = {
+  light: 'mapbox://styles/mapbox/light-v9',
+  dark: 'mapbox://styles/mapbox/dark-v9'
+};
+
+initialState = {
+  styleId: 'light',
+  viewport: {
+    latitude: 37.78,
+    longitude: -122.41,
+    zoom: 11
+  }
+};
+
+<React.Fragment>
+  <button onClick={() => setState({ styleId: 'light' })}>light</button>
+  <button onClick={() => setState({ styleId: 'dark' })}>dark</button>
+  <MapGL
+    style={{ width: '100%', height: '400px' }}
+    mapStyle={styles[state.styleId]}
+    accessToken={MAPBOX_ACCESS_TOKEN}
+    latitude={state.viewport.latitude}
+    longitude={state.viewport.longitude}
+    zoom={state.viewport.zoom}
+    onViewportChange={(viewport) => setState({ viewport })}
+  />
+</React.Fragment>;
+```
+
 ### Using JSON Map Style
 
 ```jsx
