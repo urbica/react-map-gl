@@ -19,3 +19,4 @@ export { default as NavigationControl } from './components/NavigationControl';
 export { default as ScaleControl } from './components/ScaleControl';
 export { default as LanguageControl } from './components/LanguageControl';
 export { default as TrafficControl } from './components/TrafficControl';
+export { default as Filter } from './components/Filter';
