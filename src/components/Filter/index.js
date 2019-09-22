@@ -8,7 +8,14 @@ import MapContext from '../MapContext';
 import isArraysEqual from '../../utils/isArraysEqual';
 
 type Props = {|
+  /** Mapbox GL Layer id */
   layerId: string,
+  /**
+   * The filter, conforming to the Mapbox Style Specification's
+   * filter definition. (see https://docs.mapbox.com/mapbox-gl-js/style-spec/#other-filter)
+   * If null or undefined is provided, the function removes any existing filter
+   * from the layer.
+   * */
   filter: FilterSpecification
 |};
 
