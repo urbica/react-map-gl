@@ -1,4 +1,4 @@
-
+Set filter to target layer. Layer can be define from Layer component or from mapbox style.
 
 ```js
 import React from 'react';
