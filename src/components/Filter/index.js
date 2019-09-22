@@ -28,6 +28,17 @@ class Filter extends PureComponent<Props> {
     }
   }
 
+  componentWillUnmount() {
+    const { layerId } = this.props;
+    const targetLayer = this._map.getLayer(layerId);
+
+    if (targetLayer === undefined) {
+      return;
+    }
+
+    this._map.setFilter(layerId, undefined);
+  }
+
   _setFilter() {
     const { layerId, filter } = this.props;
     const targetLayer = this._map.getLayer(layerId);
@@ -36,7 +47,11 @@ class Filter extends PureComponent<Props> {
       return;
     }
 
-    this._map.setFilter(layerId, filter);
+    if (!filter) {
+      this._map.setFilter(layerId, undefined);
+    } else {
+      this._map.setFilter(layerId, filter);
+    }
   }
 
   render() {
