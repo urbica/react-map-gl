@@ -54,7 +54,7 @@ class Filter extends PureComponent<Props> {
       return;
     }
 
-    if (!filter) {
+    if (!Array.isArray(filter)) {
       this._map.setFilter(layerId, undefined);
     } else {
       this._map.setFilter(layerId, filter);
