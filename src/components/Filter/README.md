@@ -1,4 +1,4 @@
-Set filter to target layer. Layer can be define from Layer component or from mapbox style.
+Set filter to target layer. Layer id can be an id of any layer defined in style or defined by `<Layer />` component.
 
 ```js
 import React from 'react';
