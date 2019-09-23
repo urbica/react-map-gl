@@ -16,11 +16,23 @@ type Props = {|
    * If null or undefined is provided, the function removes any existing filter
    * from the layer.
    * */
-  filter: FilterSpecification
+  filter: FilterSpecification,
+
+  /**
+   * Whether to check if the filter conforms to the Mapbox GL
+   * Style Specification. Disabling validation is a performance optimization
+   * that should only be used if you have previously validated the values you
+   * will be passing to this function.
+   * */
+  validate?: boolean
 |};
 
 class Filter extends PureComponent<Props> {
   _map: MapboxMap;
+
+  static defaultProps = {
+    validate: true
+  };
 
   componentDidMount() {
     this._setFilter();
@@ -28,9 +40,13 @@ class Filter extends PureComponent<Props> {
 
   componentDidUpdate(prevProps: Props) {
     const prevFilter = prevProps.filter;
-    const { filter } = this.props;
+    const prevValidate = prevProps.validate;
+    const { filter, validate } = this.props;
 
-    if (!isArraysEqual(prevFilter, filter)) {
+    const shouldUpdate =
+      !isArraysEqual(prevFilter, filter) || prevValidate !== validate;
+
+    if (shouldUpdate) {
       this._setFilter();
     }
   }
@@ -47,7 +63,7 @@ class Filter extends PureComponent<Props> {
   }
 
   _setFilter() {
-    const { layerId, filter } = this.props;
+    const { layerId, filter, validate } = this.props;
     const targetLayer = this._map.getLayer(layerId);
 
     if (targetLayer === undefined) {
@@ -57,7 +73,7 @@ class Filter extends PureComponent<Props> {
     if (!Array.isArray(filter)) {
       this._map.setFilter(layerId, undefined);
     } else {
-      this._map.setFilter(layerId, filter);
+      this._map.setFilter(layerId, filter, { validate });
     }
   }
 

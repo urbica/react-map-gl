@@ -9,7 +9,7 @@ test('render', () => {
       <Layer id="test2" />
       <Filter layerId="noSuchLayer" filter={['==', 'foo', 123]} />
       <Filter layerId="test" filter={['==', 'foo', 123]} />
-      <Filter layerId="test2" filter={['==', 'foo', 123]} />
+      <Filter layerId="test2" filter={['==', 'foo', 123]} validate />
     </MapGL>
   );
 
@@ -19,7 +19,7 @@ test('render', () => {
       <Layer id="test" />,
       <Layer id="test2" />,
       <Filter layerId="test" filter={['==', 'foo', 456]} />,
-      <Filter layerId="test2" />
+      <Filter layerId="test2" validate={false} />
     ]
   });
 
