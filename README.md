@@ -1,6 +1,6 @@
 # Urbica React Mapbox GL JS
 
-[![Build Status](https://img.shields.io/circleci/project/github/urbica/react-map-gl.svg?style=popout)](https://circleci.com/gh/urbica/react-map-gl)
+[![Node CI](https://github.com/urbica/react-map-gl/workflows/Node%20CI/badge.svg)](https://github.com/urbica/react-map-gl/actions)
 [![codecov](https://codecov.io/gh/urbica/react-map-gl/branch/master/graph/badge.svg)](https://codecov.io/gh/urbica/react-map-gl)
 [![npm](https://img.shields.io/npm/dt/@urbica/react-map-gl.svg?style=popout)](https://www.npmjs.com/package/@urbica/react-map-gl)
 [![npm](https://img.shields.io/npm/v/@urbica/react-map-gl.svg?style=popout)](https://www.npmjs.com/package/@urbica/react-map-gl)
@@ -91,7 +91,7 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 
 <MapGL
   style={{ width: '100%', height: '400px' }}
-  mapStyle='mapbox://styles/mapbox/light-v9'
+  mapStyle="mapbox://styles/mapbox/light-v9"
   accessToken={MAPBOX_ACCESS_TOKEN}
   latitude={37.78}
   longitude={-122.41}
@@ -118,7 +118,7 @@ initialState = {
 
 <MapGL
   style={{ width: '100%', height: '400px' }}
-  mapStyle='mapbox://styles/mapbox/light-v9'
+  mapStyle="mapbox://styles/mapbox/light-v9"
   accessToken={MAPBOX_ACCESS_TOKEN}
   latitude={state.viewport.latitude}
   longitude={state.viewport.longitude}
@@ -142,15 +142,15 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 
 <MapGL
   style={{ width: '100%', height: '400px' }}
-  mapStyle='mapbox://styles/mapbox/light-v9'
+  mapStyle="mapbox://styles/mapbox/light-v9"
   accessToken={MAPBOX_ACCESS_TOKEN}
 >
-  <Source id='contours' type='vector' url='mapbox://mapbox.mapbox-terrain-v2' />
+  <Source id="contours" type="vector" url="mapbox://mapbox.mapbox-terrain-v2" />
   <Layer
-    id='contours'
-    type='line'
-    source='contours'
-    source-layer='contour'
+    id="contours"
+    type="line"
+    source="contours"
+    source-layer="contour"
     paint={{
       'line-color': '#877b59',
       'line-width': 1
@@ -208,16 +208,16 @@ const data = {
 
 <MapGL
   style={{ width: '100%', height: '400px' }}
-  mapStyle='mapbox://styles/mapbox/light-v9'
+  mapStyle="mapbox://styles/mapbox/light-v9"
   accessToken={MAPBOX_ACCESS_TOKEN}
   onViewportChange={(viewport) => setState({ viewport })}
   {...state.viewport}
 >
-  <Source id='route' type='geojson' data={data} />
+  <Source id="route" type="geojson" data={data} />
   <Layer
-    id='route'
-    type='line'
-    source='route'
+    id="route"
+    type="line"
+    source="route"
     layout={{
       'line-join': 'round',
       'line-cap': 'round'
@@ -254,7 +254,7 @@ const myDeckLayer = new MapboxLayer({
 
 <MapGL
   style={{ width: '100%', height: '400px' }}
-  mapStyle='mapbox://styles/mapbox/light-v9'
+  mapStyle="mapbox://styles/mapbox/light-v9"
   accessToken={MAPBOX_ACCESS_TOKEN}
   latitude={40}
   longitude={-74.5}
