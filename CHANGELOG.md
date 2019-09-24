@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.12.0](https://github.com/urbica/react-map-gl/compare/v1.11.2...v1.12.0) (2019-09-24)
+
+
+### Bug Fixes
+
+* **filter:** add validate prop ([4ebe646](https://github.com/urbica/react-map-gl/commit/4ebe646))
+* **filter:** set filter to undefined on unmount ([ca1186e](https://github.com/urbica/react-map-gl/commit/ca1186e))
+* **filter:** use Array.isArray to validate filter ([ea99412](https://github.com/urbica/react-map-gl/commit/ea99412))
+
+
+### Features
+
+* **filter:** add Filter component ([357f7f5](https://github.com/urbica/react-map-gl/commit/357f7f5)), closes [#252](https://github.com/urbica/react-map-gl/issues/252)
+
 ### [1.11.2](https://github.com/urbica/react-map-gl/compare/v1.11.1...v1.11.2) (2019-09-17)
 
 
