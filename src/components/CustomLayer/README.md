@@ -18,7 +18,7 @@ const myDeckLayer = new MapboxLayer({
   getTargetPosition: (d) => d.target,
   getSourceColor: [255, 208, 0],
   getTargetColor: [0, 128, 255],
-  getStrokeWidth: 8
+  getWidth: 8
 });
 
 <MapGL
