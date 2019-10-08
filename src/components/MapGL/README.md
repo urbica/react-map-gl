@@ -136,6 +136,10 @@ initialState = {
   }
 };
 
+changeOptions = {
+  duration: 1000
+}
+
 const onChange = (event) => {
   setState({ viewportChangeMethod: event.target.value });
 };
@@ -166,6 +170,7 @@ const onClick = (event) => {
     onClick={onClick}
     onViewportChange={(viewport) => setState({ viewport })}
     viewportChangeMethod={state.viewportChangeMethod}
+    viewportChangeOptions={changeOptions}
     {...state.viewport}
   />
 </React.Fragment>;
