@@ -55,12 +55,12 @@
     "@mapbox/mapbox-gl-traffic": "^1.0.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.6.2",
+    "@babel/core": "^7.6.4",
     "@babel/plugin-proposal-class-properties": "^7.5.5",
     "@babel/plugin-transform-spread": "^7.6.2",
-    "@babel/preset-env": "^7.6.2",
+    "@babel/preset-env": "^7.6.3",
     "@babel/preset-flow": "^7.0.0",
-    "@babel/preset-react": "^7.0.0",
+    "@babel/preset-react": "^7.6.3",
     "@deck.gl/core": "^7.3.1",
     "@deck.gl/layers": "^7.3.1",
     "@deck.gl/mapbox": "^7.3.1",
@@ -75,7 +75,7 @@
     "css-loader": "^3.2.0",
     "cz-conventional-changelog": "^3.0.2",
     "enzyme": "^3.10.0",
-    "enzyme-adapter-react-16": "^1.14.0",
+    "enzyme-adapter-react-16": "^1.15.1",
     "enzyme-to-json": "^3.4.2",
     "eslint": "^6.5.1",
     "eslint-config-airbnb": "^18.0.1",
@@ -91,7 +91,7 @@
     "husky": "^3.0.8",
     "jest": "^24.9.0",
     "lint-staged": "^9.4.2",
-    "mapbox-gl": "^1.4.0",
+    "mapbox-gl": "^1.4.1",
     "prettier": "^1.18.2",
     "prettier-eslint": "^9.0.0",
     "prettier-eslint-cli": "^5.0.0",
@@ -105,7 +105,7 @@
     "rollup-plugin-terser": "^5.1.2",
     "standard-version": "^7.0.0",
     "style-loader": "^1.0.0",
-    "webpack": "^4.41.0"
+    "webpack": "^4.41.1"
   },
   "config": {
     "commitizen": {
