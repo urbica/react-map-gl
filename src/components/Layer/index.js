@@ -152,12 +152,15 @@ class Layer extends PureComponent<Props> {
   }
 
   componentWillUnmount() {
-    if (!this._map || !this._map.getStyle() || !this._map.getLayer(this._id)) {
+    if (!this._map || !this._map.getStyle()) {
       return;
     }
 
     this._removeEventListeners(this.props);
-    this._map.removeLayer(this._id);
+
+    if (this._map.getLayer(this._id)) {
+      this._map.removeLayer(this._id);
+    }
   }
 
   _addLayer = (props: Props) => {
