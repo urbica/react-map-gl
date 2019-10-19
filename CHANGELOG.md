@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.12.1](https://github.com/urbica/react-map-gl/compare/v1.12.0...v1.12.1) (2019-10-19)
+
+
+### Bug Fixes
+
+* Always remove the event handlers before the Layer component is ummounted ([#259](https://github.com/urbica/react-map-gl/issues/259)) (h/t [warborn](https://github.com/warborn)) ([a9bcffc](https://github.com/urbica/react-map-gl/commit/a9bcffc))
+
 ## [1.12.0](https://github.com/urbica/react-map-gl/compare/v1.11.2...v1.12.0) (2019-09-24)
 
 
