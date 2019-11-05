@@ -55,12 +55,12 @@
     "@mapbox/mapbox-gl-traffic": "^1.0.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.6.4",
-    "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "@babel/core": "^7.7.0",
+    "@babel/plugin-proposal-class-properties": "^7.7.0",
     "@babel/plugin-transform-spread": "^7.6.2",
-    "@babel/preset-env": "^7.6.3",
+    "@babel/preset-env": "^7.7.1",
     "@babel/preset-flow": "^7.0.0",
-    "@babel/preset-react": "^7.6.3",
+    "@babel/preset-react": "^7.7.0",
     "@deck.gl/core": "^7.3.3",
     "@deck.gl/layers": "^7.3.3",
     "@deck.gl/mapbox": "^7.3.3",
