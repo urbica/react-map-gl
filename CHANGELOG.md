@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.12.2](https://github.com/urbica/react-map-gl/compare/v1.12.1...v1.12.2) (2019-11-12)
+
+
+### Bug Fixes
+
+* **mapgl:** add missing `antialias` prop ([f363d94](https://github.com/urbica/react-map-gl/commit/f363d94))
+
 ### [1.12.1](https://github.com/urbica/react-map-gl/compare/v1.12.0...v1.12.1) (2019-10-19)
 
 
