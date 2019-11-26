@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.12.3](https://github.com/urbica/react-map-gl/compare/v1.12.2...v1.12.3) (2019-11-26)
+
+
+### Bug Fixes
+
+* return if map is undefind on unmount ([#265](https://github.com/urbica/react-map-gl/issues/265)) (h/t [chinesejar](https://github.com/chinesejar)) ([f2cdd7f](https://github.com/urbica/react-map-gl/commit/f2cdd7fe08ad0d6d8783f62139207f32d90eb4ee))
+
 ### [1.12.2](https://github.com/urbica/react-map-gl/compare/v1.12.1...v1.12.2) (2019-11-12)
 
 
