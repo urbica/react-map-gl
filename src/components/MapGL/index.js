@@ -120,6 +120,13 @@ type Props = EventProps & {
   preserveDrawingBuffer?: boolean,
 
   /**
+   * If `true`, the gl context will be created with MSAA antialiasing,
+   * which can be useful for antialiasing custom layers. this is `false`
+   * by default as a performance optimization.
+   */
+  antialias?: boolean,
+
+  /**
    * If `false`, the map won't attempt to re-request tiles once they
    * expire per their HTTP `cacheControl`/`expires` headers.
    */
@@ -258,6 +265,7 @@ class MapGL extends PureComponent<Props, State> {
     logoPosition: 'bottom-left',
     failIfMajorPerformanceCaveat: false,
     preserveDrawingBuffer: false,
+    antialias: false,
     refreshExpiredTiles: true,
     boxZoom: true,
     scrollZoom: true,
@@ -316,6 +324,7 @@ class MapGL extends PureComponent<Props, State> {
       logoPosition: this.props.logoPosition,
       failIfMajorPerformanceCaveat: this.props.failIfMajorPerformanceCaveat,
       preserveDrawingBuffer: this.props.preserveDrawingBuffer,
+      antialias: this.props.antialias,
       refreshExpiredTiles: this.props.refreshExpiredTiles,
       maxBounds: this.props.maxBounds,
       scrollZoom: this.props.scrollZoom,
@@ -333,8 +342,6 @@ class MapGL extends PureComponent<Props, State> {
     });
 
     this._map = map;
-
-    map.on('styledata', () => this.setState({ loaded: true }));
 
     map.once('load', () => {
       this.setState({ loaded: true }, this.props.onLoad);
@@ -405,7 +412,10 @@ class MapGL extends PureComponent<Props, State> {
     const prevMapStyle = prevProps.mapStyle;
 
     if (newMapStyle !== prevMapStyle) {
-      this.setState({ loaded: false }, () => this._map.setStyle(newMapStyle));
+      this.setState({ loaded: false }, () => {
+        this._map.setStyle(newMapStyle);
+        this._map.once('style.load', () => this.setState({ loaded: true }));
+      });
     }
   }
 

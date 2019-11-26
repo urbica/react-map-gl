@@ -31,7 +31,8 @@ module.exports = {
         'src/components/Image/index.js',
         'src/components/Popup/index.js',
         'src/components/Marker/index.js',
-        'src/components/FeatureState/index.js'
+        'src/components/FeatureState/index.js',
+        'src/components/Filter/index.js'
       ]
     },
     {

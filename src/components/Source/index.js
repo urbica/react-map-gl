@@ -15,6 +15,7 @@ import MapContext from '../MapContext';
 import Layer from '../Layer';
 
 /* eslint-disable import/no-cycle */
+import isArraysEqual from '../../utils/isArraysEqual';
 import validateSource from '../../utils/validateSource';
 
 export type TileSourceSpecification =
@@ -138,6 +139,13 @@ class Source extends PureComponent<Props, State> {
     prevSource: TileSourceSpecification,
     newSource: TileSourceSpecification
   ) => {
+    if (
+      newSource.url === prevSource.url &&
+      isArraysEqual(newSource.tiles, prevSource.tiles)
+    ) {
+      return;
+    }
+
     const source = this._map.getSource(id);
 
     /* eslint-disable no-underscore-dangle */

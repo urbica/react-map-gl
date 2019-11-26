@@ -2,47 +2,95 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-## [1.10.0](https://github.com/urbica/react-map-gl/compare/v1.9.1...v1.10.0) (2019-08-21)
+### [1.12.2](https://github.com/urbica/react-map-gl/compare/v1.12.1...v1.12.2) (2019-11-12)
+
+
+### Bug Fixes
+
+* **mapgl:** add missing `antialias` prop ([f363d94](https://github.com/urbica/react-map-gl/commit/f363d94))
+
+### [1.12.1](https://github.com/urbica/react-map-gl/compare/v1.12.0...v1.12.1) (2019-10-19)
+
+
+### Bug Fixes
+
+* Always remove the event handlers before the Layer component is ummounted ([#259](https://github.com/urbica/react-map-gl/issues/259)) (h/t [warborn](https://github.com/warborn)) ([a9bcffc](https://github.com/urbica/react-map-gl/commit/a9bcffc))
+
+## [1.12.0](https://github.com/urbica/react-map-gl/compare/v1.11.2...v1.12.0) (2019-09-24)
+
+
+### Bug Fixes
+
+* **filter:** add validate prop ([4ebe646](https://github.com/urbica/react-map-gl/commit/4ebe646))
+* **filter:** set filter to undefined on unmount ([ca1186e](https://github.com/urbica/react-map-gl/commit/ca1186e))
+* **filter:** use Array.isArray to validate filter ([ea99412](https://github.com/urbica/react-map-gl/commit/ea99412))
 
 
 ### Features
 
-* **mapgl:** add layer-specific events support ([54d6f72](https://github.com/urbica/react-map-gl/commit/54d6f72)), closes [#244](https://github.com/urbica/react-map-gl/issues/244)
+* **filter:** add Filter component ([357f7f5](https://github.com/urbica/react-map-gl/commit/357f7f5)), closes [#252](https://github.com/urbica/react-map-gl/issues/252)
+
+### [1.11.2](https://github.com/urbica/react-map-gl/compare/v1.11.1...v1.11.2) (2019-09-17)
+
+
+### Bug Fixes
+
+* **mapgl:** temporary fix for preserving layers on style change ([d55be91](https://github.com/urbica/react-map-gl/commit/d55be91)), closes [#255](https://github.com/urbica/react-map-gl/issues/255)
+
+### [1.11.1](https://github.com/urbica/react-map-gl/compare/v1.11.0...v1.11.1) (2019-09-12)
+
+
+### Bug Fixes
+
+* **source:** fix source flickering when using tiles prop ([636ea4f](https://github.com/urbica/react-map-gl/commit/636ea4f)), closes [#254](https://github.com/urbica/react-map-gl/issues/254)
+
+## [1.11.0](https://github.com/urbica/react-map-gl/compare/v1.10.0...v1.11.0) (2019-09-11)
+
+### Bug Fixes
+
+- **source:** add dynamic raster sources support ([be3aa67](https://github.com/urbica/react-map-gl/commit/be3aa67)), closes [#247](https://github.com/urbica/react-map-gl/issues/247)
+- allow mapbox-gl >= 1.0 in peerDependencies ([f68dbbb](https://github.com/urbica/react-map-gl/commit/f68dbbb)), closes [#243](https://github.com/urbica/react-map-gl/issues/243)
+- update flow settings ([de2a766](https://github.com/urbica/react-map-gl/commit/de2a766))
+- image source updates ([0f8b070](https://github.com/urbica/react-map-gl/commit/0f8b070)) (h/t [chinesejar](https://github.com/chinesejar))
+
+### Features
+
+- **trafficcontrol:** add possibility to toggle traffic ([eb120b8](https://github.com/urbica/react-map-gl/commit/eb120b8))
+- **TrafficControl:** Add traffic control button ([73e2326](https://github.com/urbica/react-map-gl/commit/73e2326))
+
+## [1.10.0](https://github.com/urbica/react-map-gl/compare/v1.9.1...v1.10.0) (2019-08-21)
+
+### Features
+
+- **mapgl:** add layer-specific events support ([54d6f72](https://github.com/urbica/react-map-gl/commit/54d6f72)), closes [#244](https://github.com/urbica/react-map-gl/issues/244)
 
 ### [1.9.1](https://github.com/urbica/react-map-gl/compare/v1.9.0...v1.9.1) (2019-08-20)
 
-
 ### Bug Fixes
 
-* **source:** chech if source exists when Source updated ([d74608d](https://github.com/urbica/react-map-gl/commit/d74608d))
+- **source:** chech if source exists when Source updated ([d74608d](https://github.com/urbica/react-map-gl/commit/d74608d))
 
 ## [1.9.0](https://github.com/urbica/react-map-gl/compare/v1.8.0...v1.9.0) (2019-08-11)
 
-
 ### Features
 
-* Add support for the className prop of the Popup component ([c8c8cf3](https://github.com/urbica/react-map-gl/commit/c8c8cf3))
+- Add support for the className prop of the Popup component ([c8c8cf3](https://github.com/urbica/react-map-gl/commit/c8c8cf3))
 
 ## [1.8.0](https://github.com/urbica/react-map-gl/compare/v1.7.0...v1.8.0) (2019-07-05)
 
-
 ### Bug Fixes
 
-* **Layer:** support layer id updates ([4b92d58](https://github.com/urbica/react-map-gl/commit/4b92d58))
-
+- **Layer:** support layer id updates ([4b92d58](https://github.com/urbica/react-map-gl/commit/4b92d58))
 
 ### Features
 
-* **MapGL:** add showTileBoundaries prop ([#233](https://github.com/urbica/react-map-gl/issues/233)) ([3944438](https://github.com/urbica/react-map-gl/commit/3944438))
-
+- **MapGL:** add showTileBoundaries prop ([#233](https://github.com/urbica/react-map-gl/issues/233)) ([3944438](https://github.com/urbica/react-map-gl/commit/3944438))
 
 ### Tests
 
-* **Layer:** add Layer unmount test ([5f16e78](https://github.com/urbica/react-map-gl/commit/5f16e78))
-* **MapGL:** do not call onViewportChange if originalEvent is not present ([ca0ac1c](https://github.com/urbica/react-map-gl/commit/ca0ac1c))
-* **Source:** do not render children until loaded ([eeb9167](https://github.com/urbica/react-map-gl/commit/eeb9167))
-
-
+- **Layer:** add Layer unmount test ([5f16e78](https://github.com/urbica/react-map-gl/commit/5f16e78))
+- **MapGL:** do not call onViewportChange if originalEvent is not present ([ca0ac1c](https://github.com/urbica/react-map-gl/commit/ca0ac1c))
+- **Source:** do not render children until loaded ([eeb9167](https://github.com/urbica/react-map-gl/commit/eeb9167))
 
 ## [1.7.0](https://github.com/urbica/react-map-gl/compare/v1.6.1...v1.7.0) (2019-07-03)
 
