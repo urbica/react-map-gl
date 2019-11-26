@@ -52,6 +52,9 @@ class Filter extends PureComponent<Props> {
   }
 
   componentWillUnmount() {
+    if (!this._map || !this._map.getStyle()) {
+      return;
+    }
     const { layerId } = this.props;
     const targetLayer = this._map.getLayer(layerId);
 
