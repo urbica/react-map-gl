@@ -114,7 +114,10 @@ class Layer extends PureComponent<Props> {
     const map = this._map;
     const { id, before, onClick, ...layer } = this.props;
 
-    if (id !== prevProps.id) {
+    if (
+      id !== prevProps.id ||
+      layer['source-layer'] !== prevProps['source-layer']
+    ) {
       this._id = id;
       this._map.removeLayer(prevProps.id);
       this._addLayer(this.props);
@@ -122,7 +125,7 @@ class Layer extends PureComponent<Props> {
     }
 
     // flowlint sketchy-null-string:off
-    if (before !== prevProps.before && (before && map.getLayer(before))) {
+    if (before !== prevProps.before && before && map.getLayer(before)) {
       map.moveLayer(this._id, before);
     }
     // flowlint sketchy-null-string:warn
