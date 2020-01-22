@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.12.4](https://github.com/urbica/react-map-gl/compare/v1.12.3...v1.12.4) (2020-01-22)
+
+
+### Bug Fixes
+
+* **layer:** add support for dynamic type, source and source-layer props [#273](https://github.com/urbica/react-map-gl/issues/273) ([#274](https://github.com/urbica/react-map-gl/issues/274)) ([f735323](https://github.com/urbica/react-map-gl/commit/f735323f5e3fe7231cc19a4cb12ec401e6df371d))
+
 ### [1.12.3](https://github.com/urbica/react-map-gl/compare/v1.12.2...v1.12.3) (2019-11-26)
 
 
