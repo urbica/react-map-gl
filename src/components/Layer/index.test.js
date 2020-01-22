@@ -83,6 +83,56 @@ test('update id', () => {
   expect(map.getLayer('test2')).toBeTruthy();
 });
 
+test('update type', () => {
+  const data = { type: 'FeatureCollection', features: [] };
+
+  const wrapper = mount(
+    <MapGL latitude={0} longitude={0} zoom={0}>
+      <Source id="test" type="geojson" data={data} />
+      <Layer id="test" type="circle" source="test" />
+    </MapGL>
+  );
+
+  const map = wrapper.instance().getMap();
+  expect(map.getLayer('test').type).toEqual('circle');
+
+  wrapper.setProps({
+    children: [
+      <Source id="test" type="geojson" data={data} />,
+      <Layer id="test" type="line" source="test" />
+    ]
+  });
+
+  expect(map.getLayer('test').type).toEqual('line');
+});
+
+test('update source and source-layer', () => {
+  const data = { type: 'FeatureCollection', features: [] };
+
+  const wrapper = mount(
+    <MapGL latitude={0} longitude={0} zoom={0}>
+      <Source id="test1" type="geojson" data={data} />
+      <Layer id="test" type="circle" source="test1" source-layer="test1" />
+    </MapGL>
+  );
+
+  const map = wrapper.instance().getMap();
+  const layer1 = map.getLayer('test');
+  expect(layer1.source).toEqual('test1');
+  expect(layer1['source-layer']).toEqual('test1');
+
+  wrapper.setProps({
+    children: [
+      <Source id="test2" type="geojson" data={data} />,
+      <Layer id="test" type="circle" source="test2" source-layer="test2" />
+    ]
+  });
+
+  const layer2 = map.getLayer('test');
+  expect(layer2.source).toEqual('test2');
+  expect(layer2['source-layer']).toEqual('test2');
+});
+
 test('before', () => {
   const data = { type: 'FeatureCollection', features: [] };
 
