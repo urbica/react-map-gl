@@ -204,6 +204,32 @@ type Props = EventProps & {
   collectResourceTiming?: boolean,
 
   /**
+   * Controls the duration of the fade-in/fade-out animation for label
+   * collisions, in milliseconds. This setting affects all symbol layers.
+   * This setting does not affect the duration of runtime styling transitions
+   * or raster tile cross-fading.
+   */
+  fadeDuration?: number,
+
+  /**
+   * If `true`, symbols from multiple sources can collide with each
+   * other during collision detection. If `false`, collision detection
+   * is run separately for the symbols in each source.
+   */
+  crossSourceCollisions?: boolean,
+
+  /**
+   * A patch to apply to the default localization table for UI strings,
+   * e.g. control tooltips. The `locale` object maps namespaced UI string IDs
+   * to translated strings in the target language;
+   * see `src/ui/default_locale.js` for an example with all supported
+   * string IDs. The object may specify all UI strings (thereby adding support
+   * for a new translation) or only a subset of strings (thereby patching
+   * the default translation table).
+   */
+  locale?: string,
+
+  /**
    * `onViewportChange` callback is fired when the user interacted with the
    * map. The object passed to the callback contains viewport properties
    * such as `longitude`, `latitude`, `zoom` etc.
@@ -281,6 +307,9 @@ class MapGL extends PureComponent<Props, State> {
     localIdeographFontFamily: null,
     transformRequest: null,
     collectResourceTiming: false,
+    fadeDuration: 300,
+    crossSourceCollisions: true,
+    locale: null,
     cursorStyle: null,
     viewportChangeMethod: jumpTo,
     viewportChangeOptions: null
@@ -338,7 +367,10 @@ class MapGL extends PureComponent<Props, State> {
       maxTileCacheSize: this.props.maxTileCacheSize,
       localIdeographFontFamily: this.props.localIdeographFontFamily,
       transformRequest: this.props.transformRequest,
-      collectResourceTiming: this.props.collectResourceTiming
+      collectResourceTiming: this.props.collectResourceTiming,
+      fadeDuration: this.props.fadeDuration,
+      crossSourceCollisions: this.props.crossSourceCollisions,
+      locale: this.props.locale
     });
 
     this._map = map;
