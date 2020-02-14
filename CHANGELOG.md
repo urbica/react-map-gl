@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.13.0](https://github.com/urbica/react-map-gl/compare/v1.12.4...v1.13.0) (2020-02-14)
+
+
+### Features
+
+* **mapgl:** add fadeDuration, crossSourceCollisions, and locale props ([9fe04e2](https://github.com/urbica/react-map-gl/commit/9fe04e2277d3b655e38336516ea029f2c4f4f9e2)), closes [#279](https://github.com/urbica/react-map-gl/issues/279)
+
 ### [1.12.4](https://github.com/urbica/react-map-gl/compare/v1.12.3...v1.12.4) (2020-01-22)
 
 
