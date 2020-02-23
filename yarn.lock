@@ -5486,17 +5486,17 @@ flow-coverage-report@^0.6.1:
     terminal-table "0.0.12"
     yargs "8.0.1"
 
-flow-parser@^0.118.0:
-  version "0.118.0"
-  resolved "https://registry.yarnpkg.com/flow-parser/-/flow-parser-0.118.0.tgz#81671a7649789dccd932aa24f9e4727dc80afa00"
-  integrity sha512-PM3aKA5K3e5kK2hJPsSVdQD4/SVZUQni9qfB0+JHBCjqoAS5mSe3SlhLR9TlH3WDQccL0H2b6zpP8LjOzx9Wtg==
+flow-parser@^0.119.0:
+  version "0.119.0"
+  resolved "https://registry.yarnpkg.com/flow-parser/-/flow-parser-0.119.0.tgz#2501594c70eaf1ed95068464c8502aa71dcaa50e"
+  integrity sha512-P49kGSnCII6c5/P4QsVDtoam83zrXrdq4EUJDVOpbeURy48RM8BOboKcEfFHS1xnNID01UXu8Hf60b+m23T81w==
 
-flow-remove-types@^2.118.0:
-  version "2.118.0"
-  resolved "https://registry.yarnpkg.com/flow-remove-types/-/flow-remove-types-2.118.0.tgz#e2b77957aef21445eb9f8671f968f081315a9c3c"
-  integrity sha512-HrrN9WFCB0Ausk5EvCqQC3RQqgjOsDny+ByxBRYXBqgJrt1Ropxj4JTXBeHcPoeBuN/l8l2Uh0ve7L9NwWXslg==
+flow-remove-types@^2.119.0:
+  version "2.119.0"
+  resolved "https://registry.yarnpkg.com/flow-remove-types/-/flow-remove-types-2.119.0.tgz#cf7648694e351e21e02c18df343845d636a8ee0b"
+  integrity sha512-kQzmMyl+gRqA2hU4hO/79hOT2dU9cAT37izRukyjqnItBlrZ1J4SYeqwnkDeOx4j2Azg19CxWNKullVt2kGZFA==
   dependencies:
-    flow-parser "^0.118.0"
+    flow-parser "^0.119.0"
     pirates "^3.0.2"
     vlq "^0.2.1"
 
@@ -6337,10 +6337,10 @@ humanize-url@^1.0.0:
     normalize-url "^1.0.0"
     strip-url-auth "^1.0.0"
 
-husky@^4.2.1:
-  version "4.2.1"
-  resolved "https://registry.yarnpkg.com/husky/-/husky-4.2.1.tgz#b09f1bd9129e6c323cc515dc17081d0615e2d7c1"
-  integrity sha512-Qa0lRreeIf4Tl92sSs42ER6qc3hzoyQPPorzOrFWfPEVbdi6LuvJEqWKPk905fOWIR76iBpp7ECZNIwk+a8xuQ==
+husky@^4.2.3:
+  version "4.2.3"
+  resolved "https://registry.yarnpkg.com/husky/-/husky-4.2.3.tgz#3b18d2ee5febe99e27f2983500202daffbc3151e"
+  integrity sha512-VxTsSTRwYveKXN4SaH1/FefRJYCtx+wx04sSVcOpD7N2zjoHxa+cEJ07Qg5NmV3HAK+IRKOyNVpi2YBIVccIfQ==
   dependencies:
     chalk "^3.0.0"
     ci-info "^2.0.0"
@@ -8135,10 +8135,10 @@ map-visit@^1.0.0:
   dependencies:
     object-visit "^1.0.0"
 
-mapbox-gl@^1.7.0:
-  version "1.7.0"
-  resolved "https://registry.yarnpkg.com/mapbox-gl/-/mapbox-gl-1.7.0.tgz#b23a223af61f0c5066c6fa8072f599209b609cc9"
-  integrity sha512-iVZQUdhZzeVCE8VlELo24GfGqhAzjouiJl1K4rcfk9mtyJLCbWHlzGT6H5Bs61A/3NQXsSx54GdJXAWvebtFFg==
+mapbox-gl@^1.8.0:
+  version "1.8.0"
+  resolved "https://registry.yarnpkg.com/mapbox-gl/-/mapbox-gl-1.8.0.tgz#77f8350c1600c588299420e1435ac642bd2cedef"
+  integrity sha512-Uqg+2JdMKecmOmnfye06xrYx+Gg5iwhJcfkOv6p7MdlRspR0h02CwoDvM/ftOjTYp+Axi6+EWZHq8Um97JXcGQ==
   dependencies:
     "@mapbox/geojson-rewind" "^0.4.0"
     "@mapbox/geojson-types" "^1.0.2"
@@ -10154,10 +10154,10 @@ react-simple-code-editor@^0.10.0:
   resolved "https://registry.yarnpkg.com/react-simple-code-editor/-/react-simple-code-editor-0.10.0.tgz#73e7ac550a928069715482aeb33ccba36efe2373"
   integrity sha512-bL5W5mAxSW6+cLwqqVWY47Silqgy2DKDTR4hDBrLrUqC5BXc29YVx17l2IZk5v36VcDEq1Bszu2oHm1qBwKqBA==
 
-react-styleguidist@^10.6.1:
-  version "10.6.1"
-  resolved "https://registry.yarnpkg.com/react-styleguidist/-/react-styleguidist-10.6.1.tgz#e0489bd1e58a99625d599f210b01ca156d14bc04"
-  integrity sha512-rmJ1SJC1TW4KSk/BdZ/gvpUQWQGyCuQm7DT2cqRlcd35/IBV8zEqgIR+pP0TuGpqwvB/4/8lfT2Vto5oMTunbA==
+react-styleguidist@^10.6.2:
+  version "10.6.2"
+  resolved "https://registry.yarnpkg.com/react-styleguidist/-/react-styleguidist-10.6.2.tgz#2be036b64de0f381c427e88e3bd008ffe3118b44"
+  integrity sha512-wDvhklJAHiE/oBIxBg3nAxzGCfmO/V//5WC7DSLEzs+Z+wM5ynLnhgSldJgtqusoU3lAyyHYz8FOshNUbajsMw==
   dependencies:
     "@vxna/mini-html-webpack-template" "^1.0.0"
     acorn "~6.4.0"
@@ -10827,10 +10827,10 @@ rollup-pluginutils@^2.8.1, rollup-pluginutils@^2.8.2:
   dependencies:
     estree-walker "^0.6.1"
 
-rollup@^1.31.0:
-  version "1.31.0"
-  resolved "https://registry.yarnpkg.com/rollup/-/rollup-1.31.0.tgz#e2a87212e96aa7850f3eb53fdd02cf89f2d2fe9a"
-  integrity sha512-9C6ovSyNeEwvuRuUUmsTpJcXac1AwSL1a3x+O5lpmQKZqi5mmrjauLeqIjvREC+yNRR8fPdzByojDng+af3nVw==
+rollup@^1.31.1:
+  version "1.31.1"
+  resolved "https://registry.yarnpkg.com/rollup/-/rollup-1.31.1.tgz#4170d6f87148d46e5fbe29b493f8f3ea3453c96f"
+  integrity sha512-2JREN1YdrS/kpPzEd33ZjtuNbOuBC3ePfuZBdKEybvqcEcszW1ckyVqzcEiEe0nE8sqHK+pbJg+PsAgRJ8+1dg==
   dependencies:
     "@types/estree" "*"
     "@types/node" "*"
@@ -12708,10 +12708,10 @@ webpack-sources@^1.3.0, webpack-sources@^1.4.0, webpack-sources@^1.4.1, webpack-
     source-list-map "^2.0.0"
     source-map "~0.6.1"
 
-webpack@^4.41.5:
-  version "4.41.5"
-  resolved "https://registry.yarnpkg.com/webpack/-/webpack-4.41.5.tgz#3210f1886bce5310e62bb97204d18c263341b77c"
-  integrity sha512-wp0Co4vpyumnp3KlkmpM5LWuzvZYayDwM2n17EHFr4qxBBbRokC7DJawPJC7TfSFZ9HZ6GsdH40EBj4UV0nmpw==
+webpack@^4.41.6:
+  version "4.41.6"
+  resolved "https://registry.yarnpkg.com/webpack/-/webpack-4.41.6.tgz#12f2f804bf6542ef166755050d4afbc8f66ba7e1"
+  integrity sha512-yxXfV0Zv9WMGRD+QexkZzmGIh54bsvEs+9aRWxnN8erLWEOehAKUTeNBoUbA6HPEZPlRo7KDi2ZcNveoZgK9MA==
   dependencies:
     "@webassemblyjs/ast" "1.8.5"
     "@webassemblyjs/helper-module-context" "1.8.5"
