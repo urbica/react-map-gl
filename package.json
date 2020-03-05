@@ -129,8 +129,7 @@
     "*.js": [
       "prettier-eslint --write",
       "npm run lint",
-      "jest --findRelatedTests",
-      "git add"
+      "jest --findRelatedTests"
     ]
   }
 }
