@@ -56,12 +56,12 @@
     "@mapbox/mapbox-gl-traffic": "^1.0.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.8.7",
+    "@babel/core": "^7.9.0",
     "@babel/plugin-proposal-class-properties": "^7.8.3",
     "@babel/plugin-transform-spread": "^7.8.3",
-    "@babel/preset-env": "^7.8.7",
-    "@babel/preset-flow": "^7.8.3",
-    "@babel/preset-react": "^7.8.3",
+    "@babel/preset-env": "^7.9.0",
+    "@babel/preset-flow": "^7.9.0",
+    "@babel/preset-react": "^7.9.1",
     "@deck.gl/core": "^8.0.7",
     "@deck.gl/layers": "^8.0.7",
     "@deck.gl/mapbox": "^8.0.7",
@@ -71,7 +71,7 @@
     "@size-limit/preset-small-lib": "^4.4.0",
     "@turf/random": "^6.0.2",
     "babel-eslint": "^10.1.0",
-    "babel-loader": "^8.0.6",
+    "babel-loader": "^8.1.0",
     "codecov": "^3.6.5",
     "commitizen": "^4.0.3",
     "css-loader": "^3.4.2",
@@ -88,7 +88,7 @@
     "eslint-plugin-react": "^7.19.0",
     "flow-bin": "^0.108.0",
     "flow-coverage-report": "^0.6.1",
-    "flow-remove-types": "^2.120.1",
+    "flow-remove-types": "^2.121.0",
     "gh-pages": "^2.2.0",
     "husky": "^4.2.3",
     "jest": "^25.1.0",
@@ -97,8 +97,8 @@
     "prettier": "^1.19.1",
     "prettier-eslint": "^9.0.1",
     "prettier-eslint-cli": "^5.0.0",
-    "react": "^16.13.0",
-    "react-dom": "^16.13.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
     "react-styleguidist": "^10.6.2",
     "rollup": "^1.32.0",
     "rollup-plugin-babel": "^4.4.0",
@@ -137,7 +137,10 @@
   },
   "size-limit": [
     {
-      "path": ["dist/react-map-gl.cjs.js", "dist/react-map-gl.esm.js"]
+      "path": [
+        "dist/react-map-gl.cjs.js",
+        "dist/react-map-gl.esm.js"
+      ]
     }
   ]
 }
