@@ -39,6 +39,7 @@
     "build:watch": "rollup -c -w",
     "format": "prettier-eslint --write \"src/**/*.js\"",
     "cz": "git-cz",
+    "size-build": "npm run build",
     "size": "size-limit",
     "release": "npm run build && standard-version",
     "prepublishOnly": "npm run build",
