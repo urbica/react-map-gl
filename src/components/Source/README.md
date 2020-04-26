@@ -5,17 +5,15 @@
 A [GeoJSON source](https://docs.mapbox.com/mapbox-gl-js/style-spec/#sources-geojson). Data must be provided via a `data` property, whose value can be a URL or inline GeoJSON.
 
 ```jsx
-import React from 'react';
+import React, { useState } from 'react';
 import MapGL, { Source, Layer } from '@urbica/react-map-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
-initialState = {
-  viewport: {
-    latitude: 45.137451890638886,
-    longitude: -68.13734351262877,
-    zoom: 5
-  }
-};
+const [viewport, setViewport] = useState({
+  latitude: 45.137451890638886,
+  longitude: -68.13734351262877,
+  zoom: 5
+});
 
 const data = {
   type: 'Feature',
@@ -50,16 +48,16 @@ const data = {
 
 <MapGL
   style={{ width: '100%', height: '400px' }}
-  mapStyle="mapbox://styles/mapbox/light-v9"
+  mapStyle='mapbox://styles/mapbox/light-v9'
   accessToken={MAPBOX_ACCESS_TOKEN}
-  onViewportChange={(viewport) => setState({ viewport })}
-  {...state.viewport}
+  onViewportChange={setViewport}
+  {...viewport}
 >
-  <Source id="maine" type="geojson" data={data} />
+  <Source id='maine' type='geojson' data={data} />
   <Layer
-    id="maine"
-    type="fill"
-    source="maine"
+    id='maine'
+    type='fill'
+    source='maine'
     paint={{
       'fill-color': '#088',
       'fill-opacity': 0.8
@@ -71,17 +69,15 @@ const data = {
 Drawing a GeoJSON line on a map.
 
 ```jsx
-import React from 'react';
+import React, { useState } from 'react';
 import MapGL, { Source, Layer } from '@urbica/react-map-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
-initialState = {
-  viewport: {
-    latitude: 37.830348,
-    longitude: -122.486052,
-    zoom: 15
-  }
-};
+const [viewport, setViewport] = useState({
+  latitude: 37.830348,
+  longitude: -122.486052,
+  zoom: 15
+});
 
 const data = {
   type: 'Feature',
@@ -115,16 +111,16 @@ const data = {
 
 <MapGL
   style={{ width: '100%', height: '400px' }}
-  mapStyle="mapbox://styles/mapbox/light-v9"
+  mapStyle='mapbox://styles/mapbox/light-v9'
   accessToken={MAPBOX_ACCESS_TOKEN}
-  onViewportChange={(viewport) => setState({ viewport })}
-  {...state.viewport}
+  onViewportChange={setViewport}
+  {...viewport}
 >
-  <Source id="route" type="geojson" data={data} />
+  <Source id='route' type='geojson' data={data} />
   <Layer
-    id="route"
-    type="line"
-    source="route"
+    id='route'
+    type='line'
+    source='route'
     layout={{
       'line-join': 'round',
       'line-cap': 'round'
@@ -140,41 +136,40 @@ const data = {
 ### Updating GeoJSON Source Data
 
 ```jsx
-import React from 'react';
+import React, { useState } from 'react';
 import { randomPoint } from '@turf/random';
 import MapGL, { Source, Layer } from '@urbica/react-map-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
-initialState = {
-  points: randomPoint(100),
-  viewport: {
-    latitude: 0,
-    longitude: 0,
-    zoom: 0
-  }
-};
+const [points, setPoints] = useState(randomPoint(100));
+
+const [viewport, setViewport] = useState({
+  latitude: 0,
+  longitude: 0,
+  zoom: 0
+});
 
 const addPoints = () => {
   const randomPoints = randomPoint(100);
-  const newFeatures = state.points.features.concat(randomPoints.features);
-  const newPoints = { ...state.points, features: newFeatures };
-  setState({ points: newPoints });
+  const newFeatures = points.features.concat(randomPoints.features);
+  const newPoints = { ...points, features: newFeatures };
+  setPoints(newPoints);
 };
 
 <React.Fragment>
   <button onClick={addPoints}>+100 points</button>
   <MapGL
     style={{ width: '100%', height: '400px' }}
-    mapStyle="mapbox://styles/mapbox/light-v9"
+    mapStyle='mapbox://styles/mapbox/light-v9'
     accessToken={MAPBOX_ACCESS_TOKEN}
-    onViewportChange={(viewport) => setState({ viewport })}
-    {...state.viewport}
+    onViewportChange={setViewport}
+    {...viewport}
   >
-    <Source id="points" type="geojson" data={state.points} />
+    <Source id='points' type='geojson' data={points} />
     <Layer
-      id="points"
-      type="circle"
-      source="points"
+      id='points'
+      type='circle'
+      source='points'
       paint={{
         'circle-radius': 6,
         'circle-color': '#1978c8'
@@ -189,31 +184,29 @@ const addPoints = () => {
 Add a [vector source](https://docs.mapbox.com/mapbox-gl-js/style-spec/#sources-vector) to a map.
 
 ```jsx
-import React from 'react';
+import React, { useState } from 'react';
 import MapGL, { Source, Layer } from '@urbica/react-map-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
-initialState = {
-  viewport: {
-    latitude: 37.753574,
-    longitude: -122.447303,
-    zoom: 13
-  }
-};
+const [viewport, setViewport] = useState({
+  latitude: 37.753574,
+  longitude: -122.447303,
+  zoom: 13
+});
 
 <MapGL
   style={{ width: '100%', height: '400px' }}
-  mapStyle="mapbox://styles/mapbox/light-v9"
+  mapStyle='mapbox://styles/mapbox/light-v9'
   accessToken={MAPBOX_ACCESS_TOKEN}
-  onViewportChange={(viewport) => setState({ viewport })}
-  {...state.viewport}
+  onViewportChange={setViewport}
+  {...viewport}
 >
-  <Source id="contour" type="vector" url="mapbox://mapbox.mapbox-terrain-v2" />
+  <Source id='contour' type='vector' url='mapbox://mapbox.mapbox-terrain-v2' />
   <Layer
-    id="contour"
-    type="line"
-    source="contour"
-    source-layer="contour"
+    id='contour'
+    type='line'
+    source='contour'
+    source-layer='contour'
     paint={{
       'line-color': '#877b59',
       'line-width': 1
@@ -225,38 +218,36 @@ initialState = {
 ## Raster Source
 
 ```jsx
-import React from 'react';
+import React, { useState } from 'react';
 import MapGL, { Source, Layer } from '@urbica/react-map-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
-initialState = {
-  viewport: {
-    latitude: 40.6892,
-    longitude: -74.5447,
-    zoom: 8
-  }
-};
+const [viewport, setViewport] = useState({
+  latitude: 40.6892,
+  longitude: -74.5447,
+  zoom: 8
+});
 
 <MapGL
   style={{ width: '100%', height: '400px' }}
   accessToken={MAPBOX_ACCESS_TOKEN}
-  onViewportChange={(viewport) => setState({ viewport })}
-  {...state.viewport}
+  onViewportChange={setViewport}
+  {...viewport}
 >
   <Source
-    id="raster"
-    type="raster"
+    id='raster'
+    type='raster'
     tileSize={256}
     tiles={['https://stamen-tiles.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.png']}
   />
-  <Layer id="raster" type="raster" source="raster" />
+  <Layer id='raster' type='raster' source='raster' />
 </MapGL>;
 ```
 
 ## Dynamic Source URLs
 
 ```jsx
-import React from 'react';
+import React, { useState } from 'react';
 import { randomPoint } from '@turf/random';
 import MapGL, { Source, Layer } from '@urbica/react-map-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
@@ -266,39 +257,34 @@ const sourceURLs = {
   second: 'mapbox://stepankuzmin.ck0glym6u02ls2omawvm9vi4y-9xid1'
 };
 
-initialState = {
-  sourceURL: sourceURLs.first,
-  viewport: {
-    latitude: 37.78,
-    longitude: -122.41,
-    zoom: 9
-  }
-};
+const [sourceURL, setSourceURL] = useState(sourceURLs.first);
+
+const [viewport, setViewport] = useState({
+  latitude: 37.78,
+  longitude: -122.41,
+  zoom: 9
+});
 
 const toggleSourceURL = () => {
-  setState((state) => {
-    const nextSourceURL =
-      state.sourceURL === sourceURLs.first ? sourceURLs.second : sourceURLs.first;
-
-    return { sourceURL: nextSourceURL };
-  });
+  const nextSourceURL = sourceURL === sourceURLs.first ? sourceURLs.second : sourceURLs.first;
+  setSourceURL(nextSourceURL);
 };
 
 <React.Fragment>
   <button onClick={toggleSourceURL}>Toggle Source URL</button>
   <MapGL
     style={{ width: '100%', height: '400px' }}
-    mapStyle="mapbox://styles/mapbox/light-v9"
+    mapStyle='mapbox://styles/mapbox/light-v9'
     accessToken={MAPBOX_ACCESS_TOKEN}
-    onViewportChange={(viewport) => setState({ viewport })}
-    {...state.viewport}
+    onViewportChange={setViewport}
+    {...viewport}
   >
-    <Source id="sf-points" type="vector" url={state.sourceURL} />
+    <Source id='sf-points' type='vector' url={sourceURL} />
     <Layer
-      id="sf-points"
-      type="circle"
-      source="sf-points"
-      source-layer="sf-points"
+      id='sf-points'
+      type='circle'
+      source='sf-points'
+      source-layer='sf-points'
       paint={{
         'circle-radius': 6,
         'circle-color': '#1978c8'
@@ -311,47 +297,41 @@ const toggleSourceURL = () => {
 ## Dynamic Source Tiles
 
 ```jsx
-import React from 'react';
+import React, { useState } from 'react';
 import { randomPoint } from '@turf/random';
 import MapGL, { Source, Layer } from '@urbica/react-map-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
-const sourceTiles = {
+const sourceTilesURLs = {
   toner: 'https://stamen-tiles.a.ssl.fastly.net/toner/{z}/{x}/{y}.png',
   watercolor: 'https://stamen-tiles.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.png'
 };
 
-initialState = {
-  sourceTiles: sourceTiles.toner,
-  viewport: {
-    latitude: 37.78,
-    longitude: -122.41,
-    zoom: 9
-  }
-};
+const [sourceTiles, setSourceTiles] = useState(sourceTilesURLs.toner);
+
+const [viewport, setViewport] = useState({
+  latitude: 37.78,
+  longitude: -122.41,
+  zoom: 9
+});
 
 const toggleSourceTiles = () => {
-  setState((state) => {
-    const nextSourceTiles =
-      state.sourceTiles === sourceTiles.toner
-        ? sourceTiles.watercolor
-        : sourceTiles.toner;
-
-    return { sourceTiles: nextSourceTiles };
-  });
+  const nextSourceTiles =
+    sourceTiles === sourceTilesURLs.toner ? sourceTilesURLs.watercolor : sourceTilesURLs.toner;
+  setSourceTiles(nextSourceTiles);
 };
 
 <React.Fragment>
   <button onClick={toggleSourceTiles}>Toggle Source Tiles</button>
   <MapGL
     style={{ width: '100%', height: '400px' }}
-    mapStyle="mapbox://styles/mapbox/light-v9"
+    mapStyle='mapbox://styles/mapbox/light-v9'
     accessToken={MAPBOX_ACCESS_TOKEN}
-    onViewportChange={(viewport) => setState({ viewport })}
-    {...state.viewport}
+    onViewportChange={setViewport}
+    {...viewport}
   >
-    <Source id="raster" type="raster" tiles={[state.sourceTiles]} />
-    <Layer id="raster" type="raster" source="raster" />
+    <Source id='raster' type='raster' tiles={[sourceTiles]} />
+    <Layer id='raster' type='raster' source='raster' />
   </MapGL>
 </React.Fragment>;
 ```
