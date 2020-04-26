@@ -3,7 +3,8 @@
 import React from 'react';
 import { mount } from 'enzyme';
 
-import MapGL, { CustomLayer, Layer, Source } from '../..';
+import MapGL from './index';
+import { CustomLayer, Layer, Source } from '../../index';
 
 test('render', () => {
   const wrapper = mount(
@@ -323,7 +324,7 @@ test('renders without mapbox-gl', () => {
   jest.doMock('mapbox-gl', () => null);
 
   /* eslint-disable no-shadow, global-require */
-  const MapGL = require('../MapGL').default;
+  const MapGL = require('.').default;
 
   const wrapper = mount(<MapGL latitude={0} longitude={0} zoom={0} />);
 
