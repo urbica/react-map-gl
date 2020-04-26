@@ -52,7 +52,10 @@ type Props = {
   offset?: MapboxLngLatBoundsLike,
 
   /** The className of the popup */
-  className?: string
+  className?: string,
+
+  /** A string that sets the CSS property of the popup's maximum width. */
+  maxWidth?: string
 };
 
 class Popup extends PureComponent<Props> {
@@ -70,7 +73,8 @@ class Popup extends PureComponent<Props> {
     onClose: null,
     anchor: null,
     offset: null,
-    className: null
+    className: null,
+    maxWidth: '240px'
   };
 
   constructor(props: Props) {
@@ -87,7 +91,8 @@ class Popup extends PureComponent<Props> {
       closeOnClick,
       onClose,
       anchor,
-      className
+      className,
+      maxWidth
     } = this.props;
 
     this._popup = new mapboxgl.Popup({
@@ -95,7 +100,8 @@ class Popup extends PureComponent<Props> {
       closeButton,
       closeOnClick,
       anchor,
-      className
+      className,
+      maxWidth
     });
 
     this._popup.setDOMContent(this._el);
