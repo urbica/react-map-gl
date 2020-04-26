@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.13.1](https://github.com/urbica/react-map-gl/compare/v1.13.0...v1.13.1) (2020-04-26)
+
+
+### Bug Fixes
+
+* add support for the maxWidth option of MapboxGL's Popup. (h/t @WesWedding) ([#287](https://github.com/urbica/react-map-gl/issues/287)) ([c6101c1](https://github.com/urbica/react-map-gl/commit/c6101c1b0a6129eae038f6f6060ec3bbfbdfd75b))
+
 ## [1.13.0](https://github.com/urbica/react-map-gl/compare/v1.12.4...v1.13.0) (2020-02-14)
 
 
