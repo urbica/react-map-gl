@@ -14,26 +14,20 @@ yarn add @mapbox/mapbox-gl-traffic
 ```
 
 ```js
-import React from 'react';
+import React, { useState } from 'react';
 import MapGL, { TrafficControl } from '@urbica/react-map-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import '@mapbox/mapbox-gl-traffic/mapbox-gl-traffic.css';
 
-initialState = {
-  showTraffic: false,
-  showTrafficButton: true
-};
+const [showTraffic, setShowTraffic] = useState(false);
+const [showTrafficButton, setShowTrafficButton] = useState(false);
 
-const toggleTraffic = () => setState({showTraffic: !state.showTraffic});
-const toggleButton = () => setState({showTrafficButton: !state.showTrafficButton});
+const toggleTraffic = () => setShowTraffic(!showTraffic);
+const toggleButton = () => setShowTrafficButton(!showTrafficButton);
 
 <div>
-  <button onClick={toggleTraffic}>
-    toggle traffic
-  </button>
-  <button onClick={toggleButton}>
-    toggle button
-  </button>
+  <button onClick={toggleTraffic}>toggle traffic</button>
+  <button onClick={toggleButton}>toggle button</button>
   <MapGL
     style={{ width: '100%', height: '400px' }}
     mapStyle='mapbox://styles/mapbox/light-v9'
@@ -42,10 +36,7 @@ const toggleButton = () => setState({showTrafficButton: !state.showTrafficButton
     longitude={-122.41}
     zoom={11}
   >
-    <TrafficControl
-      showTraffic={state.showTraffic}
-      showTrafficButton={state.showTrafficButton}
-    />
+    <TrafficControl showTraffic={showTraffic} showTrafficButton={showTrafficButton} />
   </MapGL>
-</div>
+</div>;
 ```

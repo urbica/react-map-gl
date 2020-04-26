@@ -92,7 +92,7 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 
 <MapGL
   style={{ width: '100%', height: '400px' }}
-  mapStyle="mapbox://styles/mapbox/light-v9"
+  mapStyle='mapbox://styles/mapbox/light-v9'
   accessToken={MAPBOX_ACCESS_TOKEN}
   latitude={37.78}
   longitude={-122.41}
@@ -105,26 +105,24 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 In most cases, you will want the user to interact with the map. To do this, you need to provide `onViewportChange` handler, that will update map viewport state.
 
 ```jsx
-import React from 'react';
+import React, { useState } from 'react';
 import MapGL from '@urbica/react-map-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
-initialState = {
-  viewport: {
-    latitude: 37.78,
-    longitude: -122.41,
-    zoom: 11
-  }
-};
+const [viewport, setViewport] = useState({
+  latitude: 37.78,
+  longitude: -122.41,
+  zoom: 11,
+});
 
 <MapGL
   style={{ width: '100%', height: '400px' }}
-  mapStyle="mapbox://styles/mapbox/light-v9"
+  mapStyle='mapbox://styles/mapbox/light-v9'
   accessToken={MAPBOX_ACCESS_TOKEN}
-  latitude={state.viewport.latitude}
-  longitude={state.viewport.longitude}
-  zoom={state.viewport.zoom}
-  onViewportChange={(viewport) => setState({ viewport })}
+  latitude={viewport.latitude}
+  longitude={viewport.longitude}
+  zoom={viewport.zoom}
+  onViewportChange={setViewport}
 />;
 ```
 
@@ -143,18 +141,18 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 
 <MapGL
   style={{ width: '100%', height: '400px' }}
-  mapStyle="mapbox://styles/mapbox/light-v9"
+  mapStyle='mapbox://styles/mapbox/light-v9'
   accessToken={MAPBOX_ACCESS_TOKEN}
 >
-  <Source id="contours" type="vector" url="mapbox://mapbox.mapbox-terrain-v2" />
+  <Source id='contours' type='vector' url='mapbox://mapbox.mapbox-terrain-v2' />
   <Layer
-    id="contours"
-    type="line"
-    source="contours"
-    source-layer="contour"
+    id='contours'
+    type='line'
+    source='contours'
+    source-layer='contour'
     paint={{
       'line-color': '#877b59',
-      'line-width': 1
+      'line-width': 1,
     }}
   />
 </MapGL>;
@@ -165,17 +163,15 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 To draw a GeoJSON on a map, add `Source` with the `type` property set to `geojson` and `data` property set to a URL or inline [GeoJSON](http://geojson.org/).
 
 ```jsx
-import React from 'react';
+import React, { useState } from 'react';
 import MapGL, { Source, Layer } from '@urbica/react-map-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
-initialState = {
-  viewport: {
-    latitude: 37.830348,
-    longitude: -122.486052,
-    zoom: 15
-  }
-};
+const [viewport, setViewport] = useState({
+  latitude: 37.830348,
+  longitude: -122.486052,
+  zoom: 15,
+});
 
 const data = {
   type: 'Feature',
@@ -202,30 +198,30 @@ const data = {
       [-122.49125003814696, 37.832429207817725],
       [-122.49163627624512, 37.832564787218985],
       [-122.49223709106445, 37.83337825839438],
-      [-122.49378204345702, 37.83368330777276]
-    ]
-  }
+      [-122.49378204345702, 37.83368330777276],
+    ],
+  },
 };
 
 <MapGL
   style={{ width: '100%', height: '400px' }}
-  mapStyle="mapbox://styles/mapbox/light-v9"
+  mapStyle='mapbox://styles/mapbox/light-v9'
   accessToken={MAPBOX_ACCESS_TOKEN}
-  onViewportChange={(viewport) => setState({ viewport })}
-  {...state.viewport}
+  onViewportChange={setViewport}
+  {...viewport}
 >
-  <Source id="route" type="geojson" data={data} />
+  <Source id='route' type='geojson' data={data} />
   <Layer
-    id="route"
-    type="line"
-    source="route"
+    id='route'
+    type='line'
+    source='route'
     layout={{
       'line-join': 'round',
-      'line-cap': 'round'
+      'line-cap': 'round',
     }}
     paint={{
       'line-color': '#888',
-      'line-width': 8
+      'line-width': 8,
     }}
   />
 </MapGL>;
@@ -250,12 +246,12 @@ const myDeckLayer = new MapboxLayer({
   data: [{ position: [-74.5, 40], size: 1000 }],
   getPosition: (d) => d.position,
   getRadius: (d) => d.size,
-  getColor: [255, 0, 0]
+  getColor: [255, 0, 0],
 });
 
 <MapGL
   style={{ width: '100%', height: '400px' }}
-  mapStyle="mapbox://styles/mapbox/light-v9"
+  mapStyle='mapbox://styles/mapbox/light-v9'
   accessToken={MAPBOX_ACCESS_TOKEN}
   latitude={40}
   longitude={-74.5}
