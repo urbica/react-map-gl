@@ -10,7 +10,7 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 const [viewport, setViewport] = useState({
   latitude: 37.78,
   longitude: -122.41,
-  zoom: 11,
+  zoom: 11
 });
 
 <MapGL
@@ -28,7 +28,7 @@ const [viewport, setViewport] = useState({
     source-layer='contour'
     paint={{
       'line-color': '#877b59',
-      'line-width': 1,
+      'line-width': 1
     }}
   />
 </MapGL>;
@@ -58,10 +58,10 @@ const data = {
           [-122.41936683654784, 37.771664582389825],
           [-122.41936683654784, 37.78679259356557],
           [-122.4393653869629, 37.78679259356557],
-          [-122.4393653869629, 37.771664582389825],
-        ],
-      ],
-    },
+          [-122.4393653869629, 37.771664582389825]
+        ]
+      ]
+    }
   },
   green: {
     type: 'Feature',
@@ -73,10 +73,10 @@ const data = {
           [-122.41722106933594, 37.772750103327695],
           [-122.41722106933594, 37.789031004883654],
           [-122.43687629699707, 37.789031004883654],
-          [-122.43687629699707, 37.772750103327695],
-        ],
-      ],
-    },
+          [-122.43687629699707, 37.772750103327695]
+        ]
+      ]
+    }
   },
   blue: {
     type: 'Feature',
@@ -88,23 +88,23 @@ const data = {
           [-122.4151611328125, 37.7697648824009],
           [-122.4151611328125, 37.78557161335955],
           [-122.43498802185059, 37.78557161335955],
-          [-122.43498802185059, 37.7697648824009],
-        ],
-      ],
-    },
-  },
+          [-122.43498802185059, 37.7697648824009]
+        ]
+      ]
+    }
+  }
 };
 
 const [beforeOrder, setBeforeOrder] = useState({
   red: 'green',
   green: 'blue',
-  blue: undefined,
+  blue: undefined
 });
 
 const [viewport, setViewport] = useState({
   latitude: 37.78,
   longitude: -122.41,
-  zoom: 13,
+  zoom: 13
 });
 
 const onChange = (layerId, event) => {
@@ -146,7 +146,7 @@ const onChange = (layerId, event) => {
           source={layerId}
           paint={{
             'fill-color': layerId,
-            'fill-opacity': 0.8,
+            'fill-opacity': 0.8
           }}
         />
       </React.Fragment>

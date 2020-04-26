@@ -14,7 +14,7 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 const [viewport, setViewport] = useState({
   latitude: 37.753574,
   longitude: -122.447303,
-  zoom: 13,
+  zoom: 13
 });
 
 const data = {
@@ -25,10 +25,10 @@ const data = {
       properties: {},
       geometry: {
         type: 'Point',
-        coordinates: [-122.45, 37.75],
-      },
-    },
-  ],
+        coordinates: [-122.45, 37.75]
+      }
+    }
+  ]
 };
 
 const imageURL =
@@ -49,7 +49,7 @@ const imageURL =
     source='point'
     layout={{
       'icon-image': 'my-image',
-      'icon-size': 0.25,
+      'icon-size': 0.25
     }}
   />
 </MapGL>;

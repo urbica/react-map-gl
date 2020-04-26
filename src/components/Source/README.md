@@ -12,7 +12,7 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 const [viewport, setViewport] = useState({
   latitude: 45.137451890638886,
   longitude: -68.13734351262877,
-  zoom: 5,
+  zoom: 5
 });
 
 const data = {
@@ -40,10 +40,10 @@ const data = {
         [-68.23430497910454, 47.35462921812177],
         [-67.79035274928509, 47.066248887716995],
         [-67.79141211614706, 45.702585354182816],
-        [-67.13734351262877, 45.137451890638886],
-      ],
-    ],
-  },
+        [-67.13734351262877, 45.137451890638886]
+      ]
+    ]
+  }
 };
 
 <MapGL
@@ -60,7 +60,7 @@ const data = {
     source='maine'
     paint={{
       'fill-color': '#088',
-      'fill-opacity': 0.8,
+      'fill-opacity': 0.8
     }}
   />
 </MapGL>;
@@ -76,7 +76,7 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 const [viewport, setViewport] = useState({
   latitude: 37.830348,
   longitude: -122.486052,
-  zoom: 15,
+  zoom: 15
 });
 
 const data = {
@@ -104,9 +104,9 @@ const data = {
       [-122.49125003814696, 37.832429207817725],
       [-122.49163627624512, 37.832564787218985],
       [-122.49223709106445, 37.83337825839438],
-      [-122.49378204345702, 37.83368330777276],
-    ],
-  },
+      [-122.49378204345702, 37.83368330777276]
+    ]
+  }
 };
 
 <MapGL
@@ -123,11 +123,11 @@ const data = {
     source='route'
     layout={{
       'line-join': 'round',
-      'line-cap': 'round',
+      'line-cap': 'round'
     }}
     paint={{
       'line-color': '#888',
-      'line-width': 8,
+      'line-width': 8
     }}
   />
 </MapGL>;
@@ -146,7 +146,7 @@ const [points, setPoints] = useState(randomPoint(100));
 const [viewport, setViewport] = useState({
   latitude: 0,
   longitude: 0,
-  zoom: 0,
+  zoom: 0
 });
 
 const addPoints = () => {
@@ -172,7 +172,7 @@ const addPoints = () => {
       source='points'
       paint={{
         'circle-radius': 6,
-        'circle-color': '#1978c8',
+        'circle-color': '#1978c8'
       }}
     />
   </MapGL>
@@ -191,7 +191,7 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 const [viewport, setViewport] = useState({
   latitude: 37.753574,
   longitude: -122.447303,
-  zoom: 13,
+  zoom: 13
 });
 
 <MapGL
@@ -209,7 +209,7 @@ const [viewport, setViewport] = useState({
     source-layer='contour'
     paint={{
       'line-color': '#877b59',
-      'line-width': 1,
+      'line-width': 1
     }}
   />
 </MapGL>;
@@ -225,7 +225,7 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 const [viewport, setViewport] = useState({
   latitude: 40.6892,
   longitude: -74.5447,
-  zoom: 8,
+  zoom: 8
 });
 
 <MapGL
@@ -254,7 +254,7 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 
 const sourceURLs = {
   first: 'mapbox://stepankuzmin.ck0glwxo402ld2omagmzc2gma-7pqww',
-  second: 'mapbox://stepankuzmin.ck0glym6u02ls2omawvm9vi4y-9xid1',
+  second: 'mapbox://stepankuzmin.ck0glym6u02ls2omawvm9vi4y-9xid1'
 };
 
 const [sourceURL, setSourceURL] = useState(sourceURLs.first);
@@ -262,7 +262,7 @@ const [sourceURL, setSourceURL] = useState(sourceURLs.first);
 const [viewport, setViewport] = useState({
   latitude: 37.78,
   longitude: -122.41,
-  zoom: 9,
+  zoom: 9
 });
 
 const toggleSourceURL = () => {
@@ -287,7 +287,7 @@ const toggleSourceURL = () => {
       source-layer='sf-points'
       paint={{
         'circle-radius': 6,
-        'circle-color': '#1978c8',
+        'circle-color': '#1978c8'
       }}
     />
   </MapGL>
@@ -304,7 +304,7 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 
 const sourceTilesURLs = {
   toner: 'https://stamen-tiles.a.ssl.fastly.net/toner/{z}/{x}/{y}.png',
-  watercolor: 'https://stamen-tiles.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.png',
+  watercolor: 'https://stamen-tiles.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.png'
 };
 
 const [sourceTiles, setSourceTiles] = useState(sourceTilesURLs.toner);
@@ -312,7 +312,7 @@ const [sourceTiles, setSourceTiles] = useState(sourceTilesURLs.toner);
 const [viewport, setViewport] = useState({
   latitude: 37.78,
   longitude: -122.41,
-  zoom: 9,
+  zoom: 9
 });
 
 const toggleSourceTiles = () => {

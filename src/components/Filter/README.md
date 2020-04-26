@@ -11,34 +11,34 @@ const data = {
     {
       type: 'Feature',
       properties: {
-        foo: 1,
+        foo: 1
       },
       geometry: {
         type: 'Point',
-        coordinates: [-122.44400024414062, 37.82280243352756],
-      },
+        coordinates: [-122.44400024414062, 37.82280243352756]
+      }
     },
     {
       type: 'Feature',
       properties: {
-        foo: 2,
+        foo: 2
       },
       geometry: {
         type: 'Point',
-        coordinates: [-122.37258911132812, 37.76610103745479],
-      },
+        coordinates: [-122.37258911132812, 37.76610103745479]
+      }
     },
     {
       type: 'Feature',
       properties: {
-        foo: 3,
+        foo: 3
       },
       geometry: {
         type: 'Point',
-        coordinates: [-122.48451232910155, 37.75470124792827],
-      },
-    },
-  ],
+        coordinates: [-122.48451232910155, 37.75470124792827]
+      }
+    }
+  ]
 };
 
 const [filterValue, setFilterValue] = useState(1);
@@ -62,7 +62,7 @@ const [filterValue, setFilterValue] = useState(1);
       source='points'
       paint={{
         'circle-radius': 6,
-        'circle-color': '#1978c8',
+        'circle-color': '#1978c8'
       }}
     />
     <Filter layerId='points' filter={['==', 'foo', filterValue]} />

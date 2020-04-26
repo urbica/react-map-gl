@@ -10,7 +10,7 @@ const [hoveredStateId, setHoveredStateId] = useState(null);
 const [viewport, setViewport] = useState({
   latitude: 37.830348,
   longitude: -100.486052,
-  zoom: 2,
+  zoom: 2
 });
 
 const onHover = (event) => {
@@ -46,7 +46,7 @@ const onLeave = () => {
     source='states'
     paint={{
       'fill-color': '#627BC1',
-      'fill-opacity': ['case', ['boolean', ['feature-state', 'hover'], false], 1, 0.5],
+      'fill-opacity': ['case', ['boolean', ['feature-state', 'hover'], false], 1, 0.5]
     }}
     onHover={onHover}
     onLeave={onLeave}

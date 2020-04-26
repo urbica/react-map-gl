@@ -7,7 +7,7 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 
 const [position, setPosition] = useState({
   longitude: 0,
-  latitude: 0,
+  latitude: 0
 });
 
 const style = {
@@ -15,7 +15,7 @@ const style = {
   color: '#fff',
   cursor: 'pointer',
   background: '#1978c8',
-  borderRadius: '6px',
+  borderRadius: '6px'
 };
 
 const onDragEnd = (lngLat) => {

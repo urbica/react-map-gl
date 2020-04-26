@@ -31,7 +31,7 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 const [viewport, setViewport] = useState({
   latitude: 37.78,
   longitude: -122.41,
-  zoom: 11,
+  zoom: 11
 });
 
 <MapGL
@@ -54,7 +54,7 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 
 const styles = {
   light: 'mapbox://styles/mapbox/light-v9',
-  dark: 'mapbox://styles/mapbox/dark-v9',
+  dark: 'mapbox://styles/mapbox/dark-v9'
 };
 
 const [styleId, setStyleId] = useState('light');
@@ -62,7 +62,7 @@ const [styleId, setStyleId] = useState('light');
 const [viewport, setViewport] = useState({
   latitude: 37.78,
   longitude: -122.41,
-  zoom: 11,
+  zoom: 11
 });
 
 <React.Fragment>
@@ -92,7 +92,7 @@ const [mapStyle, setMapStyle] = useState(null);
 const [viewport, setViewport] = useState({
   latitude: 37.78,
   longitude: -122.41,
-  zoom: 11,
+  zoom: 11
 });
 
 const mapStyleURL = `https://api.mapbox.com/styles/v1/mapbox/light-v9?access_token=${MAPBOX_ACCESS_TOKEN}`;
@@ -128,11 +128,11 @@ const [viewportChangeMethod, setViewportChangeMethod] = useState('flyTo');
 const [viewport, setViewport] = useState({
   latitude: 37.78,
   longitude: -122.41,
-  zoom: 11,
+  zoom: 11
 });
 
 changeOptions = {
-  duration: 1000,
+  duration: 1000
 };
 
 const onChange = (event) => {
@@ -145,7 +145,7 @@ const onClick = (event) => {
   const newVewport = {
     ...viewport,
     latitude: lngLat.lat,
-    longitude: lngLat.lng,
+    longitude: lngLat.lng
   };
 
   setViewport(newVewport);
@@ -187,7 +187,7 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 const [viewport, setViewport] = useState({
   latitude: 37.78,
   longitude: -122.41,
-  zoom: 11,
+  zoom: 11
 });
 
 const onClick = (event) => {
@@ -196,7 +196,7 @@ const onClick = (event) => {
   const newVewport = {
     ...viewport,
     latitude: lngLat.lat,
-    longitude: lngLat.lng,
+    longitude: lngLat.lng
   };
 
   setViewport(newVewport);

@@ -112,7 +112,7 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 const [viewport, setViewport] = useState({
   latitude: 37.78,
   longitude: -122.41,
-  zoom: 11,
+  zoom: 11
 });
 
 <MapGL
@@ -152,7 +152,7 @@ import 'mapbox-gl/dist/mapbox-gl.css';
     source-layer='contour'
     paint={{
       'line-color': '#877b59',
-      'line-width': 1,
+      'line-width': 1
     }}
   />
 </MapGL>;
@@ -170,7 +170,7 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 const [viewport, setViewport] = useState({
   latitude: 37.830348,
   longitude: -122.486052,
-  zoom: 15,
+  zoom: 15
 });
 
 const data = {
@@ -198,9 +198,9 @@ const data = {
       [-122.49125003814696, 37.832429207817725],
       [-122.49163627624512, 37.832564787218985],
       [-122.49223709106445, 37.83337825839438],
-      [-122.49378204345702, 37.83368330777276],
-    ],
-  },
+      [-122.49378204345702, 37.83368330777276]
+    ]
+  }
 };
 
 <MapGL
@@ -217,11 +217,11 @@ const data = {
     source='route'
     layout={{
       'line-join': 'round',
-      'line-cap': 'round',
+      'line-cap': 'round'
     }}
     paint={{
       'line-color': '#888',
-      'line-width': 8,
+      'line-width': 8
     }}
   />
 </MapGL>;
@@ -246,7 +246,7 @@ const myDeckLayer = new MapboxLayer({
   data: [{ position: [-74.5, 40], size: 1000 }],
   getPosition: (d) => d.position,
   getRadius: (d) => d.size,
-  getColor: [255, 0, 0],
+  getColor: [255, 0, 0]
 });
 
 <MapGL
