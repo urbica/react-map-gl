@@ -1,4 +1,5 @@
 /* eslint-disable no-console */
+/* eslint-disable max-classes-per-file */
 
 import React from 'react';
 import { mount } from 'enzyme';
