@@ -332,3 +332,48 @@ test('renders without mapbox-gl', () => {
   const map = wrapper.instance().getMap();
   expect(map).toBeFalsy();
 });
+
+test('Resizes when new dimensions are passed in', () => {
+  const resizeHeight = '100px'
+  class Wrapper extends React.PureComponent {
+    constructor(props) {
+      super(props);
+      this.mapRef = React.createRef();
+    }
+
+    state = {
+      height: '200px',
+      width: '100px'
+    };
+
+    render() {
+      const { height, width } = this.state
+      return (
+        <MapGL
+          ref={this.mapRef}
+          latitude={0}
+          longitude={0}
+          zoom={0}
+          style={{ height, width }}
+        />
+      )
+    }
+  }
+
+  const wrapper = mount(<Wrapper />);
+
+  const map = wrapper.instance().mapRef.current.getMap();
+  const resizeSpy = jest.fn();
+
+  map.on('resize', () => {
+    if (wrapper.children().props().style.height === resizeHeight) {
+      resizeSpy();
+    }
+  });
+
+  wrapper.setState({
+    height: resizeHeight
+  });
+
+  expect(resizeSpy).toHaveBeenCalled();
+});

@@ -411,6 +411,7 @@ class MapGL extends PureComponent<Props, State> {
   componentDidUpdate(prevProps: Props) {
     this._updateMapViewport(prevProps, this.props);
     this._updateMapStyle(prevProps, this.props);
+    this._updateMapSize(prevProps, this.props);
 
     if (!prevProps.cursorStyle !== this.props.cursorStyle) {
       this._map.getCanvas().style.cursor = this.props.cursorStyle;
@@ -500,6 +501,25 @@ class MapGL extends PureComponent<Props, State> {
       default:
         throw new Error('Unknown viewport change method');
     }
+  }
+
+  /**
+   * Update Map size from newProps
+   *
+   * @private
+   * @param {Props} prevProps
+   * @param {Props} newProps
+   */
+  _updateMapSize(prevProps: Props, newProps: Props): void {
+    const sizeChanged =
+      prevProps.style?.height !== newProps.style?.height ||
+      prevProps.style?.width !== newProps.style?.width;
+
+    if (!sizeChanged) {
+      return;
+    }
+
+    this._map.resize();
   }
 
   /**
