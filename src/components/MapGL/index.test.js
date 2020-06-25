@@ -335,7 +335,7 @@ test('renders without mapbox-gl', () => {
 });
 
 test('Resizes when new dimensions are passed in', () => {
-  const resizeHeight = '100px'
+  const resizeHeight = '100px';
   class Wrapper extends React.PureComponent {
     constructor(props) {
       super(props);
@@ -348,7 +348,7 @@ test('Resizes when new dimensions are passed in', () => {
     };
 
     render() {
-      const { height, width } = this.state
+      const { height, width } = this.state;
       return (
         <MapGL
           ref={this.mapRef}
@@ -357,24 +357,19 @@ test('Resizes when new dimensions are passed in', () => {
           zoom={0}
           style={{ height, width }}
         />
-      )
+      );
     }
   }
 
   const wrapper = mount(<Wrapper />);
 
   const map = wrapper.instance().mapRef.current.getMap();
-  const resizeSpy = jest.fn();
-
-  map.on('resize', () => {
-    if (wrapper.children().props().style.height === resizeHeight) {
-      resizeSpy();
-    }
-  });
+  const resizeMock = jest.fn();
+  map.resize = resizeMock;
 
   wrapper.setState({
     height: resizeHeight
   });
 
-  expect(resizeSpy).toHaveBeenCalled();
+  expect(resizeMock).toHaveBeenCalled();
 });

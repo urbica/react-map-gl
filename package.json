@@ -143,5 +143,8 @@
         "dist/react-map-gl.esm.js"
       ]
     }
-  ]
+  ],
+  "dependencies": {
+    "@mapbox/point-geometry": "^0.1.0"
+  }
 }
