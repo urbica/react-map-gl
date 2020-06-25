@@ -40,7 +40,9 @@ type Props = EventProps & {
   className?: string,
 
   /** container style */
-  style?: Object,
+  style?: {
+    [CSSProperty: string]: any
+  },
 
   /**
    * The Mapbox style. A string url or a Mapbox GL style object.
@@ -512,8 +514,10 @@ class MapGL extends PureComponent<Props, State> {
    */
   _updateMapSize(prevProps: Props, newProps: Props): void {
     const sizeChanged =
-      prevProps.style?.height !== newProps.style?.height ||
-      prevProps.style?.width !== newProps.style?.width;
+      (prevProps.style && prevProps.style.height) !==
+        (newProps.style && newProps.style.height) ||
+      (prevProps.style && prevProps.style.width) !==
+        (newProps.style && newProps.style.width);
 
     if (!sizeChanged) {
       return;
