@@ -213,6 +213,10 @@ test('layers reordering', () => {
     </MapGL>
   );
 
+  const map = wrapper.instance().getMap();
+  const style = map.getStyle();
+  expect(style.layers).toEqual(layers);
+
   const layersWrapper = wrapper.find('Layer');
   expect(layersWrapper.find({ id: 'test1' }).props().before).toBe('test2');
   expect(layersWrapper.find({ id: 'test2' }).props().before).toBe('test3');
@@ -267,6 +271,9 @@ test('layers reordering', () => {
       ))
     ]
   });
+
+  const style2 = map.getStyle();
+  expect(style2.layers).toEqual(layers2);
 
   const layersWrapper2 = wrapper.find('Layer');
   expect(layersWrapper2.find({ id: 'test6' }).props().before).toBe('test5');
