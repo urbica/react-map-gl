@@ -163,6 +163,127 @@ test('layers ordering', () => {
   expect(layersWrapper.find({ id: 'test3' }).props().before).toBe(undefined);
 });
 
+test('layers reordering', () => {
+  const data = { type: 'FeatureCollection', features: [] };
+
+  const layers = [
+    {
+      id: 'test1',
+      type: 'circle',
+      source: 'test'
+    },
+    {
+      id: 'test2',
+      type: 'circle',
+      source: 'test'
+    },
+    {
+      id: 'test3',
+      type: 'circle',
+      source: 'test'
+    },
+    {
+      id: 'test4',
+      type: 'circle',
+      source: 'test'
+    },
+    {
+      id: 'test5',
+      type: 'circle',
+      source: 'test'
+    },
+    {
+      id: 'test6',
+      type: 'circle',
+      source: 'test'
+    }
+  ];
+
+  const wrapper = mount(
+    <MapGL latitude={0} longitude={0} zoom={0}>
+      <Source id="test" type="geojson" data={data} />
+      {layers.map(layer => (
+        <Layer
+          key={layer.id}
+          id={layer.id}
+          type={layer.type}
+          source={layer.source}
+        />
+      ))}
+    </MapGL>
+  );
+
+  const map = wrapper.instance().getMap();
+  const style = map.getStyle();
+  expect(style.layers).toEqual(layers);
+
+  const layersWrapper = wrapper.find('Layer');
+  expect(layersWrapper.find({ id: 'test1' }).props().before).toBe('test2');
+  expect(layersWrapper.find({ id: 'test2' }).props().before).toBe('test3');
+  expect(layersWrapper.find({ id: 'test3' }).props().before).toBe('test4');
+  expect(layersWrapper.find({ id: 'test4' }).props().before).toBe('test5');
+  expect(layersWrapper.find({ id: 'test5' }).props().before).toBe('test6');
+  expect(layersWrapper.find({ id: 'test6' }).props().before).toBe(undefined);
+
+  const layers2 = [
+    {
+      id: 'test6',
+      type: 'circle',
+      source: 'test'
+    },
+    {
+      id: 'test5',
+      type: 'circle',
+      source: 'test'
+    },
+    {
+      id: 'test4',
+      type: 'circle',
+      source: 'test'
+    },
+    {
+      id: 'test3',
+      type: 'circle',
+      source: 'test'
+    },
+    {
+      id: 'test2',
+      type: 'circle',
+      source: 'test'
+    },
+    {
+      id: 'test1',
+      type: 'circle',
+      source: 'test'
+    }
+  ];
+
+  wrapper.setProps({
+    children: [
+      <Source id="test" type="geojson" data={data} />,
+      ...layers2.map(layer => (
+        <Layer
+          key={layer.id}
+          id={layer.id}
+          type={layer.type}
+          source={layer.source}
+        />
+      ))
+    ]
+  });
+
+  const style2 = map.getStyle();
+  expect(style2.layers).toEqual(layers2);
+
+  const layersWrapper2 = wrapper.find('Layer');
+  expect(layersWrapper2.find({ id: 'test6' }).props().before).toBe('test5');
+  expect(layersWrapper2.find({ id: 'test5' }).props().before).toBe('test4');
+  expect(layersWrapper2.find({ id: 'test4' }).props().before).toBe('test3');
+  expect(layersWrapper2.find({ id: 'test3' }).props().before).toBe('test2');
+  expect(layersWrapper2.find({ id: 'test2' }).props().before).toBe('test1');
+  expect(layersWrapper2.find({ id: 'test1' }).props().before).toBe(undefined);
+});
+
 test('normalizeChildren', () => {
   const wrapper = mount(
     <MapGL latitude={0} longitude={0} zoom={0}>
