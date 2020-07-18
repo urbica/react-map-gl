@@ -1,4 +1,5 @@
 /* eslint-disable no-console */
+/* eslint-disable max-classes-per-file */
 
 import React from 'react';
 import { mount } from 'enzyme';
@@ -452,4 +453,44 @@ test('renders without mapbox-gl', () => {
   expect(wrapper.exists()).toBe(true);
   const map = wrapper.instance().getMap();
   expect(map).toBeFalsy();
+});
+
+test('Resizes when new dimensions are passed in', () => {
+  const resizeHeight = '100px';
+  class Wrapper extends React.PureComponent {
+    constructor(props) {
+      super(props);
+      this.mapRef = React.createRef();
+    }
+
+    state = {
+      height: '200px',
+      width: '100px'
+    };
+
+    render() {
+      const { height, width } = this.state;
+      return (
+        <MapGL
+          ref={this.mapRef}
+          latitude={0}
+          longitude={0}
+          zoom={0}
+          style={{ height, width }}
+        />
+      );
+    }
+  }
+
+  const wrapper = mount(<Wrapper />);
+
+  const map = wrapper.instance().mapRef.current.getMap();
+  const resizeMock = jest.fn();
+  map.resize = resizeMock;
+
+  wrapper.setState({
+    height: resizeHeight
+  });
+
+  expect(resizeMock).toHaveBeenCalled();
 });
