@@ -87,7 +87,7 @@
     "eslint-plugin-import": "^2.22.0",
     "eslint-plugin-jsx-a11y": "^6.3.1",
     "eslint-plugin-react": "^7.20.3",
-    "flow-bin": "^0.108.0",
+    "flow-bin": "^0.129.0",
     "flow-coverage-report": "^0.7.0",
     "flow-remove-types": "^2.129.0",
     "gh-pages": "^3.1.0",

@@ -9,6 +9,9 @@
 ./node_modules/mapbox-gl/flow-typed
 ./node_modules/mapbox-gl/dist/mapbox-gl.js.flow
 
+[declarations]
+<PROJECT_ROOT>/node_modules/mapbox-gl/.*
+
 [options]
 server.max_workers=4
 esproposal.class_static_fields=enable
