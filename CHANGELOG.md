@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.13.2](https://github.com/urbica/react-map-gl/compare/v1.13.1...v1.13.2) (2020-07-18)
+
+
+### Bug Fixes
+
+* check style height and width in MapGL's componentDidUpdate (h/t [@cazzer](https://github.com/cazzer)) ([#298](https://github.com/urbica/react-map-gl/issues/298))  ([a310867](https://github.com/urbica/react-map-gl/commit/a310867f4875416545a19b0acdc0983bc8737263)), closes [#272](https://github.com/urbica/react-map-gl/issues/272)
+* fix flow warnings ([#300](https://github.com/urbica/react-map-gl/issues/300)) ([f8e72f5](https://github.com/urbica/react-map-gl/commit/f8e72f5f30dc75b96f9f1c54afb47a181fdc71dc))
+* **marker:** add new Marker props ([#289](https://github.com/urbica/react-map-gl/issues/289)) ([3f25e74](https://github.com/urbica/react-map-gl/commit/3f25e74a194d1770f751a180f27bc871f5ea7e33))
+
 ### [1.13.1](https://github.com/urbica/react-map-gl/compare/v1.13.0...v1.13.1) (2020-04-26)
 
 
