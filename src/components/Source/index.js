@@ -47,7 +47,9 @@ class Source extends PureComponent<Props, State> {
   };
 
   componentDidMount() {
-    const { id, children, ...source } = validateSource(this.props);
+    const { id, children, ...restSourceProps } = this.props;
+    const source = validateSource((restSourceProps: any));
+
     this._map.addSource(id, source);
     this._map.on('sourcedata', this._onSourceData);
   }
@@ -56,9 +58,12 @@ class Source extends PureComponent<Props, State> {
     const {
       id: prevId,
       children: prevChildren,
-      ...prevSource
-    } = validateSource(prevProps);
-    const { id, children, ...source } = validateSource(this.props);
+      ...prevSourceProps
+    } = prevProps;
+    const prevSource = validateSource((prevSourceProps: any));
+
+    const { id, children, ...restSourceProps } = this.props;
+    const source = validateSource((restSourceProps: any));
 
     if (id !== prevId || source.type !== prevSource.type) {
       this._map.removeSource(prevId);

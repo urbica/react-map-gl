@@ -1,20 +1,43 @@
 // @flow
-import type { Props } from '../components/Source';
+import type {
+  SourceSpecification,
+  RasterSourceSpecification,
+  RasterDEMSourceSpecification,
+  VectorSourceSpecification,
+  GeoJSONSourceSpecification,
+  ImageSourceSpecification,
+  VideoSourceSpecification
+} from 'mapbox-gl/src/style-spec/types';
 
-export default (props: Props) => {
+export default (props: SourceSpecification): SourceSpecification => {
   switch (props.type) {
-    case 'vector':
-      return { type: 'vector', ...props };
-    case 'raster':
-      return { type: 'raster', ...props };
-    case 'raster-dem':
-      return { type: 'raster-dem', ...props };
-    case 'geojson':
-      return { type: 'geojson', ...props };
-    case 'video':
-      return { type: 'video', ...props };
-    case 'image':
-      return { type: 'image', ...props };
+    case 'vector': {
+      const source: VectorSourceSpecification = { type: 'vector', ...props };
+      return source;
+    }
+    case 'raster': {
+      const source: RasterSourceSpecification = { type: 'raster', ...props };
+      return source;
+    }
+    case 'raster-dem': {
+      const source: RasterDEMSourceSpecification = {
+        type: 'raster-dem',
+        ...props
+      };
+      return source;
+    }
+    case 'geojson': {
+      const source: GeoJSONSourceSpecification = { type: 'geojson', ...props };
+      return source;
+    }
+    case 'video': {
+      const source: VideoSourceSpecification = { type: 'video', ...props };
+      return source;
+    }
+    case 'image': {
+      const source: ImageSourceSpecification = { type: 'image', ...props };
+      return source;
+    }
     default:
       throw new Error(`Unknown type for '${props.id}' Source`);
   }

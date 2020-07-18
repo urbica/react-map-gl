@@ -119,6 +119,7 @@ class Layer extends PureComponent<Props> {
       this.props.type !== prevProps.type ||
       (prevProps.type !== 'background' &&
         (this.props.source !== prevProps.source ||
+          // $FlowFixMe
           this.props['source-layer'] !== prevProps['source-layer']))
     ) {
       this._id = id;
