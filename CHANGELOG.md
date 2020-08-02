@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.14.0](https://github.com/urbica/react-map-gl/compare/v1.13.2...v1.14.0) (2020-08-02)
+
+
+### Features
+
+* **marker:** add onClick handler ([#301](https://github.com/urbica/react-map-gl/issues/301)) ([5a09e0e](https://github.com/urbica/react-map-gl/commit/5a09e0e4b3099f3a71517c41c44ac359baeb0a25))
+
 ### [1.13.2](https://github.com/urbica/react-map-gl/compare/v1.13.1...v1.13.2) (2020-07-18)
 
 
