@@ -69,6 +69,9 @@ type Props = {
    */
   rotationAlignment: string,
 
+  /** Fired when the marker is clicked */
+  onClick?: () => any,
+
   /** Fired when the marker is finished being dragged */
   onDragEnd?: (lngLat: LngLat) => any,
 
@@ -103,7 +106,14 @@ class Marker extends PureComponent<Props> {
   }
 
   componentDidMount() {
-    const { longitude, latitude, onDragEnd, onDragStart, onDrag } = this.props;
+    const {
+      longitude,
+      latitude,
+      onClick,
+      onDragEnd,
+      onDragStart,
+      onDrag
+    } = this.props;
 
     this._marker = new mapboxgl.Marker({
       element: this._el,
@@ -116,6 +126,10 @@ class Marker extends PureComponent<Props> {
     });
 
     this._marker.setLngLat([longitude, latitude]).addTo(this._map);
+
+    if (onClick) {
+      this._el.addEventListener('click', onClick);
+    }
 
     if (onDragEnd) {
       this._marker.on('dragend', this._onDragEnd);
@@ -143,6 +157,10 @@ class Marker extends PureComponent<Props> {
   componentWillUnmount() {
     if (!this._map || !this._map.getStyle()) {
       return;
+    }
+
+    if (this.props.onClick) {
+      this._el.addEventListener('click', this.props.onClick);
     }
 
     this._marker.remove();
