@@ -69,7 +69,7 @@ type Props = {
    */
   rotationAlignment: string,
 
-  /** Fired when the marker is finished being dragged */
+  /** Fired when the marker is clicked */
   onClick?: () => any,
 
   /** Fired when the marker is finished being dragged */
