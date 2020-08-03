@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.14.1](https://github.com/urbica/react-map-gl/compare/v1.14.0...v1.14.1) (2020-08-03)
+
+
+### Bug Fixes
+
+* **marker:** properly remove onClick event listener on unmount ([abc28ee](https://github.com/urbica/react-map-gl/commit/abc28eeb889224a1ec5d297db547126891b4c8d6))
+
 ## [1.14.0](https://github.com/urbica/react-map-gl/compare/v1.13.2...v1.14.0) (2020-08-02)
 
 
