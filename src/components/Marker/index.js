@@ -160,7 +160,7 @@ class Marker extends PureComponent<Props> {
     }
 
     if (this.props.onClick) {
-      this._el.addEventListener('click', this.props.onClick);
+      this._el.removeEventListener('click', this.props.onClick);
     }
 
     this._marker.remove();
