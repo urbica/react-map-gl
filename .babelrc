@@ -8,23 +8,16 @@
       }
     ],
     "@babel/preset-react",
-    "@babel/preset-flow"
+    [
+      "@babel/preset-typescript", {
+        "isTSX": true,
+        "allExtensions": true
+      }
+    ]
   ],
   "plugins": [
+    "@babel/plugin-transform-runtime",
     "@babel/plugin-transform-spread",
     "@babel/plugin-proposal-class-properties"
-  ],
-  "env": {
-    "test": {
-      "presets": [
-        "@babel/preset-env",
-        "@babel/preset-react",
-        "@babel/preset-flow"
-      ],
-      "plugins": [
-        "@babel/plugin-transform-spread",
-        "@babel/plugin-proposal-class-properties"
-      ]
-    }
-  }
+  ]
 }

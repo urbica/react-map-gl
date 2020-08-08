@@ -1,16 +1,25 @@
 {
-  "parser": "babel-eslint",
   "root": true,
+  "parser": "@typescript-eslint/parser",
   "extends": [
     "airbnb",
-    "plugin:flowtype/recommended",
     "prettier",
-    "prettier/flowtype"
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:import/typescript"
   ],
-  "plugins": ["flowtype", "import", "react"],
+  "plugins": ["@typescript-eslint", "import", "react"],
   "env": {
     "browser": true,
     "jest": true
+  },
+  "settings": {
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts", ".tsx"]
+    },
+    "import/resolver": {
+      "typescript": {} // this loads <rootdir>/tsconfig.json to eslint
+    }
   },
   "rules": {
     "arrow-parens": [
@@ -20,7 +29,6 @@
         "requireForBlockBody": true
       }
     ],
-    "comma-dangle": ["error", "never"],
     "max-len": [
       "error",
       { "code": 80, "ignoreStrings": true, "ignoreUrls": true }
@@ -48,10 +56,21 @@
       }
     ],
     "react/state-in-constructor": ["error", "never"],
-    "react/jsx-filename-extension": [1, { "extensions": [".js"] }],
+    "react/jsx-filename-extension": [1, { "extensions": [".ts", ".tsx"] }],
     "react/require-default-props": 0,
     "react/static-property-placement": ["error", "static public field"],
     "react/jsx-fragments": ["error", "element"],
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never"
+      }
+    ],
+    "import/prefer-default-export": "off",
     "import/no-extraneous-dependencies": [
       "error",
       { "devDependencies": true, "peerDependencies": true }

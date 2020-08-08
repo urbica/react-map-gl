@@ -1,0 +1,146 @@
+import { createPortal } from 'react-dom';
+import { PureComponent, createElement } from 'react';
+import type MapboxMap from 'mapbox-gl/src/ui/map';
+import type MapboxPopup from 'mapbox-gl/src/ui/popup';
+import type MapboxLngLatBoundsLike from 'mapbox-gl/src/geo/lng_lat_bounds';
+
+import MapContext from '../MapContext';
+import mapboxgl from '../../utils/mapbox-gl';
+
+export type PopupProps = {
+  /** Popup content. */
+  children: React$Node;
+
+  /** The longitude of the center of the popup. */
+  longitude: number;
+
+  /** The latitude of the center of the popup. */
+  latitude: number;
+
+  /*
+   * If true, a close button will appear
+   * in the top right corner of the popup.
+   */
+  closeButton?: boolean;
+
+  /** If true, the popup will closed when the map is clicked. */
+  closeOnClick?: boolean;
+
+  /** The onClose callback is fired when the popup closed. */
+  onClose?: Function;
+
+  /*
+   * A string indicating the part of the Popup
+   * that should be positioned closest to the coordinate.
+   * */
+  anchor?:
+    | 'top'
+    | 'bottom'
+    | 'left'
+    | 'right'
+    | 'top-left'
+    | 'top-right'
+    | 'bottom-left'
+    | 'bottom-right';
+
+  /**
+   * The offset in pixels as a `PointLike` object to apply
+   * relative to the element's center. Negatives indicate left and up.
+   */
+  offset?: MapboxLngLatBoundsLike;
+
+  /** The className of the popup */
+  className?: string;
+
+  /** A string that sets the CSS property of the popup's maximum width. */
+  maxWidth?: string;
+};
+
+export class Popup extends PureComponent<PopupProps> {
+  _map: MapboxMap;
+
+  _el: HTMLDivElement;
+
+  _popup: MapboxPopup;
+
+  static displayName = 'Popup';
+
+  static defaultProps = {
+    closeButton: true,
+    closeOnClick: true,
+    onClose: null,
+    anchor: null,
+    offset: null,
+    className: null,
+    maxWidth: '240px',
+  };
+
+  constructor(props: Props) {
+    super(props);
+    this._el = document.createElement('div');
+  }
+
+  componentDidMount() {
+    const {
+      longitude,
+      latitude,
+      offset,
+      closeButton,
+      closeOnClick,
+      onClose,
+      anchor,
+      className,
+      maxWidth,
+    } = this.props;
+
+    this._popup = new mapboxgl.Popup({
+      offset,
+      closeButton,
+      closeOnClick,
+      anchor,
+      className,
+      maxWidth,
+    });
+
+    this._popup.setDOMContent(this._el);
+    this._popup.setLngLat([longitude, latitude]).addTo(this._map);
+
+    if (onClose) {
+      this._popup.on('close', onClose);
+    }
+  }
+
+  componentDidUpdate(prevProps: Props) {
+    const positionChanged =
+      prevProps.latitude !== this.props.latitude ||
+      prevProps.longitude !== this.props.longitude;
+
+    if (positionChanged) {
+      this._popup.setLngLat([this.props.longitude, this.props.latitude]);
+    }
+  }
+
+  componentWillUnmount() {
+    if (!this._map || !this._map.getStyle()) {
+      return;
+    }
+
+    this._popup.remove();
+  }
+
+  getPopup() {
+    return this._popup;
+  }
+
+  render() {
+    return createElement(MapContext.Consumer, {}, (map) => {
+      if (map) {
+        this._map = map;
+      }
+
+      return createPortal(this.props.children, this._el);
+    });
+  }
+}
+
+export default Popup;
