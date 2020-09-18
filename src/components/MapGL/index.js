@@ -137,6 +137,12 @@ type Props = EventProps & {
   /** If set, the map will be constrained to the given bounds. */
   maxBounds?: MapboxLngLatBoundsLike,
 
+  /**
+   * The initial bounds of the map. If bounds is specified,
+   * it overrides center and zoom constructor options.
+   * */
+  bounds?: MapboxLngLatBoundsLike,
+
   /** If `true`, the "scroll to zoom" interaction is enabled. */
   scrollZoom?: boolean | Object,
 
@@ -286,6 +292,7 @@ class MapGL extends PureComponent<Props, State> {
     minZoom: 0,
     maxZoom: 22,
     maxBounds: null,
+    bounds: null,
     hash: false,
     bearingSnap: 7,
     pitchWithRotate: true,
@@ -358,6 +365,7 @@ class MapGL extends PureComponent<Props, State> {
       antialias: this.props.antialias,
       refreshExpiredTiles: this.props.refreshExpiredTiles,
       maxBounds: this.props.maxBounds,
+      bounds: this.props.bounds,
       scrollZoom: this.props.scrollZoom,
       boxZoom: this.props.boxZoom,
       dragRotate: this.props.dragRotate,
