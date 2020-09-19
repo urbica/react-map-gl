@@ -1,0 +1,31 @@
+import React from 'react';
+import { mount } from 'enzyme';
+
+import { Filter } from '../Filter';
+import { MapGL } from '../MapGL';
+import { Layer } from '../Layer';
+
+test('render', () => {
+  const wrapper = mount(
+    <MapGL latitude={0} longitude={0} zoom={0}>
+      <Layer id="test" />
+      <Layer id="test2" />
+      <Filter layerId="noSuchLayer" filter={['==', 'foo', 123]} />
+      <Filter layerId="test" filter={['==', 'foo', 123]} />
+      <Filter layerId="test2" filter={['==', 'foo', 123]} validate />
+    </MapGL>
+  );
+
+  expect(wrapper.find('Filter').exists()).toBe(true);
+  wrapper.setProps({
+    children: [
+      <Layer id="test" />,
+      <Layer id="test2" />,
+      <Filter layerId="test" filter={['==', 'foo', 456]} />,
+      <Filter layerId="test2" validate={false} />,
+    ],
+  });
+
+  wrapper.unmount();
+  expect(wrapper.find('Filter').exists()).toBe(false);
+});

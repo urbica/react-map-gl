@@ -1,4 +1,4 @@
-import type MapboxMap from 'mapbox-gl/src/ui/map';
+import type { Map as MapboxMap } from 'mapbox-gl';
 
 const queryRenderedFeatures = (
   map: MapboxMap,
@@ -14,6 +14,7 @@ const queryRenderedFeatures = (
       [position[0] + radius, position[1] + radius],
     ];
 
+    // @ts-ignore
     return map.queryRenderedFeatures(bbox, parameters);
   }
 

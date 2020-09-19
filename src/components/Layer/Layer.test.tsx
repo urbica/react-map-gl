@@ -2,7 +2,10 @@
 
 import React from 'react';
 import { mount } from 'enzyme';
-import MapGL, { Source, Layer } from '../..';
+
+import { Layer } from './Layer';
+import { MapGL } from '../MapGL';
+import { Source } from '../Source';
 
 test('Layer#render', () => {
   const handler = jest.fn();
@@ -53,7 +56,7 @@ test('Layer#unmount', () => {
   expect(map.getLayer('test')).toBeTruthy();
 
   wrapper.setProps({
-    children: [<Source id="test" type="geojson" data={data} />]
+    children: [<Source id="test" type="geojson" data={data} />],
   });
 
   expect(map.getLayer('test')).toBeFalsy();
@@ -75,8 +78,8 @@ test('update id', () => {
   wrapper.setProps({
     children: [
       <Source id="test" type="geojson" data={data} />,
-      <Layer id="test2" type="circle" source="test" />
-    ]
+      <Layer id="test2" type="circle" source="test" />,
+    ],
   });
 
   expect(map.getLayer('test1')).toBeFalsy();
@@ -99,8 +102,8 @@ test('update type', () => {
   wrapper.setProps({
     children: [
       <Source id="test" type="geojson" data={data} />,
-      <Layer id="test" type="line" source="test" />
-    ]
+      <Layer id="test" type="line" source="test" />,
+    ],
   });
 
   expect(map.getLayer('test').type).toEqual('line');
@@ -124,8 +127,8 @@ test('update source and source-layer', () => {
   wrapper.setProps({
     children: [
       <Source id="test2" type="geojson" data={data} />,
-      <Layer id="test" type="circle" source="test2" source-layer="test2" />
-    ]
+      <Layer id="test" type="circle" source="test2" source-layer="test2" />,
+    ],
   });
 
   const layer2 = map.getLayer('test');
@@ -175,16 +178,16 @@ test('update', () => {
         layout={{ visibility: 'visible' }}
         paint={{ 'circle-color': '#000' }}
         filter={['==', 'id', 0]}
-      />
-    ]
+      />,
+    ],
   });
 
   wrapper.setProps({
     children: [
       <Source id="test" type="geojson" data={data} />,
       <Layer id="test1" type="circle" source="test" />,
-      <Layer id="test2" type="circle" source="test" />
-    ]
+      <Layer id="test2" type="circle" source="test" />,
+    ],
   });
 });
 
@@ -210,8 +213,8 @@ test('handlers', () => {
         onHover={handler}
         onEnter={handler}
         onLeave={handler}
-      />
-    ]
+      />,
+    ],
   });
 
   expect(handler).toHaveBeenCalledTimes(4);
@@ -219,8 +222,8 @@ test('handlers', () => {
   wrapper.setProps({
     children: [
       <Source id="test" type="geojson" data={data} />,
-      <Layer id="test1" type="circle" source="test" />
-    ]
+      <Layer id="test1" type="circle" source="test" />,
+    ],
   });
 
   expect(handler).toHaveBeenCalledTimes(4);

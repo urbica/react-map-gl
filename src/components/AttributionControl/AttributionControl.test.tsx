@@ -2,7 +2,8 @@
 
 import React from 'react';
 import { mount } from 'enzyme';
-import MapGL, { AttributionControl } from '../..';
+import { MapGL } from '../MapGL';
+import { AttributionControl } from './AttributionControl';
 
 test('AttributionControl#render', () => {
   const wrapper = mount(

@@ -1,22 +1,22 @@
+// @ts-nocheck
+
 import { Children, cloneElement } from 'react';
-import type { Element } from 'react';
+import type { ReactElement, ReactNode } from 'react';
 
-import Layer from '../components/Layer';
-import CustomLayer from '../components/CustomLayer';
-import type { Children as MapChildren } from '../components/MapGL';
+import { Layer } from '../components/Layer';
+import { CustomLayer } from '../components/CustomLayer';
 
-type LayerLike = Element<typeof Layer> | Element<typeof CustomLayer>;
+type LayerLike = ReactElement<typeof Layer> | ReactElement<typeof CustomLayer>;
 
 const LayerLikeTypes = [Layer, CustomLayer];
-const isLayerLike = (child: Element<any>) =>
-  LayerLikeTypes.includes(child.type);
+const isLayerLike = (child: ReactNode) =>
+  LayerLikeTypes.includes(child?.type);
 
 const getLayerId = (child: LayerLike): string => {
-  // $FlowFixMe
   return child.props.id || child.props.layer.id;
 };
 
-const forEachLayer = (fn, children: MapChildren) => {
+const forEachLayer = (fn: (child: LayerLike) => void, children: ReactNode) => {
   Children.forEach(children, (child) => {
     if (!child) return;
     if (isLayerLike(child)) fn(child);
@@ -25,9 +25,9 @@ const forEachLayer = (fn, children: MapChildren) => {
   });
 };
 
-const getLayerIds = (children: MapChildren): Array<string> => {
-  const layerIds = [];
-  forEachLayer((child) => {
+const getLayerIds = (children: ReactNode): Array<string> => {
+  const layerIds: string[] = [];
+  forEachLayer((child: LayerLike) => {
     if (!child.props.before) {
       layerIds.push(getLayerId(child));
     }
@@ -35,16 +35,16 @@ const getLayerIds = (children: MapChildren): Array<string> => {
   return layerIds;
 };
 
-const normalizeChildren = (children: MapChildren) => {
+const normalizeChildren = (children: ReactNode): ReactNode => {
   const layerIds = getLayerIds(children);
   layerIds.shift();
 
-  const traverse = (_children: MapChildren) => {
+  const traverse = (_children: ReactNode): ReactNode => {
     if (typeof _children === 'function') {
       return _children;
     }
 
-    return Children.map(_children, (child: Element<any>) => {
+    return Children.map(_children, (child: ReactElement<any>) => {
       if (!child) {
         return child;
       }

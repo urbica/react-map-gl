@@ -1,15 +1,14 @@
-/* eslint-disable no-console */
-
 import React from 'react';
 import { mount } from 'enzyme';
 
-import MapGL, { MapContext } from '../..';
+import { MapGL } from '../MapGL';
+import { MapContext } from './MapContext';
 
 test('MapContext#render', () => {
   mount(
     <MapGL latitude={0} longitude={0} zoom={0}>
       <MapContext.Consumer>
-        {(map) => {
+        {map => {
           expect(map).toBeTruthy();
           return null;
         }}

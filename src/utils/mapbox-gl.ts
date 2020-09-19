@@ -1,11 +1,3 @@
-import type MapboxGL from 'mapbox-gl/src/index';
-
-const isBrowser: boolean = !(
-  Object.prototype.toString.call(global.process) === '[object process]' &&
-  !global.process.browser
-);
-
-// $FlowFixMe
-const mapboxgl: MapboxGL = isBrowser ? require('mapbox-gl') : null;
+const mapboxgl = typeof window !== 'undefined' ? require('mapbox-gl') : null;
 
 export default mapboxgl;

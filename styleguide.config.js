@@ -9,16 +9,16 @@ module.exports = {
   assetsDir: 'src/assets/',
   require: [path.resolve(__dirname, 'styleguide.setup.js')],
   moduleAliases: {
-    '@urbica/react-map-gl': path.resolve(__dirname, 'src')
+    '@urbica/react-map-gl': path.resolve(__dirname, 'src'),
   },
   sections: [
     {
       name: 'Introduction',
-      content: 'docs/introduction.md'
+      content: 'docs/introduction.md',
     },
     {
       name: 'Installation',
-      content: 'docs/installation.md'
+      content: 'docs/installation.md',
     },
     {
       name: 'Components',
@@ -32,8 +32,8 @@ module.exports = {
         'src/components/Popup/index.js',
         'src/components/Marker/index.js',
         'src/components/FeatureState/index.js',
-        'src/components/Filter/index.js'
-      ]
+        'src/components/Filter/index.js',
+      ],
     },
     {
       name: 'Controls',
@@ -45,28 +45,37 @@ module.exports = {
         'src/components/NavigationControl/index.js',
         'src/components/ScaleControl/index.js',
         'src/components/LanguageControl/index.js',
-        'src/components/TrafficControl/index.js'
-      ]
-    }
+        'src/components/TrafficControl/index.js',
+      ],
+    },
   ],
   webpackConfig: {
     module: {
       rules: [
         {
-          test: /\.jsx?$/,
-          exclude: /node_modules/,
-          loader: 'babel-loader'
+          test: /\.(ts|tsx)$/,
+          use: [
+            {
+              loader: require.resolve('ts-loader'),
+              options: {
+                transpileOnly: true,
+              },
+            },
+            {
+              loader: require.resolve('react-docgen-typescript-loader'),
+            },
+          ],
         },
         {
           test: /\.css$/,
-          use: ['style-loader', 'css-loader']
-        }
-      ]
-    }
+          use: ['style-loader', 'css-loader'],
+        },
+      ],
+    },
   },
-  dangerouslyUpdateWebpackConfig: (webpackConfig) => {
+  dangerouslyUpdateWebpackConfig: webpackConfig => {
     const envPlugin = new webpack.EnvironmentPlugin(['MAPBOX_ACCESS_TOKEN']);
     webpackConfig.plugins.push(envPlugin);
     return webpackConfig;
-  }
+  },
 };

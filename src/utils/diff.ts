@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 type KV = {
   [string]: any;
 };

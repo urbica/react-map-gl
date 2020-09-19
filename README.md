@@ -1,304 +1,156 @@
-# Urbica React Mapbox GL JS
+# TSDX React User Guide
 
-[![Node CI](https://github.com/urbica/react-map-gl/workflows/Node%20CI/badge.svg)](https://github.com/urbica/react-map-gl/actions)
-[![codecov](https://codecov.io/gh/urbica/react-map-gl/branch/master/graph/badge.svg)](https://codecov.io/gh/urbica/react-map-gl)
-[![npm](https://img.shields.io/npm/dt/@urbica/react-map-gl.svg?style=popout)](https://www.npmjs.com/package/@urbica/react-map-gl)
-[![npm](https://img.shields.io/npm/v/@urbica/react-map-gl.svg?style=popout)](https://www.npmjs.com/package/@urbica/react-map-gl)
-![npm bundle size (scoped)](https://img.shields.io/bundlephobia/minzip/@urbica/react-map-gl.svg)
+Congrats! You just saved yourself hours of work by bootstrapping this project with TSDX. Let’s get you oriented with what’s here and how to use it.
 
-React Component Library for [Mapbox GL JS](https://github.com/mapbox/mapbox-gl-js). Mapbox GL JS is a JavaScript library that renders interactive maps from vector tiles and Mapbox styles using WebGL. This project is intended to be as close as possible to the [Mapbox GL JS API](https://docs.mapbox.com/mapbox-gl-js/api/).
+> This TSDX setup is meant for developing React component libraries (not apps!) that can be published to NPM. If you’re looking to build a React-based app, you should use `create-react-app`, `razzle`, `nextjs`, `gatsby`, or `react-static`.
 
-This project is heavily inspired by [uber/react-map-gl](https://github.com/uber/react-map-gl).
+> If you’re new to TypeScript and React, checkout [this handy cheatsheet](https://github.com/sw-yx/react-typescript-cheatsheet/)
 
-- [Installation](#installation)
-- [Components](#components)
-- [Usage](#usage)
-  - [Static Map](#static-map)
-  - [Interactive Map](#interactive-map)
-  - [MapGL with Source and Layer](#mapgl-with-source-and-layer)
-  - [MapGL with GeoJSON Source](#mapgl-with-geojson-source)
-  - [Custom Layers support](#custom-layers-support)
-- [Documentation](#documentation)
-- [Changelog](#changelog)
-- [License](#license)
-- [Contributing](#contributing)
-- [Team](#team)
+## Commands
 
-![Gallery](https://raw.githubusercontent.com/urbica/react-map-gl/master/docs/gallery.jpg)
+TSDX scaffolds your new library inside `/src`, and also sets up a [Parcel-based](https://parceljs.org) playground for it inside `/example`.
 
-## Installation
+The recommended workflow is to run TSDX in one terminal:
 
-```shell
-npm install --save mapbox-gl @urbica/react-map-gl
+```bash
+npm start # or yarn start
 ```
 
-...or if you are using yarn:
+This builds to `/dist` and runs the project in watch mode so any edits you save inside `src` causes a rebuild to `/dist`.
 
-```shell
-yarn add mapbox-gl @urbica/react-map-gl
+Then run the example inside another:
+
+```bash
+cd example
+npm i # or yarn to install dependencies
+npm start # or yarn start
 ```
 
-### Optional Dependencies
+The default example imports and live reloads whatever is in `/dist`, so if you are seeing an out of date component, make sure TSDX is running in watch mode like we recommend above. **No symlinking required**, we use [Parcel's aliasing](https://parceljs.org/module_resolution.html#aliases).
 
-If you want to use the `LanguageControl`:
+To do a one-off build, use `npm run build` or `yarn build`.
 
-```shell
-npm install --save @mapbox/mapbox-gl-language
+To run tests, use `npm test` or `yarn test`.
+
+## Configuration
+
+Code quality is set up for you with `prettier`, `husky`, and `lint-staged`. Adjust the respective fields in `package.json` accordingly.
+
+### Jest
+
+Jest tests are set up to run with `npm test` or `yarn test`.
+
+#### Setup Files
+
+This is the folder structure we set up for you:
+
+```txt
+/example
+  index.html
+  index.tsx       # test your component here in a demo app
+  package.json
+  tsconfig.json
+/src
+  index.tsx       # EDIT THIS
+/test
+  blah.test.tsx   # EDIT THIS
+.gitignore
+package.json
+README.md         # EDIT THIS
+tsconfig.json
 ```
 
-...or if you are using yarn:
+#### React Testing Library
 
-```shell
-yarn add @mapbox/mapbox-gl-language
+We do not set up `react-testing-library` for you yet, we welcome contributions and documentation on this.
+
+### Rollup
+
+TSDX uses [Rollup](https://rollupjs.org) as a bundler and generates multiple rollup configs for various module formats and build settings. See [Optimizations](#optimizations) for details.
+
+### TypeScript
+
+`tsconfig.json` is set up to interpret `dom` and `esnext` types, as well as `react` for `jsx`. Adjust according to your needs.
+
+## Continuous Integration
+
+### GitHub Actions
+
+A simple action is included that runs these steps on all pushes:
+
+- Installs deps w/ cache
+- Lints, tests, and builds
+
+## Optimizations
+
+Please see the main `tsdx` [optimizations docs](https://github.com/palmerhq/tsdx#optimizations). In particular, know that you can take advantage of development-only optimizations:
+
+```js
+// ./types/index.d.ts
+declare var __DEV__: boolean;
+
+// inside your code...
+if (__DEV__) {
+  console.log('foo');
+}
 ```
 
-## Components
+You can also choose to install and use [invariant](https://github.com/palmerhq/tsdx#invariant) and [warning](https://github.com/palmerhq/tsdx#warning) functions.
 
-| Component                                                 | Description                                                                                                            |
-| --------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| [MapGL](src/components/MapGL)                             | Represents map on the page                                                                                             |
-| [MapContext](src/components/MapContext)                   | React Context API for the map instance                                                                                 |
-| [Source](src/components/Source)                           | [Sources](https://docs.mapbox.com/mapbox-gl-js/api/#sources) specify the geographic features to be rendered on the map |
-| [Layer](src/components/Layer)                             | [Layers](https://docs.mapbox.com/mapbox-gl-js/style-spec/#layers) specify the `Sources` style                          |
-| [Filter](src/components/Filter)                           | Set filter to existing layer                                                                                           |
-| [CustomLayer](src/components/CustomLayer)                 | Allow a user to render directly into the map's GL context                                                              |
-| [Image](src/components/Image)                             | Adds an image to the map style                                                                                         |
-| [Popup](src/components/Popup)                             | React Component for [Mapbox GL JS Popup](https://docs.mapbox.com/mapbox-gl-js/api/#popup)                              |
-| [Marker](src/components/Marker)                           | React Component for [Mapbox GL JS Marker](https://docs.mapbox.com/mapbox-gl-js/api/#marker)                            |
-| [FeatureState](src/components/FeatureState)               | Sets the state of a geographic feature rendered on the map                                                             |
-| [AttributionControl](src/components/AttributionControl)   | Represents the map's attribution information                                                                           |
-| [LanguageControl](src/components/LanguageControl)         | Adds support for switching the language of the map style                                                               |
-| [FullscreenControl](src/components/FullscreenControl)     | Contains a button for toggling the map in and out of fullscreen mode                                                   |
-| [GeolocateControl](src/components/GeolocateControl)       | Geolocate the user and then track their current location on the map                                                    |
-| [NavigationControl](src/components/NavigationControl)     | Contains zoom buttons and a compass                                                                                    |
-| [ScaleControl](src/components/ScaleControl)               | Displays the ratio of a distance on the map to the corresponding distance on the ground                                |
-| [Cluster](https://github.com/urbica/react-map-gl-cluster) | Cluster [Markers](src/components/Marker) with [supercluster](https://github.com/mapbox/supercluster)                   |
-| [Draw](https://github.com/urbica/react-map-gl-draw)       | Support for drawing and editing features                                                                               |
+## Module Formats
 
-## Usage
+CJS, ESModules, and UMD module formats are supported.
 
-To use any of Mapbox’s tools, APIs, or SDKs, you’ll need a Mapbox [access token](https://www.mapbox.com/help/define-access-token/). Mapbox uses access tokens to associate requests to API resources with your account. You can find all your access tokens, create new ones, or delete existing ones on your [API access tokens page](https://www.mapbox.com/studio/account/tokens/).
+The appropriate paths are configured in `package.json` and `dist/index.js` accordingly. Please report if any issues are found.
 
-See [**Documentation**](https://urbica.github.io/react-map-gl/) for more examples.
+## Deploying the Example Playground
 
-### Static Map
+The Playground is just a simple [Parcel](https://parceljs.org) app, you can deploy it anywhere you would normally deploy that. Here are some guidelines for **manually** deploying with the Netlify CLI (`npm i -g netlify-cli`):
 
-By default, `MapGL` component renders in a static mode. That means that the user cannot interact with the map.
-
-```jsx
-import React from 'react';
-import MapGL from '@urbica/react-map-gl';
-import 'mapbox-gl/dist/mapbox-gl.css';
-
-<MapGL
-  style={{ width: '100%', height: '400px' }}
-  mapStyle='mapbox://styles/mapbox/light-v9'
-  accessToken={MAPBOX_ACCESS_TOKEN}
-  latitude={37.78}
-  longitude={-122.41}
-  zoom={11}
-/>;
+```bash
+cd example # if not already in the example folder
+npm run build # builds to dist
+netlify deploy # deploy the dist folder
 ```
 
-### Interactive Map
+Alternatively, if you already have a git repo connected, you can set up continuous deployment with Netlify:
 
-In most cases, you will want the user to interact with the map. To do this, you need to provide `onViewportChange` handler, that will update map viewport state.
-
-```jsx
-import React, { useState } from 'react';
-import MapGL from '@urbica/react-map-gl';
-import 'mapbox-gl/dist/mapbox-gl.css';
-
-const [viewport, setViewport] = useState({
-  latitude: 37.78,
-  longitude: -122.41,
-  zoom: 11
-});
-
-<MapGL
-  style={{ width: '100%', height: '400px' }}
-  mapStyle='mapbox://styles/mapbox/light-v9'
-  accessToken={MAPBOX_ACCESS_TOKEN}
-  latitude={viewport.latitude}
-  longitude={viewport.longitude}
-  zoom={viewport.zoom}
-  onViewportChange={setViewport}
-/>;
+```bash
+netlify init
+# build command: yarn build && cd example && yarn && yarn build
+# directory to deploy: example/dist
+# pick yes for netlify.toml
 ```
 
-### MapGL with Source and Layer
+## Named Exports
 
-[Sources](https://docs.mapbox.com/mapbox-gl-js/api/#sources) specify the geographic features to be rendered on the map.
+Per Palmer Group guidelines, [always use named exports.](https://github.com/palmerhq/typescript#exports) Code split inside your React app instead of your React library.
 
-[Layers](https://docs.mapbox.com/mapbox-gl-js/style-spec/#layers) specify the Sources styles. The type of layer is specified by the `"type"` property, and must be one of `background`, `fill`, `line`, `symbol`, `raster`, `circle`, `fill-extrusion`, `heatmap`, `hillshade`.
+## Including Styles
 
-Except for layers of the `background` type, each layer needs to refer to a source. Layers take the data that they get from a source, optionally filter features, and then define how those features are styled.
+There are many ways to ship styles, including with CSS-in-JS. TSDX has no opinion on this, configure how you like.
 
-```jsx
-import React from 'react';
-import MapGL, { Source, Layer } from '@urbica/react-map-gl';
-import 'mapbox-gl/dist/mapbox-gl.css';
+For vanilla CSS, you can include it at the root directory and add it to the `files` section in your `package.json`, so that it can be imported separately by your users and run through their bundler's loader.
 
-<MapGL
-  style={{ width: '100%', height: '400px' }}
-  mapStyle='mapbox://styles/mapbox/light-v9'
-  accessToken={MAPBOX_ACCESS_TOKEN}
->
-  <Source id='contours' type='vector' url='mapbox://mapbox.mapbox-terrain-v2' />
-  <Layer
-    id='contours'
-    type='line'
-    source='contours'
-    source-layer='contour'
-    paint={{
-      'line-color': '#877b59',
-      'line-width': 1
-    }}
-  />
-</MapGL>;
+## Publishing to NPM
+
+We recommend using [np](https://github.com/sindresorhus/np).
+
+## Usage with Lerna
+
+When creating a new package with TSDX within a project set up with Lerna, you might encounter a `Cannot resolve dependency` error when trying to run the `example` project. To fix that you will need to make changes to the `package.json` file _inside the `example` directory_.
+
+The problem is that due to the nature of how dependencies are installed in Lerna projects, the aliases in the example project's `package.json` might not point to the right place, as those dependencies might have been installed in the root of your Lerna project.
+
+Change the `alias` to point to where those packages are actually installed. This depends on the directory structure of your Lerna project, so the actual path might be different from the diff below.
+
+```diff
+   "alias": {
+-    "react": "../node_modules/react",
+-    "react-dom": "../node_modules/react-dom"
++    "react": "../../../node_modules/react",
++    "react-dom": "../../../node_modules/react-dom"
+   },
 ```
 
-### MapGL with GeoJSON Source
-
-To draw a GeoJSON on a map, add `Source` with the `type` property set to `geojson` and `data` property set to a URL or inline [GeoJSON](http://geojson.org/).
-
-```jsx
-import React, { useState } from 'react';
-import MapGL, { Source, Layer } from '@urbica/react-map-gl';
-import 'mapbox-gl/dist/mapbox-gl.css';
-
-const [viewport, setViewport] = useState({
-  latitude: 37.830348,
-  longitude: -122.486052,
-  zoom: 15
-});
-
-const data = {
-  type: 'Feature',
-  geometry: {
-    type: 'LineString',
-    coordinates: [
-      [-122.48369693756104, 37.83381888486939],
-      [-122.48348236083984, 37.83317489144141],
-      [-122.48339653015138, 37.83270036637107],
-      [-122.48356819152832, 37.832056363179625],
-      [-122.48404026031496, 37.83114119107971],
-      [-122.48404026031496, 37.83049717427869],
-      [-122.48348236083984, 37.829920943955045],
-      [-122.48356819152832, 37.82954808664175],
-      [-122.48507022857666, 37.82944639795659],
-      [-122.48610019683838, 37.82880236636284],
-      [-122.48695850372314, 37.82931081282506],
-      [-122.48700141906738, 37.83080223556934],
-      [-122.48751640319824, 37.83168351665737],
-      [-122.48803138732912, 37.832158048267786],
-      [-122.48888969421387, 37.83297152392784],
-      [-122.48987674713133, 37.83263257682617],
-      [-122.49043464660643, 37.832937629287755],
-      [-122.49125003814696, 37.832429207817725],
-      [-122.49163627624512, 37.832564787218985],
-      [-122.49223709106445, 37.83337825839438],
-      [-122.49378204345702, 37.83368330777276]
-    ]
-  }
-};
-
-<MapGL
-  style={{ width: '100%', height: '400px' }}
-  mapStyle='mapbox://styles/mapbox/light-v9'
-  accessToken={MAPBOX_ACCESS_TOKEN}
-  onViewportChange={setViewport}
-  {...viewport}
->
-  <Source id='route' type='geojson' data={data} />
-  <Layer
-    id='route'
-    type='line'
-    source='route'
-    layout={{
-      'line-join': 'round',
-      'line-cap': 'round'
-    }}
-    paint={{
-      'line-color': '#888',
-      'line-width': 8
-    }}
-  />
-</MapGL>;
-```
-
-### Custom Layers support
-
-[Custom layers](https://docs.mapbox.com/mapbox-gl-js/api/#customlayerinterface) allow a user to render directly into the map's GL context using the map's camera.
-
-Here is an Uber [deck.gl](https://github.com/uber/deck.gl) usage example.
-
-```jsx
-import React from 'react';
-import MapGL, { CustomLayer } from '@urbica/react-map-gl';
-import { MapboxLayer } from '@deck.gl/mapbox';
-import { ScatterplotLayer } from '@deck.gl/layers';
-import 'mapbox-gl/dist/mapbox-gl.css';
-
-const myDeckLayer = new MapboxLayer({
-  id: 'my-scatterplot',
-  type: ScatterplotLayer,
-  data: [{ position: [-74.5, 40], size: 1000 }],
-  getPosition: (d) => d.position,
-  getRadius: (d) => d.size,
-  getColor: [255, 0, 0]
-});
-
-<MapGL
-  style={{ width: '100%', height: '400px' }}
-  mapStyle='mapbox://styles/mapbox/light-v9'
-  accessToken={MAPBOX_ACCESS_TOKEN}
-  latitude={40}
-  longitude={-74.5}
-  zoom={9}
->
-  <CustomLayer layer={myDeckLayer} />
-</MapGL>;
-```
-
-## Documentation
-
-Check out [documentation website](https://urbica.github.io/react-map-gl/).
-
-## Changelog
-
-Check out [CHANGELOG.md](CHANGELOG.md) and [releases](https://github.com/urbica/react-map-gl/releases) page.
-
-## License
-
-This project is licensed under the terms of the [MIT license](LICENSE).
-
-## Contributing
-
-Clone and install dependencies
-
-```shell
-git clone https://github.com/urbica/react-map-gl.git
-cd react-map-gl
-npm install
-```
-
-Start `react-styleguidist` server
-
-```shell
-MAPBOX_ACCESS_TOKEN=<TOKEN> npm start
-```
-
-where `<TOKEN>` is a valid Mapbox [access token](https://www.mapbox.com/help/define-access-token/).
-
-Run tests with
-
-```shell
-npm test
-```
-
-## Team
-
-| [![Stepan Kuzmin](https://github.com/stepankuzmin.png?size=144)](https://github.com/stepankuzmin) | [![Artem Boyur](https://github.com/boyur.png?size=144)](https://github.com/boyur) | [![Andrey Bakhvalov](https://github.com/device25.png?size=144)](https://github.com/device25) |
-| ------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
-| [Stepan Kuzmin](https://github.com/stepankuzmin)                                                  | [Artem Boyur](https://github.com/boyur)                                           | [Andrey Bakhvalov](https://github.com/device25)                                              |
+An alternative to fixing this problem would be to remove aliases altogether and define the dependencies referenced as aliases as dev dependencies instead. [However, that might cause other problems.](https://github.com/palmerhq/tsdx/issues/64)
