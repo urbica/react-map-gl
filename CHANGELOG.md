@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.14.2](https://github.com/urbica/react-map-gl/compare/v1.14.1...v1.14.2) (2020-09-20)
+
+
+### Features
+
+* adding bounds prop to MapGL component ([#305](https://github.com/urbica/react-map-gl/issues/305)) ([72adfcd](https://github.com/urbica/react-map-gl/commit/72adfcd5fdd3679951c054bd2f0cd6b147b9797b))
+
 ### [1.14.1](https://github.com/urbica/react-map-gl/compare/v1.14.0...v1.14.1) (2020-08-03)
 
 
