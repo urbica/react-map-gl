@@ -1,16 +1,16 @@
 import { PureComponent, createElement } from 'react';
-import type MapboxMap from 'mapbox-gl/src/ui/map';
-import type { ChildrenArray, Element } from 'react';
-import type {
-  SourceSpecification,
-  RasterSourceSpecification,
-  VectorSourceSpecification,
-  GeoJSONSourceSpecification,
-  ImageSourceSpecification
-} from 'mapbox-gl/src/style-spec/types';
+import type { Map as MapboxMap, AnySourceImpl } from 'mapbox-gl';
 
-import MapContext from '../MapContext';
-import Layer from '../Layer';
+// import type {
+//   SourceSpecification,
+//   RasterSourceSpecification,
+//   VectorSourceSpecification,
+//   GeoJSONSourceSpecification,
+//   ImageSourceSpecification
+// } from 'mapbox-gl/src/style-spec/types';
+
+import { MapContext } from '../MapContext';
+import { Layer } from '../Layer';
 
 /* eslint-disable import/no-cycle */
 import isArraysEqual from '../../utils/isArraysEqual';
@@ -36,7 +36,7 @@ type State = {
 };
 
 export class Source extends PureComponent<Props, State> {
-  _map: MapboxMap;
+  _map: MapboxMap | undefined;
 
   static displayName = 'Source';
 
@@ -45,23 +45,31 @@ export class Source extends PureComponent<Props, State> {
   };
 
   componentDidMount() {
+    if (!this._map) {
+      return;
+    }
+
     const { id, children, ...restSourceProps } = this.props;
-    const source = validateSource((restSourceProps: any));
+    const source = validateSource(restSourceProps);
 
     this._map.addSource(id, source);
     this._map.on('sourcedata', this._onSourceData);
   }
 
   componentDidUpdate(prevProps: Props) {
+    if (!this._map) {
+      return;
+    }
+
     const {
       id: prevId,
       children: prevChildren,
       ...prevSourceProps
     } = prevProps;
-    const prevSource = validateSource((prevSourceProps: any));
+    const prevSource = validateSource(prevSourceProps);
 
     const { id, children, ...restSourceProps } = this.props;
-    const source = validateSource((restSourceProps: any));
+    const source = validateSource(restSourceProps);
 
     if (id !== prevId || source.type !== prevSource.type) {
       this._map.removeSource(prevId);
@@ -98,6 +106,10 @@ export class Source extends PureComponent<Props, State> {
   }
 
   _onSourceData = () => {
+    if (!this._map) {
+      return;
+    }
+
     if (!this._map.isSourceLoaded(this.props.id)) {
       return;
     }
@@ -111,6 +123,10 @@ export class Source extends PureComponent<Props, State> {
     prevSource: GeoJSONSourceSpecification,
     newSource: GeoJSONSourceSpecification
   ) => {
+    if (!this._map) {
+      return;
+    }
+
     if (newSource.data !== prevSource.data) {
       const source = this._map.getSource(id);
 
@@ -125,6 +141,10 @@ export class Source extends PureComponent<Props, State> {
     prevSource: ImageSourceSpecification,
     newSource: ImageSourceSpecification
   ) => {
+    if (!this._map) {
+      return;
+    }
+
     if (
       newSource.url !== prevSource.url ||
       newSource.coordinates !== prevSource.coordinates
@@ -142,6 +162,10 @@ export class Source extends PureComponent<Props, State> {
     prevSource: TileSourceSpecification,
     newSource: TileSourceSpecification
   ) => {
+    if (!this._map) {
+      return;
+    }
+
     if (
       newSource.url === prevSource.url &&
       isArraysEqual(newSource.tiles, prevSource.tiles)
@@ -170,6 +194,10 @@ export class Source extends PureComponent<Props, State> {
   };
 
   _removeSource = () => {
+    if (!this._map) {
+      return;
+    }
+
     const { id } = this.props;
     if (this._map.getSource(id)) {
       const { layers } = this._map.getStyle();

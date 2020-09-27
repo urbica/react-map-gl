@@ -1,6 +1,6 @@
 const point = (
   coordinates: [number, number],
-  properties: { [string]: any } = {}
+  properties: { [key: string]: any } = {}
 ) => ({
   type: 'Feature',
   properties,

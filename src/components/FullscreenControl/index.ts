@@ -1,8 +1,7 @@
 import { PureComponent, createElement } from 'react';
-import type MapboxMap from 'mapbox-gl/src/ui/map';
-import type MapboxFullscreenControl from 'mapbox-gl/src/ui/control/fullscreen_control';
+import type { Map as MapboxMap, FullscreenControl as MapboxFullscreenControl } from 'mapbox-gl';
 
-import MapContext from '../MapContext';
+import { MapContext } from '../MapContext';
 import mapboxgl from '../../utils/mapbox-gl';
 
 type Props = {

@@ -4,7 +4,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 
-import MapGL from './index';
+import { MapGL } from './index';
 import { CustomLayer, Layer, Source } from '../../index';
 
 test('render', () => {
@@ -171,33 +171,33 @@ test('layers reordering', () => {
     {
       id: 'test1',
       type: 'circle',
-      source: 'test'
+      source: 'test',
     },
     {
       id: 'test2',
       type: 'circle',
-      source: 'test'
+      source: 'test',
     },
     {
       id: 'test3',
       type: 'circle',
-      source: 'test'
+      source: 'test',
     },
     {
       id: 'test4',
       type: 'circle',
-      source: 'test'
+      source: 'test',
     },
     {
       id: 'test5',
       type: 'circle',
-      source: 'test'
+      source: 'test',
     },
     {
       id: 'test6',
       type: 'circle',
-      source: 'test'
-    }
+      source: 'test',
+    },
   ];
 
   const wrapper = mount(
@@ -230,33 +230,33 @@ test('layers reordering', () => {
     {
       id: 'test6',
       type: 'circle',
-      source: 'test'
+      source: 'test',
     },
     {
       id: 'test5',
       type: 'circle',
-      source: 'test'
+      source: 'test',
     },
     {
       id: 'test4',
       type: 'circle',
-      source: 'test'
+      source: 'test',
     },
     {
       id: 'test3',
       type: 'circle',
-      source: 'test'
+      source: 'test',
     },
     {
       id: 'test2',
       type: 'circle',
-      source: 'test'
+      source: 'test',
     },
     {
       id: 'test1',
       type: 'circle',
-      source: 'test'
-    }
+      source: 'test',
+    },
   ];
 
   wrapper.setProps({
@@ -269,8 +269,8 @@ test('layers reordering', () => {
           type={layer.type}
           source={layer.source}
         />
-      ))
-    ]
+      )),
+    ],
   });
 
   const style2 = map.getStyle();
@@ -358,7 +358,7 @@ test('circular add/remove layers', () => {
   class Wrapper extends React.PureComponent {
     state = {
       test1: true,
-      test2: false
+      test2: false,
     };
 
     render() {
@@ -465,7 +465,7 @@ test('Resizes when new dimensions are passed in', () => {
 
     state = {
       height: '200px',
-      width: '100px'
+      width: '100px',
     };
 
     render() {
@@ -489,7 +489,7 @@ test('Resizes when new dimensions are passed in', () => {
   map.resize = resizeMock;
 
   wrapper.setState({
-    height: resizeHeight
+    height: resizeHeight,
   });
 
   expect(resizeMock).toHaveBeenCalled();
