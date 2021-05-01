@@ -8,13 +8,19 @@ import MapContext from '../MapContext';
 import mapboxgl from '../../utils/mapbox-gl';
 
 type Props = {
-  /* If true the compass button is included. */
+  /** If true the compass button is included. */
   showCompass: boolean,
 
-  /* If true the zoom-in and zoom-out buttons are included. */
+  /** If true the zoom-in and zoom-out buttons are included. */
   showZoom: boolean,
 
-  /* A string representing the position of the control on the map. */
+  /**
+   * If true the pitch is visualized by rotating X-axis of compass
+   * and pitch will reset by clicking on the compass.
+   */
+  visualizePitch: boolean,
+
+  /** A string representing the position of the control on the map. */
   position?: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right'
 };
 
@@ -27,16 +33,20 @@ class NavigationControl extends PureComponent<Props> {
   _control: MapboxNavigationControl;
 
   static defaultProps = {
+    showCompass: true,
+    showZoom: true,
+    visualizePitch: false,
     position: 'top-right'
   };
 
   componentDidMount() {
     const map: MapboxMap = this._map;
-    const { showCompass, showZoom, position } = this.props;
+    const { showCompass, showZoom, visualizePitch, position } = this.props;
 
     const control: MapboxNavigationControl = new mapboxgl.NavigationControl({
       showCompass,
-      showZoom
+      showZoom,
+      visualizePitch
     });
 
     map.addControl(control, position);
