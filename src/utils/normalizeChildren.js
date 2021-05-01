@@ -13,10 +13,9 @@ const LayerLikeTypes = [Layer, CustomLayer];
 const isLayerLike = (child: Element<any>) =>
   LayerLikeTypes.includes(child.type);
 
-const getLayerId = (child: LayerLike): string => {
+const getLayerId = (child: LayerLike): string =>
   // $FlowFixMe
-  return child.props.id || child.props.layer.id;
-};
+  child.props.id || child.props.layer.id;
 
 const forEachLayer = (fn, children: MapChildren) => {
   Children.forEach(children, (child) => {
