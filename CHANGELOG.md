@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.14.3](https://github.com/urbica/react-map-gl/compare/v1.14.2...v1.14.3) (2021-05-01)
+
+
+### Bug Fixes
+
+* add React 17.x to list of acceptable peer dependencies. ([#325](https://github.com/urbica/react-map-gl/issues/325)) (h/t [@wrdaigle](https://github.com/wrdaigle)) ([d23b887](https://github.com/urbica/react-map-gl/commit/d23b88706258bb916fe7c94eccdf4434c2b17db5))
+
 ### [1.14.2](https://github.com/urbica/react-map-gl/compare/v1.14.1...v1.14.2) (2020-09-20)
 
 
