@@ -12,6 +12,7 @@ import MapContext from '../MapContext';
 import mapboxgl from '../../utils/mapbox-gl';
 import events from './events';
 import capitalizeFirstLetter from '../../utils/capitalizeFirstLetter';
+import isArraysEqual from '../../utils/isArraysEqual';
 
 /* eslint-disable import/no-cycle */
 import normalizeChildren from '../../utils/normalizeChildren';
@@ -422,6 +423,7 @@ class MapGL extends PureComponent<Props, State> {
     this._updateMapViewport(prevProps, this.props);
     this._updateMapStyle(prevProps, this.props);
     this._updateMapSize(prevProps, this.props);
+    this._updateMapEventListeners(prevProps, this.props);
 
     if (!prevProps.cursorStyle !== this.props.cursorStyle) {
       this._map.getCanvas().style.cursor = this.props.cursorStyle;
@@ -441,6 +443,40 @@ class MapGL extends PureComponent<Props, State> {
   // External apps can access map this way
   getMap() {
     return this._map;
+  }
+
+  /**
+   * Update Map event listeners from newProps
+   *
+   * @private
+   * @param {Props} prevProps
+   * @param {Props} newProps
+   */
+  _updateMapEventListeners(prevProps: Props, newProps: Props): void {
+    events.forEach((event) => {
+      const propName = `on${capitalizeFirstLetter(event)}`;
+      const prevEventHandler = prevProps[propName];
+      const newEventHandler = newProps[propName];
+      if (!((Array.isArray(prevEventHandler) &&
+          Array.isArray(newEventHandler) &&
+          isArraysEqual(prevEventHandler, newEventHandler)) ||
+          prevEventHandler === newEventHandler)) {
+        if (prevEventHandler) {
+          if (Array.isArray(prevEventHandler)) {
+            this._map.off(event, ...prevEventHandler);
+          } else {
+            this._map.off(event, prevEventHandler);
+          }
+        }
+        if (newEventHandler) {
+          if (Array.isArray(newEventHandler)) {
+            this._map.on(event, ...newEventHandler);
+          } else {
+            this._map.on(event, newEventHandler);
+          }
+        }
+      }
+    });
   }
 
   /**
