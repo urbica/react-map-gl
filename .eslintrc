@@ -1,5 +1,5 @@
 {
-  "parser": "babel-eslint",
+  "parser": "@babel/eslint-parser",
   "root": true,
   "extends": [
     "airbnb",
@@ -24,6 +24,7 @@
       "error",
       { "code": 80, "ignoreStrings": true, "ignoreUrls": true }
     ],
+    "no-dupe-class-members": 0,
     "no-return-assign": 0,
     "no-underscore-dangle": ["error", { "allowAfterThis": true }],
     "react/default-props-match-prop-types": [
@@ -33,6 +34,7 @@
       }
     ],
     "react/destructuring-assignment": 0,
+    "react/no-unused-class-component-methods": 0,
     "react/prop-types": [1, { "skipUndeclared": true }],
     "react/sort-comp": [
       1,
