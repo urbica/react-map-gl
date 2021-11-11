@@ -34,6 +34,7 @@
       }
     ],
     "react/destructuring-assignment": 0,
+    "react/no-unused-class-component-methods": 0,
     "react/prop-types": [1, { "skipUndeclared": true }],
     "react/sort-comp": [
       1,
