@@ -39,8 +39,6 @@
     "build:watch": "rollup -c -w",
     "format": "prettier-eslint --write $PWD\"src/**/*.js\"",
     "cz": "git-cz",
-    "size-build": "npm run build",
-    "size": "size-limit",
     "release": "npm run build && standard-version",
     "prepublishOnly": "npm run build",
     "styleguide:build": "styleguidist build",
@@ -71,7 +69,6 @@
     "@luma.gl/core": "^8.5.10",
     "@mapbox/mapbox-gl-language": "^0.10.0",
     "@mapbox/mapbox-gl-traffic": "^1.0.2",
-    "@size-limit/preset-small-lib": "^6.0.4",
     "@turf/random": "^6.5.0",
     "@wojtekmaj/enzyme-adapter-react-17": "^0.6.5",
     "babel-loader": "^8.2.3",
@@ -108,7 +105,6 @@
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-terser": "^7.0.2",
-    "size-limit": "^6.0.4",
     "standard-version": "^9.3.2",
     "style-loader": "^3.3.1",
     "webpack": "^5.63.0"
@@ -140,6 +136,7 @@
   },
   "size-limit": [
     {
+      "limit": "500 ms",
       "path": [
         "dist/react-map-gl.cjs.js",
         "dist/react-map-gl.esm.js"
