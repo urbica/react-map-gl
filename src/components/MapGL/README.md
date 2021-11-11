@@ -175,7 +175,7 @@ const onClick = (event) => {
 
 `mapbox-gl` emit [events](https://www.mapbox.com/mapbox-gl-js/api/#events) in response to user interactions or changes in state.
 
-You can find full list of supported props in [eventProps](https://github.com/urbica/react-map-gl/blob/master/src/components/MapGL/eventProps.js).
+You can find full list of supported props in [eventProps](https://github.com/urbica/react-map-gl/blob/main/src/components/MapGL/eventProps.js).
 
 Here is an example for `onClick` prop.
 
