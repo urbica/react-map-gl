@@ -1,7 +1,7 @@
 # Urbica React Mapbox GL JS
 
 [![Node CI](https://github.com/urbica/react-map-gl/workflows/Node%20CI/badge.svg)](https://github.com/urbica/react-map-gl/actions)
-[![codecov](https://codecov.io/gh/urbica/react-map-gl/branch/master/graph/badge.svg)](https://codecov.io/gh/urbica/react-map-gl)
+[![codecov](https://codecov.io/gh/urbica/react-map-gl/branch/main/graph/badge.svg)](https://codecov.io/gh/urbica/react-map-gl)
 [![npm](https://img.shields.io/npm/dt/@urbica/react-map-gl.svg?style=popout)](https://www.npmjs.com/package/@urbica/react-map-gl)
 [![npm](https://img.shields.io/npm/v/@urbica/react-map-gl.svg?style=popout)](https://www.npmjs.com/package/@urbica/react-map-gl)
 ![npm bundle size (scoped)](https://img.shields.io/bundlephobia/minzip/@urbica/react-map-gl.svg)
@@ -24,7 +24,7 @@ This project is heavily inspired by [uber/react-map-gl](https://github.com/uber/
 - [Contributing](#contributing)
 - [Team](#team)
 
-![Gallery](https://raw.githubusercontent.com/urbica/react-map-gl/master/docs/gallery.jpg)
+![Gallery](https://raw.githubusercontent.com/urbica/react-map-gl/main/docs/gallery.jpg)
 
 ## Installation
 

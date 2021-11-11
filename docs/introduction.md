@@ -4,4 +4,4 @@ To use any of Mapbox’s tools, APIs, or SDKs, you’ll need a Mapbox [access to
 
 This package is heavily inspired by [uber/react-map-gl](https://github.com/uber/react-map-gl).
 
-<img src="https://raw.githubusercontent.com/urbica/react-map-gl/master/docs/gallery.jpg" width="800" />
+<img src="https://raw.githubusercontent.com/urbica/react-map-gl/main/docs/gallery.jpg" width="800" />
