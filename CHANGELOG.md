@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.14.4](https://github.com/urbica/react-map-gl/compare/v1.14.3...v1.14.4) (2021-11-11)
+
+
+### Bug Fixes
+
+* update Map event listeners on prop changes ([#349](https://github.com/urbica/react-map-gl/issues/349)) (h/t [@chwallen](https://github.com/chwallen)) ([95ebe0a](https://github.com/urbica/react-map-gl/commit/95ebe0a9043100a1e5ace556aaaa57e0f07f3563))
+
 ### [1.14.3](https://github.com/urbica/react-map-gl/compare/v1.14.2...v1.14.3) (2021-05-01)
 
 
