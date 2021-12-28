@@ -4,7 +4,6 @@ import type {
   VectorSourceSpecification,
 } from "mapbox-gl/src/style-spec/types";
 import { PureComponent, ReactNode } from "react";
-import { ProgressPlugin } from "webpack";
 
 export type TileSourceSpecification =
   | VectorSourceSpecification
@@ -22,4 +21,4 @@ type State = {
   loaded: boolean;
 };
 
-export default class Source extends PureComponent<ProgressPlugin, State> {}
+export default class Source extends PureComponent<Props, State> {}
