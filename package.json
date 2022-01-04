@@ -22,6 +22,7 @@
     "react",
     "urbica"
   ],
+  "types": "src/index.d.ts",
   "main": "dist/react-map-gl.cjs.js",
   "module": "dist/react-map-gl.esm.js",
   "files": [
