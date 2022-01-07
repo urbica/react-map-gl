@@ -26,6 +26,7 @@
   "main": "dist/react-map-gl.cjs.js",
   "module": "dist/react-map-gl.esm.js",
   "files": [
+    "**/*.d.ts",
     "dist"
   ],
   "scripts": {
