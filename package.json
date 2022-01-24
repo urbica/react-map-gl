@@ -47,7 +47,7 @@
     "styleguide:build": "styleguidist build",
     "styleguide:deploy": "gh-pages -m 'auto commit [ci skip]' -d styleguide",
     "postpublish": "npm run styleguide:build && npm run styleguide:deploy",
-    "prepare": "husky install"
+    "prepare": "npm run build && husky install"
   },
   "peerDependencies": {
     "mapbox-gl": ">= 0.40.0",
