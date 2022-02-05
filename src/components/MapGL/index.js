@@ -268,7 +268,15 @@ type Props = EventProps & {
    * Sets a Boolean indicating whether the map will render an outline around
    * each tile and the tile ID. These tile boundaries are useful for debugging.
    * */
-  showTileBoundaries?: boolean
+  showTileBoundaries?: boolean,
+
+  /**
+   * If `true`, scroll zoom will require pressing the ctrl or ⌘ key while
+   * scrolling to zoom map, and touch pan will require using two fingers
+   * while panning to move the map. Touch pitch will require three fingers
+   * to activate if enabled.
+   */
+  cooperativeGestures?: boolean
 };
 
 type State = {
@@ -322,7 +330,8 @@ class MapGL extends PureComponent<Props, State> {
     locale: null,
     cursorStyle: null,
     viewportChangeMethod: jumpTo,
-    viewportChangeOptions: null
+    viewportChangeOptions: null,
+    cooperativeGestures: false
   };
 
   constructor(props: Props) {
@@ -381,7 +390,8 @@ class MapGL extends PureComponent<Props, State> {
       collectResourceTiming: this.props.collectResourceTiming,
       fadeDuration: this.props.fadeDuration,
       crossSourceCollisions: this.props.crossSourceCollisions,
-      locale: this.props.locale
+      locale: this.props.locale,
+      cooperativeGestures: this.props.cooperativeGestures
     });
 
     this._map = map;
