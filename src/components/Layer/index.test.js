@@ -210,11 +210,12 @@ test('handlers', () => {
         onHover={handler}
         onEnter={handler}
         onLeave={handler}
+        onContextMenu={handler}
       />
     ]
   });
 
-  expect(handler).toHaveBeenCalledTimes(4);
+  expect(handler).toHaveBeenCalledTimes(5);
 
   wrapper.setProps({
     children: [
@@ -223,7 +224,7 @@ test('handlers', () => {
     ]
   });
 
-  expect(handler).toHaveBeenCalledTimes(4);
+  expect(handler).toHaveBeenCalledTimes(5);
 
   // wrapper.setProps({ children: [] });
 });
