@@ -14,7 +14,8 @@ const eventListeners = [
   ['onClick', 'click'],
   ['onHover', 'mousemove'],
   ['onEnter', 'mouseenter'],
-  ['onLeave', 'mouseleave']
+  ['onLeave', 'mouseleave'],
+  ['onContextMenu', 'contextmenu']
 ];
 
 type InteractionEvent = { ...MapMouseEvent, features?: GeoJSONFeature[] };
@@ -71,6 +72,17 @@ type Props = {|
   onLeave?: (event: InteractionEvent) => any,
 
   /**
+   * Called when the layer is right-clicked.
+   * @callback
+   * @param {Object} event - The mouse event.
+   * @param {[Number, Number]} event.lngLat - The coordinates of the pointer
+   * @param {Array} event.features - The features under the pointer,
+   * using Mapbox's queryRenderedFeatures API:
+   * https://www.mapbox.com/mapbox-gl-js/api/#Map#queryRenderedFeatures
+   */
+  onContextMenu?: (event: InteractionEvent) => any,
+
+  /**
    * Radius to detect features around a clicked/hovered point
    */
   radius: number,
@@ -94,6 +106,8 @@ class Layer extends PureComponent<Props> {
   _onEnter: (event: MapMouseEvent) => void;
 
   _onLeave: (event: MapMouseEvent) => void;
+
+  _onContextMenu: (event: MapMouseEvent) => void;
 
   static displayName = 'Layer';
 
@@ -179,6 +193,7 @@ class Layer extends PureComponent<Props> {
       onHover,
       onEnter,
       onLeave,
+      onContextMenu,
       ...layer
     } = props;
 
@@ -276,6 +291,19 @@ class Layer extends PureComponent<Props> {
     // $FlowFixMe
     this.props.onLeave({ ...event, features });
   };
+
+  _onContextMenu = (event: MapMouseEvent) => {
+    const position: [number, number] = [event.point.x, event.point.y];
+    const features = queryRenderedFeatures(
+      this._map,
+      this._id,
+      position,
+      this.props.radius
+    );
+
+    // $FlowFixMe
+    this.props.onContextMenu({ ...event, features });
+  }
 
   render() {
     return createElement(MapContext.Consumer, {}, (map) => {

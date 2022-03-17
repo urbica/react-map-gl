@@ -55,6 +55,17 @@ type Props = LayerSpecification & {
    * https://www.mapbox.com/mapbox-gl-js/api/#Map#queryRenderedFeatures
    */
   onLeave?: (event: InteractionEvent) => any;
+ 
+  /**
+   * Called when the layer is right-clicked.
+   * @callback
+   * @param {Object} event - The mouse event.
+   * @param {[Number, Number]} event.lngLat - The coordinates of the pointer
+   * @param {Array} event.features - The features under the pointer,
+   * using Mapbox's queryRenderedFeatures API:
+   * https://www.mapbox.com/mapbox-gl-js/api/#Map#queryRenderedFeatures
+   */
+  onContextMenu?: (event: InteractionEvent) => any;
 
   /**
    * Radius to detect features around a clicked/hovered point
