@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.15.0](https://github.com/urbica/react-map-gl/compare/v1.14.4...v1.15.0) (2022-03-17)
+
+
+### Features
+
+* **layer:** support context menu events ([#372](https://github.com/urbica/react-map-gl/issues/372)) (h/t [@chwallen](https://github.com/chwallen)) ([5a17c2d](https://github.com/urbica/react-map-gl/commit/5a17c2d8821c29913558d782ebd816f5424adcb6))
+* add TypeScript type definitions ([#357](https://github.com/urbica/react-map-gl/issues/357)) (h/t [@dellisd](https://github.com/dellisd)) ([fd7b869](https://github.com/urbica/react-map-gl/commit/fd7b8693e5f9e393e289eb29c1c1fc534f2bbc7e))
+
+
+### Bug Fixes
+
+* add definition files to package.json ([#358](https://github.com/urbica/react-map-gl/issues/358)) ([815cfc1](https://github.com/urbica/react-map-gl/commit/815cfc13f55945247f251fef621f9dd0aa3232f2))
+
 ### [1.14.4](https://github.com/urbica/react-map-gl/compare/v1.14.3...v1.14.4) (2021-11-11)
 
 
