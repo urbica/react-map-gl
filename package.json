@@ -51,8 +51,8 @@
   },
   "peerDependencies": {
     "mapbox-gl": ">= 0.40.0",
-    "react": "^16.x || ^17.x",
-    "react-dom": "^16.x || ^17.x"
+    "react": "^16.x || ^17.x || ^18.x",
+    "react-dom": "^16.x || ^17.x || ^18.x"
   },
   "optionalDependencies": {
     "@mapbox/mapbox-gl-language": "^0.10.0",
