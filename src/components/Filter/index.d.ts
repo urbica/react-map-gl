@@ -10,7 +10,7 @@ type Props = {
    * If null or undefined is provided, the function removes any existing filter
    * from the layer.
    * */
-  filter: FilterSpecification;
+  filter: FilterSpecification | null | undefined;
 
   /**
    * Whether to check if the filter conforms to the Mapbox GL

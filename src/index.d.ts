@@ -1,4 +1,4 @@
-export { default } from "./components/MapGL";
+export { default, Viewport } from "./components/MapGL";
 
 export { default as MapContext } from "./components/MapContext";
 export { default as Layer } from "./components/Layer";

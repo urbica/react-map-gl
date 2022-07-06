@@ -8,10 +8,10 @@ type Props = {
    * control. The default is a responsive attribution that collapses when
    * the map is less than 640 pixels wide.
    */
-  compact: boolean;
+  compact?: boolean;
 
   /* String or strings to show in addition to any other attributions. */
-  customAttribution: string | Array<string>;
+  customAttribution?: string | Array<string>;
 
   /* A string representing the position of the control on the map. */
   position?: "top-left" | "top-right" | "bottom-left" | "bottom-right";

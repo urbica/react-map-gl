@@ -21,7 +21,7 @@ type Props = LayerSpecification & {
    * using Mapbox's queryRenderedFeatures API:
    * https://www.mapbox.com/mapbox-gl-js/api/#Map#queryRenderedFeatures
    */
-  onClick?: (event: InteractionEvent) => any;
+  onClick?: (event: InteractionEvent) => void;
 
   /**
    * Called when the layer is hovered over.
@@ -32,7 +32,7 @@ type Props = LayerSpecification & {
    * using Mapbox's queryRenderedFeatures API:
    * https://www.mapbox.com/mapbox-gl-js/api/#Map#queryRenderedFeatures
    */
-  onHover?: (event: InteractionEvent) => any;
+  onHover?: (event: InteractionEvent) => void;
 
   /**
    * Called when the layer feature is entered.
@@ -43,7 +43,7 @@ type Props = LayerSpecification & {
    * using Mapbox's queryRenderedFeatures API:
    * https://www.mapbox.com/mapbox-gl-js/api/#Map#queryRenderedFeatures
    */
-  onEnter?: (event: InteractionEvent) => any;
+  onEnter?: (event: InteractionEvent) => void;
 
   /**
    * Called when the layer feature is leaved.
@@ -54,8 +54,8 @@ type Props = LayerSpecification & {
    * using Mapbox's queryRenderedFeatures API:
    * https://www.mapbox.com/mapbox-gl-js/api/#Map#queryRenderedFeatures
    */
-  onLeave?: (event: InteractionEvent) => any;
- 
+  onLeave?: (event: InteractionEvent) => void;
+
   /**
    * Called when the layer is right-clicked.
    * @callback
@@ -65,12 +65,12 @@ type Props = LayerSpecification & {
    * using Mapbox's queryRenderedFeatures API:
    * https://www.mapbox.com/mapbox-gl-js/api/#Map#queryRenderedFeatures
    */
-  onContextMenu?: (event: InteractionEvent) => any;
+  onContextMenu?: (event: InteractionEvent) => void;
 
   /**
    * Radius to detect features around a clicked/hovered point
    */
-  radius: number;
+  radius?: number;
 };
 
 export default class Layer extends PureComponent<Props> {}
