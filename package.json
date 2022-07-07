@@ -75,7 +75,7 @@
     "@size-limit/preset-small-lib": "^6.0.4",
     "@size-limit/time": "^6.0.4",
     "@turf/random": "^6.5.0",
-    "@wojtekmaj/enzyme-adapter-react-17": "^0.6.6",
+    "@wojtekmaj/enzyme-adapter-react-17": "^0.6.7",
     "babel-loader": "^8.2.5",
     "codecov": "^3.8.3",
     "commitizen": "^4.2.4",
@@ -113,7 +113,7 @@
     "size-limit": "^6.0.4",
     "standard-version": "^9.5.0",
     "style-loader": "^3.3.1",
-    "webpack": "^5.70.0"
+    "webpack": "^5.73.0"
   },
   "config": {
     "commitizen": {
