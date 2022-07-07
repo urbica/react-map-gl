@@ -1,5 +1,6 @@
 [ignore]
 .*/findup/test/fixture/.*
+.*/malformed_package_json/.*
 .*/jsonlint-lines-primitives/test/fails/.*
 
 [include]
