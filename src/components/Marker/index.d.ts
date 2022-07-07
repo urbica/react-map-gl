@@ -9,7 +9,7 @@ type Props = {
    * A string indicating the part of the Marker
    * that should be positioned closest to the coordinate
    */
-  anchor:
+  anchor?:
     | "center"
     | "top"
     | "bottom"
@@ -43,14 +43,14 @@ type Props = {
    * respective `rotationAlignment` setting. A positive value will
    * rotate the marker clockwise.
    */
-  rotation: number;
+  rotation?: number;
 
   /**
    * map aligns the `Marker` to the plane of the map. `viewport`
    * aligns the  Marker to the plane of the viewport. `auto` automatically
    * matches the value of `rotationAlignment`.
    */
-  pitchAlignment: string;
+  pitchAlignment?: string;
 
   /**
    * map aligns the `Marker`'s rotation relative to the map, maintaining
@@ -58,19 +58,19 @@ type Props = {
    * relative to the viewport, agnostic to map rotations.
    * `auto` is equivalent to `viewport`.
    */
-  rotationAlignment: string;
+  rotationAlignment?: string;
 
   /** Fired when the marker is clicked */
-  onClick?: () => any;
+  onClick?: (event: MouseEvent) => void;
 
   /** Fired when the marker is finished being dragged */
-  onDragEnd?: (lngLat: LngLat) => any;
+  onDragEnd?: (lngLat: LngLat) => void;
 
   /** Fired when the marker is finished being dragged */
-  onDragStart?: (lngLat: LngLat) => any;
+  onDragStart?: (lngLat: LngLat) => void;
 
   /** Fired when the marker is dragged */
-  onDrag?: (lngLat: LngLat) => any;
+  onDrag?: (lngLat: LngLat) => void;
 };
 
 export default class Marker extends PureComponent<Props> {

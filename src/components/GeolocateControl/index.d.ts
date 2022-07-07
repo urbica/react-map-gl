@@ -3,25 +3,25 @@ import type { GeolocateControl as MapboxGeolocateControl } from "mapbox-gl";
 
 type Props = {
   /* A Geolocation API PositionOptions object. */
-  positionOptions: PositionOptions;
+  positionOptions?: PositionOptions;
 
   /**
    * A `fitBounds` options object to use when the map is
    * panned and zoomed to the user's location.
    */
-  fitBoundsOptions: Object;
+  fitBoundsOptions?: Object;
 
   /**
    * If `true` the Geolocate Control becomes a toggle button and when active
    * the map will receive updates to the user's location as it changes.
    */
-  trackUserLocation: boolean;
+  trackUserLocation?: boolean;
 
   /**
    * By default a dot will be shown on the map at the user's location.
    * Set to `false` to disable.
    */
-  showUserLocation: boolean;
+  showUserLocation?: boolean;
 
   /* A string representing the position of the control on the map. */
   position?: "top-left" | "top-right" | "bottom-left" | "bottom-right";
