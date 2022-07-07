@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.15.1](https://github.com/urbica/react-map-gl/compare/v1.15.0...v1.15.1) (2022-07-07)
+
+
+### Bug Fixes
+
+* **types:** improve TypeScript type definitions ([#378](https://github.com/urbica/react-map-gl/issues/378)) (h/t [@josh-cloudscape](https://github.com/josh-cloudscape)) ([6ceb87e](https://github.com/urbica/react-map-gl/commit/6ceb87ee32d0b91481157a7632a2da6c2a864f6d))
+* add React 18 support ([#375](https://github.com/urbica/react-map-gl/issues/375)) (h/t [@arnaskro](https://github.com/arnaskro)) ([1c92a5c](https://github.com/urbica/react-map-gl/commit/1c92a5cd7d093b1b5250293c7b1bcaac0c9a6534))
+
 ## [1.15.0](https://github.com/urbica/react-map-gl/compare/v1.14.4...v1.15.0) (2022-03-17)
 
 
