@@ -73,7 +73,7 @@
     "@luma.gl/core": "^8.5.14",
     "@mapbox/mapbox-gl-language": "^0.10.0",
     "@mapbox/mapbox-gl-traffic": "^1.0.2",
-    "@size-limit/preset-small-lib": "^7.0.8",
+    "@size-limit/preset-big-lib": "^7.0.8",
     "@size-limit/time": "^7.0.8",
     "@turf/random": "^6.5.0",
     "@wojtekmaj/enzyme-adapter-react-17": "^0.6.7",
@@ -106,7 +106,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-styleguidist": "^11.2.0",
-    "rollup": "^2.75.7",
+    "rollup": "^2.76.0",
     "rollup-plugin-babel": "^4.4.0",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-node-resolve": "^5.2.0",
@@ -143,11 +143,12 @@
   },
   "size-limit": [
     {
-      "limit": "600 ms",
-      "path": [
-        "dist/react-map-gl.cjs.js",
-        "dist/react-map-gl.esm.js"
-      ]
+      "path": "dist/react-map-gl.cjs.js",
+      "limit": "500 ms"
+    },
+    {
+      "path": "dist/react-map-gl.esm.js",
+      "limit": "500 ms"
     }
   ]
 }
