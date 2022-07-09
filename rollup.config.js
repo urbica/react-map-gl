@@ -1,6 +1,6 @@
-import babel from 'rollup-plugin-babel';
-import commonjs from 'rollup-plugin-commonjs';
-import resolve from 'rollup-plugin-node-resolve';
+import commonjs from '@rollup/plugin-commonjs';
+import { babel } from '@rollup/plugin-babel';
+import { nodeResolve } from '@rollup/plugin-node-resolve';
 import { terser } from 'rollup-plugin-terser';
 import pkg from './package.json';
 
@@ -11,6 +11,21 @@ export default {
     { file: pkg.main, exports: 'named', sourcemap: true, format: 'cjs' },
     { file: pkg.module, sourcemap: true, format: 'esm' }
   ],
-  external: ['react', 'react-dom', 'mapbox-gl'],
-  plugins: [resolve(), babel(), commonjs(), terser()]
+  external: [
+    /@babel\/runtime/,
+    'react',
+    'react-dom',
+    'mapbox-gl'
+  ],
+  plugins: [
+    nodeResolve(),
+    babel({
+      babelHelpers: 'runtime',
+      exclude: '**/node_modules/**'
+    }),
+    commonjs({
+      transformMixedEsModules: true
+    }),
+    terser()
+  ]
 };
