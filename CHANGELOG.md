@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.16.0](https://github.com/urbica/react-map-gl/compare/v1.15.1...v1.16.0) (2022-07-09)
+
+
+### Features
+
+* upgrade tooling and enable transform mixed ES modules ([#389](https://github.com/urbica/react-map-gl/issues/389)) ([2786337](https://github.com/urbica/react-map-gl/commit/278633747b47b1fe38f903e6a95a86072643e928))
+
+
+### Bug Fixes
+
+* update isBrowser check ([#387](https://github.com/urbica/react-map-gl/issues/387)) ([82ee39a](https://github.com/urbica/react-map-gl/commit/82ee39afcc884f58f6ad191673fb9db608ba5220))
+
 ### [1.15.1](https://github.com/urbica/react-map-gl/compare/v1.15.0...v1.15.1) (2022-07-07)
 
 
