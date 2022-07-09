@@ -12,20 +12,14 @@ export default {
     { file: pkg.module, sourcemap: true, format: 'esm' }
   ],
   external: [
-    /@babel\/runtime/,
     'react',
     'react-dom',
     'mapbox-gl'
   ],
   plugins: [
     nodeResolve(),
-    babel({
-      babelHelpers: 'runtime',
-      exclude: '**/node_modules/**'
-    }),
-    commonjs({
-      transformMixedEsModules: true
-    }),
+    babel({ babelHelpers: 'bundled' }),
+    commonjs({ transformMixedEsModules: true }),
     terser()
   ]
 };
