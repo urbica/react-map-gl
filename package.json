@@ -62,9 +62,7 @@
   "devDependencies": {
     "@babel/core": "^7.18.6",
     "@babel/eslint-parser": "^7.18.2",
-    "@babel/plugin-proposal-class-properties": "^7.18.6",
     "@babel/plugin-transform-flow-strip-types": "^7.18.6",
-    "@babel/plugin-transform-spread": "^7.18.6",
     "@babel/preset-env": "^7.18.6",
     "@babel/preset-flow": "^7.18.6",
     "@babel/preset-react": "^7.18.6",
@@ -151,5 +149,8 @@
       "path": "dist/react-map-gl.esm.js",
       "limit": "500 ms"
     }
-  ]
+  ],
+    "browserslist": [
+      "defaults"
+    ]
 }
