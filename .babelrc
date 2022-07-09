@@ -5,6 +5,7 @@
     "@babel/preset-flow"
   ],
   "plugins": [
-    "@babel/plugin-transform-flow-strip-types"
+    "@babel/plugin-transform-flow-strip-types",
+    "@babel/plugin-transform-runtime"
   ]
 }

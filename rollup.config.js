@@ -11,10 +11,18 @@ export default {
     { file: pkg.main, exports: 'named', sourcemap: true, format: 'cjs' },
     { file: pkg.module, sourcemap: true, format: 'esm' }
   ],
-  external: ['react', 'react-dom', 'mapbox-gl'],
+  external: [
+    /@babel\/runtime/,
+    'react',
+    'react-dom',
+    'mapbox-gl'
+  ],
   plugins: [
     nodeResolve(),
-    babel({ babelHelpers: 'bundled' }),
+    babel({
+      babelHelpers: 'runtime',
+      exclude: '**/node_modules/**'
+    }),
     commonjs(),
     terser()
   ]
