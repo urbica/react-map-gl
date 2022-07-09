@@ -23,7 +23,9 @@ export default {
       babelHelpers: 'runtime',
       exclude: '**/node_modules/**'
     }),
-    commonjs(),
+    commonjs({
+      transformMixedEsModules: true
+    }),
     terser()
   ]
 };
