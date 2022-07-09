@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.16.1](https://github.com/urbica/react-map-gl/compare/v1.16.0...v1.16.1) (2022-07-09)
+
+
+### Bug Fixes
+
+* revert transform runtime and bundle babel helpers ([#390](https://github.com/urbica/react-map-gl/issues/390)) ([1e06b87](https://github.com/urbica/react-map-gl/commit/1e06b870c0280c1b2ced44dc21c947925893122f))
+
 ## [1.16.0](https://github.com/urbica/react-map-gl/compare/v1.15.1...v1.16.0) (2022-07-09)
 
 
