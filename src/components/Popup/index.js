@@ -70,10 +70,10 @@ class Popup extends PureComponent<Props> {
   static defaultProps = {
     closeButton: true,
     closeOnClick: true,
-    onClose: null,
-    anchor: null,
-    offset: null,
-    className: null,
+    onClose: undefined,
+    anchor: undefined,
+    offset: undefined,
+    className: undefined,
     maxWidth: '240px'
   };
 
