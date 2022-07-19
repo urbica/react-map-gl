@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.16.2](https://github.com/urbica/react-map-gl/compare/v1.16.1...v1.16.2) (2022-07-19)
+
+
+### Bug Fixes
+
+* use undefined as Popup default props ([#402](https://github.com/urbica/react-map-gl/issues/402)) ([d08f0c5](https://github.com/urbica/react-map-gl/commit/d08f0c59f0ada8aeaa342557c275a3137adc3068))
+
 ### [1.16.1](https://github.com/urbica/react-map-gl/compare/v1.16.0...v1.16.1) (2022-07-09)
 
 
