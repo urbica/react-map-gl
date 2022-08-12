@@ -1141,9 +1141,9 @@
     earcut "^2.0.6"
 
 "@deck.gl/mapbox@^8.8.3":
-  version "8.8.6"
-  resolved "https://registry.yarnpkg.com/@deck.gl/mapbox/-/mapbox-8.8.6.tgz#ad83f9e474e3081d0fbe76716e6928fe785efa72"
-  integrity sha512-zAtL8uDIZnfXG6GO1DSboFKHVYGk0YhzYfsqzwUnJGCpeqz+DGfy/rOMPq6KW/Yg6Li+d2xJI/D9IbWY1RM2mQ==
+  version "8.8.7"
+  resolved "https://registry.yarnpkg.com/@deck.gl/mapbox/-/mapbox-8.8.7.tgz#19ce31dfd16ca38d3f5b7950c47e706489d8b2bf"
+  integrity sha512-DAVAidmYzb+gJL4veJCDRaavX4lvpmZD6Yqb8kOyBNVxul7tTVyO1tQMJYvkrNUujg2X0+vjth/o77pbjOS3hg==
   dependencies:
     "@types/mapbox-gl" "^2.6.3"
 
