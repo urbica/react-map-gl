@@ -1108,9 +1108,9 @@
     chalk "^4.0.0"
 
 "@deck.gl/core@^8.8.3":
-  version "8.8.7"
-  resolved "https://registry.yarnpkg.com/@deck.gl/core/-/core-8.8.7.tgz#ac27e5469af2b5abf2607e4aa5c28f3d99d6654c"
-  integrity sha512-UQrB7QinmYd5bxaNFDd4SbTFDJ8T53IIPVpdqn6vlCDaa2EmJa0vGtxmM/AB02VOh1wMhDTwv44Aj+XtMAuvdQ==
+  version "8.8.8"
+  resolved "https://registry.yarnpkg.com/@deck.gl/core/-/core-8.8.8.tgz#f566575c4c3b52ae77cdbbd225d79a331c1654eb"
+  integrity sha512-Vps5IPAa2B6Q8rgnqsKIgfr6BXvAp2fW1ZeyQikcxNkvmlCcqgZs08tv0yg1F8waglEXt58kPh70xNm6OY6jzQ==
   dependencies:
     "@loaders.gl/core" "^3.2.5"
     "@loaders.gl/images" "^3.2.5"
