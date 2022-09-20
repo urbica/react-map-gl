@@ -5742,17 +5742,17 @@ flow-coverage-report@^0.8.0:
     terminal-table "^0.0.12"
     yargs "^16.0.3"
 
-flow-parser@^0.185.2:
-  version "0.185.2"
-  resolved "https://registry.yarnpkg.com/flow-parser/-/flow-parser-0.185.2.tgz#cb7ee57f77377d6c5d69a469e980f6332a15e492"
-  integrity sha512-2hJ5ACYeJCzNtiVULov6pljKOLygy0zddoqSI1fFetM+XRPpRshFdGEijtqlamA1XwyZ+7rhryI6FQFzvtLWUQ==
+flow-parser@^0.187.1:
+  version "0.187.1"
+  resolved "https://registry.yarnpkg.com/flow-parser/-/flow-parser-0.187.1.tgz#52b2c7ebd7544b75bda0676380138bc5b3de3177"
+  integrity sha512-ZvlTeakTTMmYGukt4EIQtLEp4ie45W+jK325uukGgiqFg2Rl7TdpOJQbOLUN2xMeGS+WvXaK0uIJ3coPGDXFGQ==
 
 flow-remove-types@^2.182.0:
-  version "2.185.2"
-  resolved "https://registry.yarnpkg.com/flow-remove-types/-/flow-remove-types-2.185.2.tgz#0b93de6d2b1c1fd514036b4459dc4990b7e075c0"
-  integrity sha512-mI9iZqTikD/uLovJF3kh9AyR7JWmnMxrQfXxeRZGP/WbyWUZoAqjc7bg7sI75BF1/kitSIn8e94IW/Wrnw/u0g==
+  version "2.187.1"
+  resolved "https://registry.yarnpkg.com/flow-remove-types/-/flow-remove-types-2.187.1.tgz#3325563818b021896e2fac76ce3bd048b6c6d9ee"
+  integrity sha512-kfNwss9K0A76VeeYZgNQ2pTeNPGmVNOh9mBDDJOzueejctZL/Tuiwa8lT10LAWRxTQIzdQcWFrUEzGSDSzZNdg==
   dependencies:
-    flow-parser "^0.185.2"
+    flow-parser "^0.187.1"
     pirates "^3.0.2"
     vlq "^0.2.1"
 
