@@ -1127,9 +1127,9 @@
     mjolnir.js "^2.7.0"
 
 "@deck.gl/layers@^8.8.3":
-  version "8.8.9"
-  resolved "https://registry.yarnpkg.com/@deck.gl/layers/-/layers-8.8.9.tgz#c970be4780bdb4b719617af24508d2e1e37543a7"
-  integrity sha512-IwpTfYU2yJdybP4hD2p4A/JZ3jqCzkwpjKxrig43Q4OeR9oNmotS1DOyqD70sF4Al8xOPV9/WxPCht4O7/Pbrw==
+  version "8.8.14"
+  resolved "https://registry.yarnpkg.com/@deck.gl/layers/-/layers-8.8.14.tgz#814b86a8657b6b5f88ba08035c2fabafea1b6a5f"
+  integrity sha512-ci0worwyNCpSS5SG0Q/GtS9PfH9rM1GHE1g69ee2faP9YmzIWnzja4zKV+5mrO56FBh66DiI+N6axxPqHilUgQ==
   dependencies:
     "@loaders.gl/images" "^3.2.5"
     "@loaders.gl/schema" "^3.2.5"
