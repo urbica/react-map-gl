@@ -1,5 +1,3 @@
-![GitHub-Mark-Light](https://static-assets.mapbox.com/www/logos/mapbox-logo-black.png#gh-light-mode-only)![GitHub-Mark-Dark](https://static-assets.mapbox.com/www/logos/mapbox-logo-white.png#gh-dark-mode-only)
-
 # Urbica React Mapbox GL JS
 
 [![Node CI](https://github.com/urbica/react-map-gl/workflows/Node%20CI/badge.svg)](https://github.com/urbica/react-map-gl/actions)
