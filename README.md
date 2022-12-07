@@ -1,6 +1,4 @@
-[<img width="300" alt="Mapbox logo" src="https://static-assets.mapbox.com/www/logos/mapbox-logo-black.png#gh-dark-mode-only">](https://www.mapbox.com/)
-
-[<img width="300" alt="Mapbox logo" src="https://static-assets.mapbox.com/www/logos/mapbox-logo-white.png#gh-light-mode-only">](https://www.mapbox.com/)
+![GitHub-Mark-Light](https://static-assets.mapbox.com/www/logos/mapbox-logo-black.png#gh-light-mode-only)![GitHub-Mark-Dark](https://static-assets.mapbox.com/www/logos/mapbox-logo-white.png#gh-dark-mode-only)
 
 # Urbica React Mapbox GL JS
 
