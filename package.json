@@ -56,7 +56,7 @@
     "react-dom": "^16.x || ^17.x || ^18.x"
   },
   "optionalDependencies": {
-    "@mapbox/mapbox-gl-language": "^0.10.0",
+    "@mapbox/mapbox-gl-language": "^1.0.1",
     "@mapbox/mapbox-gl-traffic": "^1.0.2"
   },
   "devDependencies": {
@@ -69,7 +69,7 @@
     "@deck.gl/layers": "^8.8.3",
     "@deck.gl/mapbox": "^8.8.3",
     "@luma.gl/core": "^8.5.14",
-    "@mapbox/mapbox-gl-language": "^0.10.0",
+    "@mapbox/mapbox-gl-language": "^1.0.1",
     "@mapbox/mapbox-gl-traffic": "^1.0.2",
     "@rollup/plugin-babel": "^5.3.1",
     "@rollup/plugin-commonjs": "^22.0.1",
