@@ -1154,19 +1154,19 @@
     math.gl "^3.6.2"
     mjolnir.js "^2.7.0"
 
-"@deck.gl/layers@^8.8.3":
-  version "8.9.0"
-  resolved "https://registry.yarnpkg.com/@deck.gl/layers/-/layers-8.9.0.tgz#32461c40f8fc6b7346e052910860bc0e356e7c5f"
-  integrity sha512-bDIIPgPkzl7suuAifpd11kXyo89sZ3UchwfpovI75cJZZeVtiojqAfeu/nmt91KDTLdVMV4ezmaIfbHPgWTrgw==
+"@deck.gl/layers@8.8.9":
+  version "8.8.9"
+  resolved "https://registry.yarnpkg.com/@deck.gl/layers/-/layers-8.8.9.tgz#c970be4780bdb4b719617af24508d2e1e37543a7"
+  integrity sha512-IwpTfYU2yJdybP4hD2p4A/JZ3jqCzkwpjKxrig43Q4OeR9oNmotS1DOyqD70sF4Al8xOPV9/WxPCht4O7/Pbrw==
   dependencies:
-    "@loaders.gl/images" "^3.3.1"
-    "@loaders.gl/schema" "^3.3.1"
+    "@loaders.gl/images" "^3.2.5"
+    "@loaders.gl/schema" "^3.2.5"
     "@luma.gl/constants" "^8.5.16"
-    "@mapbox/tiny-sdf" "^2.0.5"
+    "@mapbox/tiny-sdf" "^1.1.0"
     "@math.gl/core" "^3.6.2"
     "@math.gl/polygon" "^3.6.2"
     "@math.gl/web-mercator" "^3.6.2"
-    earcut "^2.2.4"
+    earcut "^2.0.6"
 
 "@deck.gl/mapbox@^8.8.3":
   version "8.8.9"
@@ -1455,7 +1455,7 @@
     "@probe.gl/log" "^3.5.0"
     probe.gl "^3.4.0"
 
-"@loaders.gl/images@^3.2.5", "@loaders.gl/images@^3.3.1":
+"@loaders.gl/images@^3.2.5":
   version "3.3.1"
   resolved "https://registry.yarnpkg.com/@loaders.gl/images/-/images-3.3.1.tgz#5dfeed275e1802211ec59111048ae908da670297"
   integrity sha512-A3JgiPSmL/0D/u67+huXfOHg4pEU9BUMtboxmVc/F0jC/aueli6/Erlco4Bf0Ci4fy9+eApmHD4eKmFSamdNCw==
@@ -1480,7 +1480,7 @@
     "@loaders.gl/worker-utils" "3.3.1"
     "@probe.gl/stats" "^3.5.0"
 
-"@loaders.gl/schema@^3.3.1":
+"@loaders.gl/schema@^3.2.5":
   version "3.3.1"
   resolved "https://registry.yarnpkg.com/@loaders.gl/schema/-/schema-3.3.1.tgz#038d51e340faf1e76aa0fed8ecd54c6083cd9395"
   integrity sha512-VpVFLCc+38P0ddJ5478NnXN60YhNx9/dYHy1Y9ccOGTzaXPn8uFqM7DW/eNaJ7ikyiAWeSD75TpSQPzBrAd5MQ==
@@ -1601,15 +1601,10 @@
   resolved "https://registry.yarnpkg.com/@mapbox/point-geometry/-/point-geometry-0.1.0.tgz#8a83f9335c7860effa2eeeca254332aa0aeed8f2"
   integrity sha1-ioP5M1x4YO/6Lu7KJUMyqgru2PI=
 
-"@mapbox/tiny-sdf@^1.1.1":
+"@mapbox/tiny-sdf@^1.1.0", "@mapbox/tiny-sdf@^1.1.1":
   version "1.2.5"
   resolved "https://registry.yarnpkg.com/@mapbox/tiny-sdf/-/tiny-sdf-1.2.5.tgz#424c620a96442b20402552be70a7f62a8407cc59"
   integrity sha512-cD8A/zJlm6fdJOk6DqPUV8mcpyJkRz2x2R+/fYcWDYG3oWbG7/L7Yl/WqQ1VZCjnL9OTIMAn6c+BC5Eru4sQEw==
-
-"@mapbox/tiny-sdf@^2.0.5":
-  version "2.0.6"
-  resolved "https://registry.yarnpkg.com/@mapbox/tiny-sdf/-/tiny-sdf-2.0.6.tgz#9a1d33e5018093e88f6a4df2343e886056287282"
-  integrity sha512-qMqa27TLw+ZQz5Jk+RcwZGH7BQf5G/TrutJhspsca/3SHwmgKQ1iq+d3Jxz5oysPVYTGP6aXxCo5Lk9Er6YBAA==
 
 "@mapbox/unitbezier@^0.0.0":
   version "0.0.0"
@@ -4578,7 +4573,7 @@ duplexer@^0.1.2:
   resolved "https://registry.yarnpkg.com/duplexer/-/duplexer-0.1.2.tgz#3abe43aef3835f8ae077d136ddce0f276b0400e6"
   integrity sha512-jtD6YG370ZCIi/9GTaJKQxWTZD045+4R4hTk/x1UyoqadyJ9x9CgSi1RlVDQF8U2sxLLSnFkCaMihqljHIWgMg==
 
-earcut@^2.2.2, earcut@^2.2.4:
+earcut@^2.0.6, earcut@^2.2.2:
   version "2.2.4"
   resolved "https://registry.yarnpkg.com/earcut/-/earcut-2.2.4.tgz#6d02fd4d68160c114825d06890a92ecaae60343a"
   integrity sha512-/pjZsA1b4RPHbeWZQn66SWS8nZZWLQQ23oE3Eam7aroEFGEvwKAsJfZ9ytiEMycfzXWpca4FA9QIOehf7PocBQ==
