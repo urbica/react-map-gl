@@ -73,7 +73,7 @@
     "@mapbox/mapbox-gl-traffic": "^1.0.2",
     "@rollup/plugin-babel": "^5.3.1",
     "@rollup/plugin-commonjs": "^22.0.1",
-    "@rollup/plugin-node-resolve": "^13.3.0",
+    "@rollup/plugin-node-resolve": "^15.2.1",
     "@size-limit/preset-big-lib": "^8.0.0",
     "@size-limit/time": "^8.0.0",
     "@turf/random": "^6.5.0",
