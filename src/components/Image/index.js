@@ -35,6 +35,8 @@ class Image extends PureComponent<Props> {
 
   _id: string;
 
+  _unmounted: boolean;
+
   static defaultProps = {
     pixelRatio: 1,
     sdf: false
@@ -46,10 +48,8 @@ class Image extends PureComponent<Props> {
   }
 
   componentDidMount() {
-    const { image, pixelRatio, sdf } = this.props;
-    this._loadImage(image, data =>
-      this._map.addImage(this._id, data, { pixelRatio, sdf })
-    );
+    const { image } = this.props;
+    this._loadImage(image, this._addImage);
   }
 
   componentDidUpdate(prevProps: Props) {
@@ -62,19 +62,18 @@ class Image extends PureComponent<Props> {
     ) {
       this._id = id;
       this._map.removeImage(prevProps.id);
-      this._loadImage(image, data =>
-        this._map.addImage(this._id, data, { pixelRatio, sdf })
-      );
+      this._loadImage(image, this._addImage);
 
       return;
     }
 
     if (image !== prevProps.image) {
-      this._loadImage(image, data => this._map.updateImage(this._id, data));
+      this._loadImage(image, this._updateImage);
     }
   }
 
   componentWillUnmount() {
+    this._unmounted = true;
     if (!this._map || !this._map.getStyle() || !this._map.hasImage(this._id)) {
       return;
     }
@@ -93,6 +92,23 @@ class Image extends PureComponent<Props> {
     }
 
     callback(image);
+  };
+
+  _addImage = (data: any) => {
+    if (!this._map || !this._map.getStyle() || this._unmounted) {
+      return;
+    }
+
+    const { pixelRatio, sdf } = this.props;
+    this._map.addImage(this._id, data, { pixelRatio, sdf });
+  };
+
+  _updateImage = (data: any) => {
+    if (!this._map || !this._map.getStyle() || this._unmounted) {
+      return;
+    }
+
+    this._map.updateImage(this._id, data);
   };
 
   render() {
