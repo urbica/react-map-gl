@@ -5865,17 +5865,12 @@ flow-coverage-report@^0.8.0:
     terminal-table "^0.0.12"
     yargs "^16.0.3"
 
-flow-parser@^0.190.1:
-  version "0.190.1"
-  resolved "https://registry.yarnpkg.com/flow-parser/-/flow-parser-0.190.1.tgz#d576c9ca7a011405de34a68d8bb3c15b6db2fb4a"
-  integrity sha512-DLZIYLNQpJfGyiKPylFqm1zn5XXNHlP/91Z/TgHlYljUttbnDaKHfCfVJ6SVjCQym1dGNhD/73krh68ICO+p0w==
-
 flow-remove-types@^2.182.0:
-  version "2.190.1"
-  resolved "https://registry.yarnpkg.com/flow-remove-types/-/flow-remove-types-2.190.1.tgz#75f5bed8b12f96ce5354ccfa676ecab8f8ac954a"
-  integrity sha512-p+QMvyXSlOcpEAOiNCOQEwniYFqnrV39Q+63vM/7exAI2fJbTVVhpMtago2G8K5BpPmwesu4IRK9j9Jivfsbdw==
+  version "2.274.1"
+  resolved "https://registry.yarnpkg.com/flow-remove-types/-/flow-remove-types-2.274.1.tgz#293813ed3c5a6d7058d0af2711ef16d0e462443a"
+  integrity sha512-C3CXGVtKhsLE2Tzc2t7lUMRhpX7XbtzSPdaM9XmM5RGptb6eXyiyCeXylL3OkM7EVFP+CxsqvClJMAEs1qx8DQ==
   dependencies:
-    flow-parser "^0.190.1"
+    hermes-parser "0.28.0"
     pirates "^3.0.2"
     vlq "^0.2.1"
 
@@ -6519,6 +6514,18 @@ hasown@^2.0.2:
   integrity sha512-0hJU9SCPvmMzIBdZFqNPXWa6dqh7WdH0cII9y+CyS8rG3nL48Bclra9HmKhVVUHyPWNH5Y7xDwAB7bfgSjkUMQ==
   dependencies:
     function-bind "^1.1.2"
+
+hermes-estree@0.28.0:
+  version "0.28.0"
+  resolved "https://registry.yarnpkg.com/hermes-estree/-/hermes-estree-0.28.0.tgz#00cb52c4ca1aa27fa662c9ee4a4281ad29136a1c"
+  integrity sha512-M5IFfnP4RCA2/Hv7VTIlZ1FV4qW33gresbv0SDaSBS/6lax23oV2sg4iE0fhYnpMeQL7Inob+jAeO+mV2T3bKA==
+
+hermes-parser@0.28.0:
+  version "0.28.0"
+  resolved "https://registry.yarnpkg.com/hermes-parser/-/hermes-parser-0.28.0.tgz#2d06c1cb6b55f6094e262750240a167c39ed9457"
+  integrity sha512-PPtmoqyz4vv5SqVCYuvJLPKZt+SqCMviICVEygi6jHyfAvDd0cQTV2MfikDd8YXPOszR/9QvauWcGyluxej+rg==
+  dependencies:
+    hermes-estree "0.28.0"
 
 homedir-polyfill@^1.0.1:
   version "1.0.3"
