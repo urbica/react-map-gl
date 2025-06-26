@@ -1169,10 +1169,11 @@
     earcut "^2.2.4"
 
 "@deck.gl/mapbox@^8.8.3":
-  version "8.8.9"
-  resolved "https://registry.yarnpkg.com/@deck.gl/mapbox/-/mapbox-8.8.9.tgz#e7814e666df260be7d5fcb90f4ae092e1a7c4d48"
-  integrity sha512-3CmQjon797QLU1FbVktJyUIFjH9Dipc1KnJG9yBVQBXw7fCALqhYbtZ0oTJqTSfYVE6pnc7BQFcZYPTpHlHuJg==
+  version "8.9.36"
+  resolved "https://registry.yarnpkg.com/@deck.gl/mapbox/-/mapbox-8.9.36.tgz#ac9f01c88dcc329b570313f5add5d28b6c7dd204"
+  integrity sha512-JUMkxHsaV5/FhKx68cp87vcHTdYTqS1fWpytN7I1B0p1gxhd37iYNU/FtEg3Pxs5ce9zLkjVepF6PALVWnDlGw==
   dependencies:
+    "@babel/runtime" "^7.0.0"
     "@types/mapbox-gl" "^2.6.3"
 
 "@eslint/eslintrc@^1.3.3":
