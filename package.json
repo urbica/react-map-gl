@@ -78,7 +78,7 @@
     "@size-limit/time": "^8.0.0",
     "@turf/random": "^6.5.0",
     "@wojtekmaj/enzyme-adapter-react-17": "^0.8.0",
-    "babel-loader": "^8.2.5",
+    "babel-loader": "^10.0.0",
     "codecov": "^3.8.3",
     "commitizen": "^4.2.4",
     "css-loader": "^6.7.1",
