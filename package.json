@@ -76,7 +76,7 @@
     "@rollup/plugin-node-resolve": "^13.3.0",
     "@size-limit/preset-big-lib": "^8.0.0",
     "@size-limit/time": "^8.0.0",
-    "@turf/random": "^6.5.0",
+    "@turf/random": "^7.2.0",
     "@wojtekmaj/enzyme-adapter-react-17": "^0.8.0",
     "babel-loader": "^8.2.5",
     "codecov": "^3.8.3",
