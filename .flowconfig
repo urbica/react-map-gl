@@ -2,6 +2,8 @@
 .*/findup/test/fixture/.*
 .*/malformed_package_json/.*
 .*/jsonlint-lines-primitives/test/fails/.*
+.*/node_modules/hermes-estree/.*
+.*/node_modules/hermes-parser/.*
 
 [include]
 

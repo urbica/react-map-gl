@@ -130,7 +130,11 @@
     ],
     "snapshotSerializers": [
       "enzyme-to-json/serializer"
-    ]
+    ],
+    "moduleNameMapper": {
+      "^@deck\\.gl/layers$": "<rootDir>/src/__mocks__/@deck.gl/layers.js",
+      "^@deck\\.gl/mapbox$": "<rootDir>/src/__mocks__/@deck.gl/mapbox.js"
+    }
   },
   "lint-staged": {
     "*.js": [
