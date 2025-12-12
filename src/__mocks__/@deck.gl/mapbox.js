@@ -1,3 +1,4 @@
+/* eslint-disable import/prefer-default-export */
 // Mock for @deck.gl/mapbox
 export class MapboxLayer {
   constructor(props) {
