@@ -20,21 +20,21 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'yarn'
+          cache: 'npm'
       - name: Install dependencies
-        run: yarn --frozen-lockfile
+        run: npm ci
       - name: Lint
-        run: yarn lint
+        run: npm run lint
       - name: Type check
-        run: yarn flow
+        run: npm run flow
       - name: Test
-        run: yarn test
+        run: npm test
       - name: Test coverage
-        run: yarn test:coverage
+        run: npm run test:coverage
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
       - name: Build
-        run: yarn build
+        run: npm run build
 
   deploy:
     runs-on: ubuntu-latest
@@ -60,11 +60,11 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20.x
-          cache: 'yarn'
+          cache: 'npm'
       - name: Install dependencies
-        run: yarn --frozen-lockfile
+        run: npm ci
       - name: Build styleguide
-        run: yarn styleguide:build
+        run: npm run styleguide:build
         env:
           MAPBOX_ACCESS_TOKEN: ${{ secrets.MAPBOX_ACCESS_TOKEN }}
       - name: Setup Pages

@@ -4,13 +4,7 @@ A `TrafficControl` add control to toggle traffic on map. See [Mapbox-gl-traffic
 ⚠️ Requires the `@mapbox/mapbox-gl-traffic` package to be installed:
 
 ```shell
-npm install --save @mapbox/mapbox-gl-traffic
-```
-
-...or
-
-```shell
-yarn add @mapbox/mapbox-gl-traffic
+npm install @mapbox/mapbox-gl-traffic
 ```
 
 ```js

@@ -3,13 +3,7 @@ A `LanguageControl` adds support for switching the language of your map style.
 ⚠️ Requires the `@mapbox/mapbox-gl-language` package to be installed:
 
 ```shell
-npm install --save @mapbox/mapbox-gl-language
-```
-
-...or
-
-```shell
-yarn add @mapbox/mapbox-gl-language
+npm install @mapbox/mapbox-gl-language
 ```
 
 ```js

@@ -1,6 +1,6 @@
 # Urbica React Mapbox GL JS
 
-[![Node CI](https://github.com/urbica/react-map-gl/workflows/Node%20CI/badge.svg)](https://github.com/urbica/react-map-gl/actions)
+[![CI](https://github.com/urbica/react-map-gl/actions/workflows/ci.yml/badge.svg)](https://github.com/urbica/react-map-gl/actions/workflows/ci.yml)
 [![codecov](https://codecov.io/gh/urbica/react-map-gl/branch/main/graph/badge.svg)](https://codecov.io/gh/urbica/react-map-gl)
 [![npm](https://img.shields.io/npm/dt/@urbica/react-map-gl.svg?style=popout)](https://www.npmjs.com/package/@urbica/react-map-gl)
 [![npm](https://img.shields.io/npm/v/@urbica/react-map-gl.svg?style=popout)](https://www.npmjs.com/package/@urbica/react-map-gl)
@@ -10,32 +10,28 @@ React Component Library for [Mapbox GL JS](https://github.com/mapbox/mapbox-gl-j
 
 This project is heavily inspired by [uber/react-map-gl](https://github.com/uber/react-map-gl).
 
-- [Installation](#installation)
-- [Components](#components)
-- [Usage](#usage)
-  - [Static Map](#static-map)
-  - [Interactive Map](#interactive-map)
-  - [MapGL with Source and Layer](#mapgl-with-source-and-layer)
-  - [MapGL with GeoJSON Source](#mapgl-with-geojson-source)
-  - [Custom Layers support](#custom-layers-support)
-- [Documentation](#documentation)
-- [Changelog](#changelog)
-- [License](#license)
-- [Contributing](#contributing)
-- [Team](#team)
+- [Urbica React Mapbox GL JS](#urbica-react-mapbox-gl-js)
+  - [Installation](#installation)
+    - [Optional Dependencies](#optional-dependencies)
+  - [Components](#components)
+  - [Usage](#usage)
+    - [Static Map](#static-map)
+    - [Interactive Map](#interactive-map)
+    - [MapGL with Source and Layer](#mapgl-with-source-and-layer)
+    - [MapGL with GeoJSON Source](#mapgl-with-geojson-source)
+    - [Custom Layers support](#custom-layers-support)
+  - [Documentation](#documentation)
+  - [Changelog](#changelog)
+  - [License](#license)
+  - [Contributing](#contributing)
+  - [Team](#team)
 
 ![Gallery](https://raw.githubusercontent.com/urbica/react-map-gl/main/docs/gallery.jpg)
 
 ## Installation
 
 ```shell
-npm install --save mapbox-gl @urbica/react-map-gl
-```
-
-...or if you are using yarn:
-
-```shell
-yarn add mapbox-gl @urbica/react-map-gl
+npm install mapbox-gl @urbica/react-map-gl
 ```
 
 ### Optional Dependencies
@@ -43,13 +39,7 @@ yarn add mapbox-gl @urbica/react-map-gl
 If you want to use the `LanguageControl`:
 
 ```shell
-npm install --save @mapbox/mapbox-gl-language
-```
-
-...or if you are using yarn:
-
-```shell
-yarn add @mapbox/mapbox-gl-language
+npm install @mapbox/mapbox-gl-language
 ```
 
 ## Components
